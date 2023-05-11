@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Teaher Dashboard</title>
+
+    <!-- Montserrat Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/create activity.css">
+  </head>
+  <body>
+    <div class="grid-container">
+
+      <!-- Header -->
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined">menu</span>
+        </div>
+        <div class="header-left">
+         
+        </div>
+        <div class="header-right">
+          <span class="material-icons-outlined">notifications</span>
+          <span class="material-icons-outlined">email</span>
+          <span class="material-icons-outlined">account_circle</span>
+        </div>
+      </header>
+      <!-- End Header -->
+
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <div class="sidebar-brand">
+            
+            <span class="material-icons-outlined">edugamelogo</span> EduGameHub 
+          </div>
+          <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+        </div>
+
+        <ul class="sidebar-list">
+          <li class="sidebar-list-item">
+            <a href="teacher management system.html" target="_blank">
+              <span class="material-icons-outlined">dashboard</span> Dashboard
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">groups</span> Students
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="subjects.html" target="_blank">
+              <span class="material-icons-outlined">menu_book</span> Subjects
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">mail</span> Messages
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="#" target="_blank">
+              <span class="material-icons-outlined">logout</span> Sign Out
+            </a>
+          </li>
+
+          
+          
+      </aside>
+      <!-- End Sidebar -->
+
+     
+    
+
+     <!-- Create Activity -->
+     <div class="container">
+        <h2>Select Quarter:</h2>
+  
+        <div class="select-box">
+          <div class="options-container">
+            <div class="option">
+              <input
+                type="radio"
+                class="radio"
+                id="automobiles"
+                name="category"
+              />
+              <label for="automobiles">First Quarter</label>
+            </div>
+  
+            <div class="option">
+              <input type="radio" class="radio" id="film" name="category" />
+              <label for="film">Second Quarter</label>
+            </div>
+  
+            <div class="option">
+              <input type="radio" class="radio" id="science" name="category" />
+              <label for="science">Third Quarter</label>
+            </div>
+  
+            <div class="option">
+              <input type="radio" class="radio" id="art" name="category" />
+              <label for="art">Forth Quarter</label>
+            </div>
+  
+          </div>
+  
+          <div class="selected">
+            Select Quarter
+
+            </div>
+            <script src="create act.js"></script>
+
+            <body>
+              <div class="comment-box">
+                  
+                  <form action="#">
+                      
+                      <input tpye="answer" name="answer" placeholder="Type Answer..">
+                      
+                      <button type="submit">Submit Answer</button>
+                      <button type="submit">Submit Answer</button>
+                      <button type="submit">Submit Answer</button>
+                      <button type="submit">Submit Answer</button>
+                  </form>
+              </div>
+         </body> 
+
+
+
+    
+</html>

@@ -1,0 +1,124 @@
+.mediaViewInfo {
+	--web-view-name: Educator - English (Game Quiz Show) – 1;
+	--web-view-id: Educator_-_English_Game_Quiz_Show__1;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: Educator_-_English_Game_Quiz_Show__1;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+#Educator_-_English_Game_Quiz_Show__1 {
+	position: absolute;
+	width: 1920px;
+	height: 1080px;
+	background-color: rgba(251,175,175,1);
+	overflow: hidden;
+	--web-view-name: Educator - English (Game Quiz Show) – 1;
+	--web-view-id: Educator_-_English_Game_Quiz_Show__1;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+#Path_5 {
+	fill: rgba(0,0,0,0.039);
+}
+.Path_5 {
+	overflow: visible;
+	position: absolute;
+	width: 1920px;
+	height: 63.355px;
+	left: 0px;
+	top: 1.645px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#ENGLISH {
+	filter: drop-shadow(-10px -10px 0px rgba(0, 0, 0, 0.161));
+	left: 786px;
+	top: 65px;
+	position: absolute;
+	overflow: visible;
+	width: 350px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: The Font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 90px;
+	color: rgba(100,33,177,1);
+}
+#EDUGAMETYPOLOGO {
+	position: absolute;
+	width: 328px;
+	height: 41px;
+	left: 38px;
+	top: 11px;
+	overflow: visible;
+}
+#Rectangle_65 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(0,0,0,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_65 {
+	position: absolute;
+	overflow: visible;
+	width: 1920px;
+	height: 177px;
+	left: 0px;
+	top: 213px;
+}
+#Rectangle_66 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_66 {
+	position: absolute;
+	overflow: visible;
+	width: 870px;
+	height: 147px;
+	left: 525px;
+	top: 756px;
+}
+#Type_your_answer {
+	opacity: 0.4;
+	left: 786px;
+	top: 803px;
+	position: absolute;
+	overflow: visible;
+	width: 495px;
+	height: 53px;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 40px;
+	color: rgba(0,0,0,1);
+}
+#I_go_to_school_everyday_Change {
+	left: 308px;
+	top: 238px;
+	position: absolute;
+	overflow: visible;
+	width: 1759px;
+	height: 128px;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 60px;
+	color: rgba(0,0,0,1);
+}

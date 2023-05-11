@@ -1,0 +1,167 @@
+/*FONTS*/
+
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap');
+
+
+
+
+
+
+.logo 
+{
+  width: 340px; 
+  height: 190px; 
+    cursor: pointer;
+    position:absolute;
+    top: 10px;
+    left: 0px;
+  }
+* {
+box-sizing: border-box;
+     margin:0;
+     padding:0;
+     
+}
+ li, а, button 
+ {
+    font-family: 'Fredoka', sans-serif;
+     font-weight: 500;
+     font-size: 20px;
+     color:#edf0f1;
+     text-decoration: none;
+ }
+ header 
+ {
+     display: flex;
+     justify-content: flex-end;
+     align-items: center;
+     padding: 30px 10%;
+ }
+
+.nav_links 
+{
+  padding-top: 25px; /* add some space above the image */
+position: relative;
+z-index: 1;
+list-style: none;
+
+}
+.nav_links a {
+  
+  color: #1B2072; /* set hyperlink color to white */
+  text-decoration: none; /* remove underline */
+}
+
+.nav_links li 
+{
+display: inline-block;
+padding: 0px 20px;
+}
+
+.nav_links li a 
+{
+transition: all 0.3s ease 0s;
+}
+
+.nav_links li a:hover 
+{
+color:#0088a9
+}
+
+button 
+{
+padding: 9px 25px;
+background-color: rgba(0,136,169,1);
+border: none;
+border-radius: 50px;
+cursor: pointer;
+transition: all 0.3s ease 0s;
+}
+nav a.active {
+  font-weight: bold;
+  text-shadow: 0px 3px rgba(0,0,0, 0.3);
+  
+  color: rgb(255, 255, 255);
+  
+}
+button:hover 
+{
+    background-color:rgba(0,136,169,0);
+    }
+  /* Homepage */
+  .container .homepageBG {
+    padding-top: 50px; /* add some space above the image */
+    padding-bottom: 70px; /* add some space below the image */
+    padding-left: 50px; /* add some space below the image */
+  }
+  
+  .homepageBG {
+    
+  width: 900px;
+  height: auto;
+  margin-right: 700px; /* add some margin to the right for spacing */
+  
+  }
+
+/*Sign Page*/
+.homepage 
+{
+    position:absolute;
+    top: 150px;
+    left: 70px;
+    width: 850px;
+    height: 700px; 
+  }
+  body {
+    height: 100%;
+    background: linear-gradient(90deg, #ffffff 50%, #F4A641 50%);
+    
+  }
+  
+  form {
+     background-color: white;
+  border: 3px solid #f1f1f1;
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+  max-width: 500px;
+  width: 100%;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 50px;
+    }
+  input[type=text], input[type=password] 
+  {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 20px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  button {
+    background-color: #1B2072;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  box-shadow: #5860DE 0px 7px 0px;
+  box-shadow: inset 0 -8px 0 0 rgba(88, 97, 222, 0.678);
+  transition: 0.1s;
+  text-shadow: 0px 3px rgba(0,0,0, 0.2);
+  }
+  button:hover {
+    box-shadow: inset 0 -4px 0 0 rgba(0, 0, 0, 0.2);
+background-color: #3e8e41;
+ 
+  }
+
+  .forgot-password {
+    text-align: center;
+  }
+  
+ 

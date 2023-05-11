@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Log In</title>
+    <link rel="stylesheet" href="Login.css">
+    <style>
+      body {
+        background-color: #F4A641;
+      }
+      form {
+        width: 50%;
+        margin-right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      
+      <img class="logo" src="images/edugamelogoblack.png" alt="logo">
+      
+      <nav>
+        <ul class="nav_links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="About Us">About Us</a></li>
+          <li><a href="Login.html" class="active">Log In</a></li>
+        </ul>
+      </nav>
+    </header>
+  
+  
+    <form method="POST" action="login.php">
+      <h2><center>Log In</center></h2>
+      <label for="username"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="username" required>
+      <label for="password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="password" required>
+      <button type="submit">Log In</button>
+      <div class="forgot-password">
+        <a href="#">Forgot Password?</a>
+      </div>
+      
+    </form>
+    <div class="container">
+      <img class="homepageBG" src="images/homepage.jpg" alt="homepageBG"> 
+    </div>
+    
+
+    
+  </body>
+</html>

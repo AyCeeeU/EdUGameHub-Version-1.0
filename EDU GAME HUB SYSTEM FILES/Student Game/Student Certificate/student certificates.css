@@ -1,0 +1,169 @@
+.mediaViewInfo {
+	--web-view-name: Student - Certificates;
+	--web-view-id: Student_-_Certificates;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: Student_-_Certificates;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+#Student_-_Certificates {
+	position: absolute;
+	width: 1920px;
+	height: 1080px;
+	background-color: rgba(255,255,255,1);
+	overflow: hidden;
+	--web-view-name: Student - Certificates;
+	--web-view-id: Student_-_Certificates;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+@keyframes  {
+
+
+}
+#Path_1 {
+	fill: rgba(0,0,0,0.039);
+}
+.Path_1 {
+	overflow: visible;
+	position: absolute;
+	width: 1922px;
+	height: 74.99px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#EDUGAMETYPOLOGO {
+	position: absolute;
+	width: 328px;
+	height: 41px;
+	left: 38px;
+	top: 11px;
+	overflow: visible;
+	--web-animation: fadein undefineds undefined;
+	--web-action-type: page;
+	--web-action-target: educator profile.html;
+	cursor: pointer;
+}
+#Juan_Dela_Cruz {
+	left: 341px;
+	top: 75px;
+	position: absolute;
+	overflow: visible;
+	width: 658px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 90px;
+	color: rgba(100,33,177,1);
+}
+#Dummygmailcom {
+	left: 341px;
+	top: 184px;
+	position: absolute;
+	overflow: visible;
+	width: 391px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 40px;
+	color: rgba(100,33,177,1);
+}
+#n_234567534 {
+	left: 341px;
+	top: 236px;
+	position: absolute;
+	overflow: visible;
+	width: 225px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 40px;
+	color: rgba(100,33,177,1);
+}
+#Certificates {
+	left: 834px;
+	top: 261px;
+	position: absolute;
+	overflow: visible;
+	width: 330px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 60px;
+	color: rgba(100,33,177,1);
+}
+#Rectangle_99 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_99 {
+	position: absolute;
+	overflow: visible;
+	width: 533px;
+	height: 256px;
+	left: 112px;
+	top: 517px;
+}
+#Rectangle_100 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_100 {
+	position: absolute;
+	overflow: visible;
+	width: 533px;
+	height: 256px;
+	left: 694px;
+	top: 517px;
+}
+#Rectangle_101 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_101 {
+	position: absolute;
+	overflow: visible;
+	width: 533px;
+	height: 256px;
+	left: 1276px;
+	top: 517px;
+}
+#profile {
+	position: absolute;
+	width: 294px;
+	height: 237px;
+	left: 31px;
+	top: 90px;
+	overflow: visible;
+}

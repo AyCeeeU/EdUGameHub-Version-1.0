@@ -1,0 +1,331 @@
+.mediaViewInfo {
+	--web-view-name: Educator - English (Multiple Choice) – 1;
+	--web-view-id: Educator_-_English_Multiple_Choice__1;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: Educator_-_English_Multiple_Choice__1;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+#Educator_-_English_Multiple_Choice__1 {
+	position: absolute;
+	width: 1920px;
+	height: 1080px;
+	background-color: rgba(251,175,175,0.949);
+	overflow: hidden;
+	--web-view-name: Educator - English (Multiple Choice) – 1;
+	--web-view-id: Educator_-_English_Multiple_Choice__1;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+#Question_1 {
+	left: 110px;
+	top: 112px;
+	position: absolute;
+	overflow: visible;
+	width: 185px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 38px;
+	color: rgba(0,0,0,1);
+}
+#Rectangle_29 {
+	fill: rgba(255,255,255,1);
+}
+.Rectangle_29 {
+	position: absolute;
+	overflow: visible;
+	width: 1920px;
+	height: 177px;
+	left: 0px;
+	top: 217px;
+}
+#Refer_to_to_more_than_one_of_s {
+	left: 432px;
+	top: 266px;
+	position: absolute;
+	overflow: visible;
+	width: 1058px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 60px;
+	color: rgba(0,0,0,1);
+}
+#Path_5 {
+	fill: rgba(0,0,0,0.039);
+}
+.Path_5 {
+	overflow: visible;
+	position: absolute;
+	width: 1920px;
+	height: 63.355px;
+	left: 0px;
+	top: 1.645px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#ENGLISH_dc {
+	filter: drop-shadow(-10px -10px 0px rgba(0, 0, 0, 0.161));
+	left: 752px;
+	top: 82px;
+	position: absolute;
+	overflow: visible;
+	width: 350px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: The Font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 90px;
+	color: rgba(100,33,177,1);
+}
+#Rectangle_55 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(0,0,0,1);
+	stroke-width: 5px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_55 {
+	position: absolute;
+	overflow: visible;
+	width: 573px;
+	height: 123px;
+	left: 334px;
+	top: 913px;
+}
+#C {
+	opacity: 0.63;
+	left: 358px;
+	top: 947px;
+	position: absolute;
+	overflow: visible;
+	width: 32px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 40px;
+	color: rgba(0,0,0,1);
+}
+#Group_15 {
+	position: absolute;
+	width: 573px;
+	height: 123px;
+	left: 994px;
+	top: 735px;
+	overflow: visible;
+}
+#Rectangle_56 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(0,0,0,1);
+	stroke-width: 5px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_56 {
+	position: absolute;
+	overflow: visible;
+	width: 573px;
+	height: 123px;
+	left: 0px;
+	top: 0px;
+}
+#B {
+	opacity: 0.63;
+	left: 28px;
+	top: 34px;
+	position: absolute;
+	overflow: visible;
+	width: 32px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 40px;
+	color: rgba(0,0,0,1);
+}
+#Abstract_ {
+	left: 100px;
+	top: 28px;
+	position: absolute;
+	overflow: visible;
+	width: 316px;
+	height: 67px;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 60px;
+	color: rgba(0,0,0,1);
+}
+#EDUGAMETYPOLOGO {
+	position: absolute;
+	width: 328px;
+	height: 41px;
+	left: 38px;
+	top: 11px;
+	overflow: visible;
+}
+#ENGLISH_dc {
+	filter: drop-shadow(-10px -10px 0px rgba(0, 0, 0, 0.161));
+	left: 752px;
+	top: 82px;
+	position: absolute;
+	overflow: visible;
+	width: 350px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: The Font;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 90px;
+	color: rgba(100,33,177,1);
+}
+#Plural {
+	position: absolute;
+	width: 573px;
+	height: 123px;
+	left: 334px;
+	top: 735px;
+	overflow: visible;
+}
+#Rectangle_21 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(0,0,0,1);
+	stroke-width: 5px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_21 {
+	position: absolute;
+	overflow: visible;
+	width: 573px;
+	height: 123px;
+	left: 0px;
+	top: 0px;
+}
+#A {
+	opacity: 0.63;
+	left: 28px;
+	top: 34px;
+	position: absolute;
+	overflow: visible;
+	width: 32px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 40px;
+	color: rgba(0,0,0,1);
+}
+#Plural_dg {
+	left: 105px;
+	top: 29px;
+	position: absolute;
+	overflow: visible;
+	width: 316px;
+	height: 67px;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 60px;
+	color: rgba(0,0,0,1);
+}
+#Singular {
+	left: 432px;
+	top: 941px;
+	position: absolute;
+	overflow: visible;
+	width: 316px;
+	height: 67px;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 60px;
+	color: rgba(0,0,0,1);
+}
+#Component_8__1 {
+	position: absolute;
+	width: 573px;
+	height: 123px;
+	left: 994px;
+	top: 913px;
+	overflow: visible;
+}
+#Rectangle_167 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(0,0,0,1);
+	stroke-width: 5px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_167 {
+	position: absolute;
+	overflow: visible;
+	width: 573px;
+	height: 123px;
+	left: 0px;
+	top: 0px;
+}
+#Concrete {
+	left: 100px;
+	top: 28px;
+	position: absolute;
+	overflow: visible;
+	width: 316px;
+	height: 67px;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 60px;
+	color: rgba(0,0,0,1);
+}
+#D {
+	opacity: 0.63;
+	left: 26px;
+	top: 34px;
+	position: absolute;
+	overflow: visible;
+	width: 32px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Arial;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 40px;
+	color: rgba(0,0,0,1);
+}
+#dogs {
+	position: absolute;
+	width: 570px;
+	height: 321px;
+	left: 642px;
+	top: 394px;
+	overflow: visible;
+}

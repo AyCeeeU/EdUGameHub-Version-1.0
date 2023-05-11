@@ -1,0 +1,1216 @@
+.mediaViewInfo {
+	--web-view-name: Educator CR  - leaderboards English Q1;
+	--web-view-id: Educator_CR__-_leaderboards_English_Q1;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: Educator_CR__-_leaderboards_English_Q1;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+#Educator_CR__-_leaderboards_English_Q1 {
+	position: absolute;
+	width: 1920px;
+	height: 1080px;
+	background-color: rgba(255,255,255,1);
+	overflow: hidden;
+	--web-view-name: Educator CR  - leaderboards English Q1;
+	--web-view-id: Educator_CR__-_leaderboards_English_Q1;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+@keyframes  {
+
+
+}
+@keyframes  {
+
+
+}
+@keyframes  {
+
+
+}
+@keyframes  {
+
+
+}
+@keyframes  {
+
+
+}
+#Line_2 {
+	fill: transparent;
+	stroke: rgba(0,0,0,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_2 {
+	overflow: visible;
+	position: absolute;
+	width: 3.555px;
+	height: 2.832px;
+	left: 219.5px;
+	top: 699.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Rectangle_118 {
+	fill: rgba(46,26,114,1);
+}
+.Rectangle_118 {
+	position: absolute;
+	overflow: visible;
+	width: 347px;
+	height: 938px;
+	left: 0px;
+	top: 142px;
+}
+#Path_1 {
+	opacity: 0.45;
+	fill: rgba(0,0,0,0.102);
+}
+.Path_1 {
+	overflow: visible;
+	position: absolute;
+	width: 349px;
+	height: 147px;
+	left: -2px;
+	top: -5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#LOGO {
+	position: absolute;
+	width: 250.772px;
+	height: 141px;
+	left: 43px;
+	top: 0px;
+	overflow: visible;
+}
+#Group_75 {
+	position: absolute;
+	width: 199px;
+	height: 40px;
+	left: 43px;
+	top: 271px;
+	overflow: visible;
+	--web-animation: fadein undefineds undefined;
+	--web-action-type: page;
+	--web-action-target: Educator___Dash_Board.html;
+	cursor: pointer;
+}
+#Dashboard {
+	left: 51px;
+	top: 0px;
+	position: absolute;
+	overflow: visible;
+	width: 149px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#icons8-dashboard-64 {
+	position: absolute;
+	width: 36px;
+	height: 36px;
+	left: 0px;
+	top: 4px;
+	overflow: visible;
+}
+#Group_76 {
+	position: absolute;
+	width: 170px;
+	height: 44px;
+	left: 43px;
+	top: 341px;
+	overflow: visible;
+	--web-animation: fadein undefineds undefined;
+	--web-action-type: page;
+	--web-action-target: Educator___Students_.html;
+	cursor: pointer;
+}
+#Students {
+	left: 51px;
+	top: 0px;
+	position: absolute;
+	overflow: visible;
+	width: 120px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#icons8-dashboard-64_c {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	left: 0px;
+	top: 4px;
+	overflow: visible;
+}
+#Ellipse_58 {
+	fill: transparent;
+	stroke: rgba(255,255,255,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Ellipse_58 {
+	position: absolute;
+	overflow: visible;
+	width: 71px;
+	height: 71px;
+	left: 14px;
+	top: 161px;
+}
+#Juan_Dela_Cruz {
+	left: 109px;
+	top: 189px;
+	position: absolute;
+	overflow: visible;
+	width: 170px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 26px;
+	color: rgba(255,255,255,1);
+}
+#icons8-person-64 {
+	position: absolute;
+	width: 64px;
+	height: 64px;
+	left: 18px;
+	top: 157px;
+	overflow: visible;
+}
+#n_Welcome {
+	left: 104px;
+	top: 162px;
+	position: absolute;
+	overflow: visible;
+	width: 99px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(255,255,255,1);
+}
+#Group_77 {
+	position: absolute;
+	width: 165px;
+	height: 44px;
+	left: 43px;
+	top: 415px;
+	overflow: visible;
+}
+#Subjects {
+	left: 51px;
+	top: 0px;
+	position: absolute;
+	overflow: visible;
+	width: 115px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#icons8-dashboard-64_dg {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	left: 0px;
+	top: 4px;
+	overflow: visible;
+}
+#Group_78 {
+	position: absolute;
+	width: 183px;
+	height: 41px;
+	left: 43px;
+	top: 489px;
+	overflow: visible;
+	--web-animation: fadein undefineds undefined;
+	--web-action-type: page;
+	--web-action-target: Educator___Messages___7.html;
+	cursor: pointer;
+}
+#Messages {
+	left: 51px;
+	top: 0px;
+	position: absolute;
+	overflow: visible;
+	width: 133px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#icons8-dashboard-64_dj {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	left: 0px;
+	top: 1px;
+	overflow: visible;
+}
+#Group_79 {
+	position: absolute;
+	width: 226px;
+	height: 47px;
+	left: 39px;
+	top: 560px;
+	overflow: visible;
+}
+#Class_Record {
+	left: 55px;
+	top: 3px;
+	position: absolute;
+	overflow: visible;
+	width: 172px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#icons8-dashboard-64_dm {
+	position: absolute;
+	width: 47px;
+	height: 47px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+#Group_80 {
+	position: absolute;
+	width: 173px;
+	height: 40px;
+	left: 40px;
+	top: 640px;
+	overflow: visible;
+	--web-animation: fadein undefineds undefined;
+	--web-action-type: page;
+	--web-action-target: Log_In_Page.html;
+	cursor: pointer;
+}
+#Sign_Out {
+	left: 54px;
+	top: 0px;
+	position: absolute;
+	overflow: visible;
+	width: 120px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#icons8-dashboard-64_dp {
+	position: absolute;
+	width: 37px;
+	height: 37px;
+	left: 0px;
+	top: 2px;
+	overflow: visible;
+}
+#Path_76 {
+	opacity: 0.45;
+	fill: rgba(255,255,255,0.2);
+}
+.Path_76 {
+	overflow: visible;
+	position: absolute;
+	width: 347px;
+	height: 65.663px;
+	left: 0px;
+	top: 404.169px;
+	transform: matrix(1,0,0,1,0,0);
+	--web-animation: fadein undefineds undefined;
+	--web-action-type: page;
+	--web-action-target: Educator___Subjects.html;
+	cursor: pointer;
+}
+#Rectangle_154 {
+	fill: rgba(227,227,227,1);
+}
+.Rectangle_154 {
+	position: absolute;
+	overflow: visible;
+	width: 274px;
+	height: 109px;
+	left: 742px;
+	top: -2px;
+}
+#Create_Activity {
+	left: 437px;
+	top: 39px;
+	position: absolute;
+	overflow: visible;
+	width: 232px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 32px;
+	color: rgba(0,0,0,1);
+}
+#Leaderboards {
+	left: 771px;
+	top: 39px;
+	position: absolute;
+	overflow: visible;
+	width: 217px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 32px;
+	color: rgba(0,0,0,1);
+}
+#Select_Quarter {
+	left: 742px;
+	top: 138px;
+	position: absolute;
+	overflow: visible;
+	width: 136px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+#top_performers_leaderboards {
+	position: absolute;
+	width: 714px;
+	height: 744px;
+	left: 690px;
+	top: 291px;
+	overflow: visible;
+}
+#n_ {
+	left: 28px;
+	top: 0px;
+	position: absolute;
+	overflow: visible;
+	width: 29px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 50px;
+	color: rgba(0,0,0,1);
+}
+#n__dx {
+	left: 28px;
+	top: 69px;
+	position: absolute;
+	overflow: visible;
+	width: 29px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 50px;
+	color: rgba(0,0,0,1);
+}
+#n__dy {
+	left: 28px;
+	top: 138px;
+	position: absolute;
+	overflow: visible;
+	width: 29px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 50px;
+	color: rgba(0,0,0,1);
+}
+#n__dz {
+	left: 28px;
+	top: 207px;
+	position: absolute;
+	overflow: visible;
+	width: 29px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 50px;
+	color: rgba(0,0,0,1);
+}
+#n__d {
+	left: 28px;
+	top: 276px;
+	position: absolute;
+	overflow: visible;
+	width: 29px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 50px;
+	color: rgba(0,0,0,1);
+}
+#n__ea {
+	left: 28px;
+	top: 345px;
+	position: absolute;
+	overflow: visible;
+	width: 29px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 50px;
+	color: rgba(0,0,0,1);
+}
+#n__eb {
+	left: 28px;
+	top: 414px;
+	position: absolute;
+	overflow: visible;
+	width: 29px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 50px;
+	color: rgba(0,0,0,1);
+}
+#n__ec {
+	left: 28px;
+	top: 483px;
+	position: absolute;
+	overflow: visible;
+	width: 29px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 50px;
+	color: rgba(0,0,0,1);
+}
+#n__ed {
+	left: 28px;
+	top: 552px;
+	position: absolute;
+	overflow: visible;
+	width: 29px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 50px;
+	color: rgba(0,0,0,1);
+}
+#n_0_ {
+	left: 0px;
+	top: 621px;
+	position: absolute;
+	overflow: visible;
+	width: 57px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 50px;
+	color: rgba(0,0,0,1);
+}
+#profile {
+	position: absolute;
+	width: 62px;
+	height: 61px;
+	left: 78px;
+	top: 0px;
+	overflow: visible;
+}
+#profile_d {
+	position: absolute;
+	width: 62px;
+	height: 61px;
+	left: 78px;
+	top: 69px;
+	overflow: visible;
+}
+#profile_ea {
+	position: absolute;
+	width: 62px;
+	height: 61px;
+	left: 78px;
+	top: 138px;
+	overflow: visible;
+}
+#profile_eb {
+	position: absolute;
+	width: 62px;
+	height: 61px;
+	left: 78px;
+	top: 207px;
+	overflow: visible;
+}
+#profile_ec {
+	position: absolute;
+	width: 62px;
+	height: 61px;
+	left: 78px;
+	top: 276px;
+	overflow: visible;
+}
+#profile_ed {
+	position: absolute;
+	width: 62px;
+	height: 61px;
+	left: 78px;
+	top: 345px;
+	overflow: visible;
+}
+#profile_ee {
+	position: absolute;
+	width: 62px;
+	height: 61px;
+	left: 78px;
+	top: 414px;
+	overflow: visible;
+}
+#profile_ef {
+	position: absolute;
+	width: 62px;
+	height: 61px;
+	left: 78px;
+	top: 483px;
+	overflow: visible;
+}
+#profile_eg {
+	position: absolute;
+	width: 62px;
+	height: 61px;
+	left: 78px;
+	top: 552px;
+	overflow: visible;
+}
+#profile_eh {
+	position: absolute;
+	width: 62px;
+	height: 61px;
+	left: 78px;
+	top: 621px;
+	overflow: visible;
+}
+#Rectangle_203 {
+	fill: rgba(216,209,0,0.761);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_203 {
+	position: absolute;
+	overflow: visible;
+	width: 561px;
+	height: 61px;
+	left: 153px;
+	top: 0px;
+}
+#Rectangle_204 {
+	fill: rgba(184,115,51,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_204 {
+	position: absolute;
+	overflow: visible;
+	width: 561px;
+	height: 61px;
+	left: 153px;
+	top: 70px;
+}
+#Rectangle_205 {
+	fill: rgba(232,75,75,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_205 {
+	position: absolute;
+	overflow: visible;
+	width: 561px;
+	height: 61px;
+	left: 153px;
+	top: 140px;
+}
+#Rectangle_206 {
+	fill: rgba(0,0,0,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_206 {
+	position: absolute;
+	overflow: visible;
+	width: 561px;
+	height: 61px;
+	left: 153px;
+	top: 210px;
+}
+#Rectangle_207 {
+	fill: rgba(0,0,0,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_207 {
+	position: absolute;
+	overflow: visible;
+	width: 561px;
+	height: 61px;
+	left: 153px;
+	top: 280px;
+}
+#Rectangle_208 {
+	fill: rgba(0,0,0,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_208 {
+	position: absolute;
+	overflow: visible;
+	width: 561px;
+	height: 61px;
+	left: 153px;
+	top: 350px;
+}
+#Rectangle_209 {
+	fill: rgba(0,0,0,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_209 {
+	position: absolute;
+	overflow: visible;
+	width: 561px;
+	height: 61px;
+	left: 153px;
+	top: 420px;
+}
+#Rectangle_210 {
+	fill: rgba(0,0,0,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_210 {
+	position: absolute;
+	overflow: visible;
+	width: 561px;
+	height: 61px;
+	left: 153px;
+	top: 490px;
+}
+#Rectangle_211 {
+	fill: rgba(0,0,0,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_211 {
+	position: absolute;
+	overflow: visible;
+	width: 561px;
+	height: 61px;
+	left: 153px;
+	top: 560px;
+}
+#Rectangle_212 {
+	fill: rgba(0,0,0,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_212 {
+	position: absolute;
+	overflow: visible;
+	width: 561px;
+	height: 61px;
+	left: 153px;
+	top: 630px;
+}
+#Kajal_Sharma_ {
+	left: 175px;
+	top: 12px;
+	position: absolute;
+	overflow: visible;
+	width: 202px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#Kajal_Sharma__er {
+	left: 170px;
+	top: 82px;
+	position: absolute;
+	overflow: visible;
+	width: 202px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#Kajal_Sharma__es {
+	left: 170px;
+	top: 152px;
+	position: absolute;
+	overflow: visible;
+	width: 202px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#Kajal_Sharma__et {
+	left: 170px;
+	top: 222px;
+	position: absolute;
+	overflow: visible;
+	width: 202px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#Kajal_Sharma__eu {
+	left: 170px;
+	top: 292px;
+	position: absolute;
+	overflow: visible;
+	width: 202px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#Kajal_Sharma__ev {
+	left: 170px;
+	top: 362px;
+	position: absolute;
+	overflow: visible;
+	width: 202px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#Kajal_Sharma__ew {
+	left: 170px;
+	top: 432px;
+	position: absolute;
+	overflow: visible;
+	width: 202px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#Kajal_Sharma__ex {
+	left: 170px;
+	top: 502px;
+	position: absolute;
+	overflow: visible;
+	width: 202px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#Kajal_Sharma__ey {
+	left: 170px;
+	top: 570px;
+	position: absolute;
+	overflow: visible;
+	width: 202px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#Kajal_Sharma__ez {
+	left: 170px;
+	top: 642px;
+	position: absolute;
+	overflow: visible;
+	width: 202px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#badge_ribbon {
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	left: 634px;
+	top: 1px;
+	overflow: visible;
+}
+#badge_ribbon_e {
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	left: 629px;
+	top: 71px;
+	overflow: visible;
+}
+#badge_ribbon_fa {
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	left: 629px;
+	top: 141px;
+	overflow: visible;
+}
+#badge_ribbon_fb {
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	left: 629px;
+	top: 211px;
+	overflow: visible;
+}
+#badge_ribbon_fc {
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	left: 629px;
+	top: 281px;
+	overflow: visible;
+}
+#badge_ribbon_fd {
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	left: 629px;
+	top: 351px;
+	overflow: visible;
+}
+#badge_ribbon_fe {
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	left: 629px;
+	top: 421px;
+	overflow: visible;
+}
+#badge_ribbon_ff {
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	left: 629px;
+	top: 491px;
+	overflow: visible;
+}
+#badge_ribbon_fg {
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	left: 629px;
+	top: 560px;
+	overflow: visible;
+}
+#badge_ribbon_fh {
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	left: 629px;
+	top: 631px;
+	overflow: visible;
+}
+#n__fa {
+	left: 606px;
+	top: 0px;
+	position: absolute;
+	overflow: visible;
+	width: 29px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 50px;
+	color: rgba(0,0,0,1);
+}
+#n__fb {
+	left: 601px;
+	top: 70px;
+	position: absolute;
+	overflow: visible;
+	width: 29px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 50px;
+	color: rgba(0,0,0,1);
+}
+#quarter_dropdown {
+	position: absolute;
+	width: 249px;
+	height: 50px;
+	left: 437px;
+	top: 174px;
+	overflow: visible;
+}
+#Rectangle_147 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_147 {
+	position: absolute;
+	overflow: visible;
+	width: 249px;
+	height: 50px;
+	left: 0px;
+	top: 0px;
+}
+#black_dropdown {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	left: 206px;
+	top: 11px;
+	overflow: visible;
+}
+#quarter_dropdown_ff {
+	position: absolute;
+	width: 249px;
+	height: 50px;
+	left: 742px;
+	top: 174px;
+	overflow: visible;
+}
+#Rectangle_147_fg {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_147_fg {
+	position: absolute;
+	overflow: visible;
+	width: 249px;
+	height: 50px;
+	left: 0px;
+	top: 0px;
+}
+#black_dropdown_fh {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	left: 206px;
+	top: 11px;
+	overflow: visible;
+}
+#quarter_dropdown_fi {
+	position: absolute;
+	width: 249px;
+	height: 50px;
+	left: 1046px;
+	top: 174px;
+	overflow: visible;
+}
+#Rectangle_147_fj {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_147_fj {
+	position: absolute;
+	overflow: visible;
+	width: 249px;
+	height: 50px;
+	left: 0px;
+	top: 0px;
+}
+#black_dropdown_fk {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	left: 210px;
+	top: 10px;
+	overflow: visible;
+}
+#Select_Subject {
+	left: 1047px;
+	top: 138px;
+	position: absolute;
+	overflow: visible;
+	width: 132px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+#Top_Performers {
+	left: 447px;
+	top: 187px;
+	position: absolute;
+	overflow: visible;
+	width: 143px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+#First_Quarter {
+	left: 752px;
+	top: 187px;
+	position: absolute;
+	overflow: visible;
+	width: 116px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+#English {
+	left: 1057px;
+	top: 187px;
+	position: absolute;
+	overflow: visible;
+	width: 67px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}

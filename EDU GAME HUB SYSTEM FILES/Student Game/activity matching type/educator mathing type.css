@@ -1,0 +1,1486 @@
+.mediaViewInfo {
+	--web-view-name: Educator CA - Matching Type English Q1;
+	--web-view-id: Educator_CA_-_Matching_Type_English_Q1;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: Educator_CA_-_Matching_Type_English_Q1;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+#Educator_CA_-_Matching_Type_English_Q1 {
+	position: absolute;
+	width: 1920px;
+	height: 1080px;
+	background-color: rgba(255,255,255,1);
+	overflow: hidden;
+	--web-view-name: Educator CA - Matching Type English Q1;
+	--web-view-id: Educator_CA_-_Matching_Type_English_Q1;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+@keyframes  {
+
+
+}
+@keyframes  {
+
+
+}
+@keyframes  {
+
+
+}
+@keyframes  {
+
+
+}
+@keyframes  {
+
+
+}
+@keyframes fadein {
+
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+
+}
+@keyframes  {
+
+
+}
+#Line_2 {
+	fill: transparent;
+	stroke: rgba(0,0,0,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_2 {
+	overflow: visible;
+	position: absolute;
+	width: 3.555px;
+	height: 2.832px;
+	left: 219.5px;
+	top: 699.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Create_Activity {
+	position: absolute;
+	width: 274px;
+	height: 109px;
+	left: 416px;
+	top: -4px;
+	overflow: visible;
+}
+#Rectangle_154 {
+	fill: rgba(227,227,227,1);
+}
+.Rectangle_154 {
+	position: absolute;
+	overflow: visible;
+	width: 274px;
+	height: 109px;
+	left: 0px;
+	top: 0px;
+}
+#Create_Activity_c {
+	left: 22px;
+	top: 27px;
+	position: absolute;
+	overflow: visible;
+	width: 232px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 32px;
+	color: rgba(0,0,0,1);
+}
+#Rectangle_118 {
+	fill: rgba(46,26,114,1);
+}
+.Rectangle_118 {
+	position: absolute;
+	overflow: visible;
+	width: 347px;
+	height: 938px;
+	left: 0px;
+	top: 142px;
+}
+#Path_1 {
+	opacity: 0.45;
+	fill: rgba(0,0,0,0.102);
+}
+.Path_1 {
+	overflow: visible;
+	position: absolute;
+	width: 349px;
+	height: 147px;
+	left: -2px;
+	top: -5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#LOGO {
+	position: absolute;
+	width: 250.772px;
+	height: 141px;
+	left: 43px;
+	top: 0px;
+	overflow: visible;
+}
+#Group_75 {
+	position: absolute;
+	width: 199px;
+	height: 40px;
+	left: 43px;
+	top: 271px;
+	overflow: visible;
+	--web-animation: fadein undefineds undefined;
+	--web-action-type: page;
+	--web-action-target: Educator___Dash_Board.html;
+	cursor: pointer;
+}
+#Dashboard {
+	left: 51px;
+	top: 0px;
+	position: absolute;
+	overflow: visible;
+	width: 149px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#icons8-dashboard-64 {
+	position: absolute;
+	width: 36px;
+	height: 36px;
+	left: 0px;
+	top: 4px;
+	overflow: visible;
+}
+#Group_76 {
+	position: absolute;
+	width: 170px;
+	height: 44px;
+	left: 43px;
+	top: 341px;
+	overflow: visible;
+	--web-animation: fadein undefineds undefined;
+	--web-action-type: page;
+	--web-action-target: Educator___Students_.html;
+	cursor: pointer;
+}
+#Students {
+	left: 51px;
+	top: 0px;
+	position: absolute;
+	overflow: visible;
+	width: 120px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#icons8-dashboard-64_dc {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	left: 0px;
+	top: 4px;
+	overflow: visible;
+}
+#Ellipse_58 {
+	fill: transparent;
+	stroke: rgba(255,255,255,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Ellipse_58 {
+	position: absolute;
+	overflow: visible;
+	width: 71px;
+	height: 71px;
+	left: 14px;
+	top: 161px;
+}
+#Juan_Dela_Cruz {
+	left: 109px;
+	top: 189px;
+	position: absolute;
+	overflow: visible;
+	width: 170px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 26px;
+	color: rgba(255,255,255,1);
+}
+#icons8-person-64 {
+	position: absolute;
+	width: 64px;
+	height: 64px;
+	left: 18px;
+	top: 157px;
+	overflow: visible;
+}
+#n_Welcome {
+	left: 104px;
+	top: 162px;
+	position: absolute;
+	overflow: visible;
+	width: 99px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(255,255,255,1);
+}
+#Group_77 {
+	position: absolute;
+	width: 165px;
+	height: 44px;
+	left: 43px;
+	top: 415px;
+	overflow: visible;
+}
+#Subjects {
+	left: 51px;
+	top: 0px;
+	position: absolute;
+	overflow: visible;
+	width: 115px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#icons8-dashboard-64_dj {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	left: 0px;
+	top: 4px;
+	overflow: visible;
+}
+#Group_78 {
+	position: absolute;
+	width: 183px;
+	height: 41px;
+	left: 43px;
+	top: 489px;
+	overflow: visible;
+	--web-animation: fadein undefineds undefined;
+	--web-action-type: page;
+	--web-action-target: Educator___Messages___7.html;
+	cursor: pointer;
+}
+#Messages {
+	left: 51px;
+	top: 0px;
+	position: absolute;
+	overflow: visible;
+	width: 133px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#icons8-dashboard-64_dm {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	left: 0px;
+	top: 1px;
+	overflow: visible;
+}
+#Group_79 {
+	position: absolute;
+	width: 226px;
+	height: 47px;
+	left: 39px;
+	top: 560px;
+	overflow: visible;
+}
+#Class_Record {
+	left: 55px;
+	top: 3px;
+	position: absolute;
+	overflow: visible;
+	width: 172px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#icons8-dashboard-64_dp {
+	position: absolute;
+	width: 47px;
+	height: 47px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+#Group_80 {
+	position: absolute;
+	width: 173px;
+	height: 40px;
+	left: 40px;
+	top: 640px;
+	overflow: visible;
+	--web-animation: fadein undefineds undefined;
+	--web-action-type: page;
+	--web-action-target: Log_In_Page.html;
+	cursor: pointer;
+}
+#Sign_Out {
+	left: 54px;
+	top: 0px;
+	position: absolute;
+	overflow: visible;
+	width: 120px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#icons8-dashboard-64_ds {
+	position: absolute;
+	width: 37px;
+	height: 37px;
+	left: 0px;
+	top: 2px;
+	overflow: visible;
+}
+#Path_76 {
+	opacity: 0.45;
+	fill: rgba(255,255,255,0.2);
+}
+.Path_76 {
+	overflow: visible;
+	position: absolute;
+	width: 347px;
+	height: 65.663px;
+	left: 0px;
+	top: 404.169px;
+	transform: matrix(1,0,0,1,0,0);
+	--web-animation: fadein undefineds undefined;
+	--web-action-type: page;
+	--web-action-target: Educator___Subjects.html;
+	cursor: pointer;
+}
+#Add_Slide_ {
+	position: absolute;
+	width: 184px;
+	height: 49px;
+	left: 371px;
+	top: 262px;
+	overflow: visible;
+	transition: all 0.30000001192092896s ease-out;
+	--web-animation: fadein 0.30000001192092896s ease-out;
+	--web-action-type: page;
+	--web-action-target: Educator_CA___add_slide___1.html;
+	cursor: pointer;
+}
+#Rectangle_165 {
+	fill: rgba(46,26,114,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_165 {
+	position: absolute;
+	overflow: visible;
+	width: 184px;
+	height: 49px;
+	left: 0px;
+	top: 0px;
+}
+#Add_Slide {
+	left: 45px;
+	top: 13px;
+	position: absolute;
+	overflow: visible;
+	width: 94px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(255,255,255,1);
+}
+#Delete_Slide {
+	position: absolute;
+	width: 184px;
+	height: 49px;
+	left: 599px;
+	top: 262px;
+	overflow: visible;
+}
+#Rectangle_166 {
+	fill: rgba(46,26,114,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_166 {
+	position: absolute;
+	overflow: visible;
+	width: 184px;
+	height: 49px;
+	left: 0px;
+	top: 0px;
+}
+#Delete_SLide {
+	left: 33px;
+	top: 13px;
+	position: absolute;
+	overflow: visible;
+	width: 120px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(255,255,255,1);
+}
+#Text {
+	left: 979px;
+	top: 167px;
+	position: absolute;
+	overflow: visible;
+	width: 1px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 11px;
+	color: rgba(0,0,0,1);
+}
+#Select_Game_Mode {
+	left: 690px;
+	top: 138px;
+	position: absolute;
+	overflow: visible;
+	width: 177px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+#quarter_dropdown {
+	position: absolute;
+	width: 249px;
+	height: 50px;
+	left: 371px;
+	top: 173px;
+	overflow: visible;
+}
+#Rectangle_147 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_147 {
+	position: absolute;
+	overflow: visible;
+	width: 249px;
+	height: 50px;
+	left: 0px;
+	top: 0px;
+}
+#First_Quarter {
+	left: 10px;
+	top: 14px;
+	position: absolute;
+	overflow: visible;
+	width: 116px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+#black_dropdown {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	left: 206px;
+	top: 11px;
+	overflow: visible;
+}
+#game_mode_dropdown {
+	position: absolute;
+	width: 249px;
+	height: 50px;
+	left: 690px;
+	top: 174px;
+	overflow: visible;
+}
+#Rectangle_147_d {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_147_d {
+	position: absolute;
+	overflow: visible;
+	width: 249px;
+	height: 50px;
+	left: 0px;
+	top: 0px;
+}
+#Matching_Type {
+	left: 10px;
+	top: 14px;
+	position: absolute;
+	overflow: visible;
+	width: 145px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+#black_dropdown_d {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	left: 206px;
+	top: 11px;
+	overflow: visible;
+}
+#Select_Quarter {
+	left: 371px;
+	top: 137px;
+	position: absolute;
+	overflow: visible;
+	width: 136px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+#Subject_Selected {
+	left: 1019px;
+	top: 138px;
+	position: absolute;
+	overflow: visible;
+	width: 155px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+#Rectangle_155 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Rectangle_155 {
+	position: absolute;
+	overflow: visible;
+	width: 184px;
+	height: 49px;
+	left: 1019px;
+	top: 175px;
+}
+#English {
+	left: 1078px;
+	top: 188px;
+	position: absolute;
+	overflow: visible;
+	width: 67px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20px;
+	color: rgba(0,0,0,1);
+}
+#questions_in_matching_type {
+	position: absolute;
+	width: 348px;
+	height: 41px;
+	left: 425px;
+	top: 437px;
+	overflow: visible;
+}
+#add-image {
+	opacity: 0.9;
+	position: absolute;
+	width: 35px;
+	height: 35px;
+	left: 260px;
+	top: 2px;
+	overflow: visible;
+}
+#Line_12 {
+	fill: transparent;
+	stroke: rgba(0,0,0,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_12 {
+	overflow: visible;
+	position: absolute;
+	width: 275px;
+	height: 1px;
+	left: 17.5px;
+	top: 34.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#n_ {
+	left: 0px;
+	top: 9px;
+	position: absolute;
+	overflow: visible;
+	width: 17px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(0,0,0,1);
+}
+#Type_here {
+	opacity: 0.51;
+	left: 18px;
+	top: 7px;
+	position: absolute;
+	overflow: visible;
+	width: 105px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(0,0,0,1);
+}
+#Ellipse_71 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Ellipse_71 {
+	position: absolute;
+	overflow: visible;
+	width: 41px;
+	height: 41px;
+	left: 307px;
+	top: 0px;
+}
+#questions_in_matching_type_ek {
+	position: absolute;
+	width: 348px;
+	height: 41px;
+	left: 426px;
+	top: 550px;
+	overflow: visible;
+}
+#add-image_el {
+	opacity: 0.9;
+	position: absolute;
+	width: 35px;
+	height: 35px;
+	left: 260px;
+	top: 2px;
+	overflow: visible;
+}
+#Line_12_em {
+	fill: transparent;
+	stroke: rgba(0,0,0,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_12_em {
+	overflow: visible;
+	position: absolute;
+	width: 275px;
+	height: 1px;
+	left: 17.5px;
+	top: 34.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#n__en {
+	left: 0px;
+	top: 9px;
+	position: absolute;
+	overflow: visible;
+	width: 17px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(0,0,0,1);
+}
+#Type_here_eo {
+	opacity: 0.51;
+	left: 18px;
+	top: 7px;
+	position: absolute;
+	overflow: visible;
+	width: 105px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(0,0,0,1);
+}
+#Ellipse_71_ep {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Ellipse_71_ep {
+	position: absolute;
+	overflow: visible;
+	width: 41px;
+	height: 41px;
+	left: 307px;
+	top: 0px;
+}
+#questions_in_matching_type_eq {
+	position: absolute;
+	width: 348px;
+	height: 41px;
+	left: 426px;
+	top: 663px;
+	overflow: visible;
+}
+#add-image_er {
+	opacity: 0.9;
+	position: absolute;
+	width: 35px;
+	height: 35px;
+	left: 260px;
+	top: 2px;
+	overflow: visible;
+}
+#Line_12_es {
+	fill: transparent;
+	stroke: rgba(0,0,0,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_12_es {
+	overflow: visible;
+	position: absolute;
+	width: 275px;
+	height: 1px;
+	left: 17.5px;
+	top: 34.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#n__et {
+	left: 0px;
+	top: 9px;
+	position: absolute;
+	overflow: visible;
+	width: 17px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(0,0,0,1);
+}
+#Type_here_eu {
+	opacity: 0.51;
+	left: 18px;
+	top: 7px;
+	position: absolute;
+	overflow: visible;
+	width: 105px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(0,0,0,1);
+}
+#Ellipse_71_ev {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Ellipse_71_ev {
+	position: absolute;
+	overflow: visible;
+	width: 41px;
+	height: 41px;
+	left: 307px;
+	top: 0px;
+}
+#questions_in_matching_type_ew {
+	position: absolute;
+	width: 348px;
+	height: 65px;
+	left: 426px;
+	top: 776px;
+	overflow: visible;
+}
+#add-image_ex {
+	opacity: 0.9;
+	position: absolute;
+	width: 35px;
+	height: 35px;
+	left: 260px;
+	top: 2px;
+	overflow: visible;
+}
+#Line_12_ey {
+	fill: transparent;
+	stroke: rgba(0,0,0,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_12_ey {
+	overflow: visible;
+	position: absolute;
+	width: 275px;
+	height: 1px;
+	left: 17.5px;
+	top: 34.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#n__ {
+	left: 0px;
+	top: 9px;
+	position: absolute;
+	overflow: visible;
+	width: 17px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(0,0,0,1);
+}
+#Type_here_e {
+	opacity: 0.51;
+	left: 18px;
+	top: 7px;
+	position: absolute;
+	overflow: visible;
+	width: 105px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(0,0,0,1);
+}
+#Ellipse_71_e {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Ellipse_71_e {
+	position: absolute;
+	overflow: visible;
+	width: 41px;
+	height: 41px;
+	left: 307px;
+	top: 0px;
+}
+#Leaderboards {
+	left: 771px;
+	top: 39px;
+	position: absolute;
+	overflow: visible;
+	width: 217px;
+	white-space: nowrap;
+	--web-animation: fadein undefineds undefined;
+	--web-action-type: page;
+	--web-action-target: Educator_CR___Leaderboards_default.html;
+	cursor: pointer;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 32px;
+	color: rgba(0,0,0,1);
+}
+#questions_in_matching_type_e {
+	position: absolute;
+	width: 330px;
+	height: 41px;
+	left: 1443px;
+	top: 437px;
+	overflow: visible;
+}
+#add-image_e {
+	opacity: 0.9;
+	position: absolute;
+	width: 35px;
+	height: 35px;
+	left: 295px;
+	top: 0px;
+	overflow: visible;
+}
+#Line_12_e {
+	fill: transparent;
+	stroke: rgba(0,0,0,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_12_e {
+	overflow: visible;
+	position: absolute;
+	width: 275px;
+	height: 1px;
+	left: 52.5px;
+	top: 32.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Type_here_fa {
+	opacity: 0.51;
+	left: 53px;
+	top: 5px;
+	position: absolute;
+	overflow: visible;
+	width: 105px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(0,0,0,1);
+}
+#Ellipse_71_fa {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Ellipse_71_fa {
+	position: absolute;
+	overflow: visible;
+	width: 41px;
+	height: 41px;
+	left: 0px;
+	top: 0px;
+}
+#questions_in_matching_type_fa {
+	position: absolute;
+	width: 330px;
+	height: 41px;
+	left: 1443px;
+	top: 550px;
+	overflow: visible;
+}
+#add-image_fa {
+	opacity: 0.9;
+	position: absolute;
+	width: 35px;
+	height: 35px;
+	left: 295px;
+	top: 0px;
+	overflow: visible;
+}
+#Line_12_fa {
+	fill: transparent;
+	stroke: rgba(0,0,0,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_12_fa {
+	overflow: visible;
+	position: absolute;
+	width: 275px;
+	height: 1px;
+	left: 52.5px;
+	top: 32.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Type_here_fb {
+	opacity: 0.51;
+	left: 53px;
+	top: 5px;
+	position: absolute;
+	overflow: visible;
+	width: 105px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(0,0,0,1);
+}
+#Ellipse_71_fc {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Ellipse_71_fc {
+	position: absolute;
+	overflow: visible;
+	width: 41px;
+	height: 41px;
+	left: 0px;
+	top: 0px;
+}
+#questions_in_matching_type_fd {
+	position: absolute;
+	width: 330px;
+	height: 41px;
+	left: 1443px;
+	top: 663px;
+	overflow: visible;
+}
+#add-image_fe {
+	opacity: 0.9;
+	position: absolute;
+	width: 35px;
+	height: 35px;
+	left: 295px;
+	top: 0px;
+	overflow: visible;
+}
+#Line_12_ff {
+	fill: transparent;
+	stroke: rgba(0,0,0,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_12_ff {
+	overflow: visible;
+	position: absolute;
+	width: 275px;
+	height: 1px;
+	left: 52.5px;
+	top: 32.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Type_here_fg {
+	opacity: 0.51;
+	left: 53px;
+	top: 5px;
+	position: absolute;
+	overflow: visible;
+	width: 105px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(0,0,0,1);
+}
+#Ellipse_71_fh {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Ellipse_71_fh {
+	position: absolute;
+	overflow: visible;
+	width: 41px;
+	height: 41px;
+	left: 0px;
+	top: 0px;
+}
+#questions_in_matching_type_fi {
+	position: absolute;
+	width: 330px;
+	height: 41px;
+	left: 1443px;
+	top: 776px;
+	overflow: visible;
+}
+#add-image_fj {
+	opacity: 0.9;
+	position: absolute;
+	width: 35px;
+	height: 35px;
+	left: 295px;
+	top: 0px;
+	overflow: visible;
+}
+#Line_12_fk {
+	fill: transparent;
+	stroke: rgba(0,0,0,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_12_fk {
+	overflow: visible;
+	position: absolute;
+	width: 275px;
+	height: 1px;
+	left: 52.5px;
+	top: 32.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Type_here_fl {
+	opacity: 0.51;
+	left: 53px;
+	top: 5px;
+	position: absolute;
+	overflow: visible;
+	width: 105px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(0,0,0,1);
+}
+#Ellipse_71_fm {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Ellipse_71_fm {
+	position: absolute;
+	overflow: visible;
+	width: 41px;
+	height: 41px;
+	left: 0px;
+	top: 0px;
+}
+#questions_in_matching_type_fn {
+	position: absolute;
+	width: 348px;
+	height: 65px;
+	left: 426px;
+	top: 913px;
+	overflow: visible;
+}
+#add-image_fo {
+	opacity: 0.9;
+	position: absolute;
+	width: 35px;
+	height: 35px;
+	left: 260px;
+	top: 2px;
+	overflow: visible;
+}
+#Line_12_fp {
+	fill: transparent;
+	stroke: rgba(0,0,0,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_12_fp {
+	overflow: visible;
+	position: absolute;
+	width: 275px;
+	height: 1px;
+	left: 17.5px;
+	top: 34.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#n___fq {
+	left: 0px;
+	top: 9px;
+	position: absolute;
+	overflow: visible;
+	width: 17px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(0,0,0,1);
+}
+#Type_here_fr {
+	opacity: 0.51;
+	left: 18px;
+	top: 7px;
+	position: absolute;
+	overflow: visible;
+	width: 105px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(0,0,0,1);
+}
+#Ellipse_71_fs {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Ellipse_71_fs {
+	position: absolute;
+	overflow: visible;
+	width: 41px;
+	height: 41px;
+	left: 307px;
+	top: 0px;
+}
+#questions_in_matching_type_ft {
+	position: absolute;
+	width: 330px;
+	height: 41px;
+	left: 1443px;
+	top: 889px;
+	overflow: visible;
+}
+#add-image_fu {
+	opacity: 0.9;
+	position: absolute;
+	width: 35px;
+	height: 35px;
+	left: 295px;
+	top: 0px;
+	overflow: visible;
+}
+#Line_12_fv {
+	fill: transparent;
+	stroke: rgba(0,0,0,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_12_fv {
+	overflow: visible;
+	position: absolute;
+	width: 275px;
+	height: 1px;
+	left: 52.5px;
+	top: 32.5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Type_here_fw {
+	opacity: 0.51;
+	left: 53px;
+	top: 5px;
+	position: absolute;
+	overflow: visible;
+	width: 105px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 21px;
+	color: rgba(0,0,0,1);
+}
+#Ellipse_71_fx {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Ellipse_71_fx {
+	position: absolute;
+	overflow: visible;
+	width: 41px;
+	height: 41px;
+	left: 0px;
+	top: 0px;
+}
+#Group_87 {
+	position: absolute;
+	width: 218.996px;
+	height: 33px;
+	left: 850.502px;
+	top: 270px;
+	overflow: visible;
+}
+#Add_Instructions {
+	left: 37.995px;
+	top: 0px;
+	position: absolute;
+	overflow: visible;
+	width: 182px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 25px;
+	color: rgba(0,0,0,1);
+}
+#checkbox {
+	position: absolute;
+	width: 29.535px;
+	height: 27px;
+	left: 0px;
+	top: 6px;
+	overflow: visible;
+}
+#Checkbox_f {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Checkbox_f {
+	position: absolute;
+	overflow: visible;
+	width: 27px;
+	height: 27px;
+	left: 2.535px;
+	top: 0px;
+}
+#Check_Mask {
+	position: absolute;
+	width: 7.07px;
+	height: 7.07px;
+	left: 0px;
+	top: 7.714px;
+	overflow: visible;
+}

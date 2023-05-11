@@ -1,0 +1,26 @@
+.add-new-button{
+    padding: 10px;
+    padding-bottom: 10px;
+}
+.head-title{
+    padding-top: 40px;
+}
+.container {
+    
+    max-width: 70%; /* set the maximum width for the container */
+    margin: auto; /* center the container horizontally */
+  }
+  
+  .table {
+    table-layout: fixed;
+    word-wrap: break-word;
+    overflow: hidden;
+    
+  }
+  
+  .table th, .table td {
+    padding: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }

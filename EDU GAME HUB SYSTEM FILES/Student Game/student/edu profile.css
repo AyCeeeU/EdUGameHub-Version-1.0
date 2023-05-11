@@ -1,0 +1,359 @@
+.mediaViewInfo {
+	--web-view-name: Educator - Profile – 1;
+	--web-view-id: Educator_-_Profile__1;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: Educator_-_Profile__1;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+#Educator_-_Profile__1 {
+	position: absolute;
+	width: 1920px;
+	height: 1080px;
+	background-color: rgba(255,255,255,1);
+	overflow: hidden;
+	--web-view-name: Educator - Profile – 1;
+	--web-view-id: Educator_-_Profile__1;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+@keyframes  {
+
+
+}
+@keyframes  {
+
+
+}
+@keyframes  {
+
+
+}
+#Path_1 {
+	fill: rgba(0,0,0,0.039);
+}
+.Path_1 {
+	overflow: visible;
+	position: absolute;
+	width: 1922px;
+	height: 74.99px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#EDUGAMETYPOLOGO {
+	position: absolute;
+	width: 328px;
+	height: 41px;
+	left: 38px;
+	top: 11px;
+	overflow: visible;
+}
+#Juan_Dela_Cruz {
+	left: 322px;
+	top: 125px;
+	position: absolute;
+	overflow: visible;
+	width: 658px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 90px;
+	color: rgba(100,33,177,1);
+}
+#n_DelaCgmailcom {
+	left: 341px;
+	top: 234px;
+	position: absolute;
+	overflow: visible;
+	width: 383px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 40px;
+	color: rgba(100,33,177,1);
+}
+#n_903458920345890 {
+	left: 344px;
+	top: 283px;
+	position: absolute;
+	overflow: visible;
+	width: 359px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 40px;
+	color: rgba(100,33,177,1);
+}
+#profile {
+	position: absolute;
+	width: 294px;
+	height: 237px;
+	left: 28px;
+	top: 125px;
+	overflow: visible;
+}
+#Rectangle_115 {
+	fill: rgba(255,91,126,1);
+}
+.Rectangle_115 {
+	position: absolute;
+	overflow: visible;
+	width: 650px;
+	height: 673px;
+	left: 650px;
+	top: 407px;
+}
+#Play__EduGame__ {
+	left: 770px;
+	top: 518px;
+	position: absolute;
+	overflow: visible;
+	width: 381px;
+	white-space: nowrap;
+	text-align: center;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 70px;
+	color: rgba(255,255,255,1);
+}
+#Group_64 {
+	position: absolute;
+	width: 650px;
+	height: 673px;
+	left: 0px;
+	top: 407px;
+	overflow: visible;
+}
+#Rectangle_113 {
+	fill: rgba(6,191,173,1);
+}
+.Rectangle_113 {
+	position: absolute;
+	overflow: visible;
+	width: 650px;
+	height: 673px;
+	left: 0px;
+	top: 0px;
+}
+#Badges {
+	left: 198px;
+	top: 49px;
+	position: absolute;
+	overflow: visible;
+	width: 256px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 70px;
+	color: rgba(255,255,255,1);
+}
+#Review_the_activities_you_have {
+	left: 103px;
+	top: 222px;
+	position: absolute;
+	overflow: visible;
+	width: 505px;
+	height: 120px;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+	letter-spacing: 0.01px;
+}
+#Group_61 {
+	position: absolute;
+	width: 403px;
+	height: 80px;
+	left: 120px;
+	top: 492px;
+	overflow: visible;
+}
+#Rectangle_105 {
+	fill: rgba(27,32,114,1);
+}
+.Rectangle_105 {
+	position: absolute;
+	overflow: visible;
+	width: 403px;
+	height: 80px;
+	left: 0px;
+	top: 0px;
+}
+#Proceed {
+	left: 134px;
+	top: 17px;
+	position: absolute;
+	overflow: visible;
+	width: 135px;
+	height: 47px;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 35px;
+	color: rgba(255,255,255,1);
+}
+#Group_70 {
+	position: absolute;
+	width: 403px;
+	height: 80px;
+	left: 120px;
+	top: 492px;
+	overflow: visible;
+	--web-animation: fadein undefineds undefined;
+	--web-action-type: page;
+	--web-action-target: Student___Badges.html;
+	cursor: pointer;
+}
+#Rectangle_105_dg {
+	fill: rgba(27,32,114,1);
+}
+.Rectangle_105_dg {
+	position: absolute;
+	overflow: visible;
+	width: 403px;
+	height: 80px;
+	left: 0px;
+	top: 0px;
+}
+#Proceed_dh {
+	left: 134px;
+	top: 17px;
+	position: absolute;
+	overflow: visible;
+	width: 135px;
+	height: 47px;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 35px;
+	color: rgba(255,255,255,1);
+}
+#Group_67 {
+	position: absolute;
+	width: 650px;
+	height: 673px;
+	left: 1270px;
+	top: 407px;
+	overflow: visible;
+}
+#Rectangle_116 {
+	fill: rgba(254,181,70,1);
+}
+.Rectangle_116 {
+	position: absolute;
+	overflow: visible;
+	width: 650px;
+	height: 673px;
+	left: 0px;
+	top: 0px;
+}
+#Certificates {
+	left: 134px;
+	top: 39px;
+	position: absolute;
+	overflow: visible;
+	width: 385px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 70px;
+	color: rgba(255,255,255,1);
+}
+#Track_the_students_performance {
+	left: 124px;
+	top: 202px;
+	position: absolute;
+	overflow: hidden;
+	width: 461px;
+	height: 193px;
+	text-align: left;
+	font-family: Century Gothic;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(255,255,255,1);
+}
+#Group_62 {
+	position: absolute;
+	width: 403px;
+	height: 80px;
+	left: 124px;
+	top: 492px;
+	overflow: visible;
+	--web-animation: fadein undefineds undefined;
+	--web-action-type: page;
+	--web-action-target: Student___Certificates.html;
+	cursor: pointer;
+}
+#Rectangle_105_dn {
+	fill: rgba(27,32,114,1);
+}
+.Rectangle_105_dn {
+	position: absolute;
+	overflow: visible;
+	width: 403px;
+	height: 80px;
+	left: 0px;
+	top: 0px;
+}
+#Proceed_do {
+	left: 134px;
+	top: 17px;
+	position: absolute;
+	overflow: visible;
+	width: 135px;
+	height: 47px;
+	text-align: left;
+	font-family: Segoe UI;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 35px;
+	color: rgba(255,255,255,1);
+}
+#Polygon_3 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(112,112,112,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Polygon_3 {
+	filter: drop-shadow(20px 20px 20px rgba(0, 0, 0, 0.161));
+	overflow: visible;
+	position: absolute;
+	width: 142px;
+	height: 110px;
+	transform: matrix(1,0,0,1,904,841) rotate(90deg);
+	transform-origin: center;
+	left: 0px;
+	top: 0px;
+	--web-animation: fadein undefineds undefined;
+	--web-action-type: page;
+	--web-action-target: Student.html;
+	cursor: pointer;
+}
