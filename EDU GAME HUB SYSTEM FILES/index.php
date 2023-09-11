@@ -22,7 +22,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container">
     <a class="navbar-brand" href="#">
-      <img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      <img src="images/admin.png" width="30" height="30" class="d-inline-block align-top" alt="">
       Admin Panel
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -103,6 +103,7 @@ if(!empty($_GET['status'])){
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>
+                <th>Username</th>
                 <th>Section</th>
                 <th>Grade Level</th>
                 <th>Account Type</th>
@@ -127,8 +128,9 @@ if(!empty($_GET['status'])){
               <tr>
                 <td><?php echo $row['id']; ?></td>
                 <td><?php echo $row['firstname']; ?></td>
-                <td><?php echo $row['lastname']; ?></td>
+                <td><?php echo $row['lastname']; ?></td>  
                 <td><?php echo $row['email']; ?></td>
+                <td><?php echo $row['username']; ?></td>
                 <td><?php echo $row['section']; ?></td>
                 <td><?php echo $row['grade_level']; ?></td>
                 <td><?php echo $row['account_type']; ?></td>
@@ -174,38 +176,37 @@ if(!empty($_GET['status'])){
           <form action="insert.php" method="POST">
             <div class="form-group">
               <label for="title">First Name</label>
-              <input type="text" name="firstname" class="form-control" placeholder="Enter first name" maxlength="50"
-                required>
+              <input type="text" name="firstname" class="form-control" placeholder="Enter first name" maxlength="50">
             </div>
             <div class="form-group">
               <label for="title">Last Name</label>
-              <input type="text" name="lastname" class="form-control" placeholder="Enter last name" maxlength="50"
-                required>
+              <input type="text" name="lastname" class="form-control" placeholder="Enter last name" maxlength="50">
             </div>
             <div class="form-group">
               <label for="title">Email</label>
-              <input type="text" name="email" class="form-control" placeholder="Enter email" maxlength="50"
-                required>
+              <input type="text" name="email" class="form-control" placeholder="Enter email" maxlength="50">
+            </div>
+            <div class="form-group">
+              <label for="title">Username</label>
+              <input type="text" name="username" class="form-control" placeholder="Enter username" maxlength="50">
             </div>
             <div class="form-group">
               <label for="title">Section</label>
-              <input type="text" name="section" class="form-control" placeholder="Enter section" maxlength="50" required>
+              <input type="text" name="section" class="form-control" placeholder="Enter section" maxlength="50">
             </div>
             <div class="form-group">
               <label for="title">Grade Level</label>
-              <input type="text" name="grade_level" class="form-control" placeholder="Enter Grade Level" maxlength="50"
-                required>
+              <input type="text" name="grade_level" class="form-control" placeholder="Enter Grade Level" maxlength="50">
             </div>
             <div class="form-group">
               <label for="title">Account Type</label>
-              <input type="text" name="account_type" class="form-control" placeholder="Enter Account Type" maxlength="50"
-                required>
+              <input type="text" name="account_type" class="form-control" placeholder="Enter Account Type" maxlength="50">
             </div>
             <div class="form-group">
-              <label for="title">Password</label>
-              <input type="text" name="password" class="form-control" placeholder="Enter Password" maxlength="50"
-                required>
-            </div>
+  <label for="title">Password</label>
+  <input type="password" name="password" class="form-control" placeholder="Enter Password" maxlength="50">
+</div>
+
             <div class="modal-footer">
               <button type="submit" class="btn btn-primary" name="insertData">Save</button>
             </div>
@@ -246,6 +247,12 @@ if(!empty($_GET['status'])){
               <div id="viewEmail"></div>
             </div>
             <div class="col-sm-5 col-xs-6 tital " >
+              <strong>Username:</strong>
+            </div>
+            <div class="col-sm-7 col-xs-6 ">
+              <div id="viewUsername"></div>
+            </div>
+            <div class="col-sm-5 col-xs-6 tital " >
               <strong>Section:</strong>
             </div>
             <div class="col-sm-7 col-xs-6 ">
@@ -263,12 +270,27 @@ if(!empty($_GET['status'])){
             <div class="col-sm-7 col-xs-6 ">
               <div id="viewAccountType"></div>
               </div>
+              
             <div class="col-sm-5 col-xs-6 tital " >
               <strong>Password:</strong>
             </div>
             <div class="col-sm-7 col-xs-6 ">
               <div id="viewPassword"></div>
               </div>
+              <script>
+                function limitPassword() {
+                  var passwordElem = document.getElementById("viewPassword");
+                  var password = passwordElem.textContent;
+                  var maxLength = 10; // maximum number of characters to display
+                  if (password.length > maxLength) {
+                    passwordElem.textContent = password.substr(0, maxLength) + "..."; // truncate text and add ellipsis
+                  }
+                }
+
+                // Call the function after the password value is loaded into the #viewPassword element
+                document.getElementById("viewPassword").addEventListener("DOMSubtreeModified", limitPassword);
+              </script>
+              
             <div class="col-sm-5 col-xs-6 tital " >
               <strong>Created Date:</strong>
             </div>
@@ -296,47 +318,54 @@ if(!empty($_GET['status'])){
             <span>&times;</span>
           </button>
         </div>
+
+        
         <div class="modal-body">
           <form action="update.php" method="POST">
             <input type="hidden" name="updateId" id="updateId">
             <div class="form-group">
               <label for="title">First Name</label>
               <input type="text" name="updateFirstname" id="updateFirstname" class="form-control" placeholder="Enter first name" maxlength="50"
-                required>
+                >
             </div>
             <div class="form-group">
               <label for="title">Last Name</label>
               <input type="text" name="updateLastname" id="updateLastname" class="form-control" placeholder="Enter last name" maxlength="50"
-                required>
+                >
             </div>
             <div class="form-group">
               <label for="title">Email</label>
-              <input type="text" name="updateEmail" id="updateEmail " class="form-control" placeholder="Enter Email Address" maxlength="50"
-                required>
+              <input type="text" name="updateEmail" id="updateEmail" class="form-control" placeholder="Enter Email Address" maxlength="50"
+                >
+            </div>
+            <div class="form-group">
+              <label for="title">Username</label>
+              <input type="text" name="updateUsername" id="updateUsername" class="form-control" placeholder="Enter Username" maxlength="50"
+                >
             </div>
             <div class="form-group">
               <label for="title">Section</label>
-              <input type="text" name="updateSection" id="updateSection" class="form-control" placeholder="Enter Section" maxlength="50" required>
+              <input type="text" name="updateSection" id="updateSection" class="form-control" placeholder="Enter Section" maxlength="50" >
             </div>
             <div class="form-group">
               <label for="title">Grade Level</label>
               <input type="text" name="updateGradeLevel" id="updateGradeLevel" class="form-control" placeholder="Enter Grade Level" maxlength="50"
-                required>
+                >
             </div>
             <div class="form-group">
               <label for="title">Account Type</label>
               <input type="text" name="updateAccountType" id="updateAccountType" class="form-control" placeholder="Enter Account Type" maxlength="50"
-                required>
+                >
             </div>
             <div class="form-group">
               <label for="title">Password</label>
               <input type="text" name="updatePassword" id="updatePassword" class="form-control" placeholder="Enter Password" maxlength="50"
-                required>
+                >
             </div>
             <div class="form-group">
               <label for="title">Created Date</label>
               <input type="text" name="updateCreatedDate" id="updateCreatedDate" class="form-control" placeholder="Enter Created Date" maxlength="50"
-                required>
+                >
             </div>
             <div class="modal-footer">
               <button type="submit" class="btn btn-primary" name="updateData">Save Changes</button>
@@ -417,11 +446,12 @@ function formToggle(ID){
         $('#updateFirstname').val(data[1]);
         $('#updateLastname').val(data[2]);
         $('#updateEmail').val(data[3]);
-        $('#updateSection').val(data[4]);
-        $('#updateGradeLevel').val(data[5]);
-        $('#updateAccountType').val(data[6]);
-        $('#updatePassword').val(data[7]);
-        $('#updateCreatedDate').val(data[8]);
+        $('#updateUsername').val(data[4]);
+        $('#updateSection').val(data[5]);
+        $('#updateGradeLevel').val(data[6]);
+        $('#updateAccountType').val(data[7]);
+        $('#updatePassword').val(data[8]);
+        $('#updateCreatedDate').val(data[9]);
                   
 
         });
@@ -430,6 +460,7 @@ function formToggle(ID){
   </script>
 
   <script>
+    
     $(document).ready(function () {
       $('.viewBtn').on('click', function(){
 
@@ -447,11 +478,12 @@ function formToggle(ID){
         $('#viewFirstname').text(data[1]);
         $('#viewLastname').text(data[2]);
         $('#viewEmail').text(data[3]);
-        $('#viewSection').text(data[4]);
-        $('#viewGradeLevel').text(data[5]);
-        $('#viewAccountType').text(data[6]);
-        $('#viewPassword').text(data[7]); 
-        $('#viewCreatedDate').text(data[8]);              
+        $('#viewUsername').text(data[4]);
+        $('#viewSection').text(data[5]);
+        $('#viewGradeLevel').text(data[6]);
+        $('#viewAccountType').text(data[7]);
+        $('#viewPassword').text(data[8]); 
+        $('#viewCreatedDate').text(data[9]);              
 
         });
     

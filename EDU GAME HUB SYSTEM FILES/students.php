@@ -94,13 +94,11 @@ include("db_conn.php");
     <!-- filter elements -->
     <div class="filters">
       <form method="get" action="">
-        <label for="grade_level">Filter by Grade Level:</label>
-        <select name="grade_level" id="grade_level">
-          <option value="">All</option>
-          <option value="1">Grade 1</option>
-          <option value="2">Grade 2</option>
-          <option value="3">Grade 3</option>
-        </select>
+      <label for="sort_order">Sort by Last Name:</label>
+    <select name="sort_order" id="sort_order">
+      <option value="asc">Ascending</option>
+      <option value="desc">Descending</option>
+    </select>
 
         <label for="section">Filter by Section:</label>
         <select name="section" id="section">

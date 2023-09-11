@@ -14,13 +14,13 @@ if($query->num_rows > 0){
     $f = fopen('php://memory', 'w'); 
      
     // Set column headers 
-    $fields = array('ID', 'FIRST NAME', 'LAST NAME', 'EMAIL', 'SECTION', 'GRADE LEVEL', 'ACCOUNT TYPE', 'PASSWORD', 'CREATED DATE'); 
+    $fields = array('ID', 'FIRST NAME', 'LAST NAME', 'EMAIL', 'USERNAME', 'SECTION', 'GRADE LEVEL', 'ACCOUNT TYPE', 'PASSWORD', 'CREATED DATE'); 
     fputcsv($f, $fields, $delimiter); 
      
     // Output each row of the data, format line as csv and write to file pointer 
     while($row = $query->fetch_assoc()){ 
         
-        $lineData = array($row['id'], $row['firstname'], $row['lastname'], $row['email'], $row['section'], $row['grade_level'], $row['account_type'], $row['password'], $row['created_date']); 
+        $lineData = array($row['id'], $row['firstname'], $row['lastname'], $row['email'], $row['username'], $row['section'], $row['grade_level'], $row['account_type'], $row['password'], $row['created_date']); 
         fputcsv($f, $lineData, $delimiter); 
     } 
      
