@@ -9,6 +9,7 @@
         $firstname = $_POST['firstname'];
         $lastname = $_POST['lastname'];
         $email = $_POST['email'];
+        $username = $_POST['username'];
         $section = $_POST['section'];
         $grade_level = $_POST['grade_level'];
         $account_type = $_POST['account_type'];
@@ -17,10 +18,10 @@
 
 
 
-        $password = hash("sha256", $password);
+        $hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO tbl_accdb (firstname, lastname, email, section, grade_level, account_type, password, created_date) 
-        VALUES ('$firstname', '$lastname', '$email', '$section', '$grade_level', '$account_type', '$password', NOW())";
+        $sql = "INSERT INTO tbl_accdb (firstname, lastname, email, username, section, grade_level, account_type, password, created_date) 
+        VALUES ('$firstname', '$lastname', '$email','$username', '$section', '$grade_level', '$account_type', '$hash', NOW())";
        
         $result = mysqli_query($conn, $sql);
 

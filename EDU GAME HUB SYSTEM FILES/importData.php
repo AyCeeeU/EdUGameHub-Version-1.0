@@ -25,11 +25,12 @@ if(isset($_POST['importSubmit'])){
                 $firstname = $line[1];
                 $lastname = $line[2];
                 $email  = $line[3];
-                $section  = $line[4];
-                $grade_level = $line[5];
-                $account_type = $line[6];
-                $password = $line[7];
-                $created_date = $line[8];
+                $username  = $line[4];
+                $section  = $line[5];
+                $grade_level = $line[6];
+                $account_type = $line[7];
+                $password = $line[8];
+                $created_date = $line[9];
 
             
 
@@ -42,8 +43,8 @@ if(isset($_POST['importSubmit'])){
                     // Update member data in the database
                 }else{
                     // Insert member data in the database
-                    $sql = "INSERT INTO tbl_accdb (firstname, lastname, email, section, grade_level, account_type, password, created_date) 
-                    VALUES ('$firstname', '$lastname', '$email', '$section', '$grade_level', '$account_type', '$password', NOW())";
+                    $sql = "INSERT INTO tbl_accdb (firstname, lastname, email, username, section, grade_level, account_type, password, created_date) 
+                    VALUES ('$firstname', '$lastname', '$email', '$username', '$section', '$grade_level', '$account_type', '$password', NOW())";
                     // echo $sql;
                     $run = mysqli_query($conn,$sql);
                 }
