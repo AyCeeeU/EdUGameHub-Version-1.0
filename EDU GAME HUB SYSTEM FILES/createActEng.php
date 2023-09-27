@@ -22,18 +22,19 @@
 
       <!-- Header -->
       <header class="header">
-        <div class="menu-icon" onclick="openSidebar()">
-          <span class="material-icons-outlined">menu</span>
-        </div>
-        <div class="header-left">
-          <span class="material-icons-outlined">search</span>
-        </div>
-        <div class="header-right">
-          <span class="material-icons-outlined">notifications</span>
-          <span class="material-icons-outlined">email</span>
-          <span class="material-icons-outlined">account_circle</span>
-        </div>
-      </header>
+    <div class="menu-icon" onclick="openSidebar()">
+      <span class="material-icons-outlined">menu</span>
+    </div>
+    <div class="header-left">
+      <button class="btn btn-primary" id="createActivityBtn">Create Activity</button>
+      <button class="btn btn-secondary" id="leaderboardBtn">Leaderboard</button>
+    </div>
+    <div class="header-right">
+      <span class="material-icons-outlined">notifications</span>
+      <span class="material-icons-outlined">email</span>
+      <span class="material-icons-outlined">account_circle</span>
+    </div>
+</header>
       <!-- End Header -->
 
       <!-- Sidebar -->
@@ -109,9 +110,9 @@ if(ISSET($_POST['submit'])) {
 
 ?>
 
-          <div class="question-builder">
-          <div class="container">
-  <h2>Select Quarter:</h2>
+<div class="question-builder">
+  <div class="container">
+    <h2>Select Quarter:</h2>
 
   <div class="select-box">
     <div class="options-container">
@@ -146,7 +147,7 @@ if(ISSET($_POST['submit'])) {
 
 
 <div class="container">
-<h2>Select Subject:</h2>
+    <h2>Select Subject:</h2>
 
 <div class="select-box">
   <div class="options-container">
@@ -177,9 +178,19 @@ if(ISSET($_POST['submit'])) {
   <form method="POST" action="createAct.php">
     <label for="activity-name">Activity Name:</label>
     <input type="text" id="activity-name" name="activity-name">
+
+    
+    <div class="container">
+    <!-- Wider question text box -->
     <label for="question-text">Question:</label>
-    <input type="text" id="question-text" name="question-text">
-    <div class="option-container">
+    <input type="text" id="question-text" name="question-text" class="wider-input">
+  </div>
+
+
+
+  <div class="options-container">
+    <!-- Two options text boxes on the left -->
+    <div class="container">
       <label for="option-1">Option 1:</label>
       <input type="text" id="option-1" name="option-1">
       <div class="checkbox-container">
@@ -187,7 +198,8 @@ if(ISSET($_POST['submit'])) {
         <label for="correct-answer-1">Correct answer</label>
       </div>
     </div>
-    <div class="option-container">
+
+    <div class="container">
       <label for="option-2">Option 2:</label>
       <input type="text" id="option-2" name="option-2">
       <div class="checkbox-container">
@@ -195,8 +207,11 @@ if(ISSET($_POST['submit'])) {
         <label for="correct-answer-2">Correct answer</label>
       </div>
     </div>
-    <!-- add more option fields as needed -->
-    <div class="option-container">
+  </div>
+
+  <div class="options-container">
+    <!-- Options 3 and 4 on the right -->
+    <div class="container">
       <label for="option-3">Option 3:</label>
       <input type="text" id="option-3" name="option-3">
       <div class="checkbox-container">
@@ -204,7 +219,8 @@ if(ISSET($_POST['submit'])) {
         <label for="correct-answer-3">Correct answer</label>
       </div>
     </div>
-    <div class="option-container">
+
+    <div class="container">
       <label for="option-4">Option 4:</label>
       <input type="text" id="option-4" name="option-4">
       <div class="checkbox-container">
@@ -212,7 +228,9 @@ if(ISSET($_POST['submit'])) {
         <label for="correct-answer-4">Correct answer</label>
       </div>
     </div>
-    <button type="submit" name="submit">Save question</button>
+  </div>
+
+  <button type="submit" name="submit">Save question</button>
   </form>
 </div>    
 <script src="create act.js"></script>

@@ -83,6 +83,8 @@ if(!empty($_GET['status'])){
           <!-- Import Export Button -->
           <div class="col-md-12 head">
     <div class="float-right">
+    <a href="archive.php" class="btn btn-primary">Visit Archive</a>
+
         <a href="exportData.php" class="btn btn-success"><i class="dwn"></i> Export</a>
         <a href="javascript:void(0);" class="btn btn-success" onclick="formToggle('importFrm');"><i class="plus"></i> Upload CSV</a>
     </div>
@@ -106,53 +108,91 @@ if(!empty($_GET['status'])){
                 <th>Username</th>
                 <th>Section</th>
                 <th>Grade Level</th>
-                <th>Account Type</th>
-                <th>Password</th>
+                <th>Account Type</th>                
                 <th>Created Date</th>
+                <th>Active Status</th>
+                <th>Days Since Last Login</th>  
                 <th>View</th>
                 <th>Update</th>
-                <th>Delete</th>
+                <th>Archive</th>
               </tr>
             </thead>
             <tbody>
 
             <?php
+// Define the inactivity threshold (60 days)
+$inactivityThreshold = 60;
 
-              $sql =   "SELECT * FROM tbl_accdb";
-              $result = mysqli_query($conn, $sql);
+// Calculate the date 60 days ago
+$thresholdDate = date('Y-m-d H:i:s', strtotime("-$inactivityThreshold days"));
 
-            if($result)
-            {
-              while($row = mysqli_fetch_assoc($result)){
-            ?>
-              <tr>
-                <td><?php echo $row['id']; ?></td>
-                <td><?php echo $row['firstname']; ?></td>
-                <td><?php echo $row['lastname']; ?></td>  
-                <td><?php echo $row['email']; ?></td>
-                <td><?php echo $row['username']; ?></td>
-                <td><?php echo $row['section']; ?></td>
-                <td><?php echo $row['grade_level']; ?></td>
-                <td><?php echo $row['account_type']; ?></td>
-                <td><?php echo $row['password']; ?></td>
-                <td><?php echo $row['created_date']; ?></td>
-                
-                <td>
-                  <button type="button" class="btn btn-info viewBtn"> <i class="fas fa-eye"></i> View </button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-warning updateBtn"> <i class="fas fa-edit"></i> Update </button>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-danger deleteBtn"> <i class="fas fa-trash-alt"></i> Delete </button>
-                </td>
-              </tr>
-            <?php
-              }
-            }else{
-              echo "<script> alert('No Record Found');</script>";
-            }
-          ?>
+$sql = "SELECT
+    u.id,
+    u.firstname,
+    u.lastname,
+    u.email,
+    u.username,
+    u.section,
+    u.grade_level,
+    u.account_type,
+    u.password,
+    u.created_date,
+    CASE
+        WHEN a.last_login_timestamp IS NULL THEN 'Inactive'
+        WHEN a.last_login_timestamp < '$thresholdDate' THEN 'Inactive'
+        ELSE 'Active'
+    END AS activity_status,
+    DATEDIFF(NOW(), a.last_login_timestamp) AS days_since_last_login
+FROM
+    tbl_accdb u
+LEFT JOIN
+    (SELECT user_id, MAX(CASE WHEN action = 'Login' THEN timestamp ELSE NULL END) AS last_login_timestamp
+     FROM tbl_activity_log
+     GROUP BY user_id
+    ) a
+ON
+    u.id = a.user_id";
+
+$result = mysqli_query($conn, $sql);
+
+if($result)
+{
+    while($row = mysqli_fetch_assoc($result)){
+    ?>
+    <tr>
+        <td><?php echo $row['id']; ?></td>
+        <td><?php echo $row['firstname']; ?></td>
+        <td><?php echo $row['lastname']; ?></td>  
+        <td><?php echo $row['email']; ?></td>
+        <td><?php echo $row['username']; ?></td>
+        <td><?php echo $row['section']; ?></td>
+        <td><?php echo $row['grade_level']; ?></td>
+        <td><?php echo $row['account_type']; ?></td>
+        <td class="hidden-password"><?php echo $row['password']; ?></td>
+        <td><?php echo $row['created_date']; ?></td>
+        <td><?php echo $row['activity_status']; ?></td>
+        <td><?php echo $row['days_since_last_login']; ?> Days Ago</td>
+
+        <td>
+            <button type="button" class="btn btn-info viewBtn"> <i class="fas fa-eye"></i> View </button>
+        </td>
+        <td>
+            <button type="button" class="btn btn-warning updateBtn"> <i class="fas fa-edit"></i> Update </button>
+        </td>
+        
+        <td>
+            <!-- Archive Button -->
+            <button type="button" class="btn btn-warning archiveBtn" data-toggle="modal" data-target="#archiveModal" data-record-id="<?php echo $row['id']; ?>">
+                <i class="fas fa-archive"></i> Archive
+            </button>
+        </td>
+    </tr>
+    <?php
+    }
+}else{
+    echo "<script> alert('No Record Found');</script>";
+}
+?>
             </tbody>
           </table>
         </div>
@@ -165,56 +205,75 @@ if(!empty($_GET['status'])){
   <!-- ADD RECORD MODAL -->
   <div class="modal fade" id="addModal">
     <div class="modal-dialog modal-md">
-      <div class="modal-content">
-        <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title">Add New Record</h5>
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form action="insert.php" method="POST">
-            <div class="form-group">
-              <label for="title">First Name</label>
-              <input type="text" name="firstname" class="form-control" placeholder="Enter first name" maxlength="50">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title">Add New Record</h5>
+                <button class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
             </div>
-            <div class="form-group">
-              <label for="title">Last Name</label>
-              <input type="text" name="lastname" class="form-control" placeholder="Enter last name" maxlength="50">
-            </div>
-            <div class="form-group">
-              <label for="title">Email</label>
-              <input type="text" name="email" class="form-control" placeholder="Enter email" maxlength="50">
-            </div>
-            <div class="form-group">
-              <label for="title">Username</label>
-              <input type="text" name="username" class="form-control" placeholder="Enter username" maxlength="50">
-            </div>
-            <div class="form-group">
-              <label for="title">Section</label>
-              <input type="text" name="section" class="form-control" placeholder="Enter section" maxlength="50">
-            </div>
-            <div class="form-group">
-              <label for="title">Grade Level</label>
-              <input type="text" name="grade_level" class="form-control" placeholder="Enter Grade Level" maxlength="50">
-            </div>
-            <div class="form-group">
-              <label for="title">Account Type</label>
-              <input type="text" name="account_type" class="form-control" placeholder="Enter Account Type" maxlength="50">
-            </div>
-            <div class="form-group">
-  <label for="title">Password</label>
-  <input type="password" name="password" class="form-control" placeholder="Enter Password" maxlength="50">
-</div>
+            <div class="modal-body">
+                <form action="insert.php" method="POST">
+                    <div class="form-group">
+                        <label for="title">First Name</label>
+                        <input type="text" name="firstname" class="form-control" placeholder="Enter first name" maxlength="50">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Last Name</label>
+                        <input type="text" name="lastname" class="form-control" placeholder="Enter last name" maxlength="50">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Email</label>
+                        <input type="text" name="email" class="form-control" placeholder="Enter email" maxlength="50">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Username</label>
+                        <input type="text" name="username" class="form-control" placeholder="Enter username" maxlength="50">
+                    </div>
 
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-primary" name="insertData">Save</button>
+                    <!-- Dropdown Menu -->
+                    <div class="form-group">
+                        <label for="section">Section</label>
+                        <select name="section" class="form-control">
+                        <option value="section" disabled selected>Select Section</option>
+                            <option value="St. Francis of Assisi">St. Francis of Assisi</option>
+                            <option value="Guadalupe">Guadalupe</option>
+                            <option value="St.Paul">St.Paul</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="grade_level">Grade Level</label>
+                        <select name="grade_level" class="form-control">
+                        <option value="grade_level" disabled selected>Select Grade Level</option>
+                            <option value="Grade 1">Grade 1</option>
+                            <option value="Grade 2">Grade 2</option>
+                            <option value="Grade 3">Grade 3</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="account_type">Account Type</label>
+                        <select name="account_type" class="form-control">
+                        <option value="account_type" disabled selected>Select Account Type</option>
+                            <option value="Admin">Admin</option>
+                            <option value="Teacher">Teacher</option>
+                            <option value="Student">Student</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Enter Password" maxlength="50">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" name="insertData">Save</button>
+                    </div>
+                </form>
             </div>
-          </form>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 
   <!-- VIEW MODAL -->
   <div class="modal fade" id="viewModal">
@@ -376,7 +435,7 @@ if(!empty($_GET['status'])){
     </div>
   </div>
 
-  <!-- DELETE MODAL -->
+  <!-- DELETE MODAL 
   <div class="modal fade" id="deleteModal">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -403,7 +462,34 @@ if(!empty($_GET['status'])){
         </form>
       </div>
     </div>
-  </div>
+  </div>-->
+
+
+
+<!-- Archive Modal -->
+<div class="modal fade" id="archiveModal" tabindex="-1" role="dialog" aria-labelledby="archiveModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-warning text-white">
+                <h5 class="modal-title" id="archiveModalLabel">Archive Record</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="archive.php" method="POST">
+                <div class="modal-body">
+                    <input type="hidden" name="archiveId" id="archiveId">
+                    <h4>Are you sure you want to archive this record?</h4>
+                    <p>This action will move the record to the archive.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-warning" name="archiveData">Archive</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
   <script src="http://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -416,6 +502,47 @@ if(!empty($_GET['status'])){
   <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
   
   <script>
+let options = document.getElementsByClassName('.option');
+
+let selectEle = document.querySelector('.select');
+
+let optionList = document.querySelector('.option-list');
+
+let icon = document.querySelector('.icon');
+
+let dropdown = document.querySelector('.dropdown-select');
+
+
+
+dropdown.onclick = function(){
+optionList.classList.toggle('active');
+icon.innerHTML ="&#9660"
+}
+for(op of options){
+op.onclick = function(){
+selectEle.innerText = this.innerText
+optionList.classList.toggle('active');
+icon.innerHTML ="&#9650"
+}
+}
+</script>
+
+<script>
+$(document).ready(function () {
+    // Handle the click event of the "Archive" button
+    $('.archiveBtn').on('click', function () {
+        // Get the data-record-id attribute value
+        var recordId = $(this).data('record-id');
+        
+        // Set the value of the archiveId input field in the archive modal
+        $('#archiveId').val(recordId);
+    });
+});
+
+
+</script>
+
+  <script>
 function formToggle(ID){
     var element = document.getElementById(ID);
     if(element.style.display === "none"){
@@ -425,7 +552,7 @@ function formToggle(ID){
     }
 }
 </script>
-  
+
 
   <script>
     $(document).ready(function () {
@@ -511,7 +638,19 @@ function formToggle(ID){
     
     });
   </script>
-  
+
+  <script>
+    $(document).ready(function () {
+        // Handle the click event of the "Archive" button
+        $('.archiveBtn').on('click', function () {
+            // Get the data-record-id attribute value
+            var recordId = $(this).data('record-id');
+            
+            // Set the value of the archiveId input field in the archive modal
+            $('#archiveId').val(recordId);
+        });
+    });
+</script>
 
 
 </body>
