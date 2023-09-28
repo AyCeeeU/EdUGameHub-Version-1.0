@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  background-color: #3498db;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+}
+.logoutImage {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  max-height: 3rem;
+}

@@ -1,0 +1,47 @@
+header {
+  text-align: center;
+  padding: 41px;
+  color: white;
+  overflow: hidden;
+}
+
+img {
+  position: absolute; /* Set image to be positioned absolutely */
+  top: 20px; /* Move image down by 50px from the top */
+  left: 20px; /* Move image right by 20px from the left */
+  overflow: hidden;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 30px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #8c7ce6;
+  overflow: hidden;
+}
+
+.type {
+  position: absolute;
+  top: 100px;
+  left: 30px;
+  color: #ffffff;
+  text-shadow: 2px 2px 0 #000000;
+}
+
+.quiz-container1 {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 5px;
+  padding-left: 40px;
+  position: fixed;
+  width: 100%;
+  top: 20%;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
