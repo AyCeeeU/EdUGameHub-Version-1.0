@@ -28,4 +28,5 @@ if (isset($_POST['deleteFromArchive'])) { // Updated to check for deleteFromArch
     header('Location: archive.php'); // Redirect back to the archive page with an error message
     exit();
 }
+
 ?>

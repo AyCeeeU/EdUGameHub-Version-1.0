@@ -234,6 +234,7 @@ if(ISSET($_POST['submit'])) {
   </form>
 </div>    
 <script src="create act.js"></script>
+
    </body> 
    </html>
     

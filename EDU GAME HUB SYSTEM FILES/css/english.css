@@ -22,6 +22,7 @@
     background-color: #333; /* Dark blue when not clicked */
 }
 
+
 /* Hover Styles */
 .header-left button:hover {
     background-color: #87CEEB; /* Light up with sky blue on hover */

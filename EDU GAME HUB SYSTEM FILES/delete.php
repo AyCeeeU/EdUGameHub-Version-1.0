@@ -18,4 +18,5 @@
             echo '<script> alert("Data Not Deleted."); </script>';
         }
     }
+    
 ?>

@@ -70,5 +70,6 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 } else {
     header("Location: Login.html?error=Incorrect username or password");
     exit();
+    
 }
 ?>
