@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2023 at 09:10 PM
+-- Generation Time: Oct 06, 2023 at 09:38 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -45,7 +45,7 @@ CREATE TABLE `tbl_accdb` (
 --
 
 INSERT INTO `tbl_accdb` (`id`, `firstname`, `lastname`, `email`, `username`, `section`, `grade_level`, `account_type`, `password`, `created_date`) VALUES
-(87, 'admin', 'admin', 'sampleemailonly@gmail.com', 'admin', '', '', 'Admin', '$2y$10$3N18qKGKGHvs8YIHqxhnie9DSa11WGoCQhA6DOWwSvW4J/EyDIGwq', '2023-09-27 01:18:44'),
+(87, 'admin', 'admin', 'sampleemailonly@gmail.com', 'admin', '', '', 'Admin', 'dsfsdafdfd', '2023-09-27 01:18:44'),
 (88, 'teacher', 'teacher', 'paulcruz@gmail.com', 'teacher', '', '', 'Teacher', '$2y$10$BoOH5WBI3AUO7FxAi1JxqOXARkTah31pNTgPkA8que.bihoE8oLp.', '2023-09-27 01:18:44'),
 (89, 'student', 'student', 'juandelacruz@gmail.com', 'student', 'St. Francis of Assisi', 'Grade 3', 'Student', '$2y$10$R/natiepFyCZxukY10.3vepbNOWGlI.xAK7QfuWaYUxlfL4fgAIYO', '2023-09-27 01:18:44');
 
@@ -183,6 +183,23 @@ CREATE TABLE `tbl_msg` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_multiple_teacher`
+--
+
+CREATE TABLE `tbl_multiple_teacher` (
+  `question_id` int(11) NOT NULL,
+  `activity_name` varchar(255) NOT NULL,
+  `question_text` text NOT NULL,
+  `option_1` varchar(255) NOT NULL,
+  `option_2` varchar(255) NOT NULL,
+  `option_3` varchar(255) NOT NULL,
+  `option_4` varchar(255) NOT NULL,
+  `correct_option` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_question`
 --
 
@@ -287,6 +304,12 @@ ALTER TABLE `tbl_msg`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tbl_multiple_teacher`
+--
+ALTER TABLE `tbl_multiple_teacher`
+  ADD PRIMARY KEY (`question_id`);
+
+--
 -- Indexes for table `tbl_question`
 --
 ALTER TABLE `tbl_question`
@@ -331,6 +354,12 @@ ALTER TABLE `tbl_activity_log`
 --
 ALTER TABLE `tbl_createact`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `tbl_multiple_teacher`
+--
+ALTER TABLE `tbl_multiple_teacher`
+  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `tbl_recentact`
