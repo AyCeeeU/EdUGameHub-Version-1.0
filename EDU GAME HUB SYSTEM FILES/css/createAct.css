@@ -240,38 +240,106 @@
 
 
     .question-builder {
-        
         margin: 20px;
-        padding: 20px;
+        padding: 10px;
         border: 2px solid #61AEEF;
         border-radius: 10px;
         background-color: #FFFFFF;
         box-shadow: 0 0 10px #CCCCCC;
         width: 300%;
-        max-width: 1570px;
+        max-width: 1600px;
     }
       
     .question-builder label {
-        display: block;
-        margin-bottom: 10px;
-        font-size: 20px;
-        font-weight: bold;
-        color: #2D3134;
+      font-size: 18px;
+      font-weight: bold;
+      color: #2D3134;
+      flex: 1;
       }
+      .question-builder .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: flex-start; /* Align items at the top */
+    }
       
-      .question-builder input[type="text"] {
-        width: 100%;
-        max-width: 800px; /* set a maximum width */
-        padding: 10px;
-        margin-bottom: 20px;
+      .custom-ActName {
+        padding: 7px;
         border-radius: 15px;
         border: 2px solid #D3D3D3;
         font-size: 16px;
         color: #2D3134;
+        width: 25%; /* Set the width as needed */
+        /* Add any other custom styles */
+        
+    }
+
+    .custom-Question {
+      padding: 20px;
+      border-radius: 15px;
+      border: 2px solid #D3D3D3;
+      font-size: 16px;
+      color: #2D3134;
+      width: 70%;
+      margin: 0 auto;
+      resize: none; /* Disable textarea resizing */
+      overflow-y: auto; /* Add vertical scrollbar if needed */
+  }
+    
+
+  .custom-OptA {
+    padding: 10px;
+    border-radius: 15px;
+    border: 2px solid #D3D3D3;
+    font-size: 16px;
+    color: #2D3134;
+    width: 90%; /* Set the width as needed */
+    /* Add any other custom styles */
+}
+.custom-OptB {
+  padding: 10px;
+  border-radius: 15px;
+  border: 2px solid #D3D3D3;
+  font-size: 16px;
+  color: #2D3134;
+  width: 90%; /* Set the width as needed */
+  /* Add any other custom styles */
+}
+.custom-OptC {
+  padding: 10px;
+  border-radius: 15px;
+  border: 2px solid #D3D3D3;
+  font-size: 16px;
+  color: #2D3134;
+  width: 90%; /* Set the width as needed */
+  /* Add any other custom styles */
+}
+.custom-OptD {
+  padding: 10px;
+  border-radius: 15px;
+  border: 2px solid #D3D3D3;
+  font-size: 16px;
+  color: #2D3134;
+  width: 90%; /* Set the width as needed */
+  /* Add any other custom styles */
+}
+    
+.option {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+      
+      .question-builder .option-container {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px; /* Adjust this value to control the gap between elements */
       }
       
       .option-container {
-        margin-bottom: 20px;
+        display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
       }
       
       .checkbox-container {
@@ -287,24 +355,42 @@
         font-size: 16px;
         font-weight: normal;
         color: #2D3134;
+        
+      }
+      .question-builder button[type="submit"] {
+        margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;  
+  margin-left: 50px;
+  margin-bottom: 10px;
+      }
+      .question-builder input[type="checkbox"] {
+        margin-right: 10px;
+      }
+      .question-builder button[type="submit"]:hover {
+        background-color: #3e8e41;
       }
       
       button[type="submit"] {
         margin-top: 20px;
-        padding: 10px 20px;
-        border-radius: 5px;
-        border: none;
-        background-color: #4CAF50;
-        color: white;
-        font-size: 16px;
-        cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
       }
       
       button[type="submit"]:hover {
         background-color: #3e8e41;
       }
   
-
 
       
       * {
@@ -322,90 +408,109 @@
       }
       
       .container {
-        margin-top: 0px;
-        padding: 10px;
-      }
-      
-      .select-box {
         display: flex;
-        width: 150px;
         flex-direction: column;
+        margin-bottom: 20px;
+        
+      }
+      .container:not(.right-container) {
+        flex: 1; /* Takes up equal space */
+        margin-left: 50px; /* Add margin to separate from options on the left */
       }
       
-      .select-box .options-container {
-        background: #ffffff;
-        color: #000000;
-        max-height: 0;
-        width: 100%;
-        opacity: 0;
-        transition: all 0.4s;
-        border-radius: 8px;
-        overflow: hidden;
+     
+
       
-        order: 1;
+
+
+      .wider-input-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .wider-input {
+        width: 100%; /* Makes the question text box wider */
       }
       
-      .selected {
-        background: #121d57;
-        border-radius: 8px;
-        margin-bottom: 8px;
-        color: #f5f6fa;
-        position: relative;
-      
-        order: 0;
+      .options-container {
+        
+        justify-content: space-between;
+        margin-bottom: 20px;
       }
       
-      .selected::after {
-        content: "";
-        background: url("img/arrow-down.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
-      
-        position: absolute;
-        height: 100%;
-        width: 32px;
-        right: 10px;
-        top: 5px;
-      
-        transition: all 0.4s;
-      }
-      
-      .select-box .options-container.active {
-        max-height: 240px;
-        opacity: 1;
-        overflow-y: scroll;
-      }
-      
-      .select-box .options-container.active + .selected::after {
-        transform: rotateX(180deg);
-        top: -6px;
-      }
-      
-      .select-box .options-container::-webkit-scrollbar {
-        width: 8px;
-        background: #6f7681;
-        border-radius: 0 8px 8px 0;
-      }
-      
-      .select-box .options-container::-webkit-scrollbar-thumb {
-        background: #525861;
-        border-radius: 0 8px 8px 0;
-      }
-      
-      .select-box .option,
-      .selected {
-        padding: 12px 24px;
-        cursor: pointer;
-      }
-      
-      .select-box .option:hover {
-        background: #686c72;
-      }
-      
-      .select-box label {
-        cursor: pointer;
-      }
-      
-      .select-box .option .radio {
-        display: none;
-      }
+     
+
+
+
+
+      /*button*/
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-left button {
+    margin-right: 10px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 5px; /* Add border radius for all buttons */
+    color: white; /* Set text color to white for all buttons */
+}
+
+/* Button Styles */
+.header-left button.btn-primary {
+    background-color: #333; /* Dark blue when not clicked */
+}
+
+.header-left button.btn-secondary {
+    background-color: #333; /* Dark blue when not clicked */
+}
+
+/* Hover Styles */
+.header-left button:hover {
+    background-color: #87CEEB; /* Light up with sky blue on hover */
+}
+
+
+
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.4); /* Overlay background */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%; /* Could be more or less, depending on screen size */
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 0px #888;
+}
+
+/* Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}

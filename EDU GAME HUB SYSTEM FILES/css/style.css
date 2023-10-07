@@ -7,7 +7,7 @@
 }
 .container {
     
-    max-width: 70%; /* set the maximum width for the container */
+    max-width: 89%; /* set the maximum width for the container */
     margin: auto; /* center the container horizontally */
   }
   
@@ -24,3 +24,45 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+
+ .hidden-password {
+      display: none;
+   }
+
+  .dropdown{
+    width: 300px;
+  }
+    
+    .dropdown-select{
+    background-color: white;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    }
+    .icon{
+      float: right;
+      font-size: 12px;
+    }
+    .option-list{
+      background-color:white;
+      border-radius: 5px;
+      margin-top: 8px;
+      visibility: hidden;
+
+    }
+    option-list.active{
+      
+      visibility: visible;
+
+    }
+    .option{
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .option:hover{
+      background-color: #f2f2f2;
+    }
+
+    

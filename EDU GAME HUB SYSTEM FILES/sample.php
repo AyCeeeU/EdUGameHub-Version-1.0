@@ -1,3 +1,8 @@
+<?php
+include("db_conn.php");
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,7 +17,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/Messages.css">
+    <link rel="stylesheet" href="css/dashboard.css">
   </head>
   <body>
     <div class="grid-container">
@@ -23,7 +28,7 @@
           <span class="material-icons-outlined">menu</span>
         </div>
         <div class="header-left">
-          <span class="material-icons-outlined">search</span>
+          
         </div>
         <div class="header-right">
           <span class="material-icons-outlined">notifications</span>
@@ -32,6 +37,7 @@
         </div>
       </header>
       <!-- End Header -->
+      
 
       <!-- Sidebar -->
       
@@ -47,7 +53,7 @@
 
         <ul class="sidebar-list">
           <li class="sidebar-list-item">
-            <a href="teacher management system.php">
+              <a href="teacher management system.php">
                 <span class="material-icons-outlined" >dashboard</span> Dashboard
               </a>
           </li>
@@ -76,23 +82,16 @@
           
       </aside>
       <!-- End Sidebar -->
-  <!-- Main -->
-  <main class="main-container">
-    <div class="main-title">
-      <p class="font-weight-bold">Messages</p>
+
+     
+
     </div>
 
-      <!-- Messages -->
-   <body>
-        <div class="comment-box">
-            
-            <form action="#">
-                
-                <input tpye="email" name="email" placeholder="Email Address..">
-                <textarea name="comment" placeholder="Type Your Comment..."></textarea>
-                <button type="submit">Submit Message</button>
-            </form>
-        </div>
-        
-   </body> 
-   </html>
+    <!-- Scripts -->
+    <!-- ApexCharts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+    
+  </body>
+</html>

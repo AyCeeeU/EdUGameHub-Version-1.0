@@ -28,7 +28,7 @@ include("db_conn.php");
           <span class="material-icons-outlined">menu</span>
         </div>
         <div class="header-left">
-          <span class="material-icons-outlined">search</span>
+          
         </div>
         <div class="header-right">
           <span class="material-icons-outlined">notifications</span>
@@ -187,5 +187,6 @@ $result = mysqli_query($conn, $sql);
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
     <!-- Custom JS -->
     <script src="js/script.js"></script>
+    
   </body>
 </html>

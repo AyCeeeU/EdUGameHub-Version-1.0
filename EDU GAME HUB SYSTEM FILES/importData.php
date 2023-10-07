@@ -32,20 +32,20 @@ if(isset($_POST['importSubmit'])){
                 $password = $line[8];
                 $created_date = $line[9];
 
-            
+                // Hash the password
+                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-                
                 // Check whether member already exists in the database with the same email
                 $prevQuery = "SELECT id FROM tbl_accdb WHERE email = '$email'";
                 $prevResult = $conn->query($prevQuery);
-                // echo $prevResult->num_rows;
+
                 if($prevResult->num_rows > 0){
                     // Update member data in the database
                 }else{
                     // Insert member data in the database
                     $sql = "INSERT INTO tbl_accdb (firstname, lastname, email, username, section, grade_level, account_type, password, created_date) 
-                    VALUES ('$firstname', '$lastname', '$email', '$username', '$section', '$grade_level', '$account_type', '$password', NOW())";
-                    // echo $sql;
+                    VALUES ('$firstname', '$lastname', '$email', '$username', '$section', '$grade_level', '$account_type', '$hashedPassword', NOW())";
+                    
                     $run = mysqli_query($conn,$sql);
                 }
             }
@@ -64,3 +64,5 @@ if(isset($_POST['importSubmit'])){
 
 // Redirect to the listing page
 header("Location: index.php".$qstring);
+
+?>
