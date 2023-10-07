@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/identification.css">
+    <title>EduGameHub</title>
+</head>
+<body>
+    <h4 class="type">Identification</h4>
+    <header>
+        <a href="index.html"> <img src="Gamelogo.png" alt="Your Image" width="400"></a>
+    </header>
+    <div class="quiz-container1">
+    <p class="question">When two singular subjects are connected by or, use a?</p>
+    </div>
+    <div class="answer">
+        <input type="text" placeholder="Your answer" id="userAnswer">
+    </div>
+    <button class="btn" id="submitButton">Submit</button>
+    <a href="identificationEnglish4.html" class="btn" id="nextButton" style="display: none;">Next</a>
+
+    <script>
+        const submitButton = document.getElementById("submitButton");
+        const nextButton = document.getElementById("nextButton");
+
+        submitButton.addEventListener("click", function () {
+            const userAnswer = document.getElementById("userAnswer").value.toLowerCase();
+            const correctAnswer = "Single verb";
+
+            if (userAnswer === correctAnswer) {
+                document.querySelector(".answer").style.color = "green";
+                document.querySelector(".answer").innerHTML = "Correct Answer!";
+            } else {
+                document.querySelector(".answer").style.color = "red";
+                document.querySelector(".answer").innerHTML = "Wrong Answer. Try Again!";
+            }
+
+            // Show the "Next" button and hide the "Submit" button
+            submitButton.style.display = "none";
+            nextButton.style.display = "inline-block";
+        });
+    </script>
+</body>
+</html

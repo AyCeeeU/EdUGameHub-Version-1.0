@@ -1,0 +1,200 @@
+header {
+    text-align: center;
+    padding: 10px;
+    color: white;
+    overflow: hidden;
+}
+
+.back-button{
+  position:absolute;
+  bottom: 89%;
+  left: 10px;
+  margin-top: 100px;
+  
+}
+
+img {
+    position: absolute; /* Set image to be positioned absolutely */
+    top: 10px; /* Move image down by 50px from the top */
+    left: 10px; /* Move image right by 20px from the left */
+    overflow: hidden;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #8c7ce6;
+    overflow: hidden;
+  }
+
+  .type{
+    position:absolute;
+    top: 100px;
+    left:30px;
+    color: #ffffff;
+    text-shadow: 2px 2px 0 #000000;
+    margin-left: 75px;
+  }
+
+  .quiz-container {
+    background-color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: 30px;
+    position: fixed;
+    width: 100%;
+    top: 20%;
+    text-align: left;
+    padding-right: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .option1{
+    position: absolute;
+    left: 32%;
+    top: 45%;
+    font-size:35px;
+    font-weight:bold;
+  }
+  .option1 input[type="radio"]{
+    transform: scale(1.5);
+    margin-right: 10px;
+    position:relative;
+    bottom: 3px;
+  }
+
+  .option2{
+    position: absolute;
+    left: 32%;
+    top: 52%;
+    font-size:35px;
+    font-weight:bold;
+  }
+  .option2 input[type="radio"]{
+    transform: scale(1.5);
+    margin-right: 10px;
+    position:relative;
+    bottom: 3px;
+  }
+
+  .option3{
+    position: absolute;
+    left: 32%;
+    top: 59%;
+    font-size:35px;
+    font-weight:bold;
+  }
+  .option3 input[type="radio"]{
+    transform: scale(1.5);
+    margin-right: 10px;
+    position:relative;
+    bottom: 3px;
+  }
+
+  .option4{
+    position: absolute;
+    left: 32%;
+    top: 66%;
+    font-size:35px;
+    font-weight:bold;
+  }
+  .option4 input[type="radio"]{
+    transform: scale(1.5);
+    margin-right: 10px;
+    position:relative;
+    bottom: 3px;
+  }
+
+  .option5{
+    position: absolute;
+    left: 32%;
+    top: 73%;
+    font-size:35px;
+    font-weight:bold;
+  }
+  .option5 input[type="radio"]{
+    transform: scale(1.5);
+    margin-right: 10px;
+    position:relative;
+    bottom: 3px;
+  }
+
+  .ans1{
+    position: absolute;
+    left: 30rem;
+    bottom: -2px;
+    width: 200px;
+    height: 55px;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  .ans2{
+    position: absolute;
+    left: 30rem;
+    bottom: -2px;
+    width: 200px;
+    height: 55px;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  .ans3{
+    position: absolute;
+    left: 30rem;
+    bottom: -2px;
+    width: 200px;
+    height: 55px;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  .ans4{
+    position: absolute;
+    left: 30rem;
+    bottom: -2px;
+    width: 200px;
+    height: 55px;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  .ans5{
+    position: absolute;
+    left: 30rem;
+    bottom: -2px;
+    width: 200px;
+    height: 55px;
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  .submit-button {
+    position: absolute;
+    width: 160px;
+    top: 900px;
+    right:65rem;
+    margin-top: 10px;
+    padding: 20px;
+    background-color: #1100ff;
+    color: #fff;
+    font-size:25px;
+    font-weight:bold;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+  }
+
+  .submit-button:hover, .submit-button:focus, .submit-button:active {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale (1.1);
+  }

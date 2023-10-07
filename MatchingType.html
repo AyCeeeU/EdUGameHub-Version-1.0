@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="MatchingType.css">
+    <title>Matching Type</title>
+</head>
+<body>
+  <h4 class="type">Matching Type</h4>
+    <header>
+        <a href="MatchingType.html"> <img src="Gamelogo.png" alt="Your Image" width="400"></a>
+    </header>
+
+    <div class="back-button">
+        <a href="student welcome.html"><img src="back.png" alt="Back" width="60"></a>
+    </div>
+
+    <div class="quiz-container">
+        <p class="question">Directions: Match the countries with their capitals.</div>
+
+         <div class="option1">
+            <input type="radio" name="q1" value="a"> France
+            <select name="a" class = "ans1">
+                <option value="1">Paris</option>
+                <option value="2">Madrid</option>
+                <option value="3">Rome</option>
+            </select>
+        </div>
+
+        <div class="option2">
+            <input type="radio" name="q2" value="b"> Spain
+            <select name="b" class = "ans2">
+                <option value="1">Paris</option>
+                <option value="2">Madrid</option>
+                <option value="3">Rome</option>
+            </select>
+        </div>
+
+        <div class="option3">
+            <input type="radio" name="q3" value="c"> Italy
+            <select name="c" class = "ans3">
+                <option value="1">Paris</option>
+                <option value="2">Madrid</option>
+                <option value="3">Rome</option>
+            </select>
+        </div>
+
+        <div class="option4">
+            <input type="radio" name="q4" value="d"> Germany
+            <select name="d" class = "ans4">
+                <option value="1">Berlin</option>
+                <option value="2">Vienna</option>
+                <option value="3">Amsterdam</option>
+            </select>
+        </div>
+
+        <div class="option5">
+            <input type="radio" name="q5" value="e"> Netherlands
+            <select name="e" class = "ans5">
+                <option value="1">Berlin</option>
+                <option value="2">Vienna</option>
+                <option value="3">Amsterdam</option>
+            </select>
+        </div>
+
+        <button class="submit-button" onclick="checkAnswers()">Submit</button>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            // Get the selected options for each question
+            const answers = {
+                q1: document.querySelector('input[name="q1"]:checked + select').value,
+                q2: document.querySelector('input[name="q2"]:checked + select').value,
+                q3: document.querySelector('input[name="q3"]:checked + select').value,
+                q4: document.querySelector('input[name="q4"]:checked + select').value,
+                q5: document.querySelector('input[name="q5"]:checked + select').value
+            };
+
+            // Define the correct answers
+            const correctAnswers = {
+                q1: "1",
+                q2: "2",
+                q3: "3",
+                q4: "1",
+                q5: "3"
+            };
+
+            // Check the answers and display the result
+            let score = 0;
+            for (const question in answers) {
+                if (answers[question] === correctAnswers[question]) {
+                    score++;
+                }
+            }
+
+            alert(`Your score: ${score} out of 5`);
+        }
+    </script>
+</body>
+</html>
