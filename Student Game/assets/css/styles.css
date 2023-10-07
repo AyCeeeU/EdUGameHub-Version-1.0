@@ -1,0 +1,160 @@
+header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #3498db;
+  color: rgb(255, 254, 254);
+}
+
+header img {
+  margin-right: 20px; /* Add some space between the logo and text */
+}
+
+h1 {
+  margin: 0; /* Remove default margin */
+  flex-grow: 0; /* Allow the text to expand and take up remaining space */
+}
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+.logoutImage {
+  position: absolute;
+  top: 10px; /* Adjust the top value to control the vertical position */
+  right: 10px; /* Adjust the right value to control the horizontal position */
+  width: 50px;
+  height: 50px;
+}
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px; /* Add margin to push it below the header */
+  width: 1860px;
+  height: 264px;
+}
+
+.profile span {
+  font-size: 2.5rem; /* Reduce font size */
+  font-weight: 500;
+  margin-left: 230px;
+}
+
+.profilePicture {
+  position: relative;
+  right: 180px;
+  margin-top: -80px;
+  margin-bottom: 50px;
+  clip-path: ellipse(50% 50% at 50% 50%);
+  background-color: rgb(0, 0, 0);
+  width: 12rem; /* Reduce profile picture size */
+  height: 13rem; /* Reduce profile picture size */
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.info {
+  font-family: Arial, sans-serif;
+  position: relative;
+  right: 18rem;
+}
+
+
+
+.card1,
+.card2,
+.card3 {
+  background: rgb(81, 255, 255);
+  font-family: Arial, sans-serif;
+  font-size: 30px;
+  color: black;
+  position:relative;
+  bottom:100px;
+  padding: 122.9px;
+  justify-content: center;
+  
+  
+}
+
+.card1{
+  background: rgb(81, 255, 255);
+  width: 960px;
+
+}
+.card2 {
+  background: rgb(255, 62, 127);
+  
+}
+.card3 {
+  background: rgb(255, 194, 25);
+  width: 960px;
+}
+.card1 p,
+.card2 p,
+.card3 p {
+  text-align: justify;
+}
+
+.card1 h2,
+.card3 h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 27px;
+  
+}
+
+.card2 h2{
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 1px;
+  margin-right: 50px;
+
+}
+.card1 a{
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(8, 10, 128);
+  color: white;
+  padding: 8px;
+  width: 150px;
+  margin-top: 1rem;
+  margin-left: 10rem;
+  border-radius: 10px;
+  display: block;
+  text-align: center;
+  font-size: 25px;
+  text-decoration: none;
+}
+
+.card3 a{
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(8, 10, 128);
+  color: white;
+  padding: 10px;
+  width: 150px;
+  margin-top: 1rem;
+  margin-left: 11.5rem;
+  border-radius: 10px;
+  display: block;
+  text-align: center;
+  font-size: 25px;
+  text-decoration: none; 
+}
+.card2 a {
+  display: flex;
+  margin-top: 2rem;
+  flex-direction: row;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 5rem;
+}
+
+

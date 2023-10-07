@@ -1,0 +1,122 @@
+header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+}
+
+header img {
+    margin-right: 20px; /* Add some space between the logo and text */
+}
+
+h1 {
+    margin: 0; /* Remove default margin */
+    flex-grow: 0; /* Allow the text to expand and take up remaining space */
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.logoutImage {
+    position: absolute;
+    top: 10px; /* Adjust the top value to control the vertical position */
+    right: 10px; /* Adjust the right value to control the horizontal position */
+    width: 50px;
+    height: 50px;
+}
+  
+
+
+
+
+
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 120px); /* Adjust for header height */
+    padding: 20px;
+}
+
+.card {
+    width: 370px; /* Increase the width */
+    height: 492x; /* Increase the height */
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    overflow: hidden; /* Prevent content from overflowing */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+}
+.card:hover, .card:focus, .card:active {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    -webkit-transform: scale(1.1);
+    transform: scale (1.1);
+}
+
+.card img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.card h2 {
+    margin: 10px;
+}
+
+
+
+.card-content {
+    padding: 20px;
+}
+
+h2 {
+    color: #3498db;
+}
+
+/* Adjust alignment and spacing */
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 200px);
+    padding: 20px;
+    gap: 20px; /* Add spacing between cards */
+}
+
+.English {
+    position: absolute;
+    font-weight: bold;
+    font-size: 50px;
+    color: #ffffff;
+    margin-bottom: 400px;
+}
+.Math {
+    position: absolute;
+    font-weight: bold;
+    font-size: 50px;
+    color: #ffffff;
+    margin-bottom: 400px;
+}
+.Science {
+    position: absolute;
+    font-weight: bold;
+    font-size: 50px;
+    color: #ffffff;
+    margin-bottom: 400px;
+}
+
+.back-button{
+    padding: 10px;
+}
