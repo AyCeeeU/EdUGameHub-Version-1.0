@@ -60,13 +60,12 @@ input[type="text"] {
 
 .btn {
   position: absolute;
-  top: 900px;
-  right: 950px;
+  top: 650px;
+  right: 690px;
   font-size: 18px;
   font-weight: bold;
   background: #1100ff;
-  width: 200px;
-  height: 60px;
+  width: 160px;
   padding: 10px;
   border-radius: 20px;
   text-align: center;

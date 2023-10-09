@@ -100,18 +100,17 @@ button {
   
   .submit-button {
     position: absolute;
-    width: 200px;
-    height: 70px;
+    width: 160px;
     top: 600px;
-    right:970px;
-    margin-top: 300px;
-    padding: 1px;
+    right:700px;
+    margin-top: 10px;
+    padding: 10px;
     background-color: #1100ff;
     color: #fff;
-    font-size: 30px;
+    font-size:18px;
     font-weight:bold;
     border: none;
-    border-radius: 30px;
+    border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.2s;
     -webkit-transition-duration: 0.3s;

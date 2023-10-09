@@ -35,7 +35,6 @@ body {
   margin-top: 100px; /* Add margin to push it below the header */
   width: 1860px;
   height: 264px;
-  
 }
 
 .profile span {
@@ -46,7 +45,7 @@ body {
 
 .profilePicture {
   position: relative;
-  right: -7rem;
+  right: 180px;
   margin-top: -80px;
   margin-bottom: 50px;
   clip-path: ellipse(50% 50% at 50% 50%);
@@ -64,8 +63,7 @@ body {
 .info {
   font-family: Arial, sans-serif;
   position: relative;
-  right: -1rem;
-  bottom: -3rem;
+  right: 18rem;
 }
 
 
@@ -78,8 +76,8 @@ body {
   font-size: 30px;
   color: black;
   position:relative;
-  bottom:-102px;
-  padding: 122.7px;
+  bottom:100px;
+  padding: 122.9px;
   justify-content: center;
   
   
@@ -116,7 +114,7 @@ body {
   font-size: 2rem;
   text-align: center;
   margin-top: 1px;
-  margin-right: 1rem;
+  margin-right: 50px;
 
 }
 .card1 a{
@@ -126,8 +124,8 @@ body {
   color: white;
   padding: 8px;
   width: 150px;
-  margin-top: 7rem;
-  margin-left: 13rem;
+  margin-top: 1rem;
+  margin-left: 10rem;
   border-radius: 10px;
   display: block;
   text-align: center;
@@ -142,8 +140,8 @@ body {
   color: white;
   padding: 10px;
   width: 150px;
-  margin-top: 5rem;
-  margin-left: 14rem;
+  margin-top: 1rem;
+  margin-left: 11.5rem;
   border-radius: 10px;
   display: block;
   text-align: center;
@@ -152,7 +150,7 @@ body {
 }
 .card2 a {
   display: flex;
-  margin-top: 6rem;
+  margin-top: 2rem;
   flex-direction: row;
   justify-content: center;
   text-decoration: none;

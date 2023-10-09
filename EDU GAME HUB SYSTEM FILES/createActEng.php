@@ -119,6 +119,9 @@
             );
         }
 
+        // Get the value of the Randomize Questions checkbox
+        $randomize_questions = isset($_POST['randomize-questions']) ? 1 : 0;
+
         // Insert questions into the database
         foreach ($questions as $question) {
             $question_text = mysqli_real_escape_string($conn, $question["question_text"]);
@@ -128,7 +131,7 @@
             $correct_option = mysqli_real_escape_string($conn, $question["correct_option"]);
 
             // SQL query to insert data into the table
-            $sql = "INSERT INTO tbl_multiple_teacher (activity_name, question_text, option_1, option_2, option_3, option_4, correct_option)
+            $sql = "INSERT INTO tbl_multiple_teacher (activity_name, question_text, option_1, option_2, option_3, option_4, correct_option, randomize_questions)
                 VALUES ('$activity_name', '$question_text', ";
 
             // Add options to the SQL query
@@ -144,7 +147,7 @@
                 }
             }
 
-            $sql .= ", '$correct_option')";
+            $sql .= ", '$correct_option', '$randomize_questions')";
 
             // Execute the SQL query
             if (mysqli_query($conn, $sql)) {
@@ -175,6 +178,13 @@
                 <label for="activity-name">Activity Name:</label>
                 <input type="text" id="activity-name" name="activity-name" class="custom-ActName" value="<?php echo $activity_name; ?>">
             </div>
+            
+            <!-- Toggle button for question randomization -->
+            <div class="container">
+                <label for="randomize-questions">Randomize Questions:</label>
+                <input type="checkbox" id="randomize-questions" name="randomize-questions">
+            </div>
+            
             <div id="questions-container">
                 <!-- Initially, you can have one set of question elements -->
                 <div class="container" id="question-1">
