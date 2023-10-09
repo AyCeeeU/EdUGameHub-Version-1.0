@@ -7,16 +7,16 @@ if(isset($_POST['importSubmit'])){
     // Allowed mime types
     $csvMimes = array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'text/plain');
     
-    // Validate whether selected file is a CSV file
+    // Validate whether the selected file is a CSV file
     if(!empty($_FILES['file']['name']) && in_array($_FILES['file']['type'], $csvMimes)){
         
         // If the file is uploaded
         if(is_uploaded_file($_FILES['file']['tmp_name'])){
             
-            // Open uploaded CSV file with read-only mode
+            // Open the uploaded CSV file with read-only mode
             $csvFile = fopen($_FILES['file']['tmp_name'], 'r');
             
-            // Skip the first line
+            // Skip the first line (header)
             fgetcsv($csvFile);
             
             // Parse data from CSV file line by line
@@ -35,22 +35,28 @@ if(isset($_POST['importSubmit'])){
                 // Hash the password
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-                // Check whether member already exists in the database with the same email
+                // Check whether a member already exists in the database with the same email
                 $prevQuery = "SELECT id FROM tbl_accdb WHERE email = '$email'";
                 $prevResult = $conn->query($prevQuery);
 
                 if($prevResult->num_rows > 0){
                     // Update member data in the database
+                    // You can add update logic here if needed
                 }else{
-                    // Insert member data in the database
+                    // Insert member data into the database
                     $sql = "INSERT INTO tbl_accdb (firstname, lastname, email, username, section, grade_level, account_type, password, created_date) 
                     VALUES ('$firstname', '$lastname', '$email', '$username', '$section', '$grade_level', '$account_type', '$hashedPassword', NOW())";
                     
                     $run = mysqli_query($conn,$sql);
+
+                    if(!$run){
+                        // Handle the insertion error, such as logging or displaying an error message
+                        echo "Error inserting data: " . mysqli_error($conn);
+                    }
                 }
             }
             
-            // Close opened CSV file
+            // Close the opened CSV file
             fclose($csvFile);
             
             $qstring = '?status=succ';
@@ -62,7 +68,6 @@ if(isset($_POST['importSubmit'])){
     }
 }
 
-// Redirect to the listing page
+// Redirect to the listing page with the appropriate query string
 header("Location: index.php".$qstring);
-
 ?>
