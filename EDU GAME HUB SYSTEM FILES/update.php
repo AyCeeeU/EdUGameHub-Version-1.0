@@ -4,8 +4,7 @@
     include('db_conn.php');
 
     // Update data into the database
-    if(ISSET($_POST['updateData']))
-    {   
+    if (isset($_POST['updateData'])) {
         $id = $_POST['updateId'];
         $firstname = $_POST['updateFirstname'];
         $lastname = $_POST['updateLastname'];
@@ -16,10 +15,10 @@
         $account_type = $_POST['updateAccountType'];
         $password = $_POST['updatePassword'];
         $created_date = $_POST['updateCreatedDate'];
-
-
-        $hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
-
+    
+        // Hash the new password
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    
         $sql = "UPDATE `tbl_accdb` SET `firstname` = '$firstname',
                                 `lastname` = '$lastname',
                                 `email` = '$email',
@@ -27,20 +26,16 @@
                                 `section` = '$section',
                                 `grade_level` = '$grade_level',
                                 `account_type` = '$account_type',
-                                `password` = '$password',
+                                `password` = '$hashed_password',  -- Update the hashed password
                                 `created_date` = '$created_date'
                             WHERE id='$id'";
-        
-
+    
         $result = mysqli_query($conn, $sql);
-
-        if($result)
-        {
+    
+        if ($result) {
             echo '<script> alert("Data Updated Successfully."); </script>';
             header("Location:index.php");
-        }
-        else
-        {
+        } else {
             echo '<script> alert("Data Not Updated"); </script>';
         }
     }

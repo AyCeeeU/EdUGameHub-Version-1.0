@@ -293,7 +293,7 @@
     border: 2px solid #D3D3D3;
     font-size: 16px;
     color: #2D3134;
-    width: 90%; /* Set the width as needed */
+    width: 500%; /* Set the width as needed */
     /* Add any other custom styles */
 }
 .custom-OptB {
@@ -302,7 +302,7 @@
   border: 2px solid #D3D3D3;
   font-size: 16px;
   color: #2D3134;
-  width: 90%; /* Set the width as needed */
+  width: 500%; /* Set the width as needed */
   /* Add any other custom styles */
 }
 .custom-OptC {
@@ -311,7 +311,7 @@
   border: 2px solid #D3D3D3;
   font-size: 16px;
   color: #2D3134;
-  width: 90%; /* Set the width as needed */
+  width: 500%; /* Set the width as needed */
   /* Add any other custom styles */
 }
 .custom-OptD {
@@ -320,13 +320,31 @@
   border: 2px solid #D3D3D3;
   font-size: 16px;
   color: #2D3134;
-  width: 90%; /* Set the width as needed */
+  width: 500%; /* Set the width as needed */
   /* Add any other custom styles */
 }
     
 .option {
   padding: 8px 16px;
   cursor: pointer;
+}
+
+
+
+.btn-add-new {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #246dec; /* Use your desired color here */
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  /* Add any other styles you want */
+}
+
+.btn-add-new:hover {
+  background-color: #1951a6; /* Change color on hover */
 }
       
       .question-builder .option-container {

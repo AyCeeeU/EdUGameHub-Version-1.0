@@ -73,28 +73,90 @@
     // Include your database connection script (db_conn.php)
     include('db_conn.php');
 
+    // Initialize variables to store form data
+    $activity_name = "";
+    $questions = array();
+
     // Check if the form is submitted
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $activity_name = $_POST["activity-name"];
-        $question_text = $_POST["question-text"];
-        $option_1 = $_POST["option-1"];
-        $option_2 = $_POST["option-2"];
-        $option_3 = $_POST["option-3"];
-        $option_4 = $_POST["option-4"];
-        $correct_option = $_POST["correct-option"];
 
-        // SQL query to insert data into the table
-        $sql = "INSERT INTO tbl_multiple_teacher (activity_name, question_text, option_1, option_2, option_3, option_4, correct_option)
-                VALUES ('$activity_name', '$question_text', '$option_1', '$option_2', '$option_3', '$option_4', '$correct_option')";
+        // Loop through posted questions and store them in an array
+        for ($i = 1; $i <= $_POST["question-count"]; $i++) {
+            $question_text = $_POST["question-text-$i"];
 
-        // Execute the SQL query
-        if (mysqli_query($conn, $sql)) {
-            echo '<script> 
+            // Initialize options and correct_option arrays
+            $options = array();
+            $correct_option = "";
+
+            // Check if options and correct_option fields exist before accessing them
+            if (isset($_POST["option-$i-1"])) {
+                $options[] = $_POST["option-$i-1"];
+            }
+            if (isset($_POST["option-$i-2"])) {
+                $options[] = $_POST["option-$i-2"];
+            }
+            if (isset($_POST["option-$i-3"])) {
+                $options[] = $_POST["option-$i-3"];
+            }
+            if (isset($_POST["option-$i-4"])) {
+                $options[] = $_POST["option-$i-4"];
+            }
+            if (isset($_POST["correct-option-$i"])) {
+                $correct_option = $_POST["correct-option-$i"];
+            }
+
+            // Check if the question has at least one option
+            if (empty($options)) {
+                echo '<script>alert("Question ' . $i . ' must have at least one option.");</script>';
+                continue; // Skip this question and move to the next
+            }
+
+            $questions[] = array(
+                "question_text" => $question_text,
+                "options" => $options,
+                "correct_option" => $correct_option
+            );
+        }
+
+        // Insert questions into the database
+        foreach ($questions as $question) {
+            $question_text = mysqli_real_escape_string($conn, $question["question_text"]);
+            $options = array_map(function ($option) use ($conn) {
+                return mysqli_real_escape_string($conn, $option);
+            }, $question["options"]);
+            $correct_option = mysqli_real_escape_string($conn, $question["correct_option"]);
+
+            // SQL query to insert data into the table
+            $sql = "INSERT INTO tbl_multiple_teacher (activity_name, question_text, option_1, option_2, option_3, option_4, correct_option)
+                VALUES ('$activity_name', '$question_text', ";
+
+            // Add options to the SQL query
+            for ($i = 0; $i < 4; $i++) {
+                if (isset($options[$i])) {
+                    $sql .= "'" . $options[$i] . "'";
+                } else {
+                    $sql .= "''"; // Empty string for NULL value
+                }
+
+                if ($i < 3) {
+                    $sql .= ", ";
+                }
+            }
+
+            $sql .= ", '$correct_option')";
+
+            // Execute the SQL query
+            if (mysqli_query($conn, $sql)) {
                 // Show the modal when data is saved
-                document.getElementById("myModal").style.display = "block";
-            </script>';
-        } else {
-            echo '<script> alert("Data Not saved."); </script>';
+                echo '<script>
+                    window.onload = function() {
+                        openModal();
+                    }
+                </script>';
+            } else {
+                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            }
         }
     }
     ?>
@@ -103,7 +165,7 @@
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <p>Question Saved!</p>
+            <p>Questions Saved!</p>
         </div>
     </div>
 
@@ -111,79 +173,119 @@
         <form id="question-form" method="POST" action="">
             <div class="container"><br>
                 <label for="activity-name">Activity Name:</label>
-                <input type="text" id="activity-name" name="activity-name" class="custom-ActName">
+                <input type="text" id="activity-name" name="activity-name" class="custom-ActName" value="<?php echo $activity_name; ?>">
             </div>
-            <div class="container">
-                <!-- Wider question text box -->
-                <label for="question-text">Question:</label>
-                <textarea id="question-text" name="question-text" class="custom-Question" rows="5"></textarea>
-            </div>
-            <div class="options-container">
-                <!-- Two options text boxes on the left -->
-                <div class="container">
-                    <label for="option-1">Option 1:</label>
-                    <input type="text" id="option-1" name="option-1" class="custom-OptA">
-                    <div class="checkbox-container">
-                        <input type="radio" id="correct-answer-1" name="correct-option" value="1">
-                        <label for="correct-answer-1">Correct answer</label>
+            <div id="questions-container">
+                <!-- Initially, you can have one set of question elements -->
+                <div class="container" id="question-1">
+                    <h2>Question 1</h2>
+                    <!-- Wider question text box -->
+                    <label for="question-text-1">Question:</label>
+                    <textarea id="question-text-1" name="question-text-1" class="custom-Question" rows="5"></textarea>
+                    <!-- Four options text boxes -->
+                    <div class="container">
+                        <label for="option-1-1">Option 1:</label>
+                        <input type="text" id="option-1-1" name="option-1-1" class="custom-OptA">
+                        <div class="checkbox-container">
+                            <input type="radio" id="correct-answer-1-1" name="correct-option-1" value="1">
+                            <label for="correct-answer-1-1">Correct answer</label>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <label for="option-1-2">Option 2:</label>
+                        <input type="text" id="option-1-2" name="option-1-2" class="custom-OptB">
+                        <div class="checkbox-container">
+                            <input type="radio" id="correct-answer-1-2" name="correct-option-1" value="2">
+                            <label for="correct-answer-1-2">Correct answer</label>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <label for="option-1-3">Option 3:</label>
+                        <input type="text" id="option-1-3" name="option-1-3" class="custom-OptC">
+                        <div class="checkbox-container">
+                            <input type="radio" id="correct-answer-1-3" name="correct-option-1" value="3">
+                            <label for="correct-answer-1-3">Correct answer</label>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <label for="option-1-4">Option 4:</label>
+                        <input type="text" id="option-1-4" name="option-1-4" class="custom-OptD">
+                        <div class="checkbox-container">
+                            <input type="radio" id="correct-answer-1-4" name="correct-option-1" value="4">
+                            <label for="correct-answer-1-4">Correct answer</label>
+                        </div>
                     </div>
                 </div>
-                <div class="container">
-                    <label for="option-2">Option 2:</label>
-                    <input type="text" id="option-2" name="option-2" class="custom-OptB">
-                    <div class="checkbox-container">
-                        <input type="radio" id="correct-answer-2" name="correct-option" value="2">
-                        <label for="correct-answer-2">Correct answer</label>
-                    </div>
-                </div>
             </div>
-            <div class="options-container">
-                <!-- Options 3 and 4 on the right -->
-                <div class="container">
-                    <label for="option-3">Option 3:</label>
-                    <input type="text" id="option-3" name="option-3" class="custom-OptC">
-                    <div class="checkbox-container">
-                        <input type="radio" id="correct-answer-3" name="correct-option" value="3">
-                        <label for="correct-answer-3">Correct answer</label>
-                    </div>
-                </div>
-                <div class="container">
-                    <label for="option-4">Option 4:</label>
-                    <input type="text" id="option-4" name="option-4" class="custom-OptD">
-                    <div class="checkbox-container">
-                        <input type="radio" id="correct-answer-4" name="correct-option" value="4">
-                        <label for="correct-answer-4">Correct answer</label>
-                    </div>
-                </div>
-            </div>
-            <button type="submit" name="submit">Save question</button>
+            <button type="button" onclick="addNewQuestion()" class="btn btn-add-new">Add New Question Set</button>
+            <input type="hidden" name="question-count" id="question-count" value="1">
+            <button type="submit" name="submit">Save questions</button>
         </form>
     </div>
-</div>
 
-<script>
-    // Get the modal element
-    var modal = document.getElementById("myModal");
+    <script>
+        // Get the modal element
+        var modal = document.getElementById("myModal");
 
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
 
-    // Function to open the modal
-    function openModal() {
-        modal.style.display = "block";
-    }
+        // Function to open the modal
+        function openModal() {
+            modal.style.display = "block";
+        }
 
-    // Function to close the modal
-    function closeModal() {
-        modal.style.display = "none";
-    }
-
-    // Close the modal if the user clicks outside of it
-    window.onclick = function(event) {
-        if (event.target === modal) {
+        // Function to close the modal
+        function closeModal() {
             modal.style.display = "none";
         }
-    }
-</script>
+
+        // Close the modal if the user clicks outside of it
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Function to add a new set of question elements
+        function addNewQuestion() {
+            var questionCount = document.getElementById("question-count");
+            var newQuestionCount = parseInt(questionCount.value) + 1;
+
+            // Clone the entire set of question elements
+            var questionSetTemplate = document.querySelector("#questions-container > .container");
+            var newQuestionSet = questionSetTemplate.cloneNode(true);
+
+            // Update the question set number and clear input values and radio button selection in the new set
+            newQuestionSet.querySelector("h2").textContent = "Question " + newQuestionCount;
+            newQuestionSet.querySelector("textarea").value = "";
+            var inputFields = newQuestionSet.querySelectorAll("input[type='text']");
+            for (var i = 0; i < inputFields.length; i++) {
+                inputFields[i].value = "";
+            }
+            var radioButtons = newQuestionSet.querySelectorAll("input[type='radio']");
+            for (var i = 0; i < radioButtons.length; i++) {
+                radioButtons[i].checked = false;
+            }
+
+            // Set unique IDs and names for new set elements
+            newQuestionSet.querySelector("h2").textContent = "Question " + newQuestionCount;
+            newQuestionSet.querySelector("textarea").setAttribute("name", "question-text-" + newQuestionCount);
+            var inputFields = newQuestionSet.querySelectorAll("input[type='text']");
+            for (var i = 0; i < inputFields.length; i++) {
+                inputFields[i].setAttribute("name", "option-" + newQuestionCount + "-" + (i + 1));
+            }
+            var radioButtons = newQuestionSet.querySelectorAll("input[type='radio']");
+            for (var i = 0; i < radioButtons.length; i++) {
+                radioButtons[i].setAttribute("name", "correct-option-" + newQuestionCount);
+            }
+
+            // Append the new set to the container
+            document.getElementById("questions-container").appendChild(newQuestionSet);
+
+            // Update the question count
+            questionCount.value = newQuestionCount;
+        }
+    </script>
 </body>
 </html>

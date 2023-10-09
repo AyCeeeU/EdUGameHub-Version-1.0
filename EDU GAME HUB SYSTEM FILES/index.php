@@ -337,18 +337,25 @@ if($result)
               <div id="viewPassword"></div>
               </div>
               <script>
-                function limitPassword() {
-                  var passwordElem = document.getElementById("viewPassword");
-                  var password = passwordElem.textContent;
-                  var maxLength = 10; // maximum number of characters to display
-                  if (password.length > maxLength) {
-                    passwordElem.textContent = password.substr(0, maxLength) + "..."; // truncate text and add ellipsis
-                  }
-                }
+  // Function to limit the password length in the view modal
+  function limitPassword() {
+    var passwordElem = document.getElementById("viewPassword");
+    var password = passwordElem.textContent;
+    var maxLength = 10; // maximum number of characters to display
+    if (password.length > maxLength) {
+      passwordElem.textContent = password.substr(0, maxLength) + "..."; // truncate text and add ellipsis
+    }
+  }
 
-                // Call the function after the password value is loaded into the #viewPassword element
-                document.getElementById("viewPassword").addEventListener("DOMSubtreeModified", limitPassword);
-              </script>
+  // Create a MutationObserver to monitor changes in the viewPassword element
+  var observer = new MutationObserver(limitPassword);
+
+  // Configure the observer to watch for changes in the element's content
+  var config = { childList: true };
+
+  // Attach the observer to the viewPassword element
+  observer.observe(document.getElementById("viewPassword"), config);
+</script>
               
             <div class="col-sm-5 col-xs-6 tital " >
               <strong>Created Date:</strong>
@@ -496,28 +503,20 @@ if($result)
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
     integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
     crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
     integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
     crossorigin="anonymous"></script>
   <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
   
   <script>
-let options = document.getElementsByClassName('.option');
+ let dropdown = document.getElementById('yourDropdownId'); // Replace 'yourDropdownId' with the actual ID
+  let optionList = dropdown.querySelector('.option-list');
+  let icon = dropdown.querySelector('.icon');
 
-let selectEle = document.querySelector('.select');
-
-let optionList = document.querySelector('.option-list');
-
-let icon = document.querySelector('.icon');
-
-let dropdown = document.querySelector('.dropdown-select');
-
-
-
-dropdown.onclick = function(){
-optionList.classList.toggle('active');
-icon.innerHTML ="&#9660"
-}
+  dropdown.onclick = function () {
+    optionList.classList.toggle('active');
+    icon.innerHTML = "&#9660";
+  };
 for(op of options){
 op.onclick = function(){
 selectEle.innerText = this.innerText
