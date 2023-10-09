@@ -2,13 +2,12 @@
 include("db_conn.php");
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Teaher Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
 
     <!-- Montserrat Font -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -19,118 +18,124 @@ include("db_conn.php");
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="css/english.css">
-  </head>
-  <body>
-    <div class="grid-container">
+</head>
+<body>
+<div class="grid-container">
+    <!-- Header -->
+    <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+            <span class="material-icons-outlined">menu</span>
+        </div>
+        <div class="header-left">
+            <button class="btn btn-primary" id="createActivityBtn">Create Activity</button>
+            <button class="btn btn-secondary" id="libraryBtn">Library</button>
+            <button class="btn btn-secondary" id="leaderboardBtn">Leaderboard</button>
+        </div>
+        <div class="header-right">
+            <span class="material-icons-outlined">notifications</span>
+            <span class="material-icons-outlined">email</span>
+            <span class="material-icons-outlined">account_circle</span>
+        </div>
+    </header>
+    <!-- End Header -->
 
-     <!-- Header -->
-<header class="header">
-    <div class="menu-icon" onclick="openSidebar()">
-      <span class="material-icons-outlined">menu</span>
-    </div>
-    <div class="header-left">
-      <button class="btn btn-primary" id="createActivityBtn">Create Activity</button>
-      <button class="btn btn-secondary" id="leaderboardBtn">Leaderboard</button>
-    </div>
-    <div class="header-right">
-      <span class="material-icons-outlined">notifications</span>
-      <span class="material-icons-outlined">email</span>
-      <span class="material-icons-outlined">account_circle</span>
-    </div>
-</header>
-<!-- End Header -->
-
-
-
-
-
-
-       <!-- Sidebar -->
-      
-       <aside id="sidebar">
+    <!-- Sidebar -->
+    <aside id="sidebar">
         <img class="logo" src="images/edugamelogo.png" alt="logo">
         <div class="sidebar-title">
-          <div class="sidebar-brand">
-            
-            
-          </div>
-          <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+            <div class="sidebar-brand">
+            </div>
+            <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
         </div>
 
         <ul class="sidebar-list">
-          <li class="sidebar-list-item">
-              <a href="teacher management system.php">
-                <span class="material-icons-outlined" >dashboard</span> Dashboard
-              </a>
-          </li>
-          <li class="sidebar-list-item">
-            <a href="students.php">
-              <span class="material-icons-outlined">groups</span> Students
-            </a>
-          </li>
-          <li class="sidebar-list-item">
-            <a href="subjects.html">
-              <span class="material-icons-outlined">menu_book</span> Subjects
-            </a>
-          </li>
-          <li class="sidebar-list-item">
-            <a href="Messages.html">
-              <span class="material-icons-outlined">mail</span> Messages
-            </a>
-          </li>
-          <li class="sidebar-list-item">
-            <a href="Login.html">
-              <span class="material-icons-outlined">logout</span> Sign Out
-            </a>
-          </li>
+            <li class="sidebar-list-item">
+                <a href="teacher management system.php">
+                    <span class="material-icons-outlined">dashboard</span> Dashboard
+                </a>
+            </li>
+            <li class="sidebar-list-item">
+                <a href="students.php">
+                    <span class="material-icons-outlined">groups</span> Students
+                </a>
+            </li>
+            <li class="sidebar-list-item">
+                <a href="subjects.html">
+                    <span class="material-icons-outlined">menu_book</span> Subjects
+                </a>
+            </li>
+            <li class="sidebar-list-item">
+                <a href="Messages.html">
+                    <span class="material-icons-outlined">mail</span> Messages
+                </a>
+            </li>
+            <li class="sidebar-list-item">
+                <a href="Login.html">
+                    <span class="material-icons-outlined">logout</span> Sign Out
+                </a>
+            </li>
+        </ul>
+    </aside>
+    <!-- End Sidebar -->
 
-          
-          
-      </aside>
-      <!-- End Sidebar -->
-
-      <!-- Scripts -->
+    <!-- Scripts -->
     <!-- ApexCharts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
     <!-- Custom JS -->
     <script src="js/script.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-          // Get references to the buttons
-          const createActivityBtn = document.getElementById("createActivityBtn");
-          const leaderboardBtn = document.getElementById("leaderboardBtn");
-      
-          // Function to open Create Activity page and toggle button styles
-          function openCreateActivity() {
-            // Load createActEng.php or any other URL you want
-            window.location.href = "createActEng.php";
-      
-            // Remove active class from all buttons
-            createActivityBtn.classList.remove("active");
-            leaderboardBtn.classList.remove("active");
-      
-            // Add active class to the clicked button
-            createActivityBtn.classList.add("active");
-          }
-      
-          function openLeaderboard() {
-            // Load leaderboard.php or any other URL you want
-            window.location.href = "engLeaderboard.html";
-      
-            // Remove active class from all buttons
-            createActivityBtn.classList.remove("active");
-            leaderboardBtn.classList.remove("active");
-      
-            // Add active class to the clicked button
-            leaderboardBtn.classList.add("active");
-          }
-      
-          // Attach click event listeners to the buttons
-          createActivityBtn.addEventListener("click", openCreateActivity);
-          leaderboardBtn.addEventListener("click", openLeaderboard);
+            // Get references to the buttons
+            const createActivityBtn = document.getElementById("createActivityBtn");
+            const libraryBtn = document.getElementById("libraryBtn");
+            const leaderboardBtn = document.getElementById("leaderboardBtn");
+
+            // Function to open Create Activity page and toggle button styles
+            function openCreateActivity() {
+                // Load createActEng.php or any other URL you want
+                window.location.href = "createActEng.php";
+
+                // Remove active class from all buttons
+                createActivityBtn.classList.remove("active");
+                libraryBtn.classList.remove("active");
+                leaderboardBtn.classList.remove("active");
+
+                // Add active class to the clicked button
+                createActivityBtn.classList.add("active");
+            }
+
+            // Function to open Library page and toggle button styles
+            function openLibrary() {
+                // Load library.php or any other URL you want
+                window.location.href = "library.php";
+
+                // Remove active class from all buttons
+                createActivityBtn.classList.remove("active");
+                libraryBtn.classList.remove("active");
+                leaderboardBtn.classList.remove("active");
+
+                // Add active class to the clicked button
+                libraryBtn.classList.add("active");
+            }
+
+            function openLeaderboard() {
+                // Load leaderboard.php or any other URL you want
+                window.location.href = "engLeaderboard.html";
+
+                // Remove active class from all buttons
+                createActivityBtn.classList.remove("active");
+                libraryBtn.classList.remove("active");
+                leaderboardBtn.classList.remove("active");
+
+                // Add active class to the clicked button
+                leaderboardBtn.classList.add("active");
+            }
+
+            // Attach click event listeners to the buttons
+            createActivityBtn.addEventListener("click", openCreateActivity);
+            libraryBtn.addEventListener("click", openLibrary);
+            leaderboardBtn.addEventListener("click", openLeaderboard);
         });
-      </script>
-
-
-  </body>
+    </script>
+</body>
 </html>
