@@ -1,3 +1,9 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
 header {
   display: flex;
   align-items: center;
@@ -7,71 +13,74 @@ header {
 }
 
 header img {
-  margin-right: 20px; /* Add some space between the logo and text */
-}
-
-h1 {
-  margin: 0; /* Remove default margin */
-  flex-grow: 0; /* Allow the text to expand and take up remaining space */
-}
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  margin-right: 20px;
 }
 
 .logoutImage {
   position: absolute;
-  top: 10px; /* Adjust the top value to control the vertical position */
-  right: 10px; /* Adjust the right value to control the horizontal position */
+  top: 10px;
+  right: 10px;
   width: 50px;
   height: 50px;
 }
 
-.back-button{
+.back-button {
   padding: 10px;
 }
 
-.image1{
-  border-style: solid;
-  border-color: #000000;
-  border-width: 4px;
-  position: absolute;
-  height: 40%;
-  width: 30%;
-  right: 55%;
-  top: 14%;
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.image2{
-  border-style: solid;
-  border-color: #000000;
-  border-width: 4px;
-  position: absolute;
-  height: 40%;
-  width: 30%;
-  left: 55%;
-  top: 14%;
-}
-.image3{
-  border-style: solid;
-  border-color: #000000;
-  border-width: 4px;
-  position: absolute;
-  height: 40%;
-  width: 30%;
-  bottom: 3%;
-  right: 55%;
+.image-container {
+  position: relative;
+  margin: 10px;
+  flex: 1;
+  max-width: 45%;
+  text-align: center;
 }
 
-.image4{
+.image-container img {
   border-style: solid;
   border-color: #000000;
   border-width: 4px;
-  position: absolute;
-  height: 40%;
-  width: 30%;
-  bottom: 3%;
-  left: 55%;
+  max-width: 100%;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
 }
- 
+
+.image-container img:hover {
+  transform: scale(1.1);
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-image {
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.popup-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  color: white;
+  font-size: 20px;
+}

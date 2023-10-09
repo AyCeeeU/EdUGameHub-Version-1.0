@@ -33,7 +33,7 @@ body {
 
   .container{
     position: relative;
-    width: 1550px;
+    width: 1760px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,8 +44,8 @@ body {
   .container .card{
     position: relative;
     max-width: 300px;
-    height: 215px;
-    background-color: #d64df1;
+    height: 300px;
+    background-color: #b8b2b9;
     margin: 30px 10px;
     padding: 20px 15px;
     display: flex;
@@ -95,4 +95,10 @@ body {
 
   .back-button{
     padding: 10px;
+}
+
+.h4{
+  font-size: 50px;
+
+  
 }
