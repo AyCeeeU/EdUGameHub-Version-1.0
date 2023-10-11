@@ -1,0 +1,29 @@
+.activity {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.activity h2 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.activity p {
+    margin: 10px 0;
+}
+
+.activity a {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.activity a:hover {
+    background-color: #0056b3;
+}

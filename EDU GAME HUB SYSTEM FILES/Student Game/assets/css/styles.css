@@ -28,6 +28,33 @@ body {
   width: 50px;
   height: 50px;
 }
+
+
+.profilePictureInput {
+  display: none;
+}
+
+.profilePictureLabel {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: black;
+  text-align: center;
+  line-height: 150px;
+  color: white;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.profilePictureLabel img {
+  
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 50%;
+}
+
+
 .profile {
   display: flex;
   flex-direction: column;
@@ -35,7 +62,7 @@ body {
   margin-top: 100px; /* Add margin to push it below the header */
   width: 1860px;
   height: 264px;
-}
+} 
 
 .profile span {
   font-size: 2.5rem; /* Reduce font size */

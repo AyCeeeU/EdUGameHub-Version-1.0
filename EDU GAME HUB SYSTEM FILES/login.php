@@ -42,7 +42,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                 // Check account type and redirect accordingly
                 switch ($row['account_type']) {
                     case 'Student':
-                        header("Location: EDU GAME HUB SYSTEM FILES\Student Game\student\educator profile.html");
+                        header("Location: Student Game\index.php");
                         break;
                     case 'Teacher':
                         header("Location: teacher management system.php");

@@ -15,9 +15,9 @@
     <link rel="stylesheet" href="css/library.css">
 </head>
 <body>
-<div class="grid-container">    
-<!-- Header -->
-<header class="header">
+<div class="grid-container">
+    <!-- Header -->
+    <header class="header">
         <div class="menu-icon" onclick="openSidebar()">
             <span class="material-icons-outlined">menu</span>
         </div>
@@ -38,7 +38,7 @@
     <aside id="sidebar">
         <img class="logo" src="images/edugamelogo.png" alt="logo">
         <div class="sidebar-title">
-            <div class="sidebar-brand">
+            <div class "sidebar-brand">
             </div>
             <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
         </div>
@@ -74,20 +74,26 @@
     <!-- End Sidebar -->
 
     <?php
-// Include your database connection script (db_conn.php)
-include('db_conn.php');
+    // Include your database connection script (db_conn.php)
+    include('db_conn.php');
 
-// Fetch activities created by the teacher
-$sql = "SELECT * FROM tbl_multiple_teacher";
-$result = mysqli_query($conn, $sql);
+    // Fetch activities created by the teacher
+    $sql = "SELECT * FROM tbl_multiple_teacher";
+    $result = mysqli_query($conn, $sql);
 
-// Check if there are activities to display
-if (mysqli_num_rows($result) > 0) {
-    $activities = mysqli_fetch_all($result, MYSQLI_ASSOC);
-} else {
-    $activities = array(); // No activities found
-}
-?>
+    // Check if there are activities to display
+    if (mysqli_num_rows($result) > 0) {
+        $activities = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    } else {
+        $activities = array(); // No activities found
+    }
+
+    // Function to update the Visible to Students status
+    function updateVisibleStatus($conn, $activityId, $status) {
+        $sql = "UPDATE tbl_multiple_teacher SET visible_students = '$status' WHERE question_id = $activityId";
+        return mysqli_query($conn, $sql);
+    }
+    ?>
 
     <div class="library-container">
         <center><h1>My Library</h1></center>
@@ -97,6 +103,7 @@ if (mysqli_num_rows($result) > 0) {
                     <thead>
                         <tr>
                             <th>Activity Name</th>
+                            <th>Visible to Students</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -105,19 +112,25 @@ if (mysqli_num_rows($result) > 0) {
                             <tr>
                                 <td><?php echo $activity['activity_name']; ?></td>
                                 <td>
-                                <button class="viewBtn" data-toggle="modal" data-target="#viewActivityModal"
-                                    data-activity-name="<?php echo htmlspecialchars($activity['activity_name'], ENT_QUOTES); ?>"
-                                    data-question-text="<?php echo htmlspecialchars($activity['question_text'], ENT_QUOTES); ?>"
-                                    data-option-1="<?php echo htmlspecialchars($activity['option_1'], ENT_QUOTES); ?>"
-                                    data-option-2="<?php echo htmlspecialchars($activity['option_2'], ENT_QUOTES); ?>"
-                                    data-option-3="<?php echo htmlspecialchars($activity['option_3'], ENT_QUOTES); ?>"
-                                    data-option-4="<?php echo htmlspecialchars($activity['option_4'], ENT_QUOTES); ?>"
-                                    data-correct-option="<?php echo htmlspecialchars($activity['correct_option'], ENT_QUOTES); ?>"
-                                    data-randomizer="<?php echo isset($activity['randomizer']) ? htmlspecialchars($activity['randomizer'], ENT_QUOTES) : ''; ?>">
-                                    View Activity
-                                </button>
+                                    <!-- Create a form for each checkbox -->
+                                    <form class="visibility-form">
+                                        <input type="checkbox" class="visible-checkbox" data-activity-id="<?php echo $activity['question_id']; ?>" <?php echo $activity['visible_students'] === '1' ? 'checked' : ''; ?>>
+                                        <input type="hidden" name="activityId" value="<?php echo $activity['question_id']; ?>">
+                                    </form>
+                                </td>
+                                <td>
+                                    <button class="viewBtn" data-toggle="modal" data-target="#viewActivityModal"
+                                        data-activity-name="<?php echo htmlspecialchars($activity['activity_name'], ENT_QUOTES); ?>"
+                                        data-question-text="<?php echo htmlspecialchars($activity['question_text'], ENT_QUOTES); ?>"
+                                        data-option-1="<?php echo htmlspecialchars($activity['option_1'], ENT_QUOTES); ?>"
+                                        data-option-2="<?php echo htmlspecialchars($activity['option_2'], ENT_QUOTES); ?>"
+                                        data-option-3="<?php echo htmlspecialchars($activity['option_3'], ENT_QUOTES); ?>"
+                                        data-option-4="<?php echo htmlspecialchars($activity['option_4'], ENT_QUOTES); ?>"
+                                        data-correct-option="<?php echo htmlspecialchars($activity['correct_option'], ENT_QUOTES); ?>"
+                                        data-randomizer="<?php echo isset($activity['randomizer']) ? htmlspecialchars($activity['randomizer'], ENT_QUOTES) : ''; ?>">
+                                        View Activity
+                                    </button>
                                     <a href="editActivity.php?id=<?php echo $activity['question_id']; ?>"><button>Edit Activity</button></a>
-                                    <button onclick="publishActivity(<?php echo $activity['question_id']; ?>)">Publish</button>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -176,49 +189,35 @@ if (mysqli_num_rows($result) > 0) {
                     </tr>
                 </table>
             </div>
-            
         </div>
     </div>
 </div>
 
-<!-- Include jQuery before Bootstrap JavaScript -->
+<!-- Include jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    
-<!-- Bootstrap JavaScript should come after jQuery -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
 
-<!-- Your JavaScript code goes here -->
 <script>
     $(document).ready(function () {
-        $('.viewBtn').on('click', function () {
-            $('#viewActivityModal').modal('show');
+        // Handle checkbox changes without submitting the form
+        $('.visibility-form').on('change', '.visible-checkbox', function () {
+            var activityId = $(this).data('activity-id');
+            var visibleStatus = this.checked ? '1' : '0';
 
-            // Retrieve data from the clicked button's data attributes
-            var activityName = $(this).data('activity-name');
-            var questionText = $(this).data('question-text');
-            var option1 = $(this).data('option-1');
-            var option2 = $(this).data('option-2');
-            var option3 = $(this).data('option-3');
-            var option4 = $(this).data('option-4');
-            var correctOption = $(this).data('correct-option');
-            var randomizer = $(this).data('randomizer');
-            
-            // Fetch randomize_questions value from the database
-            var randomizeQuestions = <?php echo isset($activity['randomize_questions']) ? $activity['randomize_questions'] : '0'; ?>;
-            var randomizerText = randomizeQuestions === 1 ? 'ON' : 'OFF'; // Set ON if randomize_questions is 1, otherwise set OFF
-
-            // Populate modal content with the retrieved data
-            $('#viewActivityName').text(activityName);
-            $('#viewQuestion').text(questionText);
-            $('#viewOption1').text(option1);
-            $('#viewOption2').text(option2);
-            $('#viewOption3').text(option3);
-            $('#viewOption4').text(option4);
-            $('#viewCorrectOption').text(correctOption);
-            $('#viewRandomizer').text(randomizerText); // Display ON/OFF
+            $.ajax({
+                type: 'POST',
+                url: 'update_visibility.php', // Create this PHP file to handle database updates
+                data: { activityId: activityId, visibleStatus: visibleStatus },
+                success: function (response) {
+                    // Handle success, e.g., show a message or update UI
+                    console.log('Visibility updated successfully.');
+                },
+                error: function (error) {
+                    // Handle errors, e.g., show an error message
+                    console.error('Error updating visibility: ' + error);
+                }
+            });
         });
     });
 </script>
-
 </body>
 </html>
