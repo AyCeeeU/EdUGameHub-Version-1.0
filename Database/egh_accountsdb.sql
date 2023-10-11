@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 06, 2023 at 09:38 PM
+-- Generation Time: Oct 11, 2023 at 03:02 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -45,9 +45,9 @@ CREATE TABLE `tbl_accdb` (
 --
 
 INSERT INTO `tbl_accdb` (`id`, `firstname`, `lastname`, `email`, `username`, `section`, `grade_level`, `account_type`, `password`, `created_date`) VALUES
-(87, 'admin', 'admin', 'sampleemailonly@gmail.com', 'admin', '', '', 'Admin', 'dsfsdafdfd', '2023-09-27 01:18:44'),
-(88, 'teacher', 'teacher', 'paulcruz@gmail.com', 'teacher', '', '', 'Teacher', '$2y$10$BoOH5WBI3AUO7FxAi1JxqOXARkTah31pNTgPkA8que.bihoE8oLp.', '2023-09-27 01:18:44'),
-(89, 'student', 'student', 'juandelacruz@gmail.com', 'student', 'St. Francis of Assisi', 'Grade 3', 'Student', '$2y$10$R/natiepFyCZxukY10.3vepbNOWGlI.xAK7QfuWaYUxlfL4fgAIYO', '2023-09-27 01:18:44');
+(116, 'ADMIN', 'ADMIN', 'juandelacruz@gmail.com', 'admin', '', '', 'Admin', '$2y$10$th6Dpgt3JUg8DoT4XtJbJ.BF3STqJD.OodTMXulS0Iy41cEWgwW3q', '2023-10-10 07:19:06'),
+(117, 'teacher', 'teacher', 'paulcruz@gmail.com', 'teacher', '', '', 'Teacher', '$2y$10$k5.hSyAD03235HC1bY83deZsxTRzlSHyrXtKlA.49rPCvEcI2j6NS', '2023-10-10 07:19:06'),
+(118, 'student', 'student', 'cabanillassample@gmail.com', 'student', 'Guadalupe', 'Grade 5', 'Student', '$2y$10$e38Krd00y5.4CqME7DmEU.zyX7SV5TU9N92xvHwRKqoaGbBIIH3n2', '2023-10-10 07:19:06');
 
 -- --------------------------------------------------------
 
@@ -86,9 +86,20 @@ CREATE TABLE `tbl_activity_log` (
 
 INSERT INTO `tbl_activity_log` (`id`, `user_id`, `action`, `timestamp`) VALUES
 (13, 79, 'Login', '2023-09-26 17:09:38'),
-(21, 87, 'Login', '2023-09-27 11:29:21'),
+(21, 87, 'Login', '2023-10-08 07:36:46'),
 (23, 89, 'Login', '2023-09-27 11:32:46'),
-(24, 88, 'Login', '2023-09-27 12:03:41');
+(24, 88, 'Login', '2023-10-08 06:47:26'),
+(29, 90, 'Login', '2023-10-09 22:08:28'),
+(30, 91, 'Login', '2023-10-09 22:12:39'),
+(31, 92, 'Login', '2023-10-09 22:18:03'),
+(32, 93, 'Login', '2023-10-09 22:19:26'),
+(33, 96, 'Login', '2023-10-09 22:27:23'),
+(34, 110, 'Login', '2023-10-09 22:45:02'),
+(35, 111, 'Login', '2023-10-09 22:48:53'),
+(36, 112, 'Login', '2023-10-09 22:50:08'),
+(37, 113, 'Login', '2023-10-09 22:50:28'),
+(38, 115, 'Login', '2023-10-09 23:18:26'),
+(39, 118, 'Login', '2023-10-11 00:43:58');
 
 -- --------------------------------------------------------
 
@@ -108,13 +119,6 @@ CREATE TABLE `tbl_archive` (
   `password` varchar(255) NOT NULL,
   `created_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `tbl_archive`
---
-
-INSERT INTO `tbl_archive` (`id`, `firstname`, `lastname`, `email`, `username`, `section`, `grade_level`, `account_type`, `password`, `created_date`) VALUES
-(67, '', '', 'asdas', '', '', '', '', '$2y$10$ZwlRCu4320ricfEAI99YHe7fP4driaRwdvjOZsKyZoimXHpaYQc.q', '2023-09-25 03:03:09');
 
 -- --------------------------------------------------------
 
@@ -194,8 +198,19 @@ CREATE TABLE `tbl_multiple_teacher` (
   `option_2` varchar(255) NOT NULL,
   `option_3` varchar(255) NOT NULL,
   `option_4` varchar(255) NOT NULL,
-  `correct_option` int(11) NOT NULL
+  `correct_option` int(11) NOT NULL,
+  `randomize_questions` tinyint(1) NOT NULL DEFAULT 0,
+  `visible_students` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_multiple_teacher`
+--
+
+INSERT INTO `tbl_multiple_teacher` (`question_id`, `activity_name`, `question_text`, `option_1`, `option_2`, `option_3`, `option_4`, `correct_option`, `randomize_questions`, `visible_students`) VALUES
+(155, 'SADASD', 'ASDASDSA', 'DASDA', 'DASDAS', 'ASDASDA', 'ASDASD', 1, 1, 1),
+(156, 'SDASDASDA', 'ASDASD', 'SADASD', 'ASDASD', 'ASDASD', 'ASDASD', 4, 1, 0),
+(157, 'ASDASDASDASDADASDA', 'ASDASD', 'ASDASD', 'ASDAS', 'DASDASDA', 'SADAS', 1, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -229,6 +244,20 @@ INSERT INTO `tbl_recentact` (`ID`, `itemname`, `date`, `status`, `subject`) VALU
 (1, 'Quiz 1', '2023-05-03', 'Complete', 'Mathematics'),
 (2, 'Quiz 2', '2023-05-03', 'Complete', 'Science'),
 (3, 'Quiz 3', '2023-05-03', 'Pending', 'English');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_studentpic`
+--
+
+CREATE TABLE `tbl_studentpic` (
+  `id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `image_data` longblob NOT NULL,
+  `image_type` varchar(255) NOT NULL,
+  `upload_date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -322,6 +351,13 @@ ALTER TABLE `tbl_recentact`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `tbl_studentpic`
+--
+ALTER TABLE `tbl_studentpic`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `student_id` (`student_id`);
+
+--
 -- Indexes for table `tbl_subjects`
 --
 ALTER TABLE `tbl_subjects`
@@ -335,7 +371,7 @@ ALTER TABLE `tbl_subjects`
 -- AUTO_INCREMENT for table `tbl_accdb`
 --
 ALTER TABLE `tbl_accdb`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
 
 --
 -- AUTO_INCREMENT for table `tbl_activity`
@@ -347,7 +383,7 @@ ALTER TABLE `tbl_activity`
 -- AUTO_INCREMENT for table `tbl_activity_log`
 --
 ALTER TABLE `tbl_activity_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `tbl_createact`
@@ -359,7 +395,7 @@ ALTER TABLE `tbl_createact`
 -- AUTO_INCREMENT for table `tbl_multiple_teacher`
 --
 ALTER TABLE `tbl_multiple_teacher`
-  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
 
 --
 -- AUTO_INCREMENT for table `tbl_recentact`
@@ -368,10 +404,26 @@ ALTER TABLE `tbl_recentact`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `tbl_studentpic`
+--
+ALTER TABLE `tbl_studentpic`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `tbl_subjects`
 --
 ALTER TABLE `tbl_subjects`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `tbl_studentpic`
+--
+ALTER TABLE `tbl_studentpic`
+  ADD CONSTRAINT `tbl_studentpic_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `tbl_accdb` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
