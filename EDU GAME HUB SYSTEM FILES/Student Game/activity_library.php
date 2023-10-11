@@ -58,7 +58,7 @@ mysqli_close($conn);
                 echo '<h2>' . htmlspecialchars($activity['activity_name'], ENT_QUOTES) . '</h2>';
                 // No activity description to display
                 // Add code to display the activity content as needed
-                echo '<form method="post" action="start_activity.php">';
+                echo '<form method="post" action="multipleC.php">';
                 echo '<input type="hidden" name="activity_id" value="' . $activity['question_id'] . '">';
                 echo '<button type="submit">Start Activity</button>';
                 echo '</form>';
@@ -72,7 +72,7 @@ mysqli_close($conn);
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo '<div class="activity-item">';
                     echo '<h2>' . htmlspecialchars($row['activity_name'], ENT_QUOTES) . '</h2>';
-                    echo '<form method="post" action="start_activity.php">';
+                    echo '<form method="post" action="multipleC.php">';
                     echo '<input type="hidden" name="activity_id" value="' . $row['question_id'] . '">';
                     echo '<button type="submit">Start Activity</button>';
                     echo '</form>';
