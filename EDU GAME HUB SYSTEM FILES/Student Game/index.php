@@ -77,7 +77,7 @@ if ($conn) {
         echo "</label>";
         echo "<br><input type='file' name='profilePicture' id='profilePicture' class='profilePictureInput' accept='image/*'>";
         echo "<input type='text' id='fileLabel' readonly>";
-        echo "<span class='info'>$firstname $lastname</span>";
+        echo "<br><span class='info'>$firstname $lastname</span>";
         echo "<br><span class='info'>$email</span>";
         echo "<input type='submit' name='upload' value='Upload' />";
         echo "</form>";

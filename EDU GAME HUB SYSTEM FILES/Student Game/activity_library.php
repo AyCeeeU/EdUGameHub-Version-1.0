@@ -1,18 +1,35 @@
 <?php
-// Retrieve the activity ID and name from the URL parameters
-$activityId = isset($_GET['activity_id']) ? intval($_GET['activity_id']) : 0;
-$activityName = isset($_GET['activity_name']) ? urldecode($_GET['activity_name']) : '';
 // Include your database connection script (db_conn.php)
 include('C:\Users\pc\Desktop\EDUGAME SYSTEM\EDU GAME HUB SYSTEM FILES\db_conn.php');
 
-// Fetch the activity content based on the activity ID
-$sql = "SELECT * FROM tbl_multiple_teacher WHERE question_id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $activityId);
-$stmt->execute();
-$result = $stmt->get_result();
-$activity = $result->fetch_assoc();
-$stmt->close();
+// Initialize variables for potential errors
+$error = "";
+$activity = null;
+
+// Check if an activity ID is provided in the URL
+if (isset($_GET['activity_id'])) {
+    // Activity ID is provided; fetch and display the specific activity
+    $activityId = intval($_GET['activity_id']);
+    $sql = "SELECT * FROM tbl_multiple_teacher WHERE question_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $activityId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if (!$result) {
+        $error = "Database query error: " . $stmt->error;
+    } else {
+        $activity = $result->fetch_assoc();
+    }
+    $stmt->close();
+} else {
+    // Activity ID is not provided; list all activities with visible_students = 1
+    $sql = "SELECT * FROM tbl_multiple_teacher WHERE visible_students = 1";
+    $result = mysqli_query($conn, $sql);
+}
+
+// Close the database connection
+mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -31,13 +48,41 @@ $stmt->close();
 </header>
 <div class="container">
     <?php
-    // Display the activity content
-    if (!empty($activity)) {
-        echo '<h2>' . htmlspecialchars($activity['activity_name'], ENT_QUOTES) . '</h2>';
-        echo '<p>' . htmlspecialchars($activity['activity_description'], ENT_QUOTES) . '</p>';
-        // Add code to display the activity content as needed
+    if (!empty($error)) {
+        echo '<p>Error: ' . $error . '</p>';
     } else {
-        echo '<p>Activity not found.</p>';
+        if (isset($_GET['activity_id'])) {
+            // Display the activity details
+            echo "Activity Data: " . print_r($activity, true) . "<br>";
+            if (!empty($activity)) {
+                echo '<h2>' . htmlspecialchars($activity['activity_name'], ENT_QUOTES) . '</h2>';
+                // No activity description to display
+                // Add code to display the activity content as needed
+                echo '<form method="post" action="multipleC.php">';
+                echo '<input type="hidden" name="activity_id" value="' . $activity['question_id'] . '">';
+                echo '<button type="submit">Start Activity</button>';
+                echo '</form>';
+            } else {
+                echo '<p>Activity not found.</p>';
+            }
+        } else {
+            // List all activities
+            echo '<div class="activity-list">';
+            if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '<div class="activity-item">';
+                    echo '<h2>' . htmlspecialchars($row['activity_name'], ENT_QUOTES) . '</h2>';
+                    echo '<form method="post" action="multipleC.php">';
+                    echo '<input type="hidden" name="activity_id" value="' . $row['question_id'] . '">';
+                    echo '<button type="submit">Start Activity</button>';
+                    echo '</form>';
+                    echo '</div>';
+                }
+            } else {
+                echo '<p>No activities available.</p>';
+            }
+            echo '</div>';
+        }
     }
     ?>
 </div>
