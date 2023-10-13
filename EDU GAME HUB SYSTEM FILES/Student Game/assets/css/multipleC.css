@@ -30,7 +30,7 @@ img {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #8c7ce6;
+    background-color: #ed7369;
     overflow: hidden;
   }
   
@@ -102,8 +102,8 @@ button {
     position: absolute;
     width: 200px;
     height: 70px;
-    top: 600px;
-    right:970px;
+    top: 500px;
+    right:880px;
     margin-top: 300px;
     padding: 1px;
     background-color: #1100ff;
