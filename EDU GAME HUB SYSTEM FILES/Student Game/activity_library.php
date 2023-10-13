@@ -1,6 +1,6 @@
 <?php
 // Include your database connection script (db_conn.php)
-include('C:\Users\pc\Desktop\EDUGAME SYSTEM\EDU GAME HUB SYSTEM FILES\db_conn.php');
+include('db_conn.php');
 
 // Initialize variables for potential errors
 $error = "";
@@ -43,8 +43,9 @@ mysqli_close($conn);
 </head>
 <body>
 <header>
+<a href="index.php"><img src="back.png" alt="Back" width="60"></a>
     <a href="index.php"> <img src="Gamelogo.png" alt="Your Image" width="400"></a>
-    <a href="index.php"><img src="back.png" alt="Back" width="60"></a>
+    
 </header>
 <div class="container">
     <?php
@@ -71,9 +72,8 @@ mysqli_close($conn);
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo '<div class="activity-item">';
-                    echo '<h2>' . htmlspecialchars($row['activity_name'], ENT_QUOTES) . '</h2>';
+                    echo '<h2>Activity Name: ' . htmlspecialchars($row['activity_name'], ENT_QUOTES) . '</h2>';
                     echo '<form method="post" action="multipleC.php">';
-                    echo '<input type="hidden" name="activity_id" value="' . $row['question_id'] . '">';
                     echo '<button type="submit">Start Activity</button>';
                     echo '</form>';
                     echo '</div>';
