@@ -21,7 +21,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #8c7ce6;
+  background-color: #ed7369;
   overflow: hidden;
 }
 
@@ -60,8 +60,8 @@ input[type="text"] {
 
 .btn {
   position: absolute;
-  top: 900px;
-  right: 950px;
+  top: 880px;
+  right: 935px;
   font-size: 18px;
   font-weight: bold;
   background: #1100ff;

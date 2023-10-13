@@ -50,19 +50,25 @@ img {
     position: fixed;
     width: 100%;
     top: 20%;
+    
     text-align: left;
     padding-right: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow: hidden;
   }
 
+  .question{
+    left: 100%;
+  }
+
   .option1{
     position: absolute;
-    left: 27%;
+    left: 34%;
     top: 45%;
     font-size:35px;
     font-weight:bold;
   }
+
   .option1 input[type="radio"]{
     transform: scale(1.5);
     margin-right: 10px;
@@ -72,7 +78,7 @@ img {
 
   .option2{
     position: absolute;
-    left: 27%;
+    left: 34%;
     top: 52%;
     font-size:35px;
     font-weight:bold;
@@ -86,7 +92,7 @@ img {
 
   .option3{
     position: absolute;
-    left: 27%;
+    left: 34%;
     top: 59%;
     font-size:35px;
     font-weight:bold;
@@ -100,7 +106,7 @@ img {
 
   .option4{
     position: absolute;
-    left: 27%;
+    left: 34%;
     top: 66%;
     font-size:35px;
     font-weight:bold;
@@ -114,7 +120,7 @@ img {
 
   .option5{
     position: absolute;
-    left: 27%;
+    left: 34%;
     top: 73%;
     font-size:35px;
     font-weight:bold;
@@ -175,8 +181,8 @@ img {
   .submit-button {
     position: absolute;
     width: 160px;
-    top: 670px;
-    right:43rem;
+    top: 875px;
+    right: 60rem;
     margin-top: 10px;
     padding: 15px;
     background-color: #1100ff;
@@ -197,4 +203,8 @@ img {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     -webkit-transform: scale(1.1);
     transform: scale (1.1);
+  }
+
+  .question {
+    left: 100px;
   }
