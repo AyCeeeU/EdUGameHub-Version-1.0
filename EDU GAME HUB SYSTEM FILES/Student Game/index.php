@@ -7,158 +7,180 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
           integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
           crossorigin="anonymous" referrerpolicy="no-referrer">
-  
     <title>EduGameHub</title>
 </head>
 <body>
-<header>
-    <div class="header">
-        <div class="gameLogo">
-            <img src="Gamelogo.png" alt="edugamehub Logo" width="400"/>
+    <header>
+        <div class="header">
+            <div class="gameLogo">
+                <img src="Gamelogo.png" alt="edugamehub Logo" width="400"/>
+            </div>
+            <div class="logoutLogo">
+                <img src="logout.png" class="logoutImage" alt="edugamehub Logo"/>
+            </div>
         </div>
-        <div class="logoutLogo">
-            <img src="logout.png" class="logoutImage" alt="edugamehub Logo"/>
+    </header>
+    <div class="container">
+        <div class="card1">
+            <div class="card-image"></div>
+            <h2>Badge</h2>
+            <p>
+                Review the activities you have created and make any necessary edits.
+            </p>
+            <a href="Badges.html">Proceed</a>
+        </div>
+        <div class="card2">
+            <div class="card-image"></div>
+            <h2>Play EduGame!</h2>
+            <a href="student welcome.html"><i class="fa-solid fa-play" style="color: #ffffff"></i></a>
+        </div>
+        <div class="card3">
+            <div class="card-image"></div>
+            <h2>Certificates</h2>
+            <p>
+                Track the students' performance, view an overview of their academic progress, and related information.
+            </p>
+            <a href="Certificates.html">Proceed</a>
         </div>
     </div>
-</header>
-<?php
+    <?php
+// Assuming you have a database connection established
 // Include your database connection script (db_conn.php) with the new path
-include('C:/Users/pc/Desktop/EDUGAME SYSTEM/EDU GAME HUB SYSTEM FILES/db_conn.php');
+include('db_conn.php');
 
-// Check if the database connection is successful
-if ($conn) {
-    // Assuming you have a way to identify the user's account type
-    $accountType = 'student'; // Replace with the actual account type of the user
+session_start();
 
-    if ($accountType === 'student') {
-        // Fetch and display student's information
-        $sql = "SELECT firstname, lastname, email FROM tbl_accdb WHERE account_type = ?";
+// Check if the user is logged in
+if (isset($_SESSION['user_id'])) {
+    $userId = $_SESSION['user_id'];
+
+    // Check if the database connection is successful
+    if ($conn) {
+        // Fetch the user's profile picture path from the database
+        $sql = "SELECT profile_pic FROM tbl_accdb WHERE id = ?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $accountType);
+        $stmt->bind_param("i", $userId);
         $stmt->execute();
-        $stmt->bind_result($firstname, $lastname, $email);
+        $stmt->bind_result($profile_pic);
         $stmt->fetch();
         $stmt->close();
 
-        // Get the student's ID from tbl_accdb where account_type is 'student'
-        $accountType = 'Student'; // Change to 'student' or the actual account type
-        $sqlGetStudentId = "SELECT id FROM tbl_accdb WHERE account_type = ?";
-        $stmtGetStudentId = $conn->prepare($sqlGetStudentId);
-        $stmtGetStudentId->bind_param("s", $accountType);
-        $stmtGetStudentId->execute();
-        $stmtGetStudentId->bind_result($studentId);
-        $stmtGetStudentId->fetch();
-        $stmtGetStudentId->close();
-
-        // Fetch the profile picture from the database
-        $sqlGetProfilePicture = "SELECT image_data, image_type FROM tbl_studentpic WHERE student_id = ?";
-        $stmtGetProfilePicture = $conn->prepare($sqlGetProfilePicture);
-        $stmtGetProfilePicture->bind_param("i", $studentId);
-        $stmtGetProfilePicture->execute();
-        $stmtGetProfilePicture->bind_result($imageData, $imageType);
-        $stmtGetProfilePicture->fetch();
-        $stmtGetProfilePicture->close();
-
-        // Display the user's information and the uploaded profile picture
-        echo "<div class='profile'>";
-        echo "<form method='post' enctype='multipart/form-data'>";
-        echo "<label for='profilePicture' class='profilePictureLabel'>";
-
-        // Display the uploaded profile picture from the database
-        if ($imageData !== null) {
-            $base64Image = base64_encode($imageData);
-            $imageSrc = "data:$imageType;base64,$base64Image";
-            echo "<img src='$imageSrc' alt='Profile Picture' width='150'>";
+        // Profile picture is retrieved, or use a default if not found
+        if (!empty($profile_pic)) {
+            $profilePicSrc = $profile_pic;
         } else {
-            // If there's no uploaded picture, you can display a default image here.
-            // echo "<img src='default_profile.jpg' alt='Profile Picture' width='150'>";
+            $profilePicSrc = 'image.jpg'; // Use a default image
         }
-
-        echo "</label>";
-        echo "<br><input type='file' name='profilePicture' id='profilePicture' class='profilePictureInput' accept='image/*'>";
-        echo "<input type='text' id='fileLabel' readonly>";
-        echo "<br><span class='info'>$firstname $lastname</span>";
-        echo "<br><span class='info'>$email</span>";
-        echo "<input type='submit' name='upload' value='Upload' />";
-        echo "</form>";
-        echo "</div>";
-    }
-} else {
-    echo "Database connection failed.";
-}
-
-// Handle the image upload and store it in the database
-if (isset($_POST['upload'])) {
-    // Check if a file was selected
-    if ($_FILES['profilePicture']['name']) {
-        // Specify the destination folder
-        $destination = 'C:/Users/pc/Desktop/EDUGAME SYSTEM/EDU GAME HUB SYSTEM FILES/Student Game/';
-
-        $originalFileName = $_FILES['profilePicture']['name'];
-
-        // Sanitize the file name to remove special characters and spaces
-        $sanitizedFileName = preg_replace("/[^a-zA-Z0-9._-]/", "_", $originalFileName);
-
-        $targetFile = $destination . $sanitizedFileName;
-        $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-
-        // Check if the file is an actual image
-        $check = getimagesize($_FILES['profilePicture']['tmp_name']);
-        if ($check !== false) {
-            // Allow only certain image file formats (you can customize this)
-            if ($imageFileType === 'jpg' || $imageFileType === 'png' || $imageFileType === 'jpeg') {
-                // Move the uploaded file to the desired location
-                if (move_uploaded_file($_FILES['profilePicture']['tmp_name'], $targetFile)) {
-                    // File uploaded successfully, save it to the database
-                    $imageData = file_get_contents($targetFile);
-                    $imageType = mime_content_type($targetFile);
-
-                    // Update the profile picture in the database
-                    $updateSql = "UPDATE tbl_studentpic SET image_data = ?, image_type = ?, upload_date = NOW() WHERE student_id = ?";
-                    $stmt = $conn->prepare($updateSql);
-                    $stmt->bind_param("ssi", $imageData, $imageType, $studentId);
-                    if ($stmt->execute()) {
-                        echo "File uploaded and profile picture updated successfully.";
-                    } else {
-                        echo "Error updating profile picture.";
-                    }
-                    $stmt->close();
-                } else {
-                    echo "Error uploading the file.";
-                }
-            } else {
-                echo "Sorry, only JPG, JPEG, and PNG files are allowed.";
-            }
-        } else {
-            echo "File is not an image.";
-        }
+    } else {
+        echo "Database connection failed.";
     }
 }
 ?>
+<!-- PROFILE PIC -->
+<form action="upload_profile_pic.php" method="post" enctype="multipart/form-data">
+    <div class="profile-pic-div">
+        <img src="<?php echo $profilePicSrc; ?>" id="photo" >
+        <input type="file" name="file" id="file">
+        <label for="file" id="uploadBtn">Choose Photo</label>
+    </div>
+    <input type="submit" name="upload" value="Upload" id="uploadSubmit" class="centered-button">
+</form>
 
-<div class="container">
-    <div class="card1">
-        <div class="card-image"></div>
-        <h2>Badge</h2>
-        <p>
-            Review the activities you have created and make any necessary edits.
-        </p>
-        <a href="Badges.html">Proceed</a>
-    </div>
-    <div class="card2">
-        <div class="card-image"></div>
-        <h2>Play EduGame!</h2>
-        <a href="student welcome.html"><i class="fa-solid fa-play" style="color: #ffffff"></i></a>
-    </div>
-    <div class="card3">
-        <div class="card-image"></div>
-        <h2>Certificates</h2>
-        <p>
-            Track the students' performance, view an overview of their academic progress, and related information.
-        </p>
-        <a href="Certificates.html">Proceed</a>
-    </div>
+
+ <!-- Welcome User! Section -->
+ <div class="welcome-section">
+        <?php
+   
+
+        // Check if the user is logged in
+        if (isset($_SESSION['user_id'])) {
+            // Include your database connection script (db_conn.php) with the new path
+            include('db_conn.php');
+
+            // Get the user's ID from the session
+            $userId = $_SESSION['user_id'];
+
+            // Check if the database connection is successful
+            if ($conn) {
+                // Fetch user information from tbl_accdb
+                $sql = "SELECT firstname, lastname, email, section, grade_level, account_type, profile_pic FROM tbl_accdb WHERE id = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("i", $userId);
+                $stmt->execute();
+                $stmt->bind_result($firstname, $lastname, $email, $section, $grade_level, $account_type, $profile_pic);
+                $stmt->fetch();
+                $stmt->close();
+
+                echo '<div style="text-align: center;">'; // Center-align the content
+                // Display the user's information
+                echo "<h1>Welcome, $firstname $lastname!</h1>";
+                echo "<h3> $email</h3></p>";
+                echo "<h3>$section</h3></p>";
+                echo "<h3> $grade_level</h3></p>";
+                echo '</div>';
+
+                
+              
+                
+            } else {
+                echo "Database connection failed.";
+            }
+        } else {
+            echo "You are not logged in. Please log in to see your information.";
+        }
+    ?>
 </div>
+
+
+<script>
+    // Declaring HTML elements
+    const imgDiv = document.querySelector('.profile-pic-div');
+    const img = document.querySelector('#photo');
+    const file = document.querySelector('#file');
+    const uploadBtn = document.querySelector('#uploadBtn');
+    const uploadSubmit = document.querySelector('#uploadSubmit');
+
+    // If the user hovers on img div
+    imgDiv.addEventListener('mouseenter', function () {
+        uploadBtn.style.display = "block";
+    });
+
+    // If we hover out from img div
+    imgDiv.addEventListener('mouseleave', function () {
+        uploadBtn.style.display = "none";
+    });
+
+    // Let's work on the image showing functionality when we choose an image to upload
+    // When we choose a photo to upload
+    file.addEventListener('change', function () {
+        // This refers to the file
+        const choosedFile = this.files[0];
+
+        if (choosedFile) {
+            const reader = new FileReader(); // FileReader is a predefined function in JavaScript
+            
+            reader.addEventListener('load', function () {
+                img.setAttribute('src', reader.result);
+                uploadSubmit.style.display = "block"; // Show the submit button
+
+                // Send the selected image path to the server
+                fetch('upload_profile_pic.php', {
+                    method: 'POST',
+                    body: new FormData(document.querySelector('form')),
+                })
+                .then(response => response.text())
+                .then(data => {
+                    if (data) {
+                        img.setAttribute('src', data); // Update the displayed image source
+                    }
+                });
+            }); // This was missing
+            reader.readAsDataURL(choosedFile);
+        }
+    });
+</script>
+
+
 
 </body>
 </html>

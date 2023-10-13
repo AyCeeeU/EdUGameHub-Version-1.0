@@ -7,13 +7,14 @@ header {
 }
 
 header img {
-  margin-right: 20px; /* Add some space between the logo and text */
+  margin-right: 20px;
 }
 
 h1 {
-  margin: 0; /* Remove default margin */
-  flex-grow: 0; /* Allow the text to expand and take up remaining space */
+  margin: 0;
+  flex-grow: 0;
 }
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -23,79 +24,22 @@ body {
 
 .logoutImage {
   position: absolute;
-  top: 10px; /* Adjust the top value to control the vertical position */
-  right: 10px; /* Adjust the right value to control the horizontal position */
+  top: 10px;
+  right: 10px;
   width: 50px;
   height: 50px;
 }
 
 
-.profilePictureInput {
-  display: none;
-}
 
-.profilePictureLabel {
-  display: inline-block;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  background-color: black;
-  text-align: center;
-  line-height: 150px;
-  color: white;
-  cursor: pointer;
-  overflow: hidden;
-}
-
-.profilePictureLabel img {
-  
-  max-width: 100%;
-  max-height: 100%;
-  border-radius: 50%;
-}
-
-
-.profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 100px; /* Add margin to push it below the header */
-  width: 1860px;
-  height: 264px;
-} 
-
-.profile span {
-  font-size: 2.5rem; /* Reduce font size */
-  font-weight: 500;
-  margin-left: 230px;
-}
-
-.profilePicture {
-  position: relative;
-  left: 7.2rem;
-  margin-top: -70px;
-  top: 2rem;
-  margin-bottom: 50px;
-  clip-path: ellipse(50% 50% at 50% 50%);
-  background-color: rgb(0, 0, 0);
-  width: 12rem; /* Reduce profile picture size */
-  height: 13rem; /* Reduce profile picture size */
-}
 
 .container {
   display: flex;
   flex-direction: row;
   justify-content: center;
-}
-
-.info {
-  font-family: Arial, sans-serif;
   position: relative;
-  right: -1rem;
-  bottom: -3rem;
+  top: 520px; /* Adjust as needed */
 }
-
-
 
 .card1,
 .card2,
@@ -104,86 +48,119 @@ body {
   font-family: Arial, sans-serif;
   font-size: 30px;
   color: black;
-  position:relative;
-  bottom:-102px;
-  padding: 122.9px;
-  justify-content: center;
-  
-  
+  padding: 20px; /* Adjust as needed */
+  margin: 10px; /* Add some spacing between cards */
+  text-align: center; /* Center text */
+  border-radius: 10px; /* Add rounded corners */
 }
 
-.card1{
-  background: rgb(81, 255, 255);
+.card1 {
   width: 960px;
-
 }
+
 .card2 {
   background: rgb(255, 62, 127);
   
 }
+
 .card3 {
-  background: rgb(255, 194, 25);
   width: 960px;
 }
+
 .card1 p,
 .card2 p,
 .card3 p {
   text-align: justify;
+  margin: 10px 0; /* Add spacing between paragraphs */
 }
 
 .card1 h2,
 .card3 h2 {
   font-size: 2rem;
-  text-align: center;
-  margin-top: 27px;
-  
 }
 
-.card2 h2{
+.card2 h2 {
   font-size: 30px;
-  text-align: center;
-  margin-top: 20px;
   margin-right: 40px;
-
 }
-.card1 a{
-  display: flex;
-  flex-direction: row;
+
+.card1 a,
+.card3 a {
   background-color: rgb(8, 10, 128);
   color: white;
-  padding: 8px;
-  width: 150px;
-  margin-top: 5rem;
-  margin-left: 12rem;
+  padding: 10px 20px; /* Adjust padding for buttons */
   border-radius: 10px;
   display: block;
   text-align: center;
   font-size: 25px;
   text-decoration: none;
+  margin: 20px 0; /* Add spacing between buttons */
 }
 
-.card3 a{
-  display: flex;
-  flex-direction: row;
-  background-color: rgb(8, 10, 128);
-  color: white;
-  padding: 10px;
-  width: 150px;
-  margin-top: 5rem;
-  margin-left: 13.5rem;
-  border-radius: 10px;
-  display: block;
-  text-align: center;
-  font-size: 25px;
-  text-decoration: none; 
-}
 .card2 a {
   display: flex;
-  margin-top: 7rem;
-  flex-direction: row;
   justify-content: center;
   text-decoration: none;
   font-size: 5rem;
 }
 
 
+
+
+/* Custom file input styles */
+
+
+.profile-pic-div {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid rgb(0, 0, 0);
+}
+
+#photo {
+  height: 100%;
+  width: 100%;
+}
+
+#file {
+  display: none;
+}
+
+#uploadBtn {
+  height: 40px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  background: #007bff;
+  color: wheat;
+  line-height: 30px;
+  font-family: sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.centered-button {
+  display: none;
+  margin: 0 auto;
+  background-color: #007bff; /* Background color */
+  color: wheat; /* Text color */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  position: relative;
+  
+}
+
+.centered-button:hover {
+  background-color: #0056b3; /* Hover color */
+}
