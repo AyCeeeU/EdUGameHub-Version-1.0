@@ -43,10 +43,17 @@ mysqli_close($conn);
 </head>
 <body>
 <header>
-<a href="index.php"><img src="back.png" alt="Back" width="60"></a>
-    <a href="index.php"> <img src="Gamelogo.png" alt="Your Image" width="400"></a>
+
+        <a href="index.php"> <img src="Gamelogo.png" alt="Your Image" width="400"></a>
+        <div class="logoutLogo">
+            <img src="logout.png" class="logoutImage" alt="edugamehub Logo" />
+          </div>
+        </header>
+        <div class="back-button">
+        <a href="index.php"><img src="back.png" alt="Back" width="60"></a>
+    </div>
     
-</header>
+
 <div class="container">
     <?php
     if (!empty($error)) {

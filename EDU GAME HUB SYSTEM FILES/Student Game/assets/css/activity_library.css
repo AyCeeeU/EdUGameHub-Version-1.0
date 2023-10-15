@@ -1,3 +1,29 @@
+header {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+}
+
+header img {
+    margin-right: 20px; /* Add some space between the logo and text */
+}
+
+h1 {
+    margin: 0; /* Remove default margin */
+    flex-grow: 0; /* Allow the text to expand and take up remaining space */
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+
+
+
+
 .activity {
     border: 1px solid #ddd;
     padding: 10px;
@@ -26,4 +52,9 @@
 
 .activity a:hover {
     background-color: #0056b3;
+}
+
+.back-button{
+    padding: 10px;
+    
 }

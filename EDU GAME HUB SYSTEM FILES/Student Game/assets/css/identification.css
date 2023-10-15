@@ -7,8 +7,8 @@ header {
 
 img {
   position: absolute; /* Set image to be positioned absolutely */
-  top: 20px; /* Move image down by 50px from the top */
-  left: 20px; /* Move image right by 20px from the left */
+  top: 10px; /* Move image down by 50px from the top */
+  left: 10px; /* Move image right by 20px from the left */
   overflow: hidden;
 }
 
@@ -60,8 +60,8 @@ input[type="text"] {
 
 .btn {
   position: absolute;
-  top: 880px;
-  right: 935px;
+  top: 800px;
+  right: 860px;
   font-size: 18px;
   font-weight: bold;
   background: #1100ff;
