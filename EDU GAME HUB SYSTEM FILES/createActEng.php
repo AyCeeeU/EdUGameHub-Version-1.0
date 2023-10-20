@@ -19,8 +19,8 @@
             <span class="material-icons-outlined">menu</span>
         </div>
         <div class="header-left">
-            <button class="btn btn-primary" id="createActivityBtn">Create Activity</button>
-            <button class="btn btn-secondary" id="leaderboardBtn">Leaderboard</button>
+            <button class="btn btn-secondary" id="libraryBtn" onclick="openLibrary()">Library</button>
+            <button class="btn btn-secondary" id="leaderboardBtn" onclick="openLeaderboard()">Leaderboard</button>
         </div>
         <div class="header-right">
             <span class="material-icons-outlined">notifications</span>
@@ -295,6 +295,16 @@
 
             // Update the question count
             questionCount.value = newQuestionCount;
+        }
+
+        function openLibrary() {
+            // Load library.php or any other URL you want
+            window.location.href = "library.php";
+        }
+
+        function openLeaderboard() {
+            // Load leaderboard.php or any other URL you want
+            window.location.href = "leaderboard.php";
         }
     </script>
 </body>

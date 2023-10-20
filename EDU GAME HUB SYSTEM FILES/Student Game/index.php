@@ -27,7 +27,7 @@
             <p>
           View the badges you've earned through completed tasks!
             </p>
-            <a href="Badges.html">Proceed</a>
+            <a href="Badges.php">Proceed</a>
         </div>
         <div class="card2">
             <div class="card-image"></div>
@@ -112,6 +112,8 @@ if (isset($_SESSION['user_id'])) {
                 $stmt->close();
 
                 echo '<div style="text-align: center;">'; // Center-align the content
+
+                
                 // Display the user's information
                 echo "<h1>Welcome, $firstname $lastname!</h1>";
                 echo "<h3> $email</h3></p>";

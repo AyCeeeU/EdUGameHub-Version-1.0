@@ -27,18 +27,18 @@ SET time_zone = "+00:00";
 -- Table structure for table `tbl_accdb`
 --
 
-CREATE TABLE `tbl_accdb` (
-  `id` int(11) NOT NULL,
-  `firstname` varchar(50) NOT NULL,
-  `lastname` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `section` varchar(50) NOT NULL,
-  `grade_level` varchar(50) NOT NULL,
-  `account_type` varchar(50) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `created_date` datetime NOT NULL,
-  `profile_pic` varchar(255) DEFAULT NULL
+  CREATE TABLE `tbl_accdb` (
+    `id` int(11) NOT NULL,
+    `firstname` varchar(50) NOT NULL,
+    `lastname` varchar(50) NOT NULL,
+    `email` varchar(50) NOT NULL,
+    `username` varchar(255) NOT NULL,
+    `section` varchar(50) NOT NULL,
+    `grade_level` varchar(50) NOT NULL,
+    `account_type` varchar(50) NOT NULL,
+    `password` varchar(255) NOT NULL,
+    `created_date` datetime NOT NULL,
+    `profile_pic` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --

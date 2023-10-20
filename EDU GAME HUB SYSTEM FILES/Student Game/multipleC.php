@@ -7,29 +7,71 @@
     <title>EduGameHub</title>
 </head>
 <body>
-  <h4 class="type">Multiple Choice</h4>
+    <h4 class="type">Multiple Choice</h4>
     <header>
         <a href="index.php"> <img src="Gamelogo.png" alt="Your Image" width="400"></a>
     </header>
-
     <div class="back-button">
         <a href="student welcome.html"><img src="back.png" alt="Back" width="60"></a>
     </div>
 
     <div class="quiz-container1">
-    <p class="question">What is the capital of France?</p>
+    <?php
+    // Include the database connection file
+    include 'db_conn.php';
 
+    // Retrieve the activity name from the query parameters
+    if (isset($_GET['activity_name'])) {
+        $activityName = $_GET['activity_name'];
+        $questionId = isset($_GET['question_id']) ? intval($_GET['question_id']) : 0;
+    
+        // Query to retrieve the next question for the provided activity name
+        $sql = "SELECT question_id, question_text, option_1, option_2, option_3, option_4 FROM tbl_multiple_teacher WHERE activity_name = ? AND question_id > ? ORDER BY question_id LIMIT 1";
+        $stmt = $conn->prepare($sql);
+    
+        if ($stmt) {
+            $stmt->bind_param("si", $activityName, $questionId);
+    
+            // Execute the statement
+            $stmt->execute();
+    
+            // Get the result
+            $result = $stmt->get_result();
+    
+            if ($result && $result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+    
+                // Display the question and answer options
+                echo '<p class="question">' . $row['question_text'] . '</p>';
+                echo '</div>';
+                // Dynamically generate answer buttons
+                echo '<div class="button-container">';
+                echo '<button class="answer-button" data-correct="true" data-answer="A">' . $row['option_1'] . '</button>';
+                echo '<button class="answer-button" data-correct="false" data-answer="B">' . $row['option_2'] . '</button>';
+                echo '<button class="answer-button" data-correct="false" data-answer="C">' . $row['option_3'] . '</button>';
+                echo '<button class="answer-button" data-correct="false" data-answer="D">' . $row['option_4'] . '</button>';
+                // Display the "Next" button with the updated question_id
+                echo '<button class="submit-button" onclick="navigateToNextQuestion(\'' . $activityName . '\', ' . $row['question_id'] . ')">Next</button>';
+                echo '</div>';
+            } else {
+                echo 'No more questions found for this activity.';
+            }
+    
+            // Close the statement
+            $stmt->close();
+        } else {
+            echo 'Error: ' . $conn->error;
+        }
+    } else {
+        echo 'No activity_name specified.';
+    }
+
+    // Close the database connection
+    $conn->close();
+    ?>
     </div>
-    <div class="button-container">
-      <!-- Add data-correct attribute to identify correct answers -->
-      <button class="answer-button" data-correct="true" data-answer="A">Paris</button>
-      <button class="answer-button" data-correct="false" data-answer="B">Milan</button>
-      <button class="answer-button" data-correct="false" data-answer="C">Barcelona</button>
-      <button class="answer-button" data-correct="false" data-answer="D">Italy</button>
 
-      <button class="submit-button" onclick="navigateToNextPage()">Next</button>
-  </div>
-  <script>
+    <script>
     // Get all answer buttons
     const answerButtons = document.querySelectorAll('.answer-button');
 
@@ -67,15 +109,14 @@
         if (selectedWrongButton) {
             selectedWrongButton.style.backgroundColor = 'red';
         }
+
+        // You might want to add more logic here to handle checking the answer.
     }
 
-    function navigateToNextPage() {
-        // Change the location to the new HTML file
-        window.location.href = 'multipleC1.html';
+    function navigateToNextQuestion(activityName, questionId) {
+        // Change the location to the same page but with the next question for the same activity
+        window.location.href = 'multipleC.php?activity_name=' + activityName + '&question_id=' + questionId;
     }
-
-
-    
-</script>
+    </script>
     </body>
-    </html>
+</html>

@@ -23,15 +23,14 @@ if (isset($_GET['activity_id'])) {
     }
     $stmt->close();
 } else {
-    // Activity ID is not provided; list all activities with visible_students = 1
-    $sql = "SELECT * FROM tbl_multiple_teacher WHERE visible_students = 1";
+    // List all activities, selecting the one with the lowest question_id for each unique activity_name
+    $sql = "SELECT MIN(question_id) as question_id, activity_name FROM tbl_multiple_teacher WHERE visible_students = 1 GROUP BY activity_name";
     $result = mysqli_query($conn, $sql);
 }
 
 // Close the database connection
 mysqli_close($conn);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,16 +42,14 @@ mysqli_close($conn);
 </head>
 <body>
 <header>
-
-        <a href="index.php"> <img src="Gamelogo.png" alt="Your Image" width="400"></a>
-        <div class="logoutLogo">
-            <img src="logout.png" class="logoutImage" alt="edugamehub Logo" />
-          </div>
-        </header>
-        <div class="back-button">
-        <a href="index.php"><img src="back.png" alt="Back" width="60"></a>
+    <a href="index.php"> <img src="Gamelogo.png" alt="Your Image" width="400"></a>
+    <div class="logoutLogo">
+        <img src="logout.png" class="logoutImage" alt="edugamehub Logo" />
     </div>
-    
+</header>
+<div class="back-button">
+    <a href="index.php"><img src="back.png" alt="Back" width="60"></a>
+</div>
 
 <div class="container">
     <?php
@@ -66,8 +63,8 @@ mysqli_close($conn);
                 echo '<h2>' . htmlspecialchars($activity['activity_name'], ENT_QUOTES) . '</h2>';
                 // No activity description to display
                 // Add code to display the activity content as needed
-                echo '<form method="post" action="multipleC.php">';
-                echo '<input type="hidden" name="activity_id" value="' . $activity['question_id'] . '">';
+                echo '<form method="get" action="multipleC.php">';
+                echo '<input type="hidden" name="activity_name" value="' . htmlspecialchars($activity['activity_name'], ENT_QUOTES) . '">';
                 echo '<button type="submit">Start Activity</button>';
                 echo '</form>';
             } else {
@@ -80,7 +77,8 @@ mysqli_close($conn);
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo '<div class="activity-item">';
                     echo '<h2>Activity Name: ' . htmlspecialchars($row['activity_name'], ENT_QUOTES) . '</h2>';
-                    echo '<form method="post" action="multipleC.php">';
+                    echo '<form method="get" action="multipleC.php">';
+                    echo '<input type="hidden" name="activity_name" value="' . htmlspecialchars($row['activity_name'], ENT_QUOTES) . '">';
                     echo '<button type="submit">Start Activity</button>';
                     echo '</form>';
                     echo '</div>';

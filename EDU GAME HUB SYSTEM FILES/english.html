@@ -1,6 +1,4 @@
-<?php
-include("db_conn.php");
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,6 +28,7 @@ include("db_conn.php");
             <button class="btn btn-primary" id="createActivityBtn">Create Activity</button>
             <button class="btn btn-secondary" id="libraryBtn">Library</button>
             <button class="btn btn-secondary" id="leaderboardBtn">Leaderboard</button>
+            <button class="btn btn-secondary" id="badgesBtn">Badges</button>
         </div>
         <div class="header-right">
             <span class="material-icons-outlined">notifications</span>
@@ -84,58 +83,80 @@ include("db_conn.php");
     <!-- Custom JS -->
     <script src="js/script.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Get references to the buttons
-            const createActivityBtn = document.getElementById("createActivityBtn");
-            const libraryBtn = document.getElementById("libraryBtn");
-            const leaderboardBtn = document.getElementById("leaderboardBtn");
+       document.addEventListener("DOMContentLoaded", function () {
+    // Get references to the buttons
+    const createActivityBtn = document.getElementById("createActivityBtn");
+    const libraryBtn = document.getElementById("libraryBtn");
+    const leaderboardBtn = document.getElementById("leaderboardBtn");
+    const badgesBtn = document.getElementById("badgesBtn");
 
-            // Function to open Create Activity page and toggle button styles
-            function openCreateActivity() {
-                // Load createActEng.php or any other URL you want
-                window.location.href = "createActEng.php";
+    // Function to open Create Activity page and toggle button styles
+    function openCreateActivity() {
+        // Load createActEng.php or any other URL you want
+        window.location.href = "createActEng.php";
 
-                // Remove active class from all buttons
-                createActivityBtn.classList.remove("active");
-                libraryBtn.classList.remove("active");
-                leaderboardBtn.classList.remove("active");
+        // Remove active class from all buttons
+        createActivityBtn.classList.remove("active");
+        libraryBtn.classList.remove("active");
+        leaderboardBtn.classList.remove("active");
+        badgesBtn.classList.remove("active");
 
-                // Add active class to the clicked button
-                createActivityBtn.classList.add("active");
-            }
+        // Add active class to the clicked button
+        createActivityBtn.classList.add("active");
+    }
 
-            // Function to open Library page and toggle button styles
-            function openLibrary() {
-                // Load library.php or any other URL you want
-                window.location.href = "library.php";
+    // Function to open Library page and toggle button styles
+    function openLibrary() {
+        // Load library.php or any other URL you want
+        window.location.href = "library.php";
 
-                // Remove active class from all buttons
-                createActivityBtn.classList.remove("active");
-                libraryBtn.classList.remove("active");
-                leaderboardBtn.classList.remove("active");
+        // Remove active class from all buttons
+        createActivityBtn.classList.remove("active");
+        libraryBtn.classList.remove("active");
+        leaderboardBtn.classList.remove("active");
+        badgesBtn.classList.remove("active");
 
-                // Add active class to the clicked button
-                libraryBtn.classList.add("active");
-            }
+        // Add active class to the clicked button
+        libraryBtn.classList.add("active");
+    }
 
-            function openLeaderboard() {
-                // Load leaderboard.php or any other URL you want
-                window.location.href = "engLeaderboard.html";
+    function openLeaderboard() {
+        // Load leaderboard.php or any other URL you want
+        window.location.href = "engLeaderboard.html";
 
-                // Remove active class from all buttons
-                createActivityBtn.classList.remove("active");
-                libraryBtn.classList.remove("active");
-                leaderboardBtn.classList.remove("active");
+        // Remove active class from all buttons
+        createActivityBtn.classList.remove("active");
+        libraryBtn.classList.remove("active");
+        leaderboardBtn.classList.remove("active");
+        badgesBtn.classList.remove("active");
 
-                // Add active class to the clicked button
-                leaderboardBtn.classList.add("active");
-            }
+        // Add active class to the clicked button
+        leaderboardBtn.classList.add("active");
+    }
 
-            // Attach click event listeners to the buttons
-            createActivityBtn.addEventListener("click", openCreateActivity);
-            libraryBtn.addEventListener("click", openLibrary);
-            leaderboardBtn.addEventListener("click", openLeaderboard);
-        });
+    function openBadges() {
+        // Depending on your file names, load the sending badges or creating badges page
+        // Example URLs:
+        // Sending Badges: "sendBadges.html"
+        // Creating Badges: "createBadges.html"
+        window.location.href = "sendBadges.html"; // or "createBadges.html"
+
+        // Remove active class from all buttons
+        createActivityBtn.classList.remove("active");
+        libraryBtn.classList.remove("active");
+        leaderboardBtn.classList.remove("active");
+        badgesBtn.classList.remove("active");
+
+        // Add active class to the clicked button
+        badgesBtn.classList.add("active");
+    }
+
+    // Attach click event listeners to the buttons
+    createActivityBtn.addEventListener("click", openCreateActivity);
+    libraryBtn.addEventListener("click", openLibrary);
+    leaderboardBtn.addEventListener("click", openLeaderboard);
+    badgesBtn.addEventListener("click", openBadges);
+});
     </script>
 </body>
 </html>
