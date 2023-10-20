@@ -71,17 +71,29 @@ body {
   background: #ffc219;
 }
 
-.card1 p,
-.card2 p,
-.card3 p {
+
+.card2 p{
   text-align: justify;
   margin: 10px 0; /* Add spacing between paragraphs */
   font-size: 25px;
 }
 
+.card3 p{
+  font-size: 30px;
+  padding: 50px;
+}
+
+.card1 p {
+  
+  font-size: 30px;
+  padding: 50px;
+  
+
+}
+
 .card1 h2,
 .card3 h2 {
-  font-size: 2rem;
+  font-size: 50px;
 }
 
 .card2 h2 {
@@ -103,14 +115,14 @@ body {
   text-decoration: none;
   margin: 20px 0; /* Add spacing between buttons */
   margin-left: 315px;
-  margin-top: 150px;
+  margin-top: 20px;
 }
 
 .card2 a {
   display: flex;
   justify-content: center;
   text-decoration: none;
-  font-size: 8rem;
+  font-size: 10rem;
   margin-top: 100px;
   margin-left: 30px;
 }
@@ -174,4 +186,9 @@ body {
 
 .centered-button:hover {
   background-color: #0056b3; /* Hover color */
+}
+
+.welcome-section {
+  margin-top: -130px; /* Adjust the value as needed to control the top margin */
+  text-align: center;
 }

@@ -38,7 +38,9 @@ body {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    padding: 200px;
+    padding: 100px;
+    left: -35px;
+    top: 50px;
   }
   
   .container .card{
@@ -46,7 +48,7 @@ body {
     max-width: 300px;
     height: 215px;
     left:110px;
-    background-color: #d64df1;
+    background-color: #e0a9ff;
     margin: 30px 10px;
     padding: 20px 15px;
     display: flex;

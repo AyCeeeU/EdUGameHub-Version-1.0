@@ -16,7 +16,7 @@
                 <img src="Gamelogo.png" alt="edugamehub Logo" width="400"/>
             </div>
             <div class="logoutLogo">
-                <img src="logout.png" class="logoutImage" alt="edugamehub Logo"/>
+                <a href="Login.html"> <img src="logout.png" class="logoutImage"></a>
             </div>
         </div>
     </header>
@@ -25,7 +25,7 @@
             <div class="card-image"></div>
             <h2>Badge</h2>
             <p>
-                Review the activities you have created and make any necessary edits.
+          View the badges you've earned through completed tasks!
             </p>
             <a href="Badges.html">Proceed</a>
         </div>
@@ -38,7 +38,7 @@
             <div class="card-image"></div>
             <h2>Certificates</h2>
             <p>
-                Track the students' performance, view an overview of their academic progress, and related information.
+                Check the certificates you earned by completing this semester!
             </p>
             <a href="Certificates.html">Proceed</a>
         </div>

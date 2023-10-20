@@ -149,5 +149,24 @@ background-color: #3e8e41;
   .forgot-password {
     text-align: center;
   }
+
   
+
+  h2 {
+  position: absolute;
+  top: 300px; /* Adjust the top position as needed */
+  left: 300px; /* Adjust the left position as needed */
+  font-size: 100px;
+  font-family: Arial, Helvetica, sans-serif;
   
+}
+
+
+
+.note {
+  position: absolute;
+  top: 150px; /* Adjust the top position as needed */
+  left: 1px; /* Adjust the left position as needed */
+  width: 2132px;
+  height: 900px;
+}
