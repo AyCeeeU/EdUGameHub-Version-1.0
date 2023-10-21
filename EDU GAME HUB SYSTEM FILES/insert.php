@@ -1,9 +1,7 @@
 <?php
 
-    // Insert the content of connection.php file
     include('db_conn.php');
     
-    // Insert data into the database
     if(ISSET($_POST['insertData']))
     {
         $firstname = $_POST['firstname'];

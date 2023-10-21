@@ -19,8 +19,10 @@
             <span class="material-icons-outlined">menu</span>
         </div>
         <div class="header-left">
+        <button class="btn btn-primary" id="createActivityBtn">Create Activity</button>
             <button class="btn btn-secondary" id="libraryBtn" onclick="openLibrary()">Library</button>
-            <button class="btn btn-secondary" id="leaderboardBtn" onclick="openLeaderboard()">Leaderboard</button>
+            <button class="btn btn-secondary" id="badgesBtn"onclick="openbadgesBtn()">Badges</button>
+            <!--<button class="btn btn-secondary" id="leaderboardBtn" onclick="openLeaderboard()">Leaderboard</button>-->
         </div>
         <div class="header-right">
             <span class="material-icons-outlined">notifications</span>
@@ -70,26 +72,26 @@
     <!-- End Sidebar -->
 
     <?php
-    // Include your database connection script (db_conn.php)
+
     include('db_conn.php');
 
-    // Initialize variables to store form data
+    
     $activity_name = "";
     $questions = array();
 
-    // Check if the form is submitted
+    // Form submission
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $activity_name = $_POST["activity-name"];
 
-        // Loop through posted questions and store them in an array
+        // Loop through posted questions 
         for ($i = 1; $i <= $_POST["question-count"]; $i++) {
             $question_text = $_POST["question-text-$i"];
 
-            // Initialize options and correct_option arrays
+            //  options and correct_option arrays
             $options = array();
             $correct_option = "";
 
-            // Check if options and correct_option fields exist before accessing them
+        
             if (isset($_POST["option-$i-1"])) {
                 $options[] = $_POST["option-$i-1"];
             }
@@ -106,10 +108,10 @@
                 $correct_option = $_POST["correct-option-$i"];
             }
 
-            // Check if the question has at least one option
+         
             if (empty($options)) {
                 echo '<script>alert("Question ' . $i . ' must have at least one option.");</script>';
-                continue; // Skip this question and move to the next
+                continue; 
             }
 
             $questions[] = array(
@@ -119,10 +121,10 @@
             );
         }
 
-        // Get the value of the Randomize Questions checkbox
+        //  the value of the Randomize Questions checkbox
         $randomize_questions = isset($_POST['randomize-questions']) ? 1 : 0;
 
-        // Insert questions into the database
+        //  questions into the database
         foreach ($questions as $question) {
             $question_text = mysqli_real_escape_string($conn, $question["question_text"]);
             $options = array_map(function ($option) use ($conn) {
@@ -130,16 +132,16 @@
             }, $question["options"]);
             $correct_option = mysqli_real_escape_string($conn, $question["correct_option"]);
 
-            // SQL query to insert data into the table
+            //  query to insert data into the table
             $sql = "INSERT INTO tbl_multiple_teacher (activity_name, question_text, option_1, option_2, option_3, option_4, correct_option, randomize_questions)
                 VALUES ('$activity_name', '$question_text', ";
 
-            // Add options to the SQL query
+            //  options to the SQL query
             for ($i = 0; $i < 4; $i++) {
                 if (isset($options[$i])) {
                     $sql .= "'" . $options[$i] . "'";
                 } else {
-                    $sql .= "''"; // Empty string for NULL value
+                    $sql .= "''"; 
                 }
 
                 if ($i < 3) {
@@ -149,9 +151,10 @@
 
             $sql .= ", '$correct_option', '$randomize_questions')";
 
-            // Execute the SQL query
+       
             if (mysqli_query($conn, $sql)) {
-                // Show the modal when data is saved
+
+                //  the modal when data is saved
                 echo '<script>
                     window.onload = function() {
                         openModal();
@@ -186,7 +189,7 @@
             </div>
             
             <div id="questions-container">
-                <!-- Initially, you can have one set of question elements -->
+               
                 <div class="container" id="question-1">
                     <h2>Question 1</h2>
                     <!-- Wider question text box -->
@@ -234,10 +237,10 @@
     </div>
 
     <script>
-        // Get the modal element
+        //  the modal element
         var modal = document.getElementById("myModal");
 
-        // Get the <span> element that closes the modal
+        //  the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
 
         // Function to open the modal
@@ -245,28 +248,28 @@
             modal.style.display = "block";
         }
 
-        // Function to close the modal
+        // function to close the modal
         function closeModal() {
             modal.style.display = "none";
         }
 
-        // Close the modal if the user clicks outside of it
+        //  the modal if the user clicks outside of it
         window.onclick = function(event) {
             if (event.target === modal) {
                 modal.style.display = "none";
             }
         }
 
-        // Function to add a new set of question elements
+        // function to add a new set of question elements
         function addNewQuestion() {
             var questionCount = document.getElementById("question-count");
             var newQuestionCount = parseInt(questionCount.value) + 1;
 
-            // Clone the entire set of question elements
+            //  the entire set of question elements
             var questionSetTemplate = document.querySelector("#questions-container > .container");
             var newQuestionSet = questionSetTemplate.cloneNode(true);
 
-            // Update the question set number and clear input values and radio button selection in the new set
+            //  the question set number and clear input values and radio button selection in the new set
             newQuestionSet.querySelector("h2").textContent = "Question " + newQuestionCount;
             newQuestionSet.querySelector("textarea").value = "";
             var inputFields = newQuestionSet.querySelectorAll("input[type='text']");
@@ -278,7 +281,7 @@
                 radioButtons[i].checked = false;
             }
 
-            // Set unique IDs and names for new set elements
+            //  unique IDs and names for new set elements
             newQuestionSet.querySelector("h2").textContent = "Question " + newQuestionCount;
             newQuestionSet.querySelector("textarea").setAttribute("name", "question-text-" + newQuestionCount);
             var inputFields = newQuestionSet.querySelectorAll("input[type='text']");
@@ -290,21 +293,45 @@
                 radioButtons[i].setAttribute("name", "correct-option-" + newQuestionCount);
             }
 
-            // Append the new set to the container
+            //  the new set to the container
             document.getElementById("questions-container").appendChild(newQuestionSet);
 
-            // Update the question count
+            //  the question count
             questionCount.value = newQuestionCount;
         }
 
+
+
+        const createActivityBtn = document.getElementById("createActivityBtn");
+    const libraryBtn = document.getElementById("libraryBtn");
+    const leaderboardBtn = document.getElementById("leaderboardBtn");
+    const badgesBtn = document.getElementById("badgesBtn");
+
+    // function to open Create Activity page and toggle button styles
+    function openCreateActivity() {
+      
+        window.location.href = "createActEng.php";
+
+
+        createActivityBtn.classList.remove("active");
+        libraryBtn.classList.remove("active");
+        leaderboardBtn.classList.remove("active");
+        badgesBtn.classList.remove("active");
+
+   
+        createActivityBtn.classList.add("active");
+    }
+
+
+
         function openLibrary() {
-            // Load library.php or any other URL you want
+          
             window.location.href = "library.php";
         }
 
-        function openLeaderboard() {
-            // Load leaderboard.php or any other URL you want
-            window.location.href = "leaderboard.php";
+        function openbadgesBtn() {
+          
+            window.location.href = "sendBadges.html";
         }
     </script>
 </body>

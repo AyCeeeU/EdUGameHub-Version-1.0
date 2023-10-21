@@ -24,7 +24,8 @@
         <div class="header-left">
             <button class="btn btn-primary" id="createActivityBtn">Create Activity</button>
             <button class="btn btn-secondary" id="libraryBtn">Library</button>
-            <button class="btn btn-secondary" id="leaderboardBtn">Leaderboard</button>
+            <button class="btn btn-secondary" id="badgesBtn">Badges</button>
+           
         </div>
         <div class="header-right">
             <span class="material-icons-outlined">notifications</span>
@@ -38,7 +39,7 @@
     <aside id="sidebar">
         <img class="logo" src="images/edugamelogo.png" alt="logo">
         <div class="sidebar-title">
-            <div class "sidebar-brand">
+            <div class="sidebar-brand">
             </div>
             <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
         </div>
@@ -74,21 +75,20 @@
     <!-- End Sidebar -->
 
     <?php
-    // Include your database connection script (db_conn.php)
     include('db_conn.php');
 
-    // Fetch activities created by the teacher
+    // activities created by the teacher
     $sql = "SELECT * FROM tbl_multiple_teacher";
     $result = mysqli_query($conn, $sql);
 
-    // Check if there are activities to display
+    // Checking if there are activities to display
     if (mysqli_num_rows($result) > 0) {
         $activities = mysqli_fetch_all($result, MYSQLI_ASSOC);
     } else {
         $activities = array(); // No activities found
     }
 
-    // Function to update the Visible to Students status
+    // function to update the Visible to Students status
     function updateVisibleStatus($conn, $activityId, $status) {
         $sql = "UPDATE tbl_multiple_teacher SET visible_students = '$status' WHERE question_id = $activityId";
         return mysqli_query($conn, $sql);
@@ -112,7 +112,6 @@
                             <tr>
                                 <td><?php echo $activity['activity_name']; ?></td>
                                 <td>
-                                    <!-- Create a form for each checkbox -->
                                     <form class="visibility-form">
                                         <input type="checkbox" class="visible-checkbox" data-activity-id="<?php echo $activity['question_id']; ?>" <?php echo $activity['visible_students'] === '1' ? 'checked' : ''; ?>>
                                         <input type="hidden" name="activityId" value="<?php echo $activity['question_id']; ?>">
@@ -198,26 +197,81 @@
 
 <script>
     $(document).ready(function () {
-        // Handle checkbox changes without submitting the form
         $('.visibility-form').on('change', '.visible-checkbox', function () {
             var activityId = $(this).data('activity-id');
             var visibleStatus = this.checked ? '1' : '0';
 
             $.ajax({
                 type: 'POST',
-                url: 'update_visibility.php', // Create this PHP file to handle database updates
+                url: 'update_visibility.php', 
                 data: { activityId: activityId, visibleStatus: visibleStatus },
                 success: function (response) {
-                    // Handle success, e.g., show a message or update UI
                     console.log('Visibility updated successfully.');
                 },
                 error: function (error) {
-                    // Handle errors, e.g., show an error message
                     console.error('Error updating visibility: ' + error);
                 }
             });
         });
     });
+
+    document.addEventListener("DOMContentLoaded", function () {
+    const createActivityBtn = document.getElementById("createActivityBtn");
+    const libraryBtn = document.getElementById("libraryBtn");
+    const leaderboardBtn = document.getElementById("leaderboardBtn");
+    const badgesBtn = document.getElementById("badgesBtn");
+
+    function openCreateActivity() {
+        window.location.href = "createActEng.php";
+
+        createActivityBtn.classList.remove("active");
+        libraryBtn.classList.remove("active");
+        leaderboardBtn.classList.remove("active");
+        badgesBtn.classList.remove("active");
+
+        createActivityBtn.classList.add("active");
+    }
+
+    function openLibrary() {
+        window.location.href = "library.php";
+
+        createActivityBtn.classList.remove("active");
+        libraryBtn.classList.remove("active");
+        leaderboardBtn.classList.remove("active");
+        badgesBtn.classList.remove("active");
+
+        libraryBtn.classList.add("active");
+    }
+
+    function openLeaderboard() {
+        window.location.href = "engLeaderboard.html";
+
+        createActivityBtn.classList.remove("active");
+        libraryBtn.classList.remove("active");
+        leaderboardBtn.classList.remove("active");
+        badgesBtn.classList.remove("active");
+
+        leaderboardBtn.classList.add("active");
+    }
+
+    function openBadges() {
+     
+        window.location.href = "sendBadges.html"; 
+
+        // Remove active class from all buttons
+        createActivityBtn.classList.remove("active");
+        libraryBtn.classList.remove("active");
+        badgesBtn.classList.remove("active");
+        // Add active class to the clicked button
+        badgesBtn.classList.add("active");
+    }
+
+    // Attach click event listeners to the buttons
+    createActivityBtn.addEventListener("click", openCreateActivity);
+    libraryBtn.addEventListener("click", openLibrary);
+    badgesBtn.addEventListener("click", openBadges);
+});
+
 </script>
 </body>
 </html>

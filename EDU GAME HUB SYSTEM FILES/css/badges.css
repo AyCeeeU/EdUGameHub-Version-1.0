@@ -352,3 +352,35 @@ margin-left: 20px;
   margin: 20px 0;
   font-weight: bold;
 }
+
+
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.header-left button {
+  margin-right: 10px;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  border-radius: 5px; /* Add border radius for all buttons */
+  color: white; /* Set text color to white for all buttons */
+}
+
+/* Button Styles */
+.header-left button.btn-primary {
+  background-color: #333; /* Dark blue when not clicked */
+}
+
+.header-left button.btn-secondary {
+  background-color: #333; /* Dark blue when not clicked */
+}
+
+
+/* Hover Styles */
+.header-left button:hover {
+  background-color: #87CEEB; /* Light up with sky blue on hover */
+}

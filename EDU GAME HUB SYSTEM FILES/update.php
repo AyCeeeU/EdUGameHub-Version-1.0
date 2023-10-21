@@ -1,6 +1,5 @@
 <?php
 
-    // Insert the content of connection.php file
     include('db_conn.php');
 
     // Update data into the database
@@ -16,7 +15,7 @@
         $password = $_POST['updatePassword'];
         $created_date = $_POST['updateCreatedDate'];
     
-        // Hash the new password
+        // Hash password
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     
         $sql = "UPDATE `tbl_accdb` SET `firstname` = '$firstname',
@@ -26,7 +25,7 @@
                                 `section` = '$section',
                                 `grade_level` = '$grade_level',
                                 `account_type` = '$account_type',
-                                `password` = '$hashed_password',  -- Update the hashed password
+                                `password` = '$hashed_password',  
                                 `created_date` = '$created_date'
                             WHERE id='$id'";
     

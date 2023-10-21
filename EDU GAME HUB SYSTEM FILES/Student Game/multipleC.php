@@ -28,52 +28,64 @@
     // Include the database connection file
     include 'db_conn.php';
 
-    // Retrieve the activity name from the query parameters
-    if (isset($_GET['activity_name'])) {
-        $activityName = $_GET['activity_name'];
-        $questionId = isset($_GET['question_id']) ? intval($_GET['question_id']) : 0;
-    
-        // Query to retrieve the next question for the provided activity name
-        $sql = "SELECT question_id, question_text, option_1, option_2, option_3, option_4 FROM tbl_multiple_teacher WHERE activity_name = ? AND question_id > ? ORDER BY question_id LIMIT 1";
+   
+// Retrieve the activity name and question_id from query parameters
+if (isset($_GET['activity_name'])) {
+    $activityName = $_GET['activity_name'];
+
+    $questionId = isset($_GET['question_id']) ? intval($_GET['question_id']) : 0;
+
+    // Check if the shuffled question order is stored in the session
+    if (!isset($_SESSION['shuffled_questions'])) {
+        // Fetch all questions for the given activity
+        $sql = "SELECT question_id, question_text, option_1, option_2, option_3, option_4 
+                FROM tbl_multiple_teacher 
+                WHERE activity_name = ?";
+
         $stmt = $conn->prepare($sql);
-    
+
         if ($stmt) {
-            $stmt->bind_param("si", $activityName, $questionId);
-    
-            // Execute the statement
+            $stmt->bind_param("s", $activityName);
             $stmt->execute();
-    
-            // Get the result
             $result = $stmt->get_result();
-    
-            if ($result && $result->num_rows > 0) {
-                $row = $result->fetch_assoc();
-    
-                // Display the question and answer options
-                echo '<p class="question">' . $row['question_text'] . '</p>';
-                echo '</div>';
-                // Dynamically generate answer buttons
-                echo '<div class="button-container">';
-                echo '<button class="answer-button" data-correct="true" data-answer="A">' . $row['option_1'] . '</button>';
-                echo '<button class="answer-button" data-correct="false" data-answer="B">' . $row['option_2'] . '</button>';
-                echo '<button class="answer-button" data-correct="false" data-answer="C">' . $row['option_3'] . '</button>';
-                echo '<button class="answer-button" data-correct="false" data-answer="D">' . $row['option_4'] . '</button>';
-                // Display the "Next" button with the updated question_id
-                echo '<button class="submit-button" onclick="navigateToNextQuestion(\'' . $activityName . '\', ' . $row['question_id'] . ')">Next</button>';
-                echo '</div>';
-            } else {
-                echo 'No more questions found for this activity.';
-            }
-    
-            // Close the statement
+            $questions = $result->fetch_all(MYSQLI_ASSOC);
             $stmt->close();
         } else {
             echo 'Error: ' . $conn->error;
         }
+
+        // Shuffle the questions randomly
+        shuffle($questions);
+
+        // Store the shuffled questions in the session to maintain order
+        $_SESSION['shuffled_questions'] = $questions;
     } else {
-        echo 'No activity_name specified.';
+        // Retrieve the shuffled questions from the session
+        $questions = $_SESSION['shuffled_questions'];
     }
 
+    // Check if the question exists with the given index
+    if (isset($questions[$questionId])) {
+        $question = $questions[$questionId];
+
+        // Display the question and answer options
+        echo '<p class="question">' . $question['question_text'] . '</p>';
+        echo '</div>';
+        // Dynamically generate answer buttons
+        echo '<div class="button-container">';
+        echo '<button class="answer-button" data-correct="true" data-answer="A">' . $question['option_1'] . '</button>';
+        echo '<button class="answer-button" data-correct="false" data-answer="B">' . $question['option_2'] . '</button>';
+        echo '<button class="answer-button" data-correct="false" data-answer="C">' . $question['option_3'] . '</button>';
+        echo '<button class="answer-button" data-correct="false" data-answer="D">' . $question['option_4'] . '</button>';
+        // Display the "Next" button with the updated question_id
+        echo '<button class="submit-button" onclick="navigateToNextQuestion(\'' . $activityName . '\', ' . ($questionId + 1) . ')">Next</button>';
+        echo '</div>';
+    } else {
+        echo 'No more questions found for this activity.';
+    }
+} else {
+    echo 'No activity_name specified.';
+}
     // Close the database connection
     $conn->close();
     ?>

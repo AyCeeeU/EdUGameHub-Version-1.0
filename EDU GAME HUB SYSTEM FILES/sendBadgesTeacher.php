@@ -1,5 +1,4 @@
 <?php
-// Include the database connection file
 include('db_conn.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -33,7 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $quarter = "quarter_4";
             break;
         default:
-            // Handle any other cases or errors
             $quarter = "";
             break;
     }

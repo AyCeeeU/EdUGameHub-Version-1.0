@@ -1,5 +1,4 @@
 <?php
-// Include the database connection file
 include('db_conn.php');
 
 // Fetching student names based on account_type

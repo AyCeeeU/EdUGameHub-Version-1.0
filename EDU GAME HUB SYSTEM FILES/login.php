@@ -30,16 +30,15 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             if (password_verify($password, $row['password'])) {
                 $login = true;
                 $_SESSION['username'] = $row['username'];
-                $_SESSION['user_id'] = $row['id']; // Store user ID in the session
+                $_SESSION['user_id'] = $row['id']; 
         
-                // Update the last login date in tbl_activity_log
+                //  the last login date in tbl_activity_log
                     $userId = $_SESSION['user_id'];
                     $action = "Login";
                     $logSql = "INSERT INTO tbl_activity_log (user_id, action, timestamp) VALUES ('$userId', '$action', NOW()) 
                             ON DUPLICATE KEY UPDATE timestamp = NOW()";  
                     mysqli_query($conn, $logSql);
                 
-                // Check account type and redirect accordingly
                 switch ($row['account_type']) {
                     case 'Student':
                         header("Location: Student Game\index.php");

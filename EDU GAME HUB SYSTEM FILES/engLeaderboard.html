@@ -96,36 +96,35 @@ include("db_conn.php");
     <script src="js/script.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-          // Get references to the buttons
+  
           const createActivityBtn = document.getElementById("createActivityBtn");
           const leaderboardBtn = document.getElementById("leaderboardBtn");
       
-          // Function to open Create Activity page and toggle button styles
+          // function to open Create Activity page and toggle button styles
           function openCreateActivity() {
-            // Load createActEng.php or any other URL you want
+     
             window.location.href = "createActEng.php";
       
-            // Remove active class from all buttons
+
             createActivityBtn.classList.remove("active");
             leaderboardBtn.classList.remove("active");
-      
-            // Add active class to the clicked button
+   
             createActivityBtn.classList.add("active");
           }
       
           function openLeaderboard() {
-            // Load leaderboard.php or any other URL you want
+       
             window.location.href = "engLeaderboard.html";
       
-            // Remove active class from all buttons
+   
             createActivityBtn.classList.remove("active");
             leaderboardBtn.classList.remove("active");
       
-            // Add active class to the clicked button
+     
             leaderboardBtn.classList.add("active");
           }
       
-          // Attach click event listeners to the buttons
+         
           createActivityBtn.addEventListener("click", openCreateActivity);
           leaderboardBtn.addEventListener("click", openLeaderboard);
         });

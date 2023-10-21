@@ -1,9 +1,8 @@
 <?php
 
-    // Insert the content of connection.php file
+
     include('db_conn.php');
-    
-    // Delete data from the database
+
     if(ISSET($_POST['deleteData']))
     {
         $id = $_POST['deleteId']; 

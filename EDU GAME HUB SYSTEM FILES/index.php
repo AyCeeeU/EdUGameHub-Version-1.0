@@ -120,7 +120,7 @@ if(!empty($_GET['status'])){
             <tbody>
 
             <?php
-// Define the inactivity threshold (60 days)
+//  the inactivity threshold (60 days)
 $inactivityThreshold = 60;
 
 // Calculate the date 60 days ago
@@ -236,9 +236,10 @@ if($result)
                         <label for="section">Section</label>
                         <select name="section" class="form-control">
                         <option value="section" disabled selected>Select Section</option>
-                            <option value="St. Francis of Assisi">St. Francis of Assisi</option>
-                            <option value="Guadalupe">Guadalupe</option>
-                            <option value="St.Paul">St.Paul</option>
+                            <option value="Saphire">Saphire</option>
+                            <option value="Mercury">Mercury</option>
+                            <option value="Venus">Venus</option>
+                            <option value="Saturn">Saturn</option>
                         </select>
                     </div>
 
@@ -338,7 +339,8 @@ if($result)
               <div id="viewPassword"></div>
               </div>
               <script>
-  // Function to limit the password length in the view modal
+
+  // function to limit the password length in the view modal
   function limitPassword() {
     var passwordElem = document.getElementById("viewPassword");
     var password = passwordElem.textContent;
@@ -347,15 +349,10 @@ if($result)
       passwordElem.textContent = password.substr(0, maxLength) + "..."; // truncate text and add ellipsis
     }
   }
-
-  // Create a MutationObserver to monitor changes in the viewPassword element
   var observer = new MutationObserver(limitPassword);
-
-  // Configure the observer to watch for changes in the element's content
   var config = { childList: true };
-
-  // Attach the observer to the viewPassword element
   observer.observe(document.getElementById("viewPassword"), config);
+
 </script>
               
             <div class="col-sm-5 col-xs-6 tital " >
@@ -529,12 +526,11 @@ icon.innerHTML ="&#9650"
 
 <script>
 $(document).ready(function () {
-    // Handle the click event of the "Archive" button
+    //  the click event of the "Archive" button
     $('.archiveBtn').on('click', function () {
-        // Get the data-record-id attribute value
+      
         var recordId = $(this).data('record-id');
-        
-        // Set the value of the archiveId input field in the archive modal
+
         $('#archiveId').val(recordId);
     });
 });
@@ -560,7 +556,6 @@ function formToggle(ID){
 
         $('#updateModal').modal('show');
 
-        // Get the table row data.
         $tr = $(this).closest('tr');
 
         var data = $tr.children("td").map(function() {
@@ -593,7 +588,6 @@ function formToggle(ID){
 
         $('#viewModal').modal('show');
 
-        // Get the table row data.
         $tr = $(this).closest('tr');
 
         var data = $tr.children("td").map(function() {
@@ -623,7 +617,6 @@ function formToggle(ID){
 
         $('#deleteModal').modal('show');
         
-        // Get the table row data.
         $tr = $(this).closest('tr');
 
         var data = $tr.children("td").map(function() {
@@ -641,12 +634,10 @@ function formToggle(ID){
 
   <script>
     $(document).ready(function () {
-        // Handle the click event of the "Archive" button
+        //  the click event of the "Archive" button
         $('.archiveBtn').on('click', function () {
-            // Get the data-record-id attribute value
             var recordId = $(this).data('record-id');
             
-            // Set the value of the archiveId input field in the archive modal
             $('#archiveId').val(recordId);
         });
     });
