@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2023 at 04:07 PM
+-- Generation Time: Oct 21, 2023 at 10:12 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -27,18 +27,18 @@ SET time_zone = "+00:00";
 -- Table structure for table `tbl_accdb`
 --
 
-  CREATE TABLE `tbl_accdb` (
-    `id` int(11) NOT NULL,
-    `firstname` varchar(50) NOT NULL,
-    `lastname` varchar(50) NOT NULL,
-    `email` varchar(50) NOT NULL,
-    `username` varchar(255) NOT NULL,
-    `section` varchar(50) NOT NULL,
-    `grade_level` varchar(50) NOT NULL,
-    `account_type` varchar(50) NOT NULL,
-    `password` varchar(255) NOT NULL,
-    `created_date` datetime NOT NULL,
-    `profile_pic` varchar(255) DEFAULT NULL
+CREATE TABLE `tbl_accdb` (
+  `id` int(11) NOT NULL,
+  `firstname` varchar(50) NOT NULL,
+  `lastname` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `section` varchar(50) NOT NULL,
+  `grade_level` varchar(50) NOT NULL,
+  `account_type` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `created_date` datetime NOT NULL,
+  `profile_pic` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -46,9 +46,9 @@ SET time_zone = "+00:00";
 --
 
 INSERT INTO `tbl_accdb` (`id`, `firstname`, `lastname`, `email`, `username`, `section`, `grade_level`, `account_type`, `password`, `created_date`, `profile_pic`) VALUES
-(116, 'ADMIN', 'ADMIN', 'juandelacruz@gmail.com', 'admin', '', '', 'Admin', '$2y$10$th6Dpgt3JUg8DoT4XtJbJ.BF3STqJD.OodTMXulS0Iy41cEWgwW3q', '2023-10-10 07:19:06', NULL),
-(117, 'teacher', 'teacher', 'paulcruz@gmail.com', 'teacher', '', '', 'Teacher', '$2y$10$k5.hSyAD03235HC1bY83deZsxTRzlSHyrXtKlA.49rPCvEcI2j6NS', '2023-10-10 07:19:06', NULL),
-(121, 'Cebastian', 'Cabanillas', 'cebastian.cabanillas.edu.ph', '201912129', 'St.Paul', 'Grade 6', 'Student', '$2y$10$BO.jbJRN6IMF321iICVjRuddbPayAnnU4ywxrw3d5kFFIwiqFw0UC', '2023-10-11 11:18:04', 'ProfilePics65294ee499033_image.png');
+(124, 'ADMIN', 'ADMIN', 'juandelacruz@gmail.com', 'admin', '', '', 'Admin', '$2y$10$Y.w3wi23qe9oiTR002YPceh3HFQPfqAMzo/7aCWZvJAJ73hWwPfhW', '2023-10-22 04:09:33', NULL),
+(125, 'Cebastian', 'Cabanillas', 'cebastian.cabanillas.edu.ph', '201912129', 'Venus', 'Grade 6', 'Student', '$2y$10$znPNVgyIHqyxL0H5JV55S.kmxwUNtc7jFPLQ1QBdfg3OLNJRHXWcm', '2023-10-22 04:09:33', NULL),
+(127, 'teacher', 'teacher', 'exampleemail@gmail.com', 'teacher', '', '', 'Teacher', '$2y$10$4v4Y8/VwGw2M3qSSORiia.Dd6iJeUhWS7bAAnwtm.GyiXyaS1Efne', '2023-10-22 04:10:43', NULL);
 
 -- --------------------------------------------------------
 
@@ -66,7 +66,7 @@ CREATE TABLE `tbl_activity` (
 --
 
 INSERT INTO `tbl_activity` (`ID`, `completedAct`) VALUES
-(1, '29');
+(1, '3');
 
 -- --------------------------------------------------------
 
@@ -104,8 +104,9 @@ INSERT INTO `tbl_activity_log` (`id`, `user_id`, `action`, `timestamp`) VALUES
 (47, 119, 'Login', '2023-10-11 02:46:49'),
 (48, 120, 'Login', '2023-10-11 03:16:14'),
 (49, 117, 'Login', '2023-10-11 03:18:19'),
-(50, 121, 'Login', '2023-10-13 12:23:11'),
-(51, 116, 'Login', '2023-10-12 16:30:02');
+(50, 121, 'Login', '2023-10-21 18:11:34'),
+(51, 116, 'Login', '2023-10-21 13:24:27'),
+(73, 122, 'Login', '2023-10-20 22:03:10');
 
 -- --------------------------------------------------------
 
@@ -133,8 +134,23 @@ CREATE TABLE `tbl_archive` (
 --
 
 CREATE TABLE `tbl_badge` (
-  `id` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  `username_badge` varchar(255) NOT NULL,
+  `first_name` varchar(255) NOT NULL,
+  `last_name` varchar(255) NOT NULL,
+  `quarter_1` varchar(255) NOT NULL,
+  `quarter_2` varchar(255) NOT NULL,
+  `quarter_3` varchar(255) NOT NULL,
+  `quarter_4` varchar(255) NOT NULL,
+  `message_badge` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_badge`
+--
+
+INSERT INTO `tbl_badge` (`id`, `username_badge`, `first_name`, `last_name`, `quarter_1`, `quarter_2`, `quarter_3`, `quarter_4`, `message_badge`) VALUES
+(29, '201912129', 'Cebastian', 'Cabanillas', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -209,14 +225,6 @@ CREATE TABLE `tbl_multiple_teacher` (
   `visible_students` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `tbl_multiple_teacher`
---
-
-INSERT INTO `tbl_multiple_teacher` (`question_id`, `activity_name`, `question_text`, `option_1`, `option_2`, `option_3`, `option_4`, `correct_option`, `randomize_questions`, `visible_students`) VALUES
-(158, 'EXAMPLE ACT NAME 1', 'EXAMPLE QUESTION 1', 'ANSWER 1', 'ANSWER 2', 'ANSWER 3', 'ANSWER 4', 4, 1, 1),
-(159, 'EXAMPLE ACT NAME 1', 'EXAMPLE QUESTION 2', 'ANSWER 5', 'ANSWER 6', 'ANSWER 7', 'ANSWER 8', 1, 1, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -248,7 +256,7 @@ CREATE TABLE `tbl_recentact` (
 INSERT INTO `tbl_recentact` (`ID`, `itemname`, `date`, `status`, `subject`) VALUES
 (1, 'Quiz 1', '2023-05-03', 'Complete', 'Mathematics'),
 (2, 'Quiz 2', '2023-05-03', 'Complete', 'Science'),
-(3, 'Quiz 3', '2023-05-03', 'Pending', 'English');
+(3, 'Quiz 3', '2023-05-03', 'Complete', 'English');
 
 -- --------------------------------------------------------
 
@@ -376,7 +384,7 @@ ALTER TABLE `tbl_subjects`
 -- AUTO_INCREMENT for table `tbl_accdb`
 --
 ALTER TABLE `tbl_accdb`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 
 --
 -- AUTO_INCREMENT for table `tbl_activity`
@@ -388,7 +396,13 @@ ALTER TABLE `tbl_activity`
 -- AUTO_INCREMENT for table `tbl_activity_log`
 --
 ALTER TABLE `tbl_activity_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+
+--
+-- AUTO_INCREMENT for table `tbl_badge`
+--
+ALTER TABLE `tbl_badge`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `tbl_createact`
@@ -400,7 +414,7 @@ ALTER TABLE `tbl_createact`
 -- AUTO_INCREMENT for table `tbl_multiple_teacher`
 --
 ALTER TABLE `tbl_multiple_teacher`
-  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
+  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=186;
 
 --
 -- AUTO_INCREMENT for table `tbl_recentact`
