@@ -166,7 +166,7 @@ background-color: #3e8e41;
 .note {
   position: absolute;
   top: 150px; /* Adjust the top position as needed */
-  left: 1px; /* Adjust the left position as needed */
-  width: 2132px;
-  height: 900px;
+  left: -1px; /* Adjust the left position as needed */
+  width: 1921px;
+  height: 795px;
 }
