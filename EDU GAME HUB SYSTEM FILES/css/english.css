@@ -1,6 +1,7 @@
 .header-left {
     display: flex;
     align-items: center;
+    overflow: hidden;
 }
 
 .header-left button {
@@ -11,6 +12,7 @@
     transition: background-color 0.3s, color 0.3s;
     border-radius: 5px; /* Add border radius for all buttons */
     color: white; /* Set text color to white for all buttons */
+    overflow: hidden;
 }
 
 /* Button Styles */
@@ -26,4 +28,16 @@
 /* Hover Styles */
 .header-left button:hover {
     background-color: #87CEEB; /* Light up with sky blue on hover */
+}
+
+.BG{
+    height: 870px;
+    width: 1600px;
+    top: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+body{
+    background-color: #ffffff;
 }

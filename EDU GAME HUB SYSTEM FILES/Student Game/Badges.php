@@ -35,7 +35,7 @@ if ($result) {
                 <div class="gameLogo">
                     <a href="index.php"> <img src="Gamelogo.png" alt="Your Image" width="400"></a>
                 </div>
-                <div class "logoutLogo">
+                <div class="logoutLogo">
                     <img src="logout.png" class="logoutImage" alt="edugamehub Logo" />
                 </div>
             </div>
