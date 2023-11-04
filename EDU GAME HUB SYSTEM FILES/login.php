@@ -30,15 +30,20 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             if (password_verify($password, $row['password'])) {
                 $login = true;
                 $_SESSION['username'] = $row['username'];
-                $_SESSION['user_id'] = $row['id']; 
-        
-                //  the last login date in tbl_activity_log
-                    $userId = $_SESSION['user_id'];
-                    $action = "Login";
-                    $logSql = "INSERT INTO tbl_activity_log (user_id, action, timestamp) VALUES ('$userId', '$action', NOW()) 
-                            ON DUPLICATE KEY UPDATE timestamp = NOW()";  
-                    mysqli_query($conn, $logSql);
-                
+                $_SESSION['user_id'] = $row['id'];
+
+                // Check if the user is an admin and set the session variable
+                if ($row['account_type'] === 'Admin') {
+                    $_SESSION['admin_logged_in'] = true;
+                }
+
+                // The last login date in tbl_activity_log
+                $userId = $_SESSION['user_id'];
+                $action = "Login";
+                $logSql = "INSERT INTO tbl_activity_log (user_id, action, timestamp) VALUES ('$userId', '$action', NOW()) 
+                            ON DUPLICATE KEY UPDATE timestamp = NOW()";
+                mysqli_query($conn, $logSql);
+
                 switch ($row['account_type']) {
                     case 'Student':
                         header("Location: Student Game\index.php");
@@ -69,6 +74,5 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 } else {
     header("Location: Login.html?error=Incorrect username or password");
     exit();
-    
 }
 ?>

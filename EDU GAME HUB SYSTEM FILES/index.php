@@ -1,5 +1,14 @@
 <?php
-  include('db_conn.php');
+session_start();
+include("db_conn.php");
+
+// Check if the user is logged in and is an admin
+if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {  
+    header("HTTP/1.0 403 Forbidden");
+    header("Location: login.html");
+    exit;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -97,6 +106,11 @@ if(!empty($_GET['status'])){
         </form>
     </div>
        <!-- Import Export Button -->
+
+
+
+
+       
           <br><br><br>
           <table class="table table-striped">
             <thead class="bg-secondary text-white">
@@ -213,65 +227,61 @@ if($result)
                 </button>
             </div>
             <div class="modal-body">
-                <form action="insert.php" method="POST">
-                    <div class="form-group">
-                        <label for="title">First Name</label>
-                        <input type="text" name="firstname" class="form-control" placeholder="Enter first name" maxlength="50">
-                    </div>
-                    <div class="form-group">
-                        <label for="title">Last Name</label>
-                        <input type="text" name="lastname" class="form-control" placeholder="Enter last name" maxlength="50">
-                    </div>
-                    <div class="form-group">
-                        <label for="title">Email</label>
-                        <input type="text" name="email" class="form-control" placeholder="Enter email" maxlength="50">
-                    </div>
-                    <div class="form-group">
-                        <label for="title">Username</label>
-                        <input type="text" name="username" class="form-control" placeholder="Enter username" maxlength="50">
-                    </div>
-
-                    <!-- Dropdown Menu -->
-                    <div class="form-group">
-                        <label for="section">Section</label>
-                        <select name="section" class="form-control">
-                        <option value="section" disabled selected>Select Section</option>
-                            <option value="Saphire">Saphire</option>
-                            <option value="Mercury">Mercury</option>
-                            <option value="Venus">Venus</option>
-                            <option value="Saturn">Saturn</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="grade_level">Grade Level</label>
-                        <select name="grade_level" class="form-control">
-                        <option value="grade_level" disabled selected>Select Grade Level</option>
-                            <option value="Grade 3">Grade 3</option>
-                            <option value="Grade 4">Grade 4</option>
-                            <option value="Grade 5">Grade 5</option>
-                            <option value="Grade 6">Grade 6</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="account_type">Account Type</label>
-                        <select name="account_type" class="form-control">
-                        <option value="account_type" disabled selected>Select Account Type</option>
-                            <option value="Admin">Admin</option>
-                            <option value="Teacher">Teacher</option>
-                            <option value="Student">Student</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="title">Password</label>
-                        <input type="password" name="password" class="form-control" placeholder="Enter Password" maxlength="50">
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" name="insertData">Save</button>
-                    </div>
-                </form>
+            <form action="insert.php" method="POST">
+    <div class="form-group">
+        <label for="title">First Name</label>
+        <input type="text" name="firstname" class="form-control" placeholder="Enter first name" maxlength="50" required>
+    </div>
+    <div class="form-group">
+        <label for="title">Last Name</label>
+        <input type="text" name="lastname" class="form-control" placeholder="Enter last name" maxlength="50" required>
+    </div>
+    <div class="form-group">
+        <label for="title">Email</label>
+        <input type="text" name="email" class="form-control" placeholder="Enter email" maxlength="50" required>
+    </div>
+    <div class="form-group">
+        <label for="title">Username</label>
+        <input type="text" name="username" class="form-control" placeholder="Enter username" maxlength="50" required>
+    </div>
+    <!-- Dropdown Menu -->
+    <div class="form-group">
+        <label for="section">Section</label>
+        <select name="section" class="form-control">
+            <option value="section" disabled selected>Select Section</option>
+            <option value="Saphire">Saphire</option>
+            <option value="Mercury">Mercury</option>
+            <option value="Venus">Venus</option>
+            <option value="Saturn">Saturn</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="grade_level">Grade Level</label>
+        <select name="grade_level" class="form-control">
+            <option value="grade_level" disabled selected>Select Grade Level</option>
+            <option value="Grade 3">Grade 3</option>
+            <option value="Grade 4">Grade 4</option>
+            <option value="Grade 5">Grade 5</option>
+            <option value="Grade 6">Grade 6</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="account_type">Account Type</label>
+        <select name="account_type" id="accountTypeSelect" class="form-control" required>
+    <option value="" disabled selected>Select Account Type</option>
+    <option value="Admin">Admin</option>
+    <option value="Teacher">Teacher</option>
+    <option value="Student">Student</option>
+</select>
+    </div>  
+    <div class="form-group">
+        <label for="title">Password</label>
+        <input type="password" name="password" class="form-control" placeholder="Enter Password" maxlength="50" required>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" name="insertData">Save</button>
+    </div>
+</form>
             </div>
         </div>
     </div>
@@ -332,28 +342,7 @@ if($result)
               <div id="viewAccountType"></div>
               </div>
               
-            <div class="col-sm-5 col-xs-6 tital " >
-              <strong>Password:</strong>
-            </div>
-            <div class="col-sm-7 col-xs-6 ">
-              <div id="viewPassword"></div>
-              </div>
-              <script>
-
-  // function to limit the password length in the view modal
-  function limitPassword() {
-    var passwordElem = document.getElementById("viewPassword");
-    var password = passwordElem.textContent;
-    var maxLength = 10; // maximum number of characters to display
-    if (password.length > maxLength) {
-      passwordElem.textContent = password.substr(0, maxLength) + "..."; // truncate text and add ellipsis
-    }
-  }
-  var observer = new MutationObserver(limitPassword);
-  var config = { childList: true };
-  observer.observe(document.getElementById("viewPassword"), config);
-
-</script>
+            
               
             <div class="col-sm-5 col-xs-6 tital " >
               <strong>Created Date:</strong>
@@ -372,73 +361,79 @@ if($result)
     </div>
   </div>
 
-  <!-- UPDATE MODAL -->
-  <div class="modal fade" id="updateModal">
-    <div class="modal-dialog modal-md">
-      <div class="modal-content">
-        <div class="modal-header bg-warning text-white">
-          <h5 class="modal-title">Edit Record</h5>
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
+    <!-- UPDATE MODAL -->
+    <div class="modal fade" id="updateModal">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-header bg-warning text-white">
+            <h5 class="modal-title">Edit Record</h5>
+            <button class="close" data-dismiss="modal">
+              <span>&times;</span>
+            </button>
+          </div>
 
-        
-        <div class="modal-body">
-          <form action="update.php" method="POST">
-            <input type="hidden" name="updateId" id="updateId">
-            <div class="form-group">
-              <label for="title">First Name</label>
-              <input type="text" name="updateFirstname" id="updateFirstname" class="form-control" placeholder="Enter first name" maxlength="50"
-                >
-            </div>
-            <div class="form-group">
-              <label for="title">Last Name</label>
-              <input type="text" name="updateLastname" id="updateLastname" class="form-control" placeholder="Enter last name" maxlength="50"
-                >
-            </div>
-            <div class="form-group">
-              <label for="title">Email</label>
-              <input type="text" name="updateEmail" id="updateEmail" class="form-control" placeholder="Enter Email Address" maxlength="50"
-                >
-            </div>
-            <div class="form-group">
-              <label for="title">Username</label>
-              <input type="text" name="updateUsername" id="updateUsername" class="form-control" placeholder="Enter Username" maxlength="50"
-                >
-            </div>
-            <div class="form-group">
-              <label for="title">Section</label>
-              <input type="text" name="updateSection" id="updateSection" class="form-control" placeholder="Enter Section" maxlength="50" >
-            </div>
-            <div class="form-group">
-              <label for="title">Grade Level</label>
-              <input type="text" name="updateGradeLevel" id="updateGradeLevel" class="form-control" placeholder="Enter Grade Level" maxlength="50"
-                >
-            </div>
-            <div class="form-group">
-              <label for="title">Account Type</label>
-              <input type="text" name="updateAccountType" id="updateAccountType" class="form-control" placeholder="Enter Account Type" maxlength="50"
-                >
-            </div>
-            <div class="form-group">
-              <label for="title">Password</label>
-              <input type="text" name="updatePassword" id="updatePassword" class="form-control" placeholder="Enter Password" maxlength="50"
-                >
-            </div>
-            <div class="form-group">
-              <label for="title">Created Date</label>
-              <input type="text" name="updateCreatedDate" id="updateCreatedDate" class="form-control" placeholder="Enter Created Date" maxlength="50"
-                >
-            </div>
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-primary" name="updateData">Save Changes</button>
-            </div>
-          </form>
+          
+          <div class="modal-body">
+            <form action="update.php" method="POST">
+              <input type="hidden" name="updateId" id="updateId">
+              <div class="form-group">
+                <label for="title">First Name</label>
+                <input type="text" name="updateFirstname" id="updateFirstname" class="form-control" placeholder="Enter first name" maxlength="50"
+                  >
+              </div>
+              <div class="form-group">
+                <label for="title">Last Name</label>
+                <input type="text" name="updateLastname" id="updateLastname" class="form-control" placeholder="Enter last name" maxlength="50"
+                  >
+              </div>
+              <div class="form-group">
+                <label for="title">Email</label>
+                <input type="text" name="updateEmail" id="updateEmail" class="form-control" placeholder="Enter Email Address" maxlength="50"
+                  >
+              </div>
+              <div class="form-group">
+                <label for="title">Username</label>
+                <input type="text" name="updateUsername" id="updateUsername" class="form-control" placeholder="Enter Username" maxlength="50"
+                  >
+              </div>
+              <div class="form-group">
+                <label for="title">Section</label>
+                <input type="text" name="updateSection" id="updateSection" class="form-control" placeholder="Enter Section" maxlength="50" >
+              </div>
+              <div class="form-group">
+                <label for="title">Grade Level</label>
+                <input type="text" name="updateGradeLevel" id="updateGradeLevel" class="form-control" placeholder="Enter Grade Level" maxlength="50"
+                  >
+              </div>
+              <div class="form-group">
+                <label for="title">Account Type</label>
+                <input type="text" name="updateAccountType" id="updateAccountType" class="form-control" placeholder="Enter Account Type" maxlength="50"
+                  >
+              </div>
+              <div class="form-group">
+    <label for="title">Password</label>
+    <div class="input-group">
+        <input type="password" name="updatePassword" id="updatePassword" class="form-control" placeholder="Enter Password" maxlength="50">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                <i class="fa fa-eye" id="eyeIcon"></i>
+            </button>
+        </div>
+    </div>
+</div>
+              <div class="form-group">
+                <label for="title">Created Date</label>
+                <input type="text" name="updateCreatedDate" id="updateCreatedDate" class="form-control" placeholder="Enter Created Date" maxlength="50"
+                  >
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" name="updateData">Save Changes</button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
   <!-- DELETE MODAL 
   <div class="modal fade" id="deleteModal">
@@ -538,6 +533,22 @@ $(document).ready(function () {
 
 </script>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.querySelector("form");
+        const accountTypeSelect = document.getElementById("accountTypeSelect");
+
+        form.addEventListener("submit", function(event) {
+            if (accountTypeSelect.value === "account_type") {
+                event.preventDefault();
+                alert("Please select an account type.");
+            }
+        });
+    });
+</script>
+
+
+
   <script>
 function formToggle(ID){
     var element = document.getElementById(ID);
@@ -572,7 +583,7 @@ function formToggle(ID){
         $('#updateSection').val(data[5]);
         $('#updateGradeLevel').val(data[6]);
         $('#updateAccountType').val(data[7]);
-        $('#updatePassword').val(data[8]);
+        //$('#updatePassword').val(data[8]);
         $('#updateCreatedDate').val(data[9]);
                   
 
@@ -580,6 +591,27 @@ function formToggle(ID){
         
     });
   </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const passwordInput = document.getElementById('updatePassword');
+        const eyeIcon = document.getElementById('eyeIcon');
+
+        document.getElementById('togglePassword').addEventListener('click', function () {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.classList.remove('fa-eye');
+                eyeIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.classList.remove('fa-eye-slash');
+                eyeIcon.classList.add('fa-eye');
+            }
+        });
+    });
+</script>
+
+
 
   <script>
     
@@ -603,7 +635,6 @@ function formToggle(ID){
         $('#viewSection').text(data[5]);
         $('#viewGradeLevel').text(data[6]);
         $('#viewAccountType').text(data[7]);
-        $('#viewPassword').text(data[8]); 
         $('#viewCreatedDate').text(data[9]);              
 
         });
