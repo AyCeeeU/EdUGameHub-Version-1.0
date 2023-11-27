@@ -16,7 +16,7 @@
                 <img src="Gamelogo.png" alt="edugamehub Logo" width="400"/>
             </div>
             <div class="logoutLogo">
-                <a href="Login.php"> <img src="logout.png" class="logoutImage"></a>
+                <a href="Login.html"> <img src="logout.png" class="logoutImage"></a>
             </div>
         </div>
     </header>

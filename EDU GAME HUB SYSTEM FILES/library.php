@@ -25,6 +25,8 @@
             <button class="btn btn-primary" id="createActivityBtn">Create Activity</button>
             <button class="btn btn-secondary" id="libraryBtn">Library</button>
             <button class="btn btn-secondary" id="badgesBtn">Badges</button>
+            <button class="btn btn-secondary" id="certificateBtn">Certificate</button>
+            
            
         </div>
         <div class="header-right">

@@ -92,12 +92,23 @@ if (isset($_GET['activity_name'])) {
     </div>
 
     <script>
-    // Get all answer buttons
+    // Add a variable to track whether an answer has been selected
+let answerSelected = false;
+
+// Get all answer buttons
 const answerButtons = document.querySelectorAll('.answer-button');
 
 // Add click event listeners to answer buttons
 answerButtons.forEach(button => {
     button.addEventListener('click', () => {
+        // Check if an answer has already been selected
+        if (answerSelected) {
+            return;
+        }
+
+        // Set the variable to indicate that an answer has been selected
+        answerSelected = true;
+
         // Check if the clicked button is the correct answer
         const isCorrect = button.getAttribute('data-correct') === 'true';
 
@@ -114,32 +125,18 @@ answerButtons.forEach(button => {
             button.classList.add('wrong-selected');
             document.getElementById('wrongSound').play(); // Play the wrong answer sound
         }
+
+        // Disable all buttons after an answer is selected
+        answerButtons.forEach(btn => {
+            btn.disabled = true;
+        });
     });
 });
 
-
-    function checkAnswer() {
-        // Find the selected correct button
-        const selectedCorrectButton = document.querySelector('.correct-selected');
-
-        // Find the selected wrong button
-        const selectedWrongButton = document.querySelector('.wrong-selected');
-
-        // Change button colors based on correctness
-        if (selectedCorrectButton) {
-            selectedCorrectButton.style.backgroundColor = 'green';
-        }
-        if (selectedWrongButton) {
-            selectedWrongButton.style.backgroundColor = 'red';
-        }
-
-        // You might want to add more logic here to handle checking the answer.
-    }
-
-    function navigateToNextQuestion(activityName, questionId) {
-        // Change the location to the same page but with the next question for the same activity
-        window.location.href = 'multipleC.php?activity_name=' + activityName + '&question_id=' + questionId;
-    }
+function navigateToNextQuestion(activityName, questionId) {
+    // Change the location to the same page but with the next question for the same activity
+    window.location.href = 'multipleC.php?activity_name=' + activityName + '&question_id=' + questionId;
+}
     </script>
     </body>
 </html>
