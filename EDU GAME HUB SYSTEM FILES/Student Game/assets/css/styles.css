@@ -1,3 +1,5 @@
+/* Desktop styles */
+
 header {
   display: flex;
   align-items: center;
@@ -30,9 +32,6 @@ body {
   height: 50px;
 }
 
-
-
-
 .container {
   display: flex;
   flex-direction: row;
@@ -44,14 +43,12 @@ body {
 .card1,
 .card2,
 .card3 {
-  
   font-family: Arial, sans-serif;
   font-size: 30px;
   color: black;
   margin: 0px; /* Add some spacing between cards */
   text-align: center; /* Center text */
   margin-top: -100px;
-  
 }
 
 .card1 {
@@ -61,9 +58,8 @@ body {
 }
 
 .card2 {
-  background: #ff3e7f ;
+  background: #ff3e7f;
   width: 500px;
-  
 }
 
 .card3 {
@@ -71,24 +67,20 @@ body {
   background: #ffc219;
 }
 
-
-.card2 p{
+.card2 p {
   text-align: justify;
   margin: 10px 0; /* Add spacing between paragraphs */
   font-size: 25px;
 }
 
-.card3 p{
+.card3 p {
   font-size: 30px;
   padding: 50px;
 }
 
 .card1 p {
-  
   font-size: 30px;
   padding: 50px;
-  
-
 }
 
 .card1 h2,
@@ -126,12 +118,6 @@ body {
   margin-top: 100px;
   margin-left: 30px;
 }
-
-
-
-
-/* Custom file input styles */
-
 
 .profile-pic-div {
   height: 200px;
@@ -181,7 +167,6 @@ body {
   cursor: pointer;
   border-radius: 5px;
   position: relative;
-  
 }
 
 .centered-button:hover {
@@ -193,49 +178,115 @@ body {
   text-align: center;
 }
 
-/* Media Queries */
-@media only screen and (max-width: 768px) {
-  header {
-    padding: 10px;
-  }
+/* Responsive styles */
+@media only screen and (max-width:1037px) {
 
   header img {
-    margin-right: 10px;
-  }
+    margin-right: 20px; /* Add some space between the logo and text */
+    width: 200px;
+}
 
-  .logoutImage {
-    top: 5px;
-    right: 5px;
+.logoutImage {
+    position: absolute;
+    top: 10px; /* Adjust the top value to control the vertical position */
+    right: 10px; /* Adjust the right value to control the horizontal position */
     width: 30px;
     height: 30px;
-  }
-
+}
   .container {
-    flex-direction: column;
-    align-items: center;
-    top: 0;
+    display: flex;
+    flex-direction: column; /* Change to column to stack cards vertically */
+    align-items: center; /* Center cards horizontally */
+    position: relative;
+    top: 180px; /* Adjust as needed */
   }
-
+  
   .card1,
   .card2,
   .card3 {
-    width: 100%;
+    font-family: Arial, sans-serif;
+    font-size: 20px; /* Adjust font size for smaller cards */
+    color: black;
+    margin: 0px 0; /* Add some spacing between cards */
+    text-align: center; /* Center text */
+  
+  }
+  
+  .card1 {
+    width: 430px; /* Adjust width for smaller card */
+    height: 235px; /* Adjust height for smaller card */
+    background-color: #51ffff;
+  }
+  
+  .card2 {
+    background: #ff3e7f;
+    width: 430px; /* Adjust width for smaller card */
+    height: 235px;
+  }
+  
+  .card3 {
+    width: 430px; /* Adjust width for smaller card */
+    background: #ffc219;
+  }
+  
+  .card2 p {
+    text-align: justify;
+    margin: 10px 0; /* Add spacing between paragraphs */
+    font-size: 15px; /* Adjust font size for smaller text */
+  }
+  
+  .card3 p,
+  .card1 p {
+    font-size: 20px; /* Adjust font size for smaller text */
+    padding: 20px; /* Adjust padding for smaller cards */
+  }
+  
+  .card1 h2,
+  .card3 h2 {
+    font-size: 30px; /* Adjust font size for smaller heading */
+  }
+  
+  .card2 h2 {
+    font-size: 25px; /* Adjust font size for smaller heading */
+    margin-right: 10px; /* Adjust margin for smaller heading */
+  }
+  
+  .card1 a,
+  .card3 a {
+    background-color: rgb(8, 10, 128);
+    color: white;
+    padding: 10px 10px; /* Adjust padding for smaller buttons */
+    border-radius: 5px; /* Adjust border-radius for smaller buttons */
+    height: 18px; /* Adjust height for smaller buttons */
+    width: 80px; /* Adjust width for smaller buttons */
+    display: block;
+    text-align: center;
+    font-size: 15px; /* Adjust font size for smaller text */
+    text-decoration: none;
+    margin: 10px 0; /* Add spacing between buttons */
+    margin-left: 165px;
     margin-top: 20px;
   }
-
-  .card1 a,
-  .card3 a,
+  
   .card2 a {
-    margin-left: 0;
-    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 5rem; /* Adjust font size for smaller text */
+    margin-top: 50px; /* Adjust margin for smaller text */
+    margin-left: 15px; /* Adjust margin for smaller text */
   }
 
   .profile-pic-div {
-    top: 10%;
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: 13%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid rgb(0, 0, 0);
   }
-
-  .centered-button {
-    display: block;
-    margin-top: 20px;
-  }
+  
 }
