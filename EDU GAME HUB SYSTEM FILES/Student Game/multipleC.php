@@ -25,11 +25,10 @@
 
     <div class="quiz-container1">
     <?php
-    // Include the database connection file
-    include 'db_conn.php';
+session_start(); // Start the session at the beginning of the file
 
-   
-// Retrieve the activity name and question_id from query parameters
+include 'db_conn.php';
+
 if (isset($_GET['activity_name'])) {
     $activityName = $_GET['activity_name'];
 
@@ -59,36 +58,58 @@ if (isset($_GET['activity_name'])) {
 
         // Store the shuffled questions in the session to maintain order
         $_SESSION['shuffled_questions'] = $questions;
+        $_SESSION['user_score'] = 0; // Initialize user score
     } else {
-        // Retrieve the shuffled questions from the session
+        // Retrieve the shuffled questions and user score from the session
         $questions = $_SESSION['shuffled_questions'];
+        $userScore = $_SESSION['user_score'];
     }
 
     // Check if the question exists with the given index
     if (isset($questions[$questionId])) {
         $question = $questions[$questionId];
 
+        if (isset($_POST['user_answer'])) {
+            $userAnswer = $_POST['user_answer'];
+            $correctAnswer = $question['option_1']; // Assuming option_1 is always the correct answer
+
+            if ($userAnswer === $correctAnswer) {
+                $_SESSION['user_score']++; // Increment user score for correct answer
+            }
+        }
+
         // Display the question and answer options
         echo '<p class="question">' . $question['question_text'] . '</p>';
         echo '</div>';
         // Dynamically generate answer buttons
         echo '<div class="button-container">';
-        echo '<button class="answer-button" data-correct="true" data-answer="A">' . $question['option_1'] . '</button>';
-        echo '<button class="answer-button" data-correct="false" data-answer="B">' . $question['option_2'] . '</button>';
-        echo '<button class="answer-button" data-correct="false" data-answer="C">' . $question['option_3'] . '</button>';
-        echo '<button class="answer-button" data-correct="false" data-answer="D">' . $question['option_4'] . '</button>';
+        echo '<form method="post" action="multipleC.php?activity_name=' . $activityName . '&question_id=' . ($questionId + 1) . '">';
+        echo '<button class="answer-button" name="user_answer" value="' . $question['option_1'] . '">' . $question['option_1'] . '</button>';
+        echo '<button class="answer-button" name="user_answer" value="' . $question['option_2'] . '">' . $question['option_2'] . '</button>';
+        echo '<button class="answer-button" name="user_answer" value="' . $question['option_3'] . '">' . $question['option_3'] . '</button>';
+        echo '<button class="answer-button" name="user_answer" value="' . $question['option_4'] . '">' . $question['option_4'] . '</button>';
         // Display the "Next" button with the updated question_id
-        echo '<button class="submit-button" onclick="navigateToNextQuestion(\'' . $activityName . '\', ' . ($questionId + 1) . ')">Next</button>';
+        if ($questionId < count($questions) - 1) {
+            echo '<button class="submit-button" type="submit">Next</button>';
+        } else {
+            // If it's the last question, redirect to "result.html" with the total score
+            echo '<input type="hidden" name="total_score" value="' . $userScore . '">';
+echo '<button class="submit-button" type="submit">Finish</button>';
+        }
+        echo '</form>';
         echo '</div>';
     } else {
-        echo 'No more questions found for this activity.';
+        // Redirect to "result.html" with the total score when there are no more questions
+        header("Location: result.php?total_score=" . $userScore);
+        exit();
     }
 } else {
     echo 'No activity_name specified.';
 }
-    // Close the database connection
-    $conn->close();
-    ?>
+
+// Close the database connection
+$conn->close();
+?>
     </div>
 
     <script>
