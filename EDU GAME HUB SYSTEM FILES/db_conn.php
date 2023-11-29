@@ -12,4 +12,13 @@ if (!$conn){
     echo "Connection Failed!";
 }
 
+
+// Create a connection
+$mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
+
+// Check connection
+if ($mysqli->connect_error) {
+    die("Database connection error: " . $mysqli->connect_error);
+}
+
 ?>

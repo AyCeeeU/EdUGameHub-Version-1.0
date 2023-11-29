@@ -2,69 +2,53 @@
 
 include_once 'db_conn.php';
 
-if (isset($_POST['importSubmit'])) {
+if(isset($_POST['importSubmit'])){
+    
 
-    $csvMimes = array(
-        'text/x-comma-separated-values',
-        'text/comma-separated-values',
-        'application/octet-stream',
-        'application/vnd.ms-excel',
-        'application/x-csv',
-        'text/x-csv',
-        'text/csv',
-        'application/csv',
-        'application/excel',
-        'application/vnd.msexcel',
-        'text/plain'
-    );
-
-    // Validate whether the selected file is a CSV file
-    if (!empty($_FILES['file']['name']) && in_array($_FILES['file']['type'], $csvMimes)) {
-
-        if (is_uploaded_file($_FILES['file']['tmp_name'])) {
-
+    $csvMimes = array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'text/plain');
+    
+    // validate whether the selected file is a CSV file
+    if(!empty($_FILES['file']['name']) && in_array($_FILES['file']['type'], $csvMimes)){
+        
+        if(is_uploaded_file($_FILES['file']['tmp_name'])){
+            
             $csvFile = fopen($_FILES['file']['tmp_name'], 'r');
-
+            
             fgetcsv($csvFile);
+            
+            while(($line = fgetcsv($csvFile)) !== FALSE){
 
-            while (($line = fgetcsv($csvFile)) !== FALSE) {
+                $firstname = $line[1];
+                $lastname = $line[2];
+                $email  = $line[3];
+                $username  = $line[4];
+                $section  = $line[5];
+                $grade_level = $line[6];
+                $account_type = $line[7];
+                $password = $line[8];
+                $created_date = $line[9];
 
-                $firstname = isset($line[1]) ? $line[1] : '';
-                $lastname = isset($line[2]) ? $line[2] : '';
-                $email = isset($line[3]) ? $line[3] : '';
-                $username = isset($line[4]) ? $line[4] : '';
-                $section = isset($line[5]) ? $line[5] : '';
-                $grade_level = isset($line[6]) ? $line[6] : '';
-                $account_type = isset($line[7]) ? $line[7] : '';
-                $password = isset($line[8]) ? $line[8] : '';
-                $created_date = isset($line[9]) ? $line[9] : '';
-
-                // Check if any of the required fields is empty
-                if (empty($firstname) || empty($email) || empty($username) || empty($account_type) || empty($password)) {
-                    continue; // Skip this record and proceed to the next one
-                }
-
-                // Hash the password
+                // Hash  password
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-                // Check whether a member already exists in the database with the same email
+                // Checking whether a member already exists in the database with the same email
                 $prevQuery = "SELECT id FROM tbl_accdb WHERE email = '$email'";
                 $prevResult = $conn->query($prevQuery);
 
-                if ($prevResult->num_rows > 0) {
-
-                } else {
+                if($prevResult->num_rows > 0){
+             
+                }else{
                     $sql = "INSERT INTO tbl_accdb (firstname, lastname, email, username, section, grade_level, account_type, password, created_date) 
-                            VALUES ('$firstname', '$lastname', '$email', '$username', '$section', '$grade_level', '$account_type', '$hashedPassword', NOW())";
+                    VALUES ('$firstname', '$lastname', '$email', '$username', '$section', '$grade_level', '$account_type', '$hashedPassword', NOW())";
+                    
+                    $run = mysqli_query($conn,$sql);
 
-                    $run = mysqli_query($conn, $sql);
-
-                    if (!$run) {
+                    if(!$run){
                         echo "Error inserting data: " . mysqli_error($conn);
                     }
                 }
             }
-
+            
             fclose($csvFile);
 
             $qstring = '?status=succ';
@@ -76,5 +60,5 @@ if (isset($_POST['importSubmit'])) {
     }
 }
 
-header("Location: index.php" . $qstring);
+header("Location: index.php".$qstring);
 ?>

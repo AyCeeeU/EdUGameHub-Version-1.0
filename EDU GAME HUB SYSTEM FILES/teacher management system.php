@@ -94,7 +94,7 @@ include("db_conn.php");
             </a>
           </li>
           <li class="sidebar-list-item">
-            <a href="Login.html">
+            <a href="Login1.php">
               <span class="material-icons-outlined">logout</span> Sign Out
             </a>
           </li>

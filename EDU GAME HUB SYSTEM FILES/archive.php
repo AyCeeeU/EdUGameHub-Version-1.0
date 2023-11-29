@@ -53,7 +53,7 @@
           
           <div class="col-md-12 head">
     <div class="float-right">
-    <a href="index.php" class="btn btn-primary">Admin Panel</a>
+    <a href="index.php" class="btn btn-dark">Admin Panel</a>
 
         
     </div>
