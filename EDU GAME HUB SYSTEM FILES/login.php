@@ -40,13 +40,12 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
             if (password_verify($password, $row['password'])) {
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['user_id'] = $row['id'];
+                $_SESSION['account_type'] = $row['account_type']; // Set the account_type session variable
 
-                // Check if the user is an admin and set the session variable
                 if ($row['account_type'] === 'Admin') {
                     $_SESSION['admin_logged_in'] = true;
                 }
 
-                // The last login date in tbl_activity_log
                 $userId = $_SESSION['user_id'];
                 $action = "Login";
                 $logSql = "INSERT INTO tbl_activity_log (user_id, action, timestamp) VALUES (?, ?, NOW()) 

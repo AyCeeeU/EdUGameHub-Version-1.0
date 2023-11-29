@@ -53,7 +53,7 @@
                 </a>
             </li>
             <li class="sidebar-list-item">
-                <a href="subjects.html">
+                <a href="subjects.php">
                     <span class="material-icons-outlined">menu_book</span> Subjects
                 </a>
             </li>
@@ -331,7 +331,7 @@
 
         function openbadgesBtn() {
           
-            window.location.href = "sendBadges.html";
+            window.location.href = "sendBadges.php";
         }
     </script>
 </body>

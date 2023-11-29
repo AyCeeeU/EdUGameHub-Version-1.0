@@ -44,7 +44,7 @@ mysqli_close($conn);
 <header>
     <a href="index.php"> <img src="Gamelogo.png" alt="Your Image" width="400"></a>
     <div class="logoutLogo">
-        <img src="../logout.php" class="logoutImage" alt="edugamehub Logo" />
+    <a href="../logout.php"><img src="logout.png" class="logoutImage"></a>
     </div>
 </header>
 <div class="back-button">

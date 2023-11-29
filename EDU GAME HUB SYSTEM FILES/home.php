@@ -58,7 +58,7 @@ if (isset($_SESSION['username'])) {
 } else {
     // DEBUG: Output an error message if the username is not set in the session
   
-    echo '<li><a href="Login1.php" class="active">Log In</a></li>';
+    echo '<li><a href="Login1.php" class="active"><button>Log In</button></a></li>';
 }
 ?>
 

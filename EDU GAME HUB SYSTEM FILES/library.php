@@ -1,3 +1,17 @@
+
+<?php
+session_start();
+include("db_conn.php");
+
+// Check if the user is logged in and is a teacher
+if (!isset($_SESSION['username']) || $_SESSION['account_type'] !== 'Teacher') {  
+    header("HTTP/1.0 403 Forbidden");
+    header("Location: Login1.php");
+    exit;
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,7 +72,7 @@
                 </a>
             </li>
             <li class="sidebar-list-item">
-                <a href="subjects.html">
+                <a href="subjects.php">
                     <span class="material-icons-outlined">menu_book</span> Subjects
                 </a>
             </li>
@@ -68,7 +82,7 @@
                 </a>
             </li>
             <li class="sidebar-list-item">
-                <a href="Login.html">
+                <a href="logout.php">
                     <span class="material-icons-outlined">logout</span> Sign Out
                 </a>
             </li>
@@ -79,16 +93,16 @@
     <?php
     include('db_conn.php');
 
-    // activities created by the teacher
-    $sql = "SELECT * FROM tbl_multiple_teacher";
-    $result = mysqli_query($conn, $sql);
+   // activities created by the teacher
+$sql = "SELECT DISTINCT activity_name FROM tbl_multiple_teacher";
+$result = mysqli_query($conn, $sql);
 
-    // Checking if there are activities to display
-    if (mysqli_num_rows($result) > 0) {
-        $activities = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    } else {
-        $activities = array(); // No activities found
-    }
+// Checking if there are activities to display
+if (mysqli_num_rows($result) > 0) {
+    $activities = mysqli_fetch_all($result, MYSQLI_ASSOC);
+} else {
+    $activities = array(); // No activities found
+}
 
     // function to update the Visible to Students status
     function updateVisibleStatus($conn, $activityId, $status) {
@@ -97,51 +111,68 @@
     }
     ?>
 
-    <div class="library-container">
-        <center><h1>My Library</h1></center>
-        <div class="activity-list">
-            <?php if (!empty($activities)): ?>
-                <table>
-                    <thead>
+<div class="library-container">
+    <center><h1>My Library</h1></center>
+    <div class="activity-list">
+        <?php if (!empty($activities)): ?>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Activity Name</th>
+                        <th>Visible to Students</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($activities as $activity): ?>
                         <tr>
-                            <th>Activity Name</th>
-                            <th>Visible to Students</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($activities as $activity): ?>
-                            <tr>
-                                <td><?php echo $activity['activity_name']; ?></td>
-                                <td>
+                            <td><?php echo $activity['activity_name']; ?></td>
+                            <!-- Include logic here to display only one question per unique activity name -->
+                            <?php
+                                $activityName = $activity['activity_name'];
+                                $sqlQuestion = "SELECT * FROM tbl_multiple_teacher WHERE activity_name = '$activityName' LIMIT 1";
+                                $resultQuestion = mysqli_query($conn, $sqlQuestion);
+                                $activityDetails = mysqli_fetch_assoc($resultQuestion);
+                            ?>
+                            <td>
+                                <!-- Modify as per your requirements for displaying visibility checkbox -->
+                                <?php if ($activityDetails): ?>
                                     <form class="visibility-form">
-                                        <input type="checkbox" class="visible-checkbox" data-activity-id="<?php echo $activity['question_id']; ?>" <?php echo $activity['visible_students'] === '1' ? 'checked' : ''; ?>>
-                                        <input type="hidden" name="activityId" value="<?php echo $activity['question_id']; ?>">
+                                        <input type="checkbox" class="visible-checkbox" data-activity-id="<?php echo $activityDetails['question_id']; ?>" <?php echo $activityDetails['visible_students'] === '1' ? 'checked' : ''; ?>>
+                                        <input type="hidden" name="activityId" value="<?php echo $activityDetails['question_id']; ?>">
                                     </form>
-                                </td>
-                                <td>
+                                <?php else: ?>
+                                    No question available
+                                <?php endif; ?>
+                            </td>
+                            <td>
+                                <!-- Modify as per your requirements for displaying actions -->
+                                <?php if ($activityDetails): ?>
                                     <button class="viewBtn" data-toggle="modal" data-target="#viewActivityModal"
-                                        data-activity-name="<?php echo htmlspecialchars($activity['activity_name'], ENT_QUOTES); ?>"
-                                        data-question-text="<?php echo htmlspecialchars($activity['question_text'], ENT_QUOTES); ?>"
-                                        data-option-1="<?php echo htmlspecialchars($activity['option_1'], ENT_QUOTES); ?>"
-                                        data-option-2="<?php echo htmlspecialchars($activity['option_2'], ENT_QUOTES); ?>"
-                                        data-option-3="<?php echo htmlspecialchars($activity['option_3'], ENT_QUOTES); ?>"
-                                        data-option-4="<?php echo htmlspecialchars($activity['option_4'], ENT_QUOTES); ?>"
-                                        data-correct-option="<?php echo htmlspecialchars($activity['correct_option'], ENT_QUOTES); ?>"
-                                        data-randomizer="<?php echo isset($activity['randomizer']) ? htmlspecialchars($activity['randomizer'], ENT_QUOTES) : ''; ?>">
+                                        data-activity-name="<?php echo htmlspecialchars($activityDetails['activity_name'], ENT_QUOTES); ?>"
+                                        data-question-text="<?php echo htmlspecialchars($activityDetails['question_text'], ENT_QUOTES); ?>"
+                                        data-option-1="<?php echo htmlspecialchars($activityDetails['option_1'], ENT_QUOTES); ?>"
+                                        data-option-2="<?php echo htmlspecialchars($activityDetails['option_2'], ENT_QUOTES); ?>"
+                                        data-option-3="<?php echo htmlspecialchars($activityDetails['option_3'], ENT_QUOTES); ?>"
+                                        data-option-4="<?php echo htmlspecialchars($activityDetails['option_4'], ENT_QUOTES); ?>"
+                                        data-correct-option="<?php echo htmlspecialchars($activityDetails['correct_option'], ENT_QUOTES); ?>"
+                                        data-randomizer="<?php echo isset($activityDetails['randomizer']) ? htmlspecialchars($activityDetails['randomizer'], ENT_QUOTES) : ''; ?>">
                                         View Activity
                                     </button>
-                                    <a href="editActivity.php?id=<?php echo $activity['question_id']; ?>"><button>Edit Activity</button></a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            <?php else: ?>
-                <p>No activities found.</p>
-            <?php endif; ?>
-        </div>
+                                    <a href="editActivity.php?id=<?php echo $activityDetails['question_id']; ?>"><button>Edit Activity</button></a>
+                                <?php else: ?>
+                                    No actions available
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        <?php else: ?>
+            <p>No activities found.</p>
+        <?php endif; ?>
     </div>
+</div>
 </div>
 
 <!-- Modal for Viewing Activity -->
@@ -246,7 +277,7 @@
     }
 
     function openLeaderboard() {
-        window.location.href = "engLeaderboard.html";
+        window.location.href = "engLeaderboard.php";
 
         createActivityBtn.classList.remove("active");
         libraryBtn.classList.remove("active");
@@ -258,7 +289,7 @@
 
     function openBadges() {
      
-        window.location.href = "sendBadges.html"; 
+        window.location.href = "sendBadges.php"; 
 
         // Remove active class from all buttons
         createActivityBtn.classList.remove("active");

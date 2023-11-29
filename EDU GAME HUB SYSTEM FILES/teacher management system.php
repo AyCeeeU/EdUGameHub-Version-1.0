@@ -1,5 +1,13 @@
 <?php
+session_start();
 include("db_conn.php");
+
+// Check if the user is logged in and is a teacher
+if (!isset($_SESSION['username']) || $_SESSION['account_type'] !== 'Teacher') {  
+    header("HTTP/1.0 403 Forbidden");
+    header("Location: Login1.php");
+    exit;
+}
 ?>
 
 
@@ -84,7 +92,7 @@ include("db_conn.php");
             </a>
           </li>
           <li class="sidebar-list-item">
-            <a href="subjects.html">
+            <a href="subjects.php">
               <span class="material-icons-outlined">menu_book</span> Subjects
             </a>
           </li>
@@ -94,7 +102,7 @@ include("db_conn.php");
             </a>
           </li>
           <li class="sidebar-list-item">
-            <a href="Login1.php">
+            <a href="logout.php">
               <span class="material-icons-outlined">logout</span> Sign Out
             </a>
           </li>

@@ -1,5 +1,14 @@
 <?php
-include('db_conn.php');
+session_start();
+include("db_conn.php");
+
+// Check if the user is logged in and is a teacher
+if (!isset($_SESSION['username']) || $_SESSION['account_type'] !== 'Teacher') {  
+    header("HTTP/1.0 403 Forbidden");
+    header("Location: Login1.php");
+    exit;
+}
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Check if the user is logged in and get their username
