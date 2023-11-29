@@ -167,22 +167,37 @@
     }
 
     function resetPassword() {
-    const username = document.getElementById('reset-username').value;
-    const email = document.getElementById('reset-email').value;
-    const newPassword = document.getElementById('reset-newPassword').value;
-    const dbMotherMaidenName = document.getElementById('db-mother-maiden-name').value;
-    const dbBirthdate = document.getElementById('db-birthdate').value;
+  const username = document.getElementById('reset-username').value;
+  const email = document.getElementById('reset-email').value;
+  const newPassword = document.getElementById('reset-newPassword').value;
+  const dbMotherMaidenName = document.getElementById('db-mother-maiden-name').value;
+  const dbBirthdate = document.getElementById('db-birthdate').value;
 
-    if (username && email && newPassword && dbMotherMaidenName && dbBirthdate) {
-      // Check if entered values match the database
+  if (username && email && newPassword) {
+    if (!dbMotherMaidenName && !dbBirthdate) {
+      // If both mother's maiden name and birthdate are null or empty, proceed with password reset
+      const xhr2 = new XMLHttpRequest();
+      xhr2.open('POST', 'reset_password.php', true);
+      xhr2.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      xhr2.onreadystatechange = function () {
+        if (xhr2.readyState === 4 && xhr2.status === 200) {
+          const response2 = xhr2.responseText;
+          alert(response2);
+          if (response2.includes('Password reset successful')) {
+            window.location.href = 'Login1.php';
+          }
+        }
+      };
+      xhr2.send(`username=${username}&email=${email}&newPassword=${newPassword}&motherMaidenName=${dbMotherMaidenName}&birthdate=${dbBirthdate}`);
+    } else {
       const xhr = new XMLHttpRequest();
       xhr.open('POST', 'check_user_data.php', true);
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
           const response = xhr.responseText;
-          if (response.trim() === 'match') { // Trim the response to remove whitespace
-            // Proceed with password reset
+          if (response.trim() === 'match') {
+            // Proceed with password reset if birthdate and mother's maiden name are provided in the database
             const xhr2 = new XMLHttpRequest();
             xhr2.open('POST', 'reset_password.php', true);
             xhr2.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -197,16 +212,16 @@
             };
             xhr2.send(`username=${username}&email=${email}&newPassword=${newPassword}&motherMaidenName=${dbMotherMaidenName}&birthdate=${dbBirthdate}`);
           } else {
-            // Display error message if entered values don't match database values
-            alert('Entered Mother\'s Maiden Name or Birthdate does not match our records.');
+            alert('Entered credentials do not match our records.');
           }
         }
       };
       xhr.send(`username=${username}&motherMaidenName=${dbMotherMaidenName}&birthdate=${dbBirthdate}`);
-    } else {
-      alert('Please fill in all required fields.');
     }
+  } else {
+    alert('Please fill in all required fields.');
   }
+}
 
     function displayMissingFieldsMessage() {
       document.getElementById('missingFieldsMessage').style.display = 'block';
