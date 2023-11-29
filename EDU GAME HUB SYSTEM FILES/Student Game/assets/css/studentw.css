@@ -121,3 +121,79 @@ h2 {
     padding: 10px;
     
 }
+
+@media only screen and (max-width:1153px) {
+    header img {
+        margin-right: 20px; /* Add some space between the logo and text */
+        width: 200px;
+    }
+
+    .logoutImage {
+        position: absolute;
+        top: 10px; /* Adjust the top value to control the vertical position */
+        right: 10px; /* Adjust the right value to control the horizontal position */
+        width: 30px;
+        height: 30px;
+    }
+
+    .card-container {
+        display: flex;
+        flex-direction: column; /* Stack cards on top of each other */
+        justify-content: center;
+        align-items: center;
+        height: calc(100vh - 120px); /* Adjust for header height */
+        padding: 200px;
+        gap: 20px; /* Add spacing between cards */
+    }
+    
+    .card {
+        width: 300px; /* Adjust the width as needed */
+        height: 400px; /* Adjust the height as needed */
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        overflow: hidden; /* Prevent content from overflowing */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.2s, box-shadow 0.3s, transform 0.3s; /* Combine transitions */
+    }
+    
+    .card:hover,
+    .card:focus,
+    .card:active {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        transform: scale(1.1); /* Remove the extra space here */
+    }
+    
+    .card img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+    
+    .card h2 {
+        margin: 60px;
+    }
+    
+    .card-content {
+        padding: 50px;
+    }
+    
+    h2 {
+        color: #3498db;
+    }
+    
+    /* Remove absolute positioning and margin-bottom from the labels */
+    .English,
+    .Math,
+    .Science {
+        font-weight: bold;
+        font-size: 35px;
+        color: #ffffff;
+        margin-bottom: 320px;
+    }
+    
+}
+    

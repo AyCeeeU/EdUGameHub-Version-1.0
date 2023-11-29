@@ -2,8 +2,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap');
 
-
-
+/* Common Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 
 
@@ -35,38 +39,38 @@ box-sizing: border-box;
      display: flex;
      justify-content: flex-end;
      align-items: center;
-     padding: 30px 10%;
+     padding: 30px 5%;
  }
 
-.nav_links 
-{
-  padding-top: 25px; /* add some space above the image */
-position: relative;
-z-index: 1;
-list-style: none;
-
-}
-.nav_links a {
-  
-  color: #1B2072; /* set hyperlink color to white */
-  text-decoration: none; /* remove underline */
-}
-
-.nav_links li 
-{
-display: inline-block;
-padding: 0px 20px;
-}
-
-.nav_links li a 
-{
-transition: all 0.3s ease 0s;
-}
-
-.nav_links li a:hover 
-{
-color:rgb(43, 255, 0)
-}
+ .nav_links 
+ {
+   padding-top: 25px; /* add some space above the image */
+ position: relative;
+ z-index: 1;
+ list-style: none;
+ 
+ }
+ .nav_links a {
+   
+   color: #1B2072; /* set hyperlink color to white */
+   text-decoration: none; /* remove underline */
+ }
+ 
+ .nav_links li 
+ {
+ display: inline-block;
+ padding: 0px 20px;
+ }
+ 
+ .nav_links li a 
+ {
+ transition: all 0.3s ease 0s;
+ }
+ 
+ .nav_links li a:hover 
+ {
+ color:rgb(43, 255, 0)
+ }
 
 button 
 {
@@ -93,13 +97,14 @@ button:hover
     padding-top: 50px; /* add some space above the image */
     padding-bottom: 70px; /* add some space below the image */
     padding-left: 50px; /* add some space below the image */
+    padding: 50px;
   }
   
   .homepageBG {
-    
+  max-width: 100%;  
   width: 900px;
   height: auto;
-  margin-right: 700px; /* add some margin to the right for spacing */
+  margin-right: 0px; /* add some margin to the right for spacing */
   
   }
 
@@ -108,10 +113,10 @@ button:hover
 .homepage 
 {
     position:absolute;
-    top: 150px;
-    left: 70px;
-    width: 850px;
-    height: 700px; 
+    top: 10%;
+    left: 5%;
+    width: 90%;
+    height: auto; 
   }
   body {
     height: 100%;
@@ -124,20 +129,20 @@ button:hover
   border: 3px solid #f1f1f1;
   position: absolute;
   top: 50%;
-  right: 10.5%;
+  right: 8.5%;
   transform: translateY(-50%);
-  max-width: 500px;
-  width: 100%;
-  padding: 50px;
+  max-width: 30%;
+  width: 90%;
+  padding: 30px;
   display: flex;
   flex-direction: column;
-  border-radius: 50px;
+  border-radius: 20px;
     }
   input[type=text], input[type=password] 
   {
     width: 100%;
-    padding: 12px 20px;
-    margin: 20px 0;
+    padding: 12px ;
+    margin: 10px 0;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
@@ -145,8 +150,8 @@ button:hover
   
   button {
     background-color: #1B2072;
-    padding: 14px 20px;
-    margin: 8px 0;
+    padding: 14px ;
+    margin: 10px 0;
     border: none;
     cursor: pointer;
     width: 100%;
@@ -164,5 +169,59 @@ background-color: #3e8e41;
   .forgot-password {
     text-align: center;
   }
-  
- 
+
+  /* Media Queries */
+@media only screen and (max-width: 1699px) {
+  header {
+    padding: 15px 5%;
+  }
+
+  .nav_links {
+    padding-top: 30px;
+  }
+
+  .logo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .nav_links li {
+    padding: 10px 15px;
+  }
+
+  body {
+    background: #F4A641; /* Set the color to take the whole webpage */
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .homepageBG {
+    display: none; /* Hide the homepage background on small screens */
+  }
+
+  form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    width: 90%;
+    margin-top: 20px;
+  }
+
+  input[type=text],
+  input[type=password] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    margin: 15px 0;
+    box-shadow: 0px 5px 0px rgba(0, 0, 0, 0.1);
+  }
+}

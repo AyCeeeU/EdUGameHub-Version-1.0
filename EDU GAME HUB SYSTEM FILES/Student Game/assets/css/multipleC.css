@@ -36,8 +36,8 @@ img {
   
   .type{
     position:absolute;
-    top: 40px;
-    left:30px;
+    top: 10px;
+    left:780px;
     color: #ffffff;
     text-shadow: 2px 2px 0 #000000;
     margin-left: 75px;
@@ -103,7 +103,7 @@ button {
     width: 200px;
     height: 70px;
     top: 500px;
-    right:870px;
+    right:850px;
     margin-top: 300px;
     padding: 1px;
     background-color: #1100ff;
@@ -133,5 +133,65 @@ button {
 /* Add a new CSS class to style the selected wrong button */
 .wrong-selected {
     background-color: red;
+}
+
+
+@media screen and (max-width: 430px) {
+  header {
+    font-size: 18px;
+  }
+
+  .back-button {
+    bottom: 10px;
+    left: 10px;
+    margin-top: 0;
+  }
+
+  img {
+    display: none;
+    position: absolute; /* Set image to be positioned absolutely */
+    top: 10px; /* Move image down by 50px from the top */
+    left: 250px; /* Move image right by 20px from the left */
+    overflow: hidden;
+  }
+
+  .back-button{
+    position:absolute;
+    bottom: 89%;
+    left: 200px;
+    margin-top: 100px;
+    
+  }
+
+  .type {
+    left: 140px;
+    top: 70px;
+    margin-left: 0;
+    font-size: 20px;
+  }
+
+  .quiz-container1 {
+    padding: 5px;
+    top: 15%;
+  }
+
+  .button-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .answer-button {
+    padding: 15px 30px;
+    font-size: 20px;
+    margin: 10px;
+    
+  }
+
+  .submit-button {
+    top: auto;
+    bottom: 130px;
+    right: 110px;
+    margin-top: 0;
+  }
 }
 
