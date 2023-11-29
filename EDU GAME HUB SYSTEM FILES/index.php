@@ -5,7 +5,7 @@ include("db_conn.php");
 // Check if the user is logged in and is an admin
 if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true) {  
     header("HTTP/1.0 403 Forbidden");
-    header("Location: login.html");
+    header("Location: Login1.php");
     exit;
 }
 
@@ -41,9 +41,9 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
       <ul class="navbar-nav">
        
         <li class="nav-item">
-          <form method="post" action="index.html">
-            <button type="submit" name="logout" class="btn btn-danger">Logout</button>
-          </form>
+        <form method="post" action="logout.php">
+  <button type="submit" name="logout" class="btn btn-danger">Logout</button>
+</form>
         </li>
       </ul>
     </div>
@@ -92,7 +92,7 @@ if(!empty($_GET['status'])){
           <!-- Import Export Button -->
           <div class="col-md-12 head">
     <div class="float-right">
-    <a href="archive.php" class="btn btn-primary">Visit Archive</a>
+    <a href="archive.php" class="btn btn-dark">Visit Archive</a>
 
         <a href="exportData.php" class="btn btn-success"><i class="dwn"></i> Export</a>
         <a href="javascript:void(0);" class="btn btn-success" onclick="formToggle('importFrm');"><i class="plus"></i> Upload CSV</a>
@@ -196,7 +196,7 @@ if($result)
         
         <td>
             <!-- Archive Button -->
-            <button type="button" class="btn btn-warning archiveBtn" data-toggle="modal" data-target="#archiveModal" data-record-id="<?php echo $row['id']; ?>">
+            <button type="button" class="btn btn-danger archiveBtn" data-toggle="modal" data-target="#archiveModal" data-record-id="<?php echo $row['id']; ?>">
                 <i class="fas fa-archive"></i> Archive
             </button>
         </td>

@@ -1,7 +1,6 @@
 <?php
 session_start();
 include("db_conn.php");
-$login = false;
 $showError = false;
 
 if (isset($_POST['username']) && isset($_POST['password'])) {
@@ -12,23 +11,33 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         $data = htmlspecialchars($data);
         return $data;
     }
+
     $username = validate($_POST['username']);
     $password = validate($_POST['password']);
 
-    if (empty($username)) {
-        header("Location: Login.html?error=Username is required");
+    if (empty($username)) { 
+        header("Location: Login1.php?error=Username is required");
         exit();
-    } else if (empty($password)) {
-        header("Location: Login.html?error=Password is required");
-        exit();
+    } elseif (empty($password)) {
+        header("Location: Login1.php?error=Password is required");
+        exit(); 
     } else {
-        $sql = "SELECT * FROM tbl_accdb WHERE username='$username'";
-        $result = mysqli_query($conn, $sql);
+        $sql = "SELECT * FROM tbl_accdb WHERE username = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-        if (mysqli_num_rows($result) == 1) {
-            $row = mysqli_fetch_assoc($result);
+        if ($result->num_rows == 1) {
+            $row = $result->fetch_assoc();
+
+            if (empty($row['birthdate']) || empty($row['mother_maiden_name'])) {
+                $_SESSION['reset_username'] = $username;
+                header("Location: Login1.php?resetPassword=true");
+                exit();
+            }
+
             if (password_verify($password, $row['password'])) {
-                $login = true;
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['user_id'] = $row['id'];
 
@@ -40,13 +49,15 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                 // The last login date in tbl_activity_log
                 $userId = $_SESSION['user_id'];
                 $action = "Login";
-                $logSql = "INSERT INTO tbl_activity_log (user_id, action, timestamp) VALUES ('$userId', '$action', NOW()) 
+                $logSql = "INSERT INTO tbl_activity_log (user_id, action, timestamp) VALUES (?, ?, NOW()) 
                             ON DUPLICATE KEY UPDATE timestamp = NOW()";
-                mysqli_query($conn, $logSql);
+                $stmt = $conn->prepare($logSql);
+                $stmt->bind_param("ss", $userId, $action);
+                $stmt->execute();
 
                 switch ($row['account_type']) {
                     case 'Student':
-                        header("Location: Student Game\index.php");
+                        header("Location: Student Game/index.php");
                         break;
                     case 'Teacher':
                         header("Location: teacher management system.php");
@@ -55,7 +66,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                         header("Location: index.php");
                         break;
                     default:
-                        header("Location: Login.html?error=Unknown account type");
+                        header("Location: Login1.php?error=Unknown account type");
                         break;
                 }
                 exit();
@@ -67,12 +78,12 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         }
 
         if ($showError) {
-            header("Location: Login.html?error=Incorrect username or password");
+            header("Location: Login1.php?error=Incorrect username or password");
             exit();
         }
     }
 } else {
-    header("Location: Login.html?error=Incorrect username or password");
+    header("Location: Login1.php?error=Incorrect username or password");
     exit();
 }
 ?>
