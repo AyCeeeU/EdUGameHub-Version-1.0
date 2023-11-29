@@ -36,7 +36,7 @@ if ($result) {
                     <a href="index.php"> <img src="Gamelogo.png" alt="Your Image" width="400"></a>
                 </div>
                 <div class="logoutLogo">
-    <a href="../login.php"><img src="logout.png" class="logoutImage"></a>
+    <a href="../logout.php"><img src="logout.png" class="logoutImage"></a>
 </div>
             </div>
         </header>
