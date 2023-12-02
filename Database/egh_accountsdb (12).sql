@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-<<<<<<<< HEAD:Database/egh_accountsdb
--- Generation Time: Nov 30, 2023 at 05:39 AM
-========
--- Generation Time: Dec 02, 2023 at 01:15 PM
->>>>>>>> 28dfe37143218395144c783bd19d34ea7859c32b:Database/egh_accountsdb021223.sql
+-- Generation Time: Dec 02, 2023 at 08:08 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -24,6 +20,19 @@ SET time_zone = "+00:00";
 --
 -- Database: `egh_accountsdb`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `certificates`
+--
+
+CREATE TABLE `certificates` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `quarter` varchar(50) NOT NULL,
+  `image_data` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -52,15 +61,11 @@ CREATE TABLE `tbl_accdb` (
 --
 
 INSERT INTO `tbl_accdb` (`id`, `firstname`, `lastname`, `email`, `username`, `section`, `grade_level`, `account_type`, `password`, `created_date`, `profile_pic`, `mother_maiden_name`, `birthdate`) VALUES
-<<<<<<<< HEAD:Database/egh_accountsdb
 (150, 'teacher', 'teacher', 'teachersample@gmail.com', 'teacher', 'Saphire', 'Grade 5', 'Teacher', '$2y$10$vvzprdEjDHg9Tbtf7sS9e.YjsQFPuV3iJy50e67MSC6ZMfJrq0v0O', '2023-11-06 12:47:35', NULL, 'Lopez', '1999-12-12'),
 (151, 'admin', 'admin', 'adminsample@gmail.com', 'admin', '', '', 'Admin', '$2y$10$3VJaZKJA22Z1Uszcqaawiun51W4PRzbCGnd9KRgOI34yuFjWf.zre', '2023-11-06 12:47:36', NULL, 'Perez', '1999-12-12'),
-(152, 'student', 'student', 'studentsample@gmail.com', 'student', '', '', 'Student', '$2y$10$o.9m97TDIfDNhH7fGgKnJe5tkSd6AOYyza8w39iGxV2Plupgr/e7m', '2023-11-06 12:47:36', NULL, 'perez', '1999-12-12');
-========
-(156, 'admin', 'admin', 'adminsample@gmail.com', 'admin', '', '', 'Admin', '$2y$10$VnPNnsPQ2/w99oOZPV.7g.J7vE0ipRrYzb14PWyg4MZUpOOayPrh6', '2023-12-02 15:54:14', NULL, NULL, NULL),
-(157, 'teacher', 'teacher', 'teachersample@gmail.com', 'teacher', '', '', 'Teacher', '$2y$10$6KgoqiOhMZbRkWH5UQ0mmeBn68YHA0gRNG7xlS2d3TQEKICQnZHMG', '2023-12-02 15:54:33', NULL, 'Lopez', '1999-12-12'),
-(158, 'student', 'student', 'studentsample@gmail.com', 'student', 'Saphire', 'Grade 3', 'Student', '$2y$10$5qA4hNtDgL.FZNCLBZNOv.gisJdHLBPXWFHH4mf/forPnSovLAhEu', '2023-12-02 15:55:41', NULL, 'Sample', '1999-12-12');
->>>>>>>> 28dfe37143218395144c783bd19d34ea7859c32b:Database/egh_accountsdb021223.sql
+(152, 'student', 'student', 'studentsample@gmail.com', 'student', '', '', 'Student', '$2y$10$o.9m97TDIfDNhH7fGgKnJe5tkSd6AOYyza8w39iGxV2Plupgr/e7m', '2023-11-06 12:47:36', NULL, 'perez', '1999-12-12'),
+(153, 'Carlo', 'Domogma', 'deleoncarlo927@gmail.com', 'Spidey', 'Saturn', 'Grade 6', 'Student', '$2y$10$UCBB.9fTML6vVIYj0l2xPugiTIP/1KukdsIzaH1Yb90w7HxxDm.vK', '2023-12-01 18:36:17', 'ProfilePics656a10c73b555_dp.webp', 'Domogma', '2001-06-05'),
+(154, 'John Vincent', 'Aspan', 'vincentaspan14@gmail.com', 'vincent', 'Saphire', 'Grade 3', 'Student', '$2y$10$dB9gbEdPElaLXAKMtkcetOaX0gcQsaNq3wW/DUxAi2DrZdNpC/iTm', '2023-12-02 20:22:31', NULL, 'Aleli VIllanueva', '2022-01-14');
 
 -- --------------------------------------------------------
 
@@ -128,16 +133,11 @@ INSERT INTO `tbl_activity_log` (`id`, `user_id`, `action`, `timestamp`) VALUES
 (95, 140, 'Login', '2023-11-04 19:20:56'),
 (97, 145, 'Login', '2023-11-06 03:50:27'),
 (99, 148, 'Login', '2023-11-06 04:45:45'),
-(100, 150, 'Login', '2023-11-30 00:08:59'),
-(104, 152, 'Login', '2023-11-29 23:10:06'),
-<<<<<<<< HEAD:Database/egh_accountsdb
-(106, 151, 'Login', '2023-11-29 16:57:30');
-========
-(106, 151, 'Login', '2023-12-02 03:35:40'),
-(256, 155, 'Login', '2023-12-02 07:24:48'),
-(257, 157, 'Login', '2023-12-02 10:22:11'),
-(258, 158, 'Login', '2023-12-02 12:13:25');
->>>>>>>> 28dfe37143218395144c783bd19d34ea7859c32b:Database/egh_accountsdb021223.sql
+(100, 150, 'Login', '2023-12-02 18:57:49'),
+(104, 152, 'Login', '2023-12-02 18:58:21'),
+(106, 151, 'Login', '2023-12-02 17:41:37'),
+(263, 153, 'Login', '2023-12-02 17:21:55'),
+(308, 154, 'Login', '2023-12-02 13:11:09');
 
 -- --------------------------------------------------------
 
@@ -157,16 +157,6 @@ CREATE TABLE `tbl_archive` (
   `password` varchar(255) NOT NULL,
   `created_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
---
--- Dumping data for table `tbl_archive`
---
-
-INSERT INTO `tbl_archive` (`id`, `firstname`, `lastname`, `email`, `username`, `section`, `grade_level`, `account_type`, `password`, `created_date`) VALUES
-(151, 'admin', 'admin', 'adminsample@gmail.com', 'admin', '', '', 'Admin', '$2y$10$3VJaZKJA22Z1Uszcqaawiun51W4PRzbCGnd9KRgOI34yuFjWf.zre', '2023-11-06 12:47:36'),
-(155, '', '', 'adminsample@gmail.com', 'admin', '', '', 'Admin', '$2y$10$aZ.LmH5KaytK.ddqdYhshuxr/7rSeWH6hJZSFwlpLOBUQRrUaB.pC', '2023-12-02 08:23:28'),
-(160, 'Mark', 'Johnson', 'markj@outlook.com', 'Section C', 'Grade 11', 'Teacher', 'ghi789', '$2y$10$VZW60Vz998alIlGaGFZs7OM0pkDmgT0KsfIcBl8waRM924uZMvacG', '2023-12-02 15:55:55'),
-(159, 'Jane', 'Smith', 'janesmith@yahoo.com', 'Section B', 'Grade 8', 'Student', 'def456', '$2y$10$.c0/ZzxBdFkUZqSo6900leAs/h8Bg03qHdRRFU8wzdLPuzWNO9GdC', '2023-12-02 15:55:55');
 
 -- --------------------------------------------------------
 
@@ -191,7 +181,9 @@ CREATE TABLE `tbl_badge` (
 --
 
 INSERT INTO `tbl_badge` (`id`, `username_badge`, `first_name`, `last_name`, `quarter_1`, `quarter_2`, `quarter_3`, `quarter_4`, `message_badge`) VALUES
-(29, '201912129', 'Cebastian', 'Cabanillas', '', '', '', '', '');
+(29, '201912129', 'Cebastian', 'Cabanillas', '', '', '', '', ''),
+(30, 'teacher', 'Carlo', 'Domogma', 'Asset 1.png', 'Asset 2.png', 'Asset 3.png', '', ''),
+(31, 'teacher', 'student', 'student', 'Asset 1.png', 'Asset 2.png', '', '', 'Nice ');
 
 -- --------------------------------------------------------
 
@@ -200,8 +192,24 @@ INSERT INTO `tbl_badge` (`id`, `username_badge`, `first_name`, `last_name`, `qua
 --
 
 CREATE TABLE `tbl_cert` (
-  `id` int(11) NOT NULL
+  `id` int(11) NOT NULL,
+  `student_id` int(11) NOT NULL,
+  `cert_subject` varchar(255) NOT NULL,
+  `full_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_cert`
+--
+
+INSERT INTO `tbl_cert` (`id`, `student_id`, `cert_subject`, `full_name`) VALUES
+(5, 152, 'English', 'student student'),
+(6, 152, 'Math', 'student student'),
+(7, 152, 'Science', 'student student'),
+(8, 152, 'Overall', 'student student'),
+(9, 154, 'English', 'John Vincent Aspan'),
+(14, 152, 'English', 'student student'),
+(15, 153, 'English', 'Carlo Domogma');
 
 -- --------------------------------------------------------
 
@@ -271,22 +279,10 @@ CREATE TABLE `tbl_multiple_teacher` (
 --
 
 INSERT INTO `tbl_multiple_teacher` (`question_id`, `activity_name`, `question_text`, `option_1`, `option_2`, `option_3`, `option_4`, `correct_option`, `randomize_questions`, `visible_students`) VALUES
-<<<<<<<< HEAD:Database/egh_accountsdb
 (188, 'English 101', 'This is sample 1 no random', 'This is sample 1 no random', 'This is sample 1 no random', 'This is sample 1 no random', 'This is sample 1 no random', 3, 0, 1),
-(189, 'English 101', 'This is sample 2 no random', 'This is sample 2 no random', 'This is sample 2 no random', 'This is sample 2 no random', 'This is sample 2 no random', 4, 0, NULL),
+(189, 'English 101', 'This is sample 2 no random', 'This is sample 2 no random', 'This is sample 2 no random', 'This is sample 2 no random', 'This is sample 2 no random', 4, 0, 1),
 (190, 'English 102', 'This is sample 3 no random', 'This is sample 3 no random', 'This is sample 3 no random', 'This is sample 3 no random', 'This is sample 3 no random', 1, 0, 1),
-(191, 'English 102', 'This is sample 4 no random', 'This is sample 4 no random', 'This is sample 4 no random', 'This is sample 4 no random', 'This is sample 4 no random', 4, 0, NULL),
-(192, 'English 103', 'No ramdom 1', 'No ramdom 1', 'No ramdom 1', 'No ramdom 1', 'No ramdom 1', 3, 0, 1),
-(193, 'English 103', 'No ramdom 2', 'No ramdom 2', 'No ramdom 2', 'No ramdom 2', 'No ramdom 2', 1, 0, NULL),
-(196, 'SAMPLE 1', 'sampol1 with random', 'sampol1', 'sampol1', 'sampol1', 'sampol1', 4, 1, 1),
-(197, 'SAMPLE 1', 'sampol2 with random', 'sampol2', 'sampol2', 'sampol2', 'sampol2', 4, 1, NULL),
-(198, 'SAMPLE 1', 'sampol1 with random', 'sampol1', 'sampol1', 'sampol1', 'sampol1', 4, 1, NULL),
-(199, 'SAMPLE 1', 'sampol2 with random', 'sampol2', 'sampol2', 'sampol2', 'sampol2', 4, 1, NULL);
-========
-(204, 'Sample 1', 'Sample 1', 'Sample 1', 'Sample 1', 'Sample 1', 'Sample 1', 1, 0, 1),
-(205, 'Sample 1', 'Sample 2', 'Sample 2', 'Sample 2', 'Sample 2', 'Sample 2', 2, 0, 1),
-(206, 'Sample 1', 'Sample 3', 'Sample 3', 'Sample 3', 'Sample 3', 'Sample 3', 3, 0, 1);
->>>>>>>> 28dfe37143218395144c783bd19d34ea7859c32b:Database/egh_accountsdb021223.sql
+(191, 'English 102', 'This is sample 4 no random', 'This is sample 4 no random', 'This is sample 4 no random', 'This is sample 4 no random', 'This is sample 4 no random', 4, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -358,6 +354,12 @@ INSERT INTO `tbl_subjects` (`ID`, `Subjects`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `certificates`
+--
+ALTER TABLE `certificates`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tbl_accdb`
@@ -444,14 +446,16 @@ ALTER TABLE `tbl_subjects`
 --
 
 --
+-- AUTO_INCREMENT for table `certificates`
+--
+ALTER TABLE `certificates`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `tbl_accdb`
 --
 ALTER TABLE `tbl_accdb`
-<<<<<<<< HEAD:Database/egh_accountsdb
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=153;
-========
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
->>>>>>>> 28dfe37143218395144c783bd19d34ea7859c32b:Database/egh_accountsdb021223.sql
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
 
 --
 -- AUTO_INCREMENT for table `tbl_activity`
@@ -463,17 +467,19 @@ ALTER TABLE `tbl_activity`
 -- AUTO_INCREMENT for table `tbl_activity_log`
 --
 ALTER TABLE `tbl_activity_log`
-<<<<<<<< HEAD:Database/egh_accountsdb
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=255;
-========
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=320;
->>>>>>>> 28dfe37143218395144c783bd19d34ea7859c32b:Database/egh_accountsdb021223.sql
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=341;
 
 --
 -- AUTO_INCREMENT for table `tbl_badge`
 --
 ALTER TABLE `tbl_badge`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT for table `tbl_cert`
+--
+ALTER TABLE `tbl_cert`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tbl_createact`
@@ -485,11 +491,7 @@ ALTER TABLE `tbl_createact`
 -- AUTO_INCREMENT for table `tbl_multiple_teacher`
 --
 ALTER TABLE `tbl_multiple_teacher`
-<<<<<<<< HEAD:Database/egh_accountsdb
   MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=200;
-========
-  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
->>>>>>>> 28dfe37143218395144c783bd19d34ea7859c32b:Database/egh_accountsdb021223.sql
 
 --
 -- AUTO_INCREMENT for table `tbl_recentact`

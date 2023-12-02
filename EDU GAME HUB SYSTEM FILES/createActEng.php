@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,7 +63,7 @@
                 </a>
             </li>
             <li class="sidebar-list-item">
-                <a href="login.php">
+                <a href="logout.php">
                     <span class="material-icons-outlined">logout</span> Sign Out
                 </a>
             </li>
@@ -73,9 +72,7 @@
     <!-- End Sidebar -->
 
     <?php
-
     include('db_conn.php');
-
     
     $activity_name = "";
     $questions = array();
@@ -91,82 +88,15 @@
             //  options and correct_option arrays
             $options = array();
             $correct_option = "";
-=======
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Teacher Dashboard</title>
-        <!-- Montserrat Font -->
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-        <!-- Material Icons -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-        <!-- Custom CSS -->
-        <link rel="stylesheet" href="css/createAct.css">
->>>>>>> 28dfe37143218395144c783bd19d34ea7859c32b
-
-        
+        }
+    }
+?>
     </head>
     <body>
-    <div class="grid-container">
-        <!-- Header -->
-        <header class="header">
-            <div class="menu-icon" onclick="openSidebar()">
-                <span class="material-icons-outlined">menu</span>
-            </div>
-            <div class="header-left">
-            <button class="btn btn-primary" id="createActivityBtn">Create Activity</button>
-                <button class="btn btn-secondary" id="libraryBtn" onclick="openLibrary()">Library</button>
-                <button class="btn btn-secondary" id="badgesBtn"onclick="openbadgesBtn()">Badges</button>
-                <!--<button class="btn btn-secondary" id="leaderboardBtn" onclick="openLeaderboard()">Leaderboard</button>-->
-            </div>
-            <div class="header-right">
-                <span class="material-icons-outlined">notifications</span>
-                <span class="material-icons-outlined">email</span>
-                <span class="material-icons-outlined">account_circle</span>
-            </div>
-        </header>
-        <!-- End Header -->
+    
+        
 
-        <!-- Sidebar -->
-        <aside id="sidebar">
-            <img class="logo" src="images/edugamelogo.png" alt="logo">
-            <div class="sidebar-title">
-                <div class="sidebar-brand">
-                </div>
-                <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
-            </div>
-
-            <ul class="sidebar-list">
-                <li class="sidebar-list-item">
-                    <a href="teacher management system.php">
-                        <span class="material-icons-outlined">dashboard</span> Dashboard
-                    </a>
-                </li>
-                <li class="sidebar-list-item">
-                    <a href="students.php">
-                        <span class="material-icons-outlined">groups</span> Students
-                    </a>
-                </li>
-                <li class="sidebar-list-item">
-                    <a href="subjects.php">
-                        <span class="material-icons-outlined">menu_book</span> Subjects
-                    </a>
-                </li>
-                <li class="sidebar-list-item">
-                    <a href="Messages.html">
-                        <span class="material-icons-outlined">mail</span> Messages
-                    </a>
-                </li>
-                <li class="sidebar-list-item">
-                    <a href="Login.html">
-                        <span class="material-icons-outlined">logout</span> Sign Out
-                    </a>
-                </li>
-            </ul>
-        </aside>
-        <!-- End Sidebar -->
+       
  
         <?php
         session_start();
@@ -350,13 +280,22 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['edit'])) {
                 
 
                     <div class="container" id="question-1">
+                    <div class="score-container">
+        <label for="score-1" class="score-label">Score:</label>
+        <input type="number" id="score-1" name="score-1" class="custom-Score">
+    </div>
                         <h2>Question 1</h2>
                         <!-- Wider question text box -->
+                        
                         <label for="question-text-1">Question:</label>
+                        
                         <textarea id="question-text-1" name="question-text-1" class="custom-Question" rows="5"></textarea>
+                        
                         <!-- Four options text boxes -->
                         <div class="container">
+                        
                             <label for="option-1-1">Option 1:</label>
+                            
                             <input type="text" id="option-1-1" name="option-1-1" class="custom-OptA">
                             <div class="checkbox-container">
                                 <input type="radio" id="correct-answer-1-1" name="correct-option-1" value="1">
@@ -386,6 +325,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['edit'])) {
                                 <input type="radio" id="correct-answer-1-4" name="correct-option-1" value="4">
                                 <label for="correct-answer-1-4">Correct answer</label>
                             </div>
+                           
                         </div>
                     </div>
                 </div>
@@ -451,6 +391,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['edit'])) {
 
                 // function to add a new set of question elements
                 function addNewQuestion() {
+                    
                     var questionCount = document.getElementById("question-count");
                     var newQuestionCount = parseInt(questionCount.value) + 1;
 
@@ -487,6 +428,17 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['edit'])) {
 
                     //  the question count
                     questionCount.value = newQuestionCount;
+
+
+                    var newScoreInput = document.createElement("div");
+newScoreInput.className = "container";
+
+// Hidden input field for score
+newScoreInput.innerHTML = '<input type="hidden" id="score-' + newQuestionCount + '" name="score-' + newQuestionCount + '">';
+
+// Append the new score input to the new question set
+newQuestionSet.appendChild(newScoreInput);
+
                 }
 
 
@@ -542,12 +494,12 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['edit'])) {
                 // Append the new question set to the container
                 document.getElementById("questions-container").appendChild(newQuestionSet);
         
-        <?php endif; ?>
+          <?php endif; ?>
     }
-            // Call the function to populate fields when the page loads
-            window.onload = function() {
-                populateFields();
-            };
+    // Call the function to populate fields when the page loads
+    window.onload = function() {
+        populateFields();
+    };
 
         
     </script>

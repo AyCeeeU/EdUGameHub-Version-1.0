@@ -39,7 +39,7 @@ if (!isset($_SESSION['username']) || $_SESSION['account_type'] !== 'Teacher') {
             <button class="btn btn-primary" id="createActivityBtn">Create Activity</button>
             <button class="btn btn-secondary" id="libraryBtn">Library</button>
             <button class="btn btn-secondary" id="badgesBtn">Badges</button>
-            <button class="btn btn-secondary" id="certificateBtn">Certificate</button>
+            
             
            
         </div>

@@ -526,3 +526,13 @@
   text-decoration: none;
   cursor: pointer;
 }
+.score-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px; /* Adjust as needed */
+}
+
+/* Style for the score label */
+.score-label {
+  margin-right: 10px; /* Adjust as needed */
+}

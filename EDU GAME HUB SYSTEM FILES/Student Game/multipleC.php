@@ -5,14 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/multipleC.css">
     <title>EduGameHub</title>
-
-    <audio id="correctSound">
-        <source src="correct.wav" type="audio/mpeg">
-    </audio>
-
-    <audio id="wrongSound">
-        <source src="wrong.wav" type="audio/mpeg">
-    </audio>
 </head>
 <body>
     <h4 class="type">Multiple Choice</h4>
@@ -28,15 +20,10 @@
     session_start();
     include 'db_conn.php';
 
-    
-if (!isset($_SESSION['displayed_questions'])) {
-    $_SESSION['displayed_questions'] = [];
-}
+    if (!isset($_SESSION['displayed_questions'])) {
+        $_SESSION['displayed_questions'] = [];
+    }
 
-<<<<<<< HEAD
-        // Fetch all questions for the specified activity
-        $sql = "SELECT question_id, question_text, option_1, option_2, option_3, option_4
-=======
 if (isset($_GET['activity_name'])) {
     $activityName = $_GET['activity_name'];
     $questionId = isset($_GET['question_id']) ? intval($_GET['question_id']) : 0;
@@ -44,44 +31,43 @@ if (isset($_GET['activity_name'])) {
     if (!isset($_SESSION['shuffled_questions']) || empty($_SESSION['shuffled_questions'])) {
         // Fetch questions including 'randomize_questions' value
         $sql = "SELECT question_id, question_text, option_1, option_2, option_3, option_4, correct_option, randomize_questions
->>>>>>> 28dfe37143218395144c783bd19d34ea7859c32b
                 FROM tbl_multiple_teacher 
                 WHERE activity_name = ?";
             
-        $stmt = $conn->prepare($sql);
+            $stmt = $conn->prepare($sql);
 
-        if ($stmt) {
-            $stmt->bind_param("s", $activityName);
-            $stmt->execute();
-            $result = $stmt->get_result();
-            $questions = $result->fetch_all(MYSQLI_ASSOC);
-            $stmt->close();
+            if ($stmt) {
+                $stmt->bind_param("s", $activityName);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $questions = $result->fetch_all(MYSQLI_ASSOC);
+                $stmt->close();
+            } else {
+                echo 'Error: ' . $conn->error;
+            }
+
+            // Check if the questions need to be shuffled based on 'randomize_questions' value
+            $randomize = isset($questions[0]['randomize_questions']) ? $questions[0]['randomize_questions'] : null;
+
+            if ($randomize === 1) {
+                shuffle($questions);
+            }
+
+            // Store the shuffled questions in the session to maintain order
+            $_SESSION['shuffled_questions'] = $questions;
         } else {
-            echo 'Error: ' . $conn->error;
+            // Retrieve the shuffled questions from the session
+            $questions = $_SESSION['shuffled_questions'];
         }
 
-        // Check if the questions need to be shuffled based on 'randomize_questions' value
-        $randomize = isset($questions[0]['randomize_questions']) ? $questions[0]['randomize_questions'] : null;
+        // Filter out the already displayed questions
+        $remainingQuestions = array_diff_key($questions, array_flip($_SESSION['displayed_questions']));
 
-        if ($randomize === 1) {
-            shuffle($questions);
-        }
-
-        // Store the shuffled questions in the session to maintain order
-        $_SESSION['shuffled_questions'] = $questions;
-    } else {
-        // Retrieve the shuffled questions from the session
-        $questions = $_SESSION['shuffled_questions'];
-    }
-
-    // Filter out the already displayed questions
-    $remainingQuestions = array_diff_key($questions, array_flip($_SESSION['displayed_questions']));
-
-    // Check if there are remaining questions
-    if (!empty($remainingQuestions)) {
-        $question = reset($remainingQuestions); // Get the first question
-        $displayedQuestionId = array_keys($questions, $question)[0]; // Get the ID of the displayed question
-        $_SESSION['displayed_questions'][] = $displayedQuestionId; // Add displayed question ID to the list
+        // Check if there are remaining questions
+        if (!empty($remainingQuestions)) {
+            $question = reset($remainingQuestions); // Get the first question
+            $displayedQuestionId = array_keys($questions, $question)[0]; // Get the ID of the displayed question
+            $_SESSION['displayed_questions'][] = $displayedQuestionId; // Add displayed question ID to the list
         
             // Check if 'correct_option' key exists in the $question array
             if (isset($question['correct_option'])) {
@@ -102,13 +88,14 @@ if (isset($_GET['activity_name'])) {
             }
         } else {
             echo 'No more questions found for this activity.';
-            // Display the Finish button and redirect to activity_library.php
+            // Display the Finish button to show the score result
             echo '</div>';
             echo '<div class="button-container">';
             echo '<button class="submit-button" onclick="finishActivity()">Finish</button>';
             echo '</div>';
         }
-}
+    }
+    
     // Close the database connection
     $conn->close();
     ?>
@@ -120,6 +107,11 @@ if (isset($_GET['activity_name'])) {
 
     answerButtons.forEach(button => {
         button.addEventListener('click', () => {
+            // Play sound on button click
+            const audio = new Audio('ButtonAnsSFX.mp3');
+            audio.play();
+
+            // Rest of the logic for correct/wrong selection
             const isCorrect = button.getAttribute('data-correct') === 'true';
 
             answerButtons.forEach(btn => {
@@ -128,10 +120,8 @@ if (isset($_GET['activity_name'])) {
 
             if (isCorrect) {
                 button.classList.add('correct-selected');
-                document.getElementById('correctSound').play(); // Play the correct answer sound
             } else {
                 button.classList.add('wrong-selected');
-                document.getElementById('wrongSound').play(); // Play the wrong answer sound
             }
         });
     });
@@ -140,9 +130,13 @@ if (isset($_GET['activity_name'])) {
         window.location.href = 'multipleC.php?activity_name=' + activityName + '&question_id=' + questionId;
     }
 
-    function finishActivity() {
-    window.location.href = 'activity_library.php';
-}
+   
+        
+        function finishActivity() {
+        // Redirect to score_result.php after finishing the activity
+        window.location.href = '../score_result.php';
+    }
+    
     </script>
 </body>
 </html>
