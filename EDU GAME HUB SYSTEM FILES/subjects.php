@@ -75,12 +75,17 @@ if (!isset($_SESSION['username']) || $_SESSION['account_type'] !== 'Teacher') {
             </a>
           </li>
           <li class="sidebar-list-item">
+            <a href="Certificate gen.php">
+              <span class="material-icons-outlined"></span> Generate Certificate
+            </a>
+          </li>
+          <li class="sidebar-list-item">
             <a href="Messages.html">
               <span class="material-icons-outlined">mail</span> Messages
             </a>
           </li>
           <li class="sidebar-list-item">
-            <a href="Login.html">
+            <a href="logout.php">
               <span class="material-icons-outlined">logout</span> Sign Out
             </a>
           </li>

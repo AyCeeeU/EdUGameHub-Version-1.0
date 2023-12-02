@@ -12,6 +12,8 @@
 <body>
     <header>
         <div class="header">
+        <img id="notification-icon" src="notif.png" alt="Notification Icon" onclick="showNotifications()">
+
             <div class="gameLogo">
                 <img src="Gamelogo.png" alt="edugamehub Logo" width="400"/>
             </div>
@@ -20,6 +22,14 @@
             </div>
         </div>
     </header>
+    <!-- Messages Popup -->
+    <div id="popup-container">
+        <span id="close-popup" onclick="closePopup()">&times;</span>
+        <h2>Messages</h2>
+        <ul id="messages-list">
+            <!-- Messages will be added here dynamically -->
+        </ul>
+    </div>
     <div class="container">
         <div class="card1">
             <div class="card-image"></div>
@@ -40,7 +50,7 @@
             <p>
                 Check the certificates you earned by completing this semester!
             </p>
-            <a href="Certificates.html">Proceed</a>
+            <a href="Certificates.php">Proceed</a>
         </div>
     </div>
     <?php
@@ -53,7 +63,6 @@ session_start();
 // Check if the user is logged in
 if (isset($_SESSION['user_id'])) {
     $userId = $_SESSION['user_id'];
-
     // Check if the database connection is successful
     if ($conn) {
         // Fetch the user's profile picture path from the database
@@ -180,6 +189,34 @@ if (isset($_SESSION['user_id'])) {
             reader.readAsDataURL(choosedFile);
         }
     });
+
+    // Function to display messages in a pop-up
+    function showNotifications() {
+            // Fetch and display messages (You can fetch from your server/database)
+            // For demonstration, we'll add dummy messages
+            var messages = ['Message 1'];
+
+            // Show the popup container
+            document.getElementById('popup-container').style.display = 'block';
+
+            // Display the messages in the pop-up
+            var messagesList = document.getElementById('messages-list');
+            messagesList.innerHTML = ''; // Clear existing messages
+
+            messages.forEach(function (message) {
+                var listItem = document.createElement('li');
+                listItem.textContent = message;
+                messagesList.appendChild(listItem);
+            });
+        }
+
+        // Function to close the popup
+        function closePopup() {
+            // Hide the popup container
+            document.getElementById('popup-container').style.display = 'none';
+        }
+
+
 </script>
 
 

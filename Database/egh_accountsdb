@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 21, 2023 at 10:12 PM
+-- Generation Time: Nov 30, 2023 at 05:39 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -38,17 +38,19 @@ CREATE TABLE `tbl_accdb` (
   `account_type` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `created_date` datetime NOT NULL,
-  `profile_pic` varchar(255) DEFAULT NULL
+  `profile_pic` varchar(255) DEFAULT NULL,
+  `mother_maiden_name` varchar(255) DEFAULT NULL,
+  `birthdate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbl_accdb`
 --
 
-INSERT INTO `tbl_accdb` (`id`, `firstname`, `lastname`, `email`, `username`, `section`, `grade_level`, `account_type`, `password`, `created_date`, `profile_pic`) VALUES
-(124, 'ADMIN', 'ADMIN', 'juandelacruz@gmail.com', 'admin', '', '', 'Admin', '$2y$10$Y.w3wi23qe9oiTR002YPceh3HFQPfqAMzo/7aCWZvJAJ73hWwPfhW', '2023-10-22 04:09:33', NULL),
-(125, 'Cebastian', 'Cabanillas', 'cebastian.cabanillas.edu.ph', '201912129', 'Venus', 'Grade 6', 'Student', '$2y$10$znPNVgyIHqyxL0H5JV55S.kmxwUNtc7jFPLQ1QBdfg3OLNJRHXWcm', '2023-10-22 04:09:33', NULL),
-(127, 'teacher', 'teacher', 'exampleemail@gmail.com', 'teacher', '', '', 'Teacher', '$2y$10$4v4Y8/VwGw2M3qSSORiia.Dd6iJeUhWS7bAAnwtm.GyiXyaS1Efne', '2023-10-22 04:10:43', NULL);
+INSERT INTO `tbl_accdb` (`id`, `firstname`, `lastname`, `email`, `username`, `section`, `grade_level`, `account_type`, `password`, `created_date`, `profile_pic`, `mother_maiden_name`, `birthdate`) VALUES
+(150, 'teacher', 'teacher', 'teachersample@gmail.com', 'teacher', 'Saphire', 'Grade 5', 'Teacher', '$2y$10$vvzprdEjDHg9Tbtf7sS9e.YjsQFPuV3iJy50e67MSC6ZMfJrq0v0O', '2023-11-06 12:47:35', NULL, 'Lopez', '1999-12-12'),
+(151, 'admin', 'admin', 'adminsample@gmail.com', 'admin', '', '', 'Admin', '$2y$10$3VJaZKJA22Z1Uszcqaawiun51W4PRzbCGnd9KRgOI34yuFjWf.zre', '2023-11-06 12:47:36', NULL, 'Perez', '1999-12-12'),
+(152, 'student', 'student', 'studentsample@gmail.com', 'student', '', '', 'Student', '$2y$10$o.9m97TDIfDNhH7fGgKnJe5tkSd6AOYyza8w39iGxV2Plupgr/e7m', '2023-11-06 12:47:36', NULL, 'perez', '1999-12-12');
 
 -- --------------------------------------------------------
 
@@ -106,7 +108,19 @@ INSERT INTO `tbl_activity_log` (`id`, `user_id`, `action`, `timestamp`) VALUES
 (49, 117, 'Login', '2023-10-11 03:18:19'),
 (50, 121, 'Login', '2023-10-21 18:11:34'),
 (51, 116, 'Login', '2023-10-21 13:24:27'),
-(73, 122, 'Login', '2023-10-20 22:03:10');
+(73, 122, 'Login', '2023-10-20 22:03:10'),
+(84, 130, 'Login', '2023-10-24 13:43:07'),
+(85, 133, 'Login', '2023-10-24 13:52:35'),
+(86, 135, 'Login', '2023-10-24 13:52:45'),
+(87, 137, 'Login', '2023-10-24 14:10:52'),
+(88, 138, 'Login', '2023-10-24 15:01:55'),
+(94, 139, 'Login', '2023-11-04 19:21:16'),
+(95, 140, 'Login', '2023-11-04 19:20:56'),
+(97, 145, 'Login', '2023-11-06 03:50:27'),
+(99, 148, 'Login', '2023-11-06 04:45:45'),
+(100, 150, 'Login', '2023-11-30 00:08:59'),
+(104, 152, 'Login', '2023-11-29 23:10:06'),
+(106, 151, 'Login', '2023-11-29 16:57:30');
 
 -- --------------------------------------------------------
 
@@ -224,6 +238,22 @@ CREATE TABLE `tbl_multiple_teacher` (
   `randomize_questions` tinyint(1) NOT NULL DEFAULT 0,
   `visible_students` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_multiple_teacher`
+--
+
+INSERT INTO `tbl_multiple_teacher` (`question_id`, `activity_name`, `question_text`, `option_1`, `option_2`, `option_3`, `option_4`, `correct_option`, `randomize_questions`, `visible_students`) VALUES
+(188, 'English 101', 'This is sample 1 no random', 'This is sample 1 no random', 'This is sample 1 no random', 'This is sample 1 no random', 'This is sample 1 no random', 3, 0, 1),
+(189, 'English 101', 'This is sample 2 no random', 'This is sample 2 no random', 'This is sample 2 no random', 'This is sample 2 no random', 'This is sample 2 no random', 4, 0, NULL),
+(190, 'English 102', 'This is sample 3 no random', 'This is sample 3 no random', 'This is sample 3 no random', 'This is sample 3 no random', 'This is sample 3 no random', 1, 0, 1),
+(191, 'English 102', 'This is sample 4 no random', 'This is sample 4 no random', 'This is sample 4 no random', 'This is sample 4 no random', 'This is sample 4 no random', 4, 0, NULL),
+(192, 'English 103', 'No ramdom 1', 'No ramdom 1', 'No ramdom 1', 'No ramdom 1', 'No ramdom 1', 3, 0, 1),
+(193, 'English 103', 'No ramdom 2', 'No ramdom 2', 'No ramdom 2', 'No ramdom 2', 'No ramdom 2', 1, 0, NULL),
+(196, 'SAMPLE 1', 'sampol1 with random', 'sampol1', 'sampol1', 'sampol1', 'sampol1', 4, 1, 1),
+(197, 'SAMPLE 1', 'sampol2 with random', 'sampol2', 'sampol2', 'sampol2', 'sampol2', 4, 1, NULL),
+(198, 'SAMPLE 1', 'sampol1 with random', 'sampol1', 'sampol1', 'sampol1', 'sampol1', 4, 1, NULL),
+(199, 'SAMPLE 1', 'sampol2 with random', 'sampol2', 'sampol2', 'sampol2', 'sampol2', 4, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -384,7 +414,7 @@ ALTER TABLE `tbl_subjects`
 -- AUTO_INCREMENT for table `tbl_accdb`
 --
 ALTER TABLE `tbl_accdb`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=153;
 
 --
 -- AUTO_INCREMENT for table `tbl_activity`
@@ -396,7 +426,7 @@ ALTER TABLE `tbl_activity`
 -- AUTO_INCREMENT for table `tbl_activity_log`
 --
 ALTER TABLE `tbl_activity_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=255;
 
 --
 -- AUTO_INCREMENT for table `tbl_badge`
@@ -414,7 +444,7 @@ ALTER TABLE `tbl_createact`
 -- AUTO_INCREMENT for table `tbl_multiple_teacher`
 --
 ALTER TABLE `tbl_multiple_teacher`
-  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=186;
+  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=200;
 
 --
 -- AUTO_INCREMENT for table `tbl_recentact`

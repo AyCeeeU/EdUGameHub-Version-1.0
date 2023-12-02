@@ -63,7 +63,7 @@
                 </a>
             </li>
             <li class="sidebar-list-item">
-                <a href="Login.html">
+                <a href="login.php">
                     <span class="material-icons-outlined">logout</span> Sign Out
                 </a>
             </li>
