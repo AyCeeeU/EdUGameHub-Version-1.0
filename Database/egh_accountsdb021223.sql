@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 21, 2023 at 10:12 PM
+-- Generation Time: Dec 02, 2023 at 01:15 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -38,17 +38,19 @@ CREATE TABLE `tbl_accdb` (
   `account_type` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `created_date` datetime NOT NULL,
-  `profile_pic` varchar(255) DEFAULT NULL
+  `profile_pic` varchar(255) DEFAULT NULL,
+  `mother_maiden_name` varchar(255) DEFAULT NULL,
+  `birthdate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbl_accdb`
 --
 
-INSERT INTO `tbl_accdb` (`id`, `firstname`, `lastname`, `email`, `username`, `section`, `grade_level`, `account_type`, `password`, `created_date`, `profile_pic`) VALUES
-(124, 'ADMIN', 'ADMIN', 'juandelacruz@gmail.com', 'admin', '', '', 'Admin', '$2y$10$Y.w3wi23qe9oiTR002YPceh3HFQPfqAMzo/7aCWZvJAJ73hWwPfhW', '2023-10-22 04:09:33', NULL),
-(125, 'Cebastian', 'Cabanillas', 'cebastian.cabanillas.edu.ph', '201912129', 'Venus', 'Grade 6', 'Student', '$2y$10$znPNVgyIHqyxL0H5JV55S.kmxwUNtc7jFPLQ1QBdfg3OLNJRHXWcm', '2023-10-22 04:09:33', NULL),
-(127, 'teacher', 'teacher', 'exampleemail@gmail.com', 'teacher', '', '', 'Teacher', '$2y$10$4v4Y8/VwGw2M3qSSORiia.Dd6iJeUhWS7bAAnwtm.GyiXyaS1Efne', '2023-10-22 04:10:43', NULL);
+INSERT INTO `tbl_accdb` (`id`, `firstname`, `lastname`, `email`, `username`, `section`, `grade_level`, `account_type`, `password`, `created_date`, `profile_pic`, `mother_maiden_name`, `birthdate`) VALUES
+(156, 'admin', 'admin', 'adminsample@gmail.com', 'admin', '', '', 'Admin', '$2y$10$VnPNnsPQ2/w99oOZPV.7g.J7vE0ipRrYzb14PWyg4MZUpOOayPrh6', '2023-12-02 15:54:14', NULL, NULL, NULL),
+(157, 'teacher', 'teacher', 'teachersample@gmail.com', 'teacher', '', '', 'Teacher', '$2y$10$6KgoqiOhMZbRkWH5UQ0mmeBn68YHA0gRNG7xlS2d3TQEKICQnZHMG', '2023-12-02 15:54:33', NULL, 'Lopez', '1999-12-12'),
+(158, 'student', 'student', 'studentsample@gmail.com', 'student', 'Saphire', 'Grade 3', 'Student', '$2y$10$5qA4hNtDgL.FZNCLBZNOv.gisJdHLBPXWFHH4mf/forPnSovLAhEu', '2023-12-02 15:55:41', NULL, 'Sample', '1999-12-12');
 
 -- --------------------------------------------------------
 
@@ -106,7 +108,22 @@ INSERT INTO `tbl_activity_log` (`id`, `user_id`, `action`, `timestamp`) VALUES
 (49, 117, 'Login', '2023-10-11 03:18:19'),
 (50, 121, 'Login', '2023-10-21 18:11:34'),
 (51, 116, 'Login', '2023-10-21 13:24:27'),
-(73, 122, 'Login', '2023-10-20 22:03:10');
+(73, 122, 'Login', '2023-10-20 22:03:10'),
+(84, 130, 'Login', '2023-10-24 13:43:07'),
+(85, 133, 'Login', '2023-10-24 13:52:35'),
+(86, 135, 'Login', '2023-10-24 13:52:45'),
+(87, 137, 'Login', '2023-10-24 14:10:52'),
+(88, 138, 'Login', '2023-10-24 15:01:55'),
+(94, 139, 'Login', '2023-11-04 19:21:16'),
+(95, 140, 'Login', '2023-11-04 19:20:56'),
+(97, 145, 'Login', '2023-11-06 03:50:27'),
+(99, 148, 'Login', '2023-11-06 04:45:45'),
+(100, 150, 'Login', '2023-11-30 00:08:59'),
+(104, 152, 'Login', '2023-11-29 23:10:06'),
+(106, 151, 'Login', '2023-12-02 03:35:40'),
+(256, 155, 'Login', '2023-12-02 07:24:48'),
+(257, 157, 'Login', '2023-12-02 10:22:11'),
+(258, 158, 'Login', '2023-12-02 12:13:25');
 
 -- --------------------------------------------------------
 
@@ -126,6 +143,16 @@ CREATE TABLE `tbl_archive` (
   `password` varchar(255) NOT NULL,
   `created_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `tbl_archive`
+--
+
+INSERT INTO `tbl_archive` (`id`, `firstname`, `lastname`, `email`, `username`, `section`, `grade_level`, `account_type`, `password`, `created_date`) VALUES
+(151, 'admin', 'admin', 'adminsample@gmail.com', 'admin', '', '', 'Admin', '$2y$10$3VJaZKJA22Z1Uszcqaawiun51W4PRzbCGnd9KRgOI34yuFjWf.zre', '2023-11-06 12:47:36'),
+(155, '', '', 'adminsample@gmail.com', 'admin', '', '', 'Admin', '$2y$10$aZ.LmH5KaytK.ddqdYhshuxr/7rSeWH6hJZSFwlpLOBUQRrUaB.pC', '2023-12-02 08:23:28'),
+(160, 'Mark', 'Johnson', 'markj@outlook.com', 'Section C', 'Grade 11', 'Teacher', 'ghi789', '$2y$10$VZW60Vz998alIlGaGFZs7OM0pkDmgT0KsfIcBl8waRM924uZMvacG', '2023-12-02 15:55:55'),
+(159, 'Jane', 'Smith', 'janesmith@yahoo.com', 'Section B', 'Grade 8', 'Student', 'def456', '$2y$10$.c0/ZzxBdFkUZqSo6900leAs/h8Bg03qHdRRFU8wzdLPuzWNO9GdC', '2023-12-02 15:55:55');
 
 -- --------------------------------------------------------
 
@@ -224,6 +251,15 @@ CREATE TABLE `tbl_multiple_teacher` (
   `randomize_questions` tinyint(1) NOT NULL DEFAULT 0,
   `visible_students` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_multiple_teacher`
+--
+
+INSERT INTO `tbl_multiple_teacher` (`question_id`, `activity_name`, `question_text`, `option_1`, `option_2`, `option_3`, `option_4`, `correct_option`, `randomize_questions`, `visible_students`) VALUES
+(204, 'Sample 1', 'Sample 1', 'Sample 1', 'Sample 1', 'Sample 1', 'Sample 1', 1, 0, 1),
+(205, 'Sample 1', 'Sample 2', 'Sample 2', 'Sample 2', 'Sample 2', 'Sample 2', 2, 0, 1),
+(206, 'Sample 1', 'Sample 3', 'Sample 3', 'Sample 3', 'Sample 3', 'Sample 3', 3, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -384,7 +420,7 @@ ALTER TABLE `tbl_subjects`
 -- AUTO_INCREMENT for table `tbl_accdb`
 --
 ALTER TABLE `tbl_accdb`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
 
 --
 -- AUTO_INCREMENT for table `tbl_activity`
@@ -396,7 +432,7 @@ ALTER TABLE `tbl_activity`
 -- AUTO_INCREMENT for table `tbl_activity_log`
 --
 ALTER TABLE `tbl_activity_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=320;
 
 --
 -- AUTO_INCREMENT for table `tbl_badge`
@@ -414,7 +450,7 @@ ALTER TABLE `tbl_createact`
 -- AUTO_INCREMENT for table `tbl_multiple_teacher`
 --
 ALTER TABLE `tbl_multiple_teacher`
-  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=186;
+  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=207;
 
 --
 -- AUTO_INCREMENT for table `tbl_recentact`

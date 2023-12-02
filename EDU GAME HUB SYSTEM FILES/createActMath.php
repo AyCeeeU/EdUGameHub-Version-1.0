@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -237,14 +237,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['edit'])) {
                     <label for="activity-name">Activity Name:</label>
                     <input type="text" id="activity-name" name="activity-name" class="custom-ActName" value="<?php echo isset($activityDetails['activity_name']) ? $activityDetails['activity_name'] : ''; ?>">
                 </div>
-                <div class="container">
-    <label for="subject">Subject:</label>
-    <select id="subject" name="subject">
-        <option value="English">English</option>
-        <option value="Mathematics">Mathematics</option>
-        <option value="Science">Science</option>
-    </select>
-</div>
+                
                 <!-- Toggle button for question randomization -->
                 <div class="container">
                     <label for="randomize-questions">Randomize Questions:</label>

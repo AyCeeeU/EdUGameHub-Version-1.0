@@ -93,17 +93,17 @@ if (!isset($_SESSION['username']) || $_SESSION['account_type'] !== 'Teacher') {
     <?php
     include('db_conn.php');
 
-   // activities created by the teacher
-$sql = "SELECT DISTINCT activity_name FROM tbl_multiple_teacher";
-$result = mysqli_query($conn, $sql);
+    $sql = "SELECT DISTINCT activity_name FROM tbl_multiple_teacher"; // Fetch distinct activity names
+    $result = mysqli_query($conn, $sql);
 
-// Checking if there are activities to display
-if (mysqli_num_rows($result) > 0) {
-    $activities = mysqli_fetch_all($result, MYSQLI_ASSOC);
-} else {
-    $activities = array(); // No activities found
-}
-
+    // Checking if there are activities to display
+    if (mysqli_num_rows($result) > 0) {
+        $activities = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    } else {
+        $activities = array(); // No activities found
+    }
+    ?>
+<?php
     // function to update the Visible to Students status
     function updateVisibleStatus($conn, $activityId, $status) {
         $sql = "UPDATE tbl_multiple_teacher SET visible_students = '$status' WHERE question_id = $activityId";
@@ -124,56 +124,45 @@ if (mysqli_num_rows($result) > 0) {
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($activities as $activity): ?>
-                        <tr>
-                            <td><?php echo $activity['activity_name']; ?></td>
-                            <!-- Include logic here to display only one question per unique activity name -->
+                <?php foreach ($activities as $activity): ?>
                             <?php
-                                $activityName = $activity['activity_name'];
-                                $sqlQuestion = "SELECT * FROM tbl_multiple_teacher WHERE activity_name = '$activityName' LIMIT 1";
-                                $resultQuestion = mysqli_query($conn, $sqlQuestion);
-                                $activityDetails = mysqli_fetch_assoc($resultQuestion);
+                             $activityName = $activity['activity_name'];
+                             $sqlQuestions = "SELECT * FROM tbl_multiple_teacher WHERE activity_name = '$activityName'";
+                             $resultQuestions = mysqli_query($conn, $sqlQuestions);
                             ?>
-                            <td>
-                                <!-- Modify as per your requirements for displaying visibility checkbox -->
-                                <?php if ($activityDetails): ?>
-                                    <form class="visibility-form">
-                                        <input type="checkbox" class="visible-checkbox" data-activity-id="<?php echo $activityDetails['question_id']; ?>" <?php echo $activityDetails['visible_students'] === '1' ? 'checked' : ''; ?>>
-                                        <input type="hidden" name="activityId" value="<?php echo $activityDetails['question_id']; ?>">
-                                    </form>
-                                <?php else: ?>
-                                    No question available
-                                <?php endif; ?>
-                            </td>
-                            <td>
-                                <!-- Modify as per your requirements for displaying actions -->
-                                <?php if ($activityDetails): ?>
-                                    <button class="viewBtn" data-toggle="modal" data-target="#viewActivityModal"
-                                        data-activity-name="<?php echo htmlspecialchars($activityDetails['activity_name'], ENT_QUOTES); ?>"
-                                        data-question-text="<?php echo htmlspecialchars($activityDetails['question_text'], ENT_QUOTES); ?>"
-                                        data-option-1="<?php echo htmlspecialchars($activityDetails['option_1'], ENT_QUOTES); ?>"
-                                        data-option-2="<?php echo htmlspecialchars($activityDetails['option_2'], ENT_QUOTES); ?>"
-                                        data-option-3="<?php echo htmlspecialchars($activityDetails['option_3'], ENT_QUOTES); ?>"
-                                        data-option-4="<?php echo htmlspecialchars($activityDetails['option_4'], ENT_QUOTES); ?>"
-                                        data-correct-option="<?php echo htmlspecialchars($activityDetails['correct_option'], ENT_QUOTES); ?>"
-                                        data-randomizer="<?php echo isset($activityDetails['randomizer']) ? htmlspecialchars($activityDetails['randomizer'], ENT_QUOTES) : ''; ?>">
-                                        View Activity
-                                    </button>
-                                    <a href="editActivity.php?id=<?php echo $activityDetails['question_id']; ?>"><button>Edit Activity</button></a>
-                                <?php else: ?>
-                                    No actions available
-                                <?php endif; ?>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        <?php else: ?>
-            <p>No activities found.</p>
-        <?php endif; ?>
+
+<?php if (mysqli_num_rows($resultQuestions) > 0): ?>
+                                        <?php while ($activityDetails = mysqli_fetch_assoc($resultQuestions)): ?>
+                                    <tr>
+                                        <td><?php echo $activityDetails['activity_name']; ?></td>
+                                        <td>
+                                            <!-- Modify as per your requirements for displaying visibility checkbox -->
+                                            <form class="visibility-form">
+                                            <input type="checkbox" class="visible-checkbox" data-activity-id="<?php echo $activityDetails['question_id']; ?>" <?php echo $activityDetails['visible_students'] === '1' ? 'checked' : ''; ?>>
+                                                <input type="hidden" name="activityId" value="<?php echo $activityDetails['question_id']; ?>">
+                                            </form>
+                                        </td>
+                                        <td>
+                                        <button class="deleteBtn" data-activity-id="<?php echo htmlspecialchars($activityDetails['question_id'], ENT_QUOTES); ?>">Delete Activity</button>
+                                            <a href="createActEng.php?edit=<?php echo $activityDetails['question_id']; ?>">
+                                                <button>Edit Activity</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php endwhile; ?>
+                            <?php else: ?>
+                                <tr>
+                                    <td colspan="3">No questions available for this activity</td>
+                                </tr>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            <?php else: ?>
+                <p>No activities found.</p>
+            <?php endif; ?>
+        </div>
     </div>
-</div>
-</div>
 
 <!-- Modal for Viewing Activity -->
 <div class="modal fade" id="viewActivityModal" tabindex="-1" role="dialog" aria-labelledby="viewActivityModalLabel" aria-hidden="true">
@@ -229,24 +218,27 @@ if (mysqli_num_rows($result) > 0) {
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 <script>
-    $(document).ready(function () {
-        $('.visibility-form').on('change', '.visible-checkbox', function () {
-            var activityId = $(this).data('activity-id');
-            var visibleStatus = this.checked ? '1' : '0';
 
-            $.ajax({
-                type: 'POST',
-                url: 'update_visibility.php', 
-                data: { activityId: activityId, visibleStatus: visibleStatus },
-                success: function (response) {
-                    console.log('Visibility updated successfully.');
-                },
-                error: function (error) {
-                    console.error('Error updating visibility: ' + error);
-                }
+    
+    $(document).ready(function () {
+            $('.visibility-form').on('change', '.visible-checkbox', function () {
+                var activityId = $(this).data('activity-id');
+                var visibleStatus = this.checked ? '1' : '0';
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'update_visibility.php',
+                    data: { activityId: activityId, visibleStatus: visibleStatus },
+                    success: function (response) {
+                        console.log('Visibility updated successfully.');
+                    },
+                    error: function (error) {
+                        console.error('Error updating visibility: ' + error);
+                    }
+                });
             });
         });
-    });
+
 
     document.addEventListener("DOMContentLoaded", function () {
     const createActivityBtn = document.getElementById("createActivityBtn");
@@ -304,7 +296,19 @@ if (mysqli_num_rows($result) > 0) {
     libraryBtn.addEventListener("click", openLibrary);
     badgesBtn.addEventListener("click", openBadges);
 });
+// Get all delete buttons with the class "deleteBtn"
+const deleteButtons = document.querySelectorAll('.deleteBtn');
 
+// Loop through each delete button to attach a click event listener
+deleteButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        // Get the data-activity-id attribute value (question_id)
+        const questionId = this.getAttribute('data-activity-id');
+
+        // Redirect to delete_activity.php with the question_id as a query parameter
+        window.location.href = `delete_activity.php?delete=${questionId}`;
+    });
+});
 </script>
 </body>
 </html>
