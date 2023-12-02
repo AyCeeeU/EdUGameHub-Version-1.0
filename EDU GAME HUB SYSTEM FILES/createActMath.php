@@ -1,98 +1,4 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teacher Dashboard</title>
-    <!-- Montserrat Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <!-- Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/createAct.css">
-</head>
-<body>
-<div class="grid-container">
-    <!-- Header -->
-    <header class="header">
-        <div class="menu-icon" onclick="openSidebar()">
-            <span class="material-icons-outlined">menu</span>
-        </div>
-        <div class="header-left">
-        <button class="btn btn-primary" id="createActivityBtn">Create Activity</button>
-            <button class="btn btn-secondary" id="libraryBtn" onclick="openLibrary()">Library</button>
-            <button class="btn btn-secondary" id="badgesBtn"onclick="openbadgesBtn()">Badges</button>
-            <!--<button class="btn btn-secondary" id="leaderboardBtn" onclick="openLeaderboard()">Leaderboard</button>-->
-        </div>
-        <div class="header-right">
-            <span class="material-icons-outlined">notifications</span>
-            <span class="material-icons-outlined">email</span>
-            <span class="material-icons-outlined">account_circle</span>
-        </div>
-    </header>
-    <!-- End Header -->
-
-    <!-- Sidebar -->
-    <aside id="sidebar">
-        <img class="logo" src="images/edugamelogo.png" alt="logo">
-        <div class="sidebar-title">
-            <div class="sidebar-brand">
-            </div>
-            <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
-        </div>
-
-        <ul class="sidebar-list">
-            <li class="sidebar-list-item">
-                <a href="teacher management system.php">
-                    <span class="material-icons-outlined">dashboard</span> Dashboard
-                </a>
-            </li>
-            <li class="sidebar-list-item">
-                <a href="students.php">
-                    <span class="material-icons-outlined">groups</span> Students
-                </a>
-            </li>
-            <li class="sidebar-list-item">
-                <a href="subjects.php">
-                    <span class="material-icons-outlined">menu_book</span> Subjects
-                </a>
-            </li>
-            <li class="sidebar-list-item">
-                <a href="Messages.html">
-                    <span class="material-icons-outlined">mail</span> Messages
-                </a>
-            </li>
-            <li class="sidebar-list-item">
-                <a href="login.php">
-                    <span class="material-icons-outlined">logout</span> Sign Out
-                </a>
-            </li>
-        </ul>
-    </aside>
-    <!-- End Sidebar -->
-
-    <?php
-
-    include('db_conn.php');
-
-    
-    $activity_name = "";
-    $questions = array();
-
-    // Form submission
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $activity_name = $_POST["activity-name"];
-
-        // Loop through posted questions 
-        for ($i = 1; $i <= $_POST["question-count"]; $i++) {
-            $question_text = $_POST["question-text-$i"];
-
-            //  options and correct_option arrays
-            $options = array();
-            $correct_option = "";
-=======
-    <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -104,7 +10,6 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
         <!-- Custom CSS -->
         <link rel="stylesheet" href="css/createAct.css">
->>>>>>> 28dfe37143218395144c783bd19d34ea7859c32b
 
         
     </head>
@@ -332,14 +237,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['edit'])) {
                     <label for="activity-name">Activity Name:</label>
                     <input type="text" id="activity-name" name="activity-name" class="custom-ActName" value="<?php echo isset($activityDetails['activity_name']) ? $activityDetails['activity_name'] : ''; ?>">
                 </div>
-                <div class="container">
-    <label for="subject">Subject:</label>
-    <select id="subject" name="subject">
-        <option value="English">English</option>
-        <option value="Mathematics">Mathematics</option>
-        <option value="Science">Science</option>
-    </select>
-</div>
+                
                 <!-- Toggle button for question randomization -->
                 <div class="container">
                     <label for="randomize-questions">Randomize Questions:</label>

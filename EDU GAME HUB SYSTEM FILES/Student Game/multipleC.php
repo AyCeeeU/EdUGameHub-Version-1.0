@@ -7,11 +7,11 @@
     <title>EduGameHub</title>
 
     <audio id="correctSound">
-    <source src="correct.wav" type="audio/mpeg">
+        <source src="correct.wav" type="audio/mpeg">
     </audio>
 
     <audio id="wrongSound">
-    <source src="wrong.wav" type="audio/mpeg">
+        <source src="wrong.wav" type="audio/mpeg">
     </audio>
 </head>
 <body>
@@ -28,15 +28,26 @@
     session_start();
     include 'db_conn.php';
 
-    if (isset($_GET['activity_name'])) {
-        $activityName = $_GET['activity_name'];
-        $questionId = isset($_GET['question_id']) ? intval($_GET['question_id']) : 0;
+    
+if (!isset($_SESSION['displayed_questions'])) {
+    $_SESSION['displayed_questions'] = [];
+}
 
+<<<<<<< HEAD
         // Fetch all questions for the specified activity
         $sql = "SELECT question_id, question_text, option_1, option_2, option_3, option_4
+=======
+if (isset($_GET['activity_name'])) {
+    $activityName = $_GET['activity_name'];
+    $questionId = isset($_GET['question_id']) ? intval($_GET['question_id']) : 0;
+
+    if (!isset($_SESSION['shuffled_questions']) || empty($_SESSION['shuffled_questions'])) {
+        // Fetch questions including 'randomize_questions' value
+        $sql = "SELECT question_id, question_text, option_1, option_2, option_3, option_4, correct_option, randomize_questions
+>>>>>>> 28dfe37143218395144c783bd19d34ea7859c32b
                 FROM tbl_multiple_teacher 
                 WHERE activity_name = ?";
-
+            
         $stmt = $conn->prepare($sql);
 
         if ($stmt) {
@@ -49,87 +60,72 @@
             echo 'Error: ' . $conn->error;
         }
 
-        // Check if the question exists with the given index
-        if (isset($questions[$questionId])) {
-            $question = $questions[$questionId];
+        // Check if the questions need to be shuffled based on 'randomize_questions' value
+        $randomize = isset($questions[0]['randomize_questions']) ? $questions[0]['randomize_questions'] : null;
 
-            if (isset($_POST['user_answer'])) {
-                $userAnswer = $_POST['user_answer'];
-                $correctAnswer = $question['option_1']; // Assuming option_1 is always the correct answer
-
-                if ($userAnswer === $correctAnswer) {
-                    $_SESSION['user_score']++; // Increment user score for correct answer
-                }
-            }
-
-            // Display the question and answer options
-            
-            echo '<p class="question">' . $question['question_text'] . '</p>';
-            echo '</div>';
-            // Dynamically generate answer buttons
-            echo '<div class="button-container">';
-            echo '<form method="post" action="multipleC.php?activity_name=' . $activityName . '&question_id=' . ($questionId + 1) . '">';
-
-            // Display the answer buttons only if questions are available
-            if ($questionId < count($questions) - 1) {
-                echo '<button class="answer-button" name="user_answer" value="' . $question['option_1'] . '">' . $question['option_1'] . '</button>';
-                echo '<button class="answer-button" name="user_answer" value="' . $question['option_2'] . '">' . $question['option_2'] . '</button>';
-                echo '<button class="answer-button" name="user_answer" value="' . $question['option_3'] . '">' . $question['option_3'] . '</button>';
-                echo '<button class="answer-button" name="user_answer" value="' . $question['option_4'] . '">' . $question['option_4'] . '</button>';
-                // Display the "Next" button with the updated question_id
-                echo '<button class="submit-button" type="submit">Next</button>';
-            } else {
-                // If it's the last question, redirect to "result.php" with the total score
-                echo '<input type="hidden" name="total_score" value="' . $_SESSION['user_score'] . '">';
-                echo '<button class="submit-button" type="submit">Finish</button>';
-            }
-            echo '</form>';
-            echo '</div>';
-        } else {
-            // Redirect to "result.php" with the total score when there are no more questions
-            if ($questionId > 0) {
-                header("Location: result.php?total_score=" . $_SESSION['user_score']);
-                exit();
-            } else {
-                echo 'No questions found for the activity.';
-            }
+        if ($randomize === 1) {
+            shuffle($questions);
         }
+
+        // Store the shuffled questions in the session to maintain order
+        $_SESSION['shuffled_questions'] = $questions;
     } else {
-        echo 'No activity_name specified.';
+        // Retrieve the shuffled questions from the session
+        $questions = $_SESSION['shuffled_questions'];
     }
 
+    // Filter out the already displayed questions
+    $remainingQuestions = array_diff_key($questions, array_flip($_SESSION['displayed_questions']));
+
+    // Check if there are remaining questions
+    if (!empty($remainingQuestions)) {
+        $question = reset($remainingQuestions); // Get the first question
+        $displayedQuestionId = array_keys($questions, $question)[0]; // Get the ID of the displayed question
+        $_SESSION['displayed_questions'][] = $displayedQuestionId; // Add displayed question ID to the list
+        
+            // Check if 'correct_option' key exists in the $question array
+            if (isset($question['correct_option'])) {
+                // Display the question and answer options
+                echo '<p class="question">' . $question['question_text'] . '</p>';
+                echo '</div>';
+                // Dynamically generate answer buttons based on correct_option
+                echo '<div class="button-container">';
+                echo '<button class="answer-button" data-correct="' . ($question['correct_option'] === 1 ? 'true' : 'false') . '" data-answer="A">' . $question['option_1'] . '</button>';
+                echo '<button class="answer-button" data-correct="' . ($question['correct_option'] === 2 ? 'true' : 'false') . '" data-answer="B">' . $question['option_2'] . '</button>';
+                echo '<button class="answer-button" data-correct="' . ($question['correct_option'] === 3 ? 'true' : 'false') . '" data-answer="C">' . $question['option_3'] . '</button>';
+                echo '<button class="answer-button" data-correct="' . ($question['correct_option'] === 4 ? 'true' : 'false') . '" data-answer="D">' . $question['option_4'] . '</button>';
+                // Display the "Next" button with the updated question_id
+                echo '<button class="submit-button" onclick="navigateToNextQuestion(\'' . $activityName . '\', ' . ($questionId + 1) . ')">Next</button>';
+                echo '</div>';
+            } else {
+                echo 'Correct option information is missing for this question.';
+            }
+        } else {
+            echo 'No more questions found for this activity.';
+            // Display the Finish button and redirect to activity_library.php
+            echo '</div>';
+            echo '<div class="button-container">';
+            echo '<button class="submit-button" onclick="finishActivity()">Finish</button>';
+            echo '</div>';
+        }
+}
     // Close the database connection
     $conn->close();
     ?>
     </div>
 
     <script>
-    // Add a variable to track whether an answer has been selected
-    let answerSelected = false;
-
     // Get all answer buttons
     const answerButtons = document.querySelectorAll('.answer-button');
 
-    // Add click event listeners to answer buttons
     answerButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Check if an answer has already been selected
-            if (answerSelected) {
-                return;
-            }
-
-            // Set the variable to indicate that an answer has been selected
-            answerSelected = true;
-
-            // Check if the clicked button is the correct answer
             const isCorrect = button.getAttribute('data-correct') === 'true';
 
-            // Remove the 'correct-selected' and 'wrong-selected' classes from all buttons
             answerButtons.forEach(btn => {
                 btn.classList.remove('correct-selected', 'wrong-selected');
             });
 
-            // Add the appropriate class to the clicked button
             if (isCorrect) {
                 button.classList.add('correct-selected');
                 document.getElementById('correctSound').play(); // Play the correct answer sound
@@ -137,18 +133,16 @@
                 button.classList.add('wrong-selected');
                 document.getElementById('wrongSound').play(); // Play the wrong answer sound
             }
-
-            // Disable all buttons after an answer is selected
-            answerButtons.forEach(btn => {
-                btn.disabled = true;
-            });
         });
     });
 
     function navigateToNextQuestion(activityName, questionId) {
-        // Change the location to the same page but with the next question for the same activity
         window.location.href = 'multipleC.php?activity_name=' + activityName + '&question_id=' + questionId;
     }
+
+    function finishActivity() {
+    window.location.href = 'activity_library.php';
+}
     </script>
 </body>
 </html>
