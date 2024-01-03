@@ -65,7 +65,14 @@ mysqli_close($conn);
                 // Add code to display the activity content as needed
                 echo '<form method="get" action="multipleC.php">';
                 echo '<input type="hidden" name="activity_name" value="' . htmlspecialchars($activity['activity_name'], ENT_QUOTES) . '">';
+                echo '<input type="hidden" name="activity_id" value="' . htmlspecialchars($activityId) . '">';
                 echo '<button type="submit">Start Activity</button>';
+                echo '</form>';
+
+                echo '<form method="get" action="score_result.php">';
+                echo '<input type="hidden" name="activity_name" value="' . htmlspecialchars($activity['activity_name'], ENT_QUOTES) . '">';
+                echo '<input type="hidden" name="activity_id" value="' . htmlspecialchars($activityId) . '">';
+                echo '<button type="submit">Score Result</button>';
                 echo '</form>';
             } else {
                 echo '<p>Activity not found.</p>';
@@ -75,11 +82,18 @@ mysqli_close($conn);
             echo '<div class="activity-list">';
             if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo '<div class="activity-item">';
+                    echo '<div class="activity-item">'; 
                     echo '<h2>Activity Name: ' . htmlspecialchars($row['activity_name'], ENT_QUOTES) . '</h2>';
                     echo '<form method="get" action="multipleC.php">';
                     echo '<input type="hidden" name="activity_name" value="' . htmlspecialchars($row['activity_name'], ENT_QUOTES) . '">';
+                    echo '<input type="hidden" name="activity_id" value="' . htmlspecialchars($row['question_id']) . '">';
                     echo '<button type="submit">Start Activity</button>';
+                    echo '</form>';
+
+                    echo '<form method="get" action="score_result.php">';
+                    echo '<input type="hidden" name="activity_name" value="' . htmlspecialchars($row['activity_name'], ENT_QUOTES) . '">';
+                    echo '<input type="hidden" name="activity_id" value="' . htmlspecialchars($row['question_id']) . '">';
+                    echo '<button type="submit">Score Result</button>';
                     echo '</form>';
                     echo '</div>';
                 }

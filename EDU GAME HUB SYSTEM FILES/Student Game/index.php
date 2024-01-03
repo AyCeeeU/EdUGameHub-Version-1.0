@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-          crossorigin="anonymous" referrerpolicy="no-referrer">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous" referrerpolicy="no-referrer">
+          
     <title>EduGameHub</title>
 </head>
 <body>
@@ -22,6 +23,7 @@
             </div>
         </div>
     </header>
+    
     <!-- Messages Popup -->
     <div id="popup-container">
         <span id="close-popup" onclick="closePopup()">&times;</span>
@@ -32,27 +34,33 @@
     </div>
     <div class="container">
         <div class="card1">
-            <div class="card-image"></div>
             <h2>Badge</h2>
-            <p>
+            
           View the badges you've earned through completed tasks!
-            </p>
-            <a href="Badges.php">Proceed</a>
+         
+          <p><a href="Badges.php">Proceed</a></p>
+
         </div>
         <div class="card2">
-            <div class="card-image"></div>
-            <h2>Play EduGame!</h2>
-            <a href="student welcome.html"><i class="fa-solid fa-play" style="color: #ffffff"></i></a>
-        </div>
+  <h2>Play EduGame!</h2>
+  <a href="student welcome.html" class="button-3d">
+    <img src="PlayButton.png" alt="Play Button">
+  </a>
+</div>
         <div class="card3">
-            <div class="card-image"></div>
             <h2>Certificates</h2>
-            <p>
+           
                 Check the certificates you earned by completing this semester!
-            </p>
-            <a href="Certificates.php">Proceed</a>
+          
+           <p> <a href="Certificates.php">Proceed</a></p>
         </div>
     </div>
+
+    <audio id="background-music" loop autoplay>
+    <source src="MainMenu.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
     <?php
 // Assuming you have a database connection established
 // Include your database connection script (db_conn.php) with the new path
@@ -96,6 +104,7 @@ if (isset($_SESSION['user_id'])) {
 </form>
 
 
+
  <!-- Welcome User! Section -->
  <div class="welcome-section">
         <?php
@@ -120,16 +129,13 @@ if (isset($_SESSION['user_id'])) {
                 $stmt->fetch();
                 $stmt->close();
 
-                echo '<div style="text-align: center;">'; // Center-align the content
-
-                
-                // Display the user's information
+                echo '<div class="user-info-container">';
                 echo "<h1>Welcome, $firstname $lastname!</h1>";
-                echo "<h3> $email</h3></p>";
-                echo "<h3>$section</h3></p>";
-                echo "<h3> $grade_level</h3></p>";
+                echo '<div class="user-details">';
+                echo "<p>Section: $section</p>";
+                echo "<p>$grade_level</p>";
                 echo '</div>';
-
+                echo '</div>';
                 
               
                 
@@ -141,7 +147,28 @@ if (isset($_SESSION['user_id'])) {
         }
     ?>
 </div>
-
+<div class="background">
+    <!-- Add more shapes -->
+    <div class="shape triangle" style="top: 20vh; left: 15vw;"></div>
+    <div class="shape square" style="top: 40vh; left: 50vw;"></div>
+    <div class="shape circle" style="top: 70vh; left: 10vw;"></div>
+    <div class="shape triangle" style="top: 10vh; left: 70vw;"></div>
+    <div class="shape square" style="top: 60vh; left: 80vw;"></div>
+    <div class="shape circle" style="top: 30vh; left: 25vw;"></div>
+    <div class="shape triangle" style="top: 20vh; left: 15vw;"></div>
+    <div class="shape square" style="top: 40vh; left: 50vw;"></div>
+    <div class="shape circle" style="top: 70vh; left: 10vw;"></div>
+    <div class="shape triangle" style="top: 10vh; left: 70vw;"></div>
+    <div class="shape square" style="top: 60vh; left: 80vw;"></div>
+    <div class="shape circle" style="top: 30vh; left: 25vw;"></div>
+    <div class="shape triangle" style="top: 20vh; left: 15vw;"></div>
+    <div class="shape square" style="top: 40vh; left: 50vw;"></div>
+    <div class="shape circle" style="top: 70vh; left: 10vw;"></div>
+    <div class="shape triangle" style="top: 10vh; left: 70vw;"></div>
+    <div class="shape square" style="top: 60vh; left: 80vw;"></div>
+    <div class="shape circle" style="top: 30vh; left: 25vw;"></div>
+    <!-- Add more shapes as needed -->
+  </div>
 
 <script>
     // Declaring HTML elements
@@ -217,6 +244,40 @@ if (isset($_SESSION['user_id'])) {
         }
 
 
+
+        const backgroundMusic = document.getElementById('background-music');
+
+// Function to play background music
+function playBackgroundMusic() {
+    backgroundMusic.play(); // Start playing the audio
+    backgroundMusic.muted = false; // Unmute the audio
+    localStorage.setItem('backgroundMusic', 'playing'); // Store the state in localStorage
+    
+}
+
+// Check if the audio was playing before the page refresh
+const bgMusicState = localStorage.getItem('backgroundMusic');
+if (bgMusicState === 'playing') {
+    playBackgroundMusic(); // Call the function to start playing the audio if the state is 'playing'
+}
+
+// Add an event listener to listen for the user interaction and play audio
+document.addEventListener('click', function () {
+    // This event listener will trigger audio playback on any user interaction
+    // e.g., clicking anywhere on the page
+    if (backgroundMusic.paused) {
+        playBackgroundMusic(); // Call the function to start playing the audio
+    }
+});
+
+// Add an event listener to listen for the page unload and store the playback state
+window.addEventListener('beforeunload', function () {
+    if (!backgroundMusic.paused) {
+        localStorage.setItem('backgroundMusic', 'playing');
+    } else {
+        localStorage.setItem('backgroundMusic', 'paused');
+    }
+});
 </script>
 
 

@@ -80,14 +80,18 @@
     // Form submission
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $activity_name = $_POST["activity-name"];
+        $ActScores = array();
 
         // Loop through posted questions 
         for ($i = 1; $i <= $_POST["question-count"]; $i++) {
             $question_text = $_POST["question-text-$i"];
+            $ActScore = $_POST["score-$i"];
 
             //  options and correct_option arrays
             $options = array();
             $correct_option = "";
+            $ActScores[] = $ActScore;
+
         }
     }
 ?>
@@ -138,16 +142,20 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['edit'])) {
         // Form submission
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $activity_name = $_POST["activity-name"];
-
+        
+            // Reset the questions array
+            $questions = [];
+        
             // Loop through posted questions 
             for ($i = 1; $i <= $_POST["question-count"]; $i++) {
                 $question_text = $_POST["question-text-$i"];
-
-                //  options and correct_option arrays
-                $options = array();
+        
+                // Options and correct_option arrays
+                $options = [];
                 $correct_option = "";
-
-            
+                $ActScore = $_POST["score-$i"];
+        
+                // Retrieve options and correct option for the question
                 if (isset($_POST["option-$i-1"])) {
                     $options[] = $_POST["option-$i-1"];
                 }
@@ -163,20 +171,21 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['edit'])) {
                 if (isset($_POST["correct-option-$i"])) {
                     $correct_option = $_POST["correct-option-$i"];
                 }
-
-            
+        
+                // Check for empty options
                 if (empty($options)) {
                     echo '<script>alert("Question ' . $i . ' must have at least one option.");</script>';
                     continue; 
                 }
-
+        
+                // Store each question's details in the questions array
                 $questions[] = array(
                     "question_text" => $question_text,
                     "options" => $options,
-                    "correct_option" => $correct_option
+                    "correct_option" => $correct_option,
+                    "score" => $ActScore // Store score for each question in the array
                 );
             }
-
             //  the value of the Randomize Questions checkbox
             $randomize_questions = isset($_POST['randomize-questions']) ? 1 : 0;
 
@@ -189,9 +198,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['edit'])) {
                 $correct_option = mysqli_real_escape_string($conn, $question["correct_option"]);
 
                 //  query to insert data into the table
-                $sql = "INSERT INTO tbl_multiple_teacher (activity_name, question_text, option_1, option_2, option_3, option_4, correct_option, randomize_questions)
-                    VALUES ('$activity_name', '$question_text', ";
-
+                $sql = "INSERT INTO tbl_multiple_teacher (activity_name, question_text, option_1, option_2, option_3, option_4, correct_option, randomize_questions, ActScore)
+            VALUES ('$activity_name', '$question_text', ";
                 //  options to the SQL query
                 for ($i = 0; $i < 4; $i++) {
                     if (isset($options[$i])) {
@@ -205,7 +213,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['edit'])) {
                     }
                 }
 
-                $sql .= ", '$correct_option', '$randomize_questions')";
+                $sql .= ", '$correct_option', '$randomize_questions', '$question[score]')"; // Use the score for each question
 
         
                 if (mysqli_query($conn, $sql)) {
@@ -256,8 +264,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['edit'])) {
     </div>
 </div>
         <div class="question-builder">
-            <form id="question-form" method="POST" action="">
-                <div class="container"><br>
+        <form id="question-form" method="POST" action="">
+                            <div class="container"><br>
                     <input type="hidden" name="question_id" value="<?php echo isset($activityDetails['question_id']) ? $activityDetails['question_id'] : ''; ?>">
                     <label for="activity-name">Activity Name:</label>
                     <input type="text" id="activity-name" name="activity-name" class="custom-ActName" value="<?php echo isset($activityDetails['activity_name']) ? $activityDetails['activity_name'] : ''; ?>">
@@ -279,14 +287,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['edit'])) {
                 <div id="questions-container">
                 
 
-                    <div class="container" id="question-1">
-                    <div class="score-container">
-        <label for="score-1" class="score-label">Score:</label>
-        <input type="number" id="score-1" name="score-1" class="custom-Score">
-    </div>
+                <div class="container" id="question-1">
+                
                         <h2>Question 1</h2>
                         <!-- Wider question text box -->
-                        
+                       
                         <label for="question-text-1">Question:</label>
                         
                         <textarea id="question-text-1" name="question-text-1" class="custom-Question" rows="5"></textarea>
@@ -327,6 +332,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['edit'])) {
                             </div>
                            
                         </div>
+                        <div class="container">
+    <label for="score-1">Score:</label>
+    <input type="number" id="score-1" name="score-1" class="custom-ActScore" onchange="fetchScoreFromTextbox(1)">
+</div>
                     </div>
                 </div>
                 <button type="button" onclick="addNewQuestion()" class="btn btn-add-new">Add New Question Set</button>
@@ -391,55 +400,60 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['edit'])) {
 
                 // function to add a new set of question elements
                 function addNewQuestion() {
-                    
-                    var questionCount = document.getElementById("question-count");
-                    var newQuestionCount = parseInt(questionCount.value) + 1;
+        var questionCount = document.getElementById("question-count");
+        var newQuestionCount = parseInt(questionCount.value) + 1;
 
-                    //  the entire set of question elements
-                    var questionSetTemplate = document.querySelector("#questions-container > .container");
-                    var newQuestionSet = questionSetTemplate.cloneNode(true);
+        // Retrieve the question container template
+        var questionSetTemplate = document.querySelector("#questions-container > .container");
+        var newQuestionSet = questionSetTemplate.cloneNode(true);
 
-                    //  the question set number and clear input values and radio button selection in the new set
-                    newQuestionSet.querySelector("h2").textContent = "Question " + newQuestionCount;
-                    newQuestionSet.querySelector("textarea").value = "";
-                    var inputFields = newQuestionSet.querySelectorAll("input[type='text']");
-                    for (var i = 0; i < inputFields.length; i++) {
-                        inputFields[i].value = "";
-                    }
-                    var radioButtons = newQuestionSet.querySelectorAll("input[type='radio']");
-                    for (var i = 0; i < radioButtons.length; i++) {
-                        radioButtons[i].checked = false;
-                    }
+        // Update the question set number and clear input values and radio button selections in the new set
+        newQuestionSet.querySelector("h2").textContent = "Question " + newQuestionCount;
+        newQuestionSet.querySelector("textarea").value = "";
+        var inputFields = newQuestionSet.querySelectorAll("input[type='text']");
+        for (var i = 0; i < inputFields.length; i++) {
+            inputFields[i].value = "";
+        }
+        var radioButtons = newQuestionSet.querySelectorAll("input[type='radio']");
+        for (var i = 0; i < radioButtons.length; i++) {
+            radioButtons[i].checked = false;
+        }
 
-                    //  unique IDs and names for new set elements
-                    newQuestionSet.querySelector("h2").textContent = "Question " + newQuestionCount;
-                    newQuestionSet.querySelector("textarea").setAttribute("name", "question-text-" + newQuestionCount);
-                    var inputFields = newQuestionSet.querySelectorAll("input[type='text']");
-                    for (var i = 0; i < inputFields.length; i++) {
-                        inputFields[i].setAttribute("name", "option-" + newQuestionCount + "-" + (i + 1));
-                    }
-                    var radioButtons = newQuestionSet.querySelectorAll("input[type='radio']");
-                    for (var i = 0; i < radioButtons.length; i++) {
-                        radioButtons[i].setAttribute("name", "correct-option-" + newQuestionCount);
-                    }
+        // Update unique IDs and names for new set elements
+        newQuestionSet.querySelector("h2").textContent = "Question " + newQuestionCount;
+        newQuestionSet.querySelector("textarea").setAttribute("name", "question-text-" + newQuestionCount);
+        var inputFields = newQuestionSet.querySelectorAll("input[type='text']");
+        for (var i = 0; i < inputFields.length; i++) {
+            inputFields[i].setAttribute("name", "option-" + newQuestionCount + "-" + (i + 1));
+        }
+        var radioButtons = newQuestionSet.querySelectorAll("input[type='radio']");
+        for (var i = 0; i < radioButtons.length; i++) {
+            radioButtons[i].setAttribute("name", "correct-option-" + newQuestionCount);
+        }
 
-                    //  the new set to the container
-                    document.getElementById("questions-container").appendChild(newQuestionSet);
+        // Remove existing Score field from the cloned question set
+        var existingScoreInput = newQuestionSet.querySelector(".container > .custom-ActScore");
+        if (existingScoreInput) {
+            existingScoreInput.parentNode.removeChild(existingScoreInput.previousElementSibling); // Remove the label
+            existingScoreInput.parentNode.removeChild(existingScoreInput); // Remove the input
+        }
 
-                    //  the question count
-                    questionCount.value = newQuestionCount;
+        // Append a single Score textbox to the new question set
+        var newScoreInput = document.createElement("div");
+        newScoreInput.className = "container";
+        newScoreInput.innerHTML = '<label for="score-' + newQuestionCount + '">Score:</label>' +
+            '<input type="number" id="score-' + newQuestionCount + '" name="score-' + newQuestionCount + '" class="custom-ActScore" value="">';
+        newQuestionSet.appendChild(newScoreInput);
 
+        // Append the new question set to the container
+        document.getElementById("questions-container").appendChild(newQuestionSet);
 
-                    var newScoreInput = document.createElement("div");
-newScoreInput.className = "container";
+        // Update the question count
+        questionCount.value = newQuestionCount;
+        
+        
+    }
 
-// Hidden input field for score
-newScoreInput.innerHTML = '<input type="hidden" id="score-' + newQuestionCount + '" name="score-' + newQuestionCount + '">';
-
-// Append the new score input to the new question set
-newQuestionSet.appendChild(newScoreInput);
-
-                }
 
 
 
@@ -488,7 +502,7 @@ newQuestionSet.appendChild(newScoreInput);
                 document.getElementById("option-1-3").value = "<?php echo $activityDetails['option_3']; ?>";
                 document.getElementById("option-1-4").value = "<?php echo $activityDetails['option_4']; ?>";
                 document.getElementById("correct-answer-1-<?php echo $activityDetails['correct_option']; ?>").checked = true;
-                
+               
                 
 
                 // Append the new question set to the container
@@ -500,8 +514,44 @@ newQuestionSet.appendChild(newScoreInput);
     window.onload = function() {
         populateFields();
     };
+  
 
-        
+    
     </script>
+
+<script>
+
+    // Modify the JavaScript function to pass the question ID
+    function fetchScoreFromTextbox(questionId) {
+        var scoreValue = document.getElementById("score-" + questionId).value;
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    console.log("Score updated for question " + questionId);
+                } else {
+                    console.error("Error updating score: " + xhr.responseText);
+                }
+            }
+        };
+        xhr.open("GET", "record_score.php?scoreValue=" + scoreValue + "&questionId=" + questionId, true);
+        xhr.send();
+    }
+
+    // Attach the onchange event to the form and listen for changes in any score input
+    document.getElementById("question-form").addEventListener("change", function(event) {
+        if (event.target.classList.contains("custom-ActScore")) {
+            // If the changed element is a score input, extract the question ID from its ID
+            let questionId = event.target.id.split("-")[1];
+            let scoreValue = event.target.value;
+
+            // Call the function to fetch the score with the respective question ID
+            fetchScoreFromTextbox(questionId);
+        }
+    });
+
+
+</script>
+
     </body>
     </html>

@@ -107,7 +107,7 @@
 
             var image = new Image();
             image.crossOrigin = "anonymous";
-            image.src = 'certificate.png';
+            image.src = 'Certificate.png';
             image.onload = function() {
                 drawImage();
             }

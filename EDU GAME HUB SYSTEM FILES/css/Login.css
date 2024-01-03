@@ -1,0 +1,66 @@
+/* Reset default margin and padding */
+body,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #F4A641;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.7); /* Fallback semi-transparent color */
+  backdrop-filter: blur(10px); /* Adding blur for glassmorphism */
+  z-index: 10000;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px; /* Adjusting padding for space between buttons */
+}
+
+nav ul li {
+  display: inline-block;
+}
+
+nav ul li a {
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: Futura, Trebuchet MS, Arial, sans-serif;
+  font-size: 14px;
+  color: #4A4860;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background 0.25s, box-shadow 0.15s;
+}
+
+nav ul li a:hover {
+  color: #000000;
+  background: #FFF8F0;
+  box-shadow: 0px 4px 0px 0px #B8A99A;
+}
+
+/* Responsive */
+header img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto; /* Center the image */
+}
+
+/* Media query for responsive layout */
+@media screen and (max-width: 768px) {
+  /* Example: Adjusting layout for smaller screens */
+  /* Add your responsive CSS for smaller screens here */
+  /* For instance, modifying the layout, font sizes, margins, etc. */
+}

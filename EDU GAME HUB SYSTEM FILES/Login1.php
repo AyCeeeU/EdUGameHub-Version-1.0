@@ -1,35 +1,29 @@
   <!DOCTYPE html>
   <html>
   <head>
-    <meta charset="UTF-8">
-    <title>Log In</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In</title>
     <link rel="stylesheet" href="Login.css">
-    <style>
-      body {
-        background-color: #F4A641;
-      }
-      form {
-        width: 50%;
-        margin: 0 auto; /* Center the form */
-      }
-      .forgot-password {
-        text-align: center;
-      }
-      .flex-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-right: 100%;
-      
-      }
-      
     
-    
-    </style>
   </head>
   <body>
+  <img class="logo" src="images/edugamelogoblack.png" alt="logo">
+
     <header>
-      <img class="logo" src="images/edugamelogoblack.png" alt="logo">
+    <audio id="hoverSoundNav">
+  <source src="HoverButtonSFX.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="hoverSoundLogin">
+  <source src="OnHoverSFX.mp3" type="audio/mpeg">
+  <source src="OffHoverSFX.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="hoverSoundResetOn" src="OnHoverSFXReset.mp3" type="audio/mpeg"></audio>
+<audio id="hoverSoundResetOff" src="OffHoverSFXReset.mp3" type="audio/mpeg"></audio>
+
+
       <nav>
         <ul class="nav_links">
           <li><a href="home.php">Home</a></li>
@@ -81,8 +75,7 @@
   ?>
 
 
-
-
+ 
 
   
         </ul>
@@ -103,14 +96,14 @@
       } else {
     ?>
       <form method="POST" action="login.php" onsubmit="return validateLoginForm()">
-      <h2><center>Log In</center></h2>
+      <h2 class="login-heading"><center>Log In</center></h2>
       <label for="username"><b>Username</b></label>
       <input type="text" placeholder="Enter Username" name="username" id="username" required>
       <label for="password"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="password" id="password" required>
-      <button type="submit">Log In</button>
+      <button id="loginButton">Log In</button>
       <div class="forgot-password">
-        <a href="javascript:void(0);" onclick="openModal()">Forgot Password?</a>
+        <a href="javascript:void(0);" onclick="openModal()">Reset / Forgot Password</a>
       </div>
     </form>
     <div class="container">
@@ -124,9 +117,10 @@
   <!-- Password Reset Modal -->
   <div id="passwordResetModal" class="modal" style="display: none;">
     <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <h2>Reset Your Password</h2>
+      
       <form id="passwordResetForm">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <center><h2>Reset Your Password</h2></center>
         <label for="reset-username"><b>Username</b></label>
         <input type="text" id="reset-username" placeholder="Enter Username" name="username" required>
         <label for="reset-email"><b>Email</b></label>
@@ -139,7 +133,7 @@
         <input type="date" id="db-birthdate" name="dbBirthdate" required>
         <p id="missingFieldsMessage" style="color: red; display: none;"><br>Please update your Birthdate and Mother's Maiden Name in your profile to proceed with the password reset.</p>
 
-        <button type="button" onclick="resetPassword()">Reset Password</button>
+        <button type="button" data-action="reset-password" onclick="resetPassword()">Reset Password</button>
       </form>
     </div>
   </div>
@@ -173,6 +167,8 @@
   const dbMotherMaidenName = document.getElementById('db-mother-maiden-name').value;
   const dbBirthdate = document.getElementById('db-birthdate').value;
 
+
+  
   if (username && email && newPassword) {
     if (!dbMotherMaidenName && !dbBirthdate) {
       // If both mother's maiden name and birthdate are null or empty, proceed with password reset
@@ -218,6 +214,7 @@
       };
       xhr.send(`username=${username}&motherMaidenName=${dbMotherMaidenName}&birthdate=${dbBirthdate}`);
     }
+   
   } else {
     alert('Please fill in all required fields.');
   }
@@ -268,6 +265,69 @@
         xhr.send(`username=${resetUsername}`);
     }
 };
+
+document.addEventListener("DOMContentLoaded", function() {
+  const resetButton = document.querySelector('[data-action="reset-password"]');
+  const hoverSoundResetOn = document.getElementById('hoverSoundResetOn');
+  const hoverSoundResetOff = document.getElementById('hoverSoundResetOff');
+
+  resetButton.addEventListener('mouseenter', function() {
+    hoverSoundResetOn.currentTime = 0;
+    hoverSoundResetOn.volume = 0.3;
+    hoverSoundResetOn.play();
+    // Additional actions/styles when hovering over the reset button
+    resetButton.style.backgroundColor = '#3e8e41';
+    // ...
+  });
+
+  resetButton.addEventListener('mouseleave', function() {
+    hoverSoundResetOff.currentTime = 0;
+    hoverSoundResetOff.volume = 0.3;
+    hoverSoundResetOff.play();
+    // Additional actions/styles when leaving the reset button
+    resetButton.style.backgroundColor = '#1B2072';
+    // ...
+  });
+});
+document.addEventListener("DOMContentLoaded", function() {
+  const hoverSoundNav = document.getElementById('hoverSoundNav');
+  const hoverSoundLogin = document.getElementById('hoverSoundLogin');
+  const loginButton = document.getElementById('loginButton');
+
+ 
+  loginButton.addEventListener('mouseenter', function() {
+    hoverSoundLogin.src = "OnHoverSFX.mp3";
+    hoverSoundLogin.currentTime = 0; // Reset the audio to the beginning
+    hoverSoundLogin.volume = 0.3; // Set the volume to 50%
+    hoverSoundLogin.play();
+    loginButton.style.backgroundColor = '#3e8e41';
+    loginButton.style.boxShadow = 'inset 0 -4px 0 0 rgba(0, 0, 0, 0.2)';
+  });
+
+  loginButton.addEventListener('mouseleave', function() {
+    hoverSoundLogin.src = "OffHoverSFX.mp3";
+    hoverSoundLogin.currentTime = 0; // Reset the audio to the beginning
+    hoverSoundLogin.volume = 0.3; // Set the volume to 50%
+    hoverSoundLogin.play();
+    loginButton.style.backgroundColor = '#1B2072';
+    loginButton.style.boxShadow = '#5860DE 0px 7px 0px';
+  });
+
+  loginButton.addEventListener('click', function() {
+    window.location.href = 'Login1.php'; // Redirect to Login1.php on click
+  });
+
+  // Add event listener to play hover sound for nav buttons
+  const navLinks = document.querySelectorAll('nav ul li a');
+
+  navLinks.forEach(link => {
+    link.addEventListener('mouseenter', function() {
+      hoverSoundNav.currentTime = 0; // Reset the audio to the beginning
+      hoverSoundNav.play();
+    });
+  });
+});
+
   </script>
 </body>
 </html>

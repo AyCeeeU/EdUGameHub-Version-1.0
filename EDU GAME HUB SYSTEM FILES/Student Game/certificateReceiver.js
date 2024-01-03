@@ -2,7 +2,7 @@ var englishCanvas = document.getElementById("englishCanvas");
 var englishCtx = englishCanvas.getContext("2d");
 var englishImage = new Image();
 englishImage.crossOrigin = "anonymous";
-englishImage.src = "../certificate.png";
+englishImage.src = "../Certificate.png";
 englishImage.onload = function () {
   drawEnglishImage();
 };
@@ -42,7 +42,7 @@ var mathCtx = mathCanvas.getContext("2d");
 // Create image object
 var mathImage = new Image();
 mathImage.crossOrigin = "anonymous";
-mathImage.src = "../certificate.png";
+mathImage.src = "../Certificate.png";
 
 // Set onload function for image
 mathImage.onload = function () {
@@ -87,7 +87,7 @@ var scienceCtx = scienceCanvas.getContext("2d");
 // Create image object
 var scienceImage = new Image();
 scienceImage.crossOrigin = "anonymous";
-scienceImage.src = "../certificate.png";
+scienceImage.src = "../Certificate.png";
 
 // Set onload function for image
 scienceImage.onload = function () {
@@ -132,7 +132,7 @@ var overallCtx = overallCanvas.getContext("2d");
 // Create image object
 var overallImage = new Image();
 overallImage.crossOrigin = "anonymous";
-overallImage.src = "../certificate.png";
+overallImage.src = "../Certificate.png";
 
 // Set onload function for image
 overallImage.onload = function () {

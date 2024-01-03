@@ -12,18 +12,6 @@ header img {
   margin-right: 20px;
 }
 
-h1 {
-  margin: 0;
-  flex-grow: 0;
-}
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #ffffff;
-  overflow: hidden;
-}
-
 .logoutImage {
   position: absolute;
   top: 10px;
@@ -32,13 +20,125 @@ body {
   height: 50px;
 }
 
+h1 {
+  margin: 0;
+  flex-grow: 0;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #edf2f7;
+  overflow: hidden;
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background-color: #edf2f7;
+}
+
+.shape {
+  position: absolute;
+  animation: moveShape 10s infinite linear;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 100px solid #ffcc00;
+}
+
+.square {
+  width: 100px;
+  height: 100px;
+  background-color: #ff6699;
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  background-color: #66ff99;
+  border-radius: 50%;
+}
+
+@keyframes moveShape {
+  0% {
+    transform: translate(-50%, -50%) rotate(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(calc(100vw - 50%), calc(100vh - 50%)) rotate(1080deg);
+    opacity: 1;
+  }
+}
+
+
+
+
+
 .container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   position: relative;
   top: 520px; /* Adjust as needed */
+  
 }
+
+
+
+  .button-3d {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    overflow: hidden;
+    transition: color 0.3s, transform 0.3s;
+  bottom: 100px;
+  right: 15px;
+  }
+
+
+
+  .button-3d::before {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .button-3d::after {
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .button-3d:hover::before,
+  .button-3d:hover::after {
+    transform: scale(5); /* Expand to cover the button area on hover */
+    opacity: 1;
+  }
+
+  .button-3d:hover {
+    color: #fff; /* Change icon color on hover */
+    transform: translateY(-5px); /* Move button up slightly on hover */
+  }
+
+  .button-3d img {
+    width: 70%; /* Adjust the image size */
+    height: auto; /* Maintain aspect ratio */
+  }
+
 
 .card1,
 .card2,
@@ -52,20 +152,84 @@ body {
 }
 
 .card1 {
-  width: 960px;
-  height: 471px;
-  background-color: #51ffff;
+  width: 600px;
+  height: 400px;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-image: -moz-linear-gradient(180deg, rgba(157, 0, 255, 0), rgba(81, 255, 255, 0.89));
+
+  background-image: -webkit-linear-gradient(180deg, rgba(157, 0, 255, 0), rgba(81, 255, 255, 0.89));
+  
+  background-image: linear-gradient(180deg, rgba(157, 0, 255, 0), rgba(81, 255, 255, 0.89));
+  border-radius: 40px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  position: relative; /* Add this line */
+ 
+}
+
+.card1 a {
+  
+  left: 50%; /* Place the button in the horizontal center */
+  transform: translateX(-96%); /* Center the button using a transform */
+  background-color: #fff;
+  color: #2fa6de;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 18px;
 }
 
 .card2 {
-  background: #ff3e7f;
+  background-image: -moz-linear-gradient(180deg, rgba(157, 0, 255, 0), rgb(255, 62, 127));
+
+  background-image: -webkit-linear-gradient(180deg, rgba(157, 0, 255, 0), rgb(255, 62, 127));
+  
+  background-image: linear-gradient(180deg, rgba(157, 0, 255, 0), rgb(255, 62, 127));  
   width: 500px;
+  border-radius: 40px;
+  overflow: hidden;
+  text-align: center;
+  height: 400px;
+  margin-left: 20px;  
+  margin-right: 20px;
+  transition: transform 0.3s ease-in-out;
+  position: relative;
+  
 }
 
 .card3 {
-  width: 960px;
-  background: #ffc219;
+  
+  width: 600px;
+  height: 410px;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-image: -moz-linear-gradient(180deg, rgba(157, 0, 255, 0), rgb(255, 194, 25));
+
+  background-image: -webkit-linear-gradient(180deg, rgba(157, 0, 255, 0), rgb(255, 194, 25));
+  
+  background-image: linear-gradient(180deg, rgba(157, 0, 255, 0), rgb(255, 194, 25));
+  border-radius: 40px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  
 }
+
+.card3 a {
+  
+  right: 50%; /* Place the button in the horizontal center */
+  transform: translateX(-94%); /* Center the button using a transform */
+  background-color: #fff;
+  color: #2fa6de;
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+
 
 .card2 p {
   text-align: justify;
@@ -120,8 +284,8 @@ body {
 }
 
 .profile-pic-div {
-  height: 200px;
-  width: 200px;
+  height: 160px;
+  width: 160px;
   position: absolute;
   top: 20%;
   left: 50%;
@@ -158,7 +322,7 @@ body {
 
 .centered-button {
   display: none;
-  margin: 0 auto;
+  margin: -102px auto 100px; /* Adjust margin-top to move the button up */
   background-color: #007bff; /* Background color */
   color: wheat; /* Text color */
   border: none;
@@ -173,6 +337,30 @@ body {
   background-color: #0056b3; /* Hover color */
 }
 
+.user-info-container {
+  height: 110px;
+  max-width: 500px;
+  background-image: -moz-linear-gradient(45deg, rgba(140, 255, 0, 0.3), rgba(8, 0, 255, 0.06));
+
+background-image: -webkit-linear-gradient(45deg, rgba(140, 255, 0, 0.3), rgba(8, 0, 255, 0.06));
+
+background-image: linear-gradient(45deg, rgba(140, 255, 0, 0.3), rgba(8, 0, 255, 0.06));
+  margin: 50px auto;
+  padding: 20px;
+  border-radius: 100px;
+}
+
+.user-info-container h1 {
+  font-size: 25px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.user-info-container .user-details p {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 10px;
+}
 .welcome-section {
   margin-top: -130px; /* Adjust the value as needed to control the top margin */
   text-align: center;
@@ -223,100 +411,9 @@ body {
     width: 30px;
     height: 30px;
 }
-  .container {
-    display: flex;
-    flex-direction: column; /* Change to column to stack cards vertically */
-    align-items: center; /* Center cards horizontally */
-    position: relative;
-    top: 180px; /* Adjust as needed */
-  }
-  
-  .card1,
-  .card2,
-  .card3 {
-    font-family: Arial, sans-serif;
-    font-size: 20px; /* Adjust font size for smaller cards */
-    color: black;
-    margin: 0px 0; /* Add some spacing between cards */
-    text-align: center; /* Center text */
-  
-  }
-  
-  .card1 {
-    width: 430px; /* Adjust width for smaller card */
-    height: 235px; /* Adjust height for smaller card */
-    background-color: #51ffff;
-  }
-  
-  .card2 {
-    background: #ff3e7f;
-    width: 430px; /* Adjust width for smaller card */
-    height: 235px;
-  }
-  
-  .card3 {
-    width: 430px; /* Adjust width for smaller card */
-    background: #ffc219;
-  }
-  
-  .card2 p {
-    text-align: justify;
-    margin: 10px 0; /* Add spacing between paragraphs */
-    font-size: 15px; /* Adjust font size for smaller text */
-  }
-  
-  .card3 p,
-  .card1 p {
-    font-size: 20px; /* Adjust font size for smaller text */
-    padding: 20px; /* Adjust padding for smaller cards */
-  }
-  
-  .card1 h2,
-  .card3 h2 {
-    font-size: 30px; /* Adjust font size for smaller heading */
-  }
-  
-  .card2 h2 {
-    font-size: 25px; /* Adjust font size for smaller heading */
-    margin-right: 10px; /* Adjust margin for smaller heading */
-  }
-  
-  .card1 a,
-  .card3 a {
-    background-color: rgb(8, 10, 128);
-    color: white;
-    padding: 10px 10px; /* Adjust padding for smaller buttons */
-    border-radius: 5px; /* Adjust border-radius for smaller buttons */
-    height: 18px; /* Adjust height for smaller buttons */
-    width: 80px; /* Adjust width for smaller buttons */
-    display: block;
-    text-align: center;
-    font-size: 15px; /* Adjust font size for smaller text */
-    text-decoration: none;
-    margin: 10px 0; /* Add spacing between buttons */
-    margin-left: 165px;
-    margin-top: 20px;
-  }
-  
-  .card2 a {
-    display: flex;
-    justify-content: center;
-    text-decoration: none;
-    font-size: 5rem; /* Adjust font size for smaller text */
-    margin-top: 50px; /* Adjust margin for smaller text */
-    margin-left: 15px; /* Adjust margin for smaller text */
-  }
 
-  .profile-pic-div {
-    height: 100px;
-    width: 100px;
-    position: absolute;
-    top: 13%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    overflow: hidden;
-    border: 5px solid rgb(0, 0, 0);
-  }
+  
+
+ 
   
 }
