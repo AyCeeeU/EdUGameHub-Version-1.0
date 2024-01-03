@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2023 at 08:08 PM
+-- Generation Time: Jan 03, 2024 at 06:21 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -65,7 +65,8 @@ INSERT INTO `tbl_accdb` (`id`, `firstname`, `lastname`, `email`, `username`, `se
 (151, 'admin', 'admin', 'adminsample@gmail.com', 'admin', '', '', 'Admin', '$2y$10$3VJaZKJA22Z1Uszcqaawiun51W4PRzbCGnd9KRgOI34yuFjWf.zre', '2023-11-06 12:47:36', NULL, 'Perez', '1999-12-12'),
 (152, 'student', 'student', 'studentsample@gmail.com', 'student', '', '', 'Student', '$2y$10$o.9m97TDIfDNhH7fGgKnJe5tkSd6AOYyza8w39iGxV2Plupgr/e7m', '2023-11-06 12:47:36', NULL, 'perez', '1999-12-12'),
 (153, 'Carlo', 'Domogma', 'deleoncarlo927@gmail.com', 'Spidey', 'Saturn', 'Grade 6', 'Student', '$2y$10$UCBB.9fTML6vVIYj0l2xPugiTIP/1KukdsIzaH1Yb90w7HxxDm.vK', '2023-12-01 18:36:17', 'ProfilePics656a10c73b555_dp.webp', 'Domogma', '2001-06-05'),
-(154, 'John Vincent', 'Aspan', 'vincentaspan14@gmail.com', 'vincent', 'Saphire', 'Grade 3', 'Student', '$2y$10$dB9gbEdPElaLXAKMtkcetOaX0gcQsaNq3wW/DUxAi2DrZdNpC/iTm', '2023-12-02 20:22:31', NULL, 'Aleli VIllanueva', '2022-01-14');
+(154, 'John Vincent', 'Aspan', 'vincentaspan14@gmail.com', 'vincent', 'Saphire', 'Grade 3', 'Student', '$2y$10$dB9gbEdPElaLXAKMtkcetOaX0gcQsaNq3wW/DUxAi2DrZdNpC/iTm', '2023-12-02 20:22:31', NULL, 'Aleli VIllanueva', '2022-01-14'),
+(155, 'Cebastian', 'Cabanillas', 'cebastian.cabanillas@gmail.com', '201912129', 'Saphire', 'Grade 6', 'Student', '$2y$10$9DFQohNLbQeEUveuze0Vl.47xpW2a6U0CQw6LZTZhGaTGN/7EKqQG', '2023-12-11 22:59:52', 'ProfilePics65783d3273c27_software-engineer.png', 'Lara', '1999-12-12');
 
 -- --------------------------------------------------------
 
@@ -133,11 +134,12 @@ INSERT INTO `tbl_activity_log` (`id`, `user_id`, `action`, `timestamp`) VALUES
 (95, 140, 'Login', '2023-11-04 19:20:56'),
 (97, 145, 'Login', '2023-11-06 03:50:27'),
 (99, 148, 'Login', '2023-11-06 04:45:45'),
-(100, 150, 'Login', '2023-12-02 18:57:49'),
-(104, 152, 'Login', '2023-12-02 18:58:21'),
-(106, 151, 'Login', '2023-12-02 17:41:37'),
+(100, 150, 'Login', '2024-01-03 08:43:24'),
+(104, 152, 'Login', '2023-12-27 01:29:48'),
+(106, 151, 'Login', '2023-12-11 14:59:07'),
 (263, 153, 'Login', '2023-12-02 17:21:55'),
-(308, 154, 'Login', '2023-12-02 13:11:09');
+(308, 154, 'Login', '2023-12-02 13:11:09'),
+(347, 155, 'Login', '2024-01-03 17:15:25');
 
 -- --------------------------------------------------------
 
@@ -271,18 +273,21 @@ CREATE TABLE `tbl_multiple_teacher` (
   `option_4` varchar(255) NOT NULL,
   `correct_option` int(11) NOT NULL,
   `randomize_questions` tinyint(1) NOT NULL DEFAULT 0,
-  `visible_students` tinyint(1) DEFAULT NULL
+  `visible_students` tinyint(1) DEFAULT NULL,
+  `subject` varchar(255) DEFAULT NULL,
+  `created_date` date DEFAULT NULL,
+  `ActScore` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_multiple_teacher`
 --
 
-INSERT INTO `tbl_multiple_teacher` (`question_id`, `activity_name`, `question_text`, `option_1`, `option_2`, `option_3`, `option_4`, `correct_option`, `randomize_questions`, `visible_students`) VALUES
-(188, 'English 101', 'This is sample 1 no random', 'This is sample 1 no random', 'This is sample 1 no random', 'This is sample 1 no random', 'This is sample 1 no random', 3, 0, 1),
-(189, 'English 101', 'This is sample 2 no random', 'This is sample 2 no random', 'This is sample 2 no random', 'This is sample 2 no random', 'This is sample 2 no random', 4, 0, 1),
-(190, 'English 102', 'This is sample 3 no random', 'This is sample 3 no random', 'This is sample 3 no random', 'This is sample 3 no random', 'This is sample 3 no random', 1, 0, 1),
-(191, 'English 102', 'This is sample 4 no random', 'This is sample 4 no random', 'This is sample 4 no random', 'This is sample 4 no random', 'This is sample 4 no random', 4, 0, 1);
+INSERT INTO `tbl_multiple_teacher` (`question_id`, `activity_name`, `question_text`, `option_1`, `option_2`, `option_3`, `option_4`, `correct_option`, `randomize_questions`, `visible_students`, `subject`, `created_date`, `ActScore`) VALUES
+(320, 'This is for testing only', '1111111111111111111111111', 'THE ANSWER HERE IS 1', 'THE ANSWER HERE IS 1', 'THE ANSWER HERE IS 1', 'THE ANSWER HERE IS 1', 1, 1, 1, NULL, NULL, 10),
+(321, 'This is for testing only', '2222222222222222222222222', 'THE ANSWER HERE IS 2', 'THE ANSWER HERE IS 2', 'THE ANSWER HERE IS 2', 'THE ANSWER HERE IS 2', 2, 1, 1, NULL, NULL, 10),
+(322, 'This is for testing only', '3333333333333333333333', 'THE ANSWER HERE IS 3', 'THE ANSWER HERE IS 3', 'THE ANSWER HERE IS 3', 'THE ANSWER HERE IS 3', 3, 1, 1, NULL, NULL, 10),
+(323, 'This is for testing only', '4444444444444444444444', 'THE ANSWER HERE IS 4', 'THE ANSWER HERE IS 4', 'THE ANSWER HERE IS 4', 'THE ANSWER HERE IS 4', 4, 1, 1, NULL, NULL, 10);
 
 -- --------------------------------------------------------
 
@@ -455,7 +460,7 @@ ALTER TABLE `certificates`
 -- AUTO_INCREMENT for table `tbl_accdb`
 --
 ALTER TABLE `tbl_accdb`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
 
 --
 -- AUTO_INCREMENT for table `tbl_activity`
@@ -467,7 +472,7 @@ ALTER TABLE `tbl_activity`
 -- AUTO_INCREMENT for table `tbl_activity_log`
 --
 ALTER TABLE `tbl_activity_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=341;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=489;
 
 --
 -- AUTO_INCREMENT for table `tbl_badge`
@@ -491,7 +496,7 @@ ALTER TABLE `tbl_createact`
 -- AUTO_INCREMENT for table `tbl_multiple_teacher`
 --
 ALTER TABLE `tbl_multiple_teacher`
-  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=200;
+  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=324;
 
 --
 -- AUTO_INCREMENT for table `tbl_recentact`
