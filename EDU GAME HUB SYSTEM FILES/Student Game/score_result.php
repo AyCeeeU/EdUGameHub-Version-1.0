@@ -62,8 +62,8 @@
                 $totalScore = $row["total_score"];
 
                 echo "<h1>Activity Name: " . $activityName . "</h1>";
-                echo "<div class='score'>Score: " . $studentScore .  "</div>";
-                echo "<div class='score'>Total Items: " . $totalScore . "</div>";
+                echo "<div class='score'>Your Score: " . $studentScore .  "</div>";
+                echo "<div class='score'>Total Score: " . $totalScore . "</div>";
 
                 // Display the user's updated score
                 if (isset($_SESSION['correct_answers_count'])) {
