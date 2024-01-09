@@ -37,8 +37,19 @@
     // Check if the activity_name parameter exists in the URL
     if (isset($_GET['activity_name'])) {
         $activityName = $_GET['activity_name'];
+        $student_id=$_SESSION['user_id'];
 
         // Fetch total scores for the specified activity name
+        $sql = "SELECT * FROM tbl_leaderboard WHERE student_id = '$student_id' AND activity_name = '$activityName'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            // Convert the result to an associative array and send it as JSON to the client
+            $row = $result->fetch_assoc();
+            $studentScore = $row["activity_score"];
+        } else {
+            echo "Take the activity first!" ;
+        }
         $sql = "SELECT SUM(ActScore) AS total_score, COUNT(*) AS total_entries FROM tbl_multiple_teacher WHERE activity_name = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $activityName);
@@ -49,11 +60,10 @@
             // Output data of the activity
             while ($row = $result->fetch_assoc()) {
                 $totalScore = $row["total_score"];
-                $totalEntries = $row["total_entries"];
 
                 echo "<h1>Activity Name: " . $activityName . "</h1>";
-                echo "<div class='score'>Score: " . $totalScore .  "</div>";
-                echo "<div class='score'>Total Items: " . $totalEntries . "</div>";
+                echo "<div class='score'>Score: " . $studentScore .  "</div>";
+                echo "<div class='score'>Total Items: " . $totalScore . "</div>";
 
                 // Display the user's updated score
                 if (isset($_SESSION['correct_answers_count'])) {

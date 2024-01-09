@@ -83,7 +83,7 @@ if (!isset($_SESSION['username']) || $_SESSION['account_type'] !== 'Teacher') {
             </a>
         </li>
         <li class="sidebar-list-item">
-            <a href="Login.html">
+            <a href="Login1.php">
             <span class="material-icons-outlined">logout</span> Sign Out
             </a>
         </li>   

@@ -399,7 +399,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['edit'])) {
             }
 
                 // function to add a new set of question elements
-                function addNewQuestion() {
+        function addNewQuestion() {
         var questionCount = document.getElementById("question-count");
         var newQuestionCount = parseInt(questionCount.value) + 1;
 

@@ -16,6 +16,7 @@
     </div>
 
     <div class="quiz-container1">
+        
     <?php
     session_start();
     include 'db_conn.php';
@@ -23,7 +24,7 @@
     if (!isset($_SESSION['displayed_questions'])) {
         $_SESSION['displayed_questions'] = [];
     }
-
+    
     if (isset($_GET['activity_name'])) {
         $activityName = $_GET['activity_name'];
         $questionId = isset($_GET['question_id']) ? intval($_GET['question_id']) : 0;
@@ -81,7 +82,7 @@
     echo '<button class="answer-button" data-correct="' . ($question['correct_option'] == 3 ? '1' : '0') . '" data-answer="C">' . $question['option_3'] . '</button>';
     echo '<button class="answer-button" data-correct="' . ($question['correct_option'] == 4 ? '1' : '0') . '" data-answer="D">' . $question['option_4'] . '</button>';
     // Display the "Next" button with the updated question_id
-    echo '<button class="submit-button" onclick="navigateToNextQuestion(\'' . $activityName . '\', ' . ($questionId + 1) . ')">Next</button>';
+    echo '<button class="submit-button" onclick="navigateToNextQuestion(\'' . $activityName . '\', ' . ($questionId + 1) . ', ' . ($question['ActScore']) . ')">Next</button>';
     echo '</div>';
             } else {
                 $_SESSION['activity_completed'] = true;
@@ -94,11 +95,11 @@
             // Display the Finish button to show the score result
             echo '</div>';
             echo '<div class="button-container">';
-            echo '<button class="submit-button" onclick="finishActivity()">Finish</button>';
+            echo '<button class="submit-button" onclick="finishActivity(\'' . $activityName . '\', ' . $_SESSION['user_id'] .')">Finish</button>';
             echo '</div>';
         }
     }
-    
+
     // Close the database connection
     $conn->close();
     ?>
@@ -136,7 +137,7 @@
         });
     });
 
-    function navigateToNextQuestion(activityName, questionId) {
+    function navigateToNextQuestion(activityName, questionId, actScore) {
         const selectedOption = sessionStorage.getItem('selectedOption');
         const correctOption = document.querySelector(`.answer-button[data-correct="1"]`).getAttribute('data-answer');
 
@@ -145,10 +146,10 @@
         // Increment the correct_answers_count in the session
         if (isCorrect) {
             if (!sessionStorage.getItem('correct_answers_count')) {
-                sessionStorage.setItem('correct_answers_count', '1');
+                sessionStorage.setItem('correct_answers_count', actScore);
             } else {
                 const count = parseInt(sessionStorage.getItem('correct_answers_count'));
-                sessionStorage.setItem('correct_answers_count', (count + 1).toString());
+                sessionStorage.setItem('correct_answers_count', (count + actScore).toString());
             }
         }
 
@@ -156,12 +157,25 @@
         window.location.href = 'multipleC.php?activity_name=' + activityName + '&question_id=' + questionId;
     }
 
-    function finishActivity() {
+    function finishActivity(activityName,studentID) {
         // Calculate and display the total score
-        const correctAnswersCount = <?php echo isset($_SESSION['correct_answers_count']) ? $_SESSION['correct_answers_count'] : 0; ?>;
+        const correctAnswersCount = sessionStorage.getItem('correct_answers_count')
         const score = correctAnswersCount;
+        sessionStorage.setItem('correct_answers_count', 0);
 
-        
+            var xhr = new XMLHttpRequest(); 
+            xhr.open('POST', 'update_score.php', true);
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // Handle the response from the server (if needed)
+                    console.log(xhr.responseText);
+                }
+            };
+
+            // Send data to the server
+            xhr.send('student_id=' + encodeURIComponent(studentID) + '&activityName=' + encodeURIComponent(activityName) + '&score=' + encodeURIComponent(score) );
 
         // Redirect to score_result.php after finishing the activity
         window.location.href = 'activity_library.php';
