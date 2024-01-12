@@ -42,6 +42,7 @@ header img {
   flex: 1;
   max-width: 45%;
   text-align: center;
+  
 }
 
 .image-container img {
@@ -87,17 +88,20 @@ header img {
 
 .certi {
   left: 100px;
+  
 }
 
 .certificatesArrangement {
   display: flex;
   flex-wrap: wrap;
+  margin-left: 30px;
 }
 
 .canvas-container {
   position: relative;
-  margin: 10px;
+  margin: 10px; /* Adjust the margin to add space between canvas elements */
   cursor: pointer;
+  width: 500px; /* Set a fixed width for each canvas container */
 }
 
 .canvas-container:hover .popup {

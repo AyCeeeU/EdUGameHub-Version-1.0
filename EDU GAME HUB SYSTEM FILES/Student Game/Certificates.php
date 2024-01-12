@@ -32,29 +32,29 @@ if ($certificates = $tableController->fetchCurrentStudentsCert($currentUserId)) 
         <a href="index.php"><img src="back.png" alt="Back" width="60"></a>
     </div>
     <div class="certificatesArrangement">
-        <?php
-        if ($certificateCount > 0) :
-            for ($x = 0; $x <= $certificateCount - 1; $x++) :
-                if ($certificates[$x]->cert_subject == "English") :
-        ?>
-                    <div id="english">
-                        <canvas id="englishCanvas" height="350px" width="500px"></canvas>
-                    </div>
+    <?php
+    if ($certificateCount > 0) :
+        for ($x = 0; $x <= $certificateCount - 1; $x++) :
+            if ($certificates[$x]->cert_subject == "English") :
+    ?>
+                <div class="canvas-container">
+                    <canvas id="englishCanvas" height="350px" width="500px"></canvas>
+                </div>
                 <?php
                 endif;
                 ?>
                 <?php if ($certificates[$x]->cert_subject == "Math") : ?>
-                    <div id="math">
+                    <div class="canvas-container">
                         <canvas id="mathCanvas" height="350px" width="500px"></canvas>
                     </div>
                 <?php endif; ?>
                 <?php if ($certificates[$x]->cert_subject == "Science") : ?>
-                    <div id="science">
+                    <div class="canvas-container">
                         <canvas id="scienceCanvas" height="350px" width="500px"></canvas>
                     </div>
                 <?php endif; ?>
                 <?php if ($certificates[$x]->cert_subject == "Overall") : ?>
-                    <div id="overall">
+                    <div class="canvas-container">
                         <canvas id="overallCanvas" height="350px" width="500px"></canvas>
                     </div>
                 <?php endif; ?>

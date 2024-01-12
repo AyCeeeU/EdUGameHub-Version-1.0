@@ -67,17 +67,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt_update->close();
     } else {
         // Insert data into the database as the student doesn't exist
-        $insert_sql = "INSERT INTO tbl_badge (first_name, last_name, $quarter, message_badge, username_badge) VALUES (?, ?, ?, ?, ?)";
-        $stmt_insert = $conn->prepare($insert_sql);
-        $stmt_insert->bind_param("sssss", $first_name, $last_name, $badge, $message, $username);
+$insert_sql = "INSERT INTO tbl_badge (first_name, last_name, $quarter, message_badge, username_badge) VALUES (?, ?, ?, ?, ?)";
+$stmt_insert = $conn->prepare($insert_sql);
+$stmt_insert->bind_param("sssss", $first_name, $last_name, $badge, $message, $username); // <-- Change $username to $username_badge
 
-        if ($stmt_insert->execute()) {
-            echo "Badge sent successfully!";
-        } else {
-            echo "Error: " . $stmt_insert->error;
-        }
+if ($stmt_insert->execute()) {
+    echo "Badge sent successfully!";
+} else {
+    echo "Error: " . $stmt_insert->error;
+}
 
-        $stmt_insert->close();
+$stmt_insert->close();
     }
 
     $stmt_check->close();

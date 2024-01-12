@@ -87,7 +87,7 @@ var scienceCtx = scienceCanvas.getContext("2d");
 // Create image object
 var scienceImage = new Image();
 scienceImage.crossOrigin = "anonymous";
-scienceImage.src = "../Certificate.png";
+scienceImage.src = "../certificate.png";
 
 // Set onload function for image
 scienceImage.onload = function () {

@@ -1,110 +1,94 @@
-  header {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    background-color: #3498db;
-    color: white;
-  }
+header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #3498db;
+  color: white;
+}
 
-  header img {
-    margin-right: 20px; /* Add some space between the logo and text */
-  }
+header img {
+  margin-right: 20px; /* Add some space between the logo and text */
+}
 
-  h1 {
-    margin: 0; /* Remove default margin */
-    flex-grow: 0; /* Allow the text to expand and take up remaining space */
-  }
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-  }
+h1 {
+  margin: 0; /* Remove default margin */
+  flex-grow: 0; /* Allow the text to expand and take up remaining space */
+}
 
-  .logoutImage {
-    position: absolute;
-    top: 10px; /* Adjust the top value to control the vertical position */
-    right: 10px; /* Adjust the right value to control the horizontal position */
-    width: 50px;
-    height: 50px;
-  }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
 
-    
-
-
-  .container{
-    position: relative;
-    width: 1550px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 100px;
-    left: -35px;
-    top: 50px;
-  }
-  
-  .container .card{
-    position: relative;
-    max-width: 300px;
-    height: 215px;
-    left:115px;
-    background-color: #86b8f1;
-    margin: 30px 10px;
-    padding: 20px 20px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 5px 20px rgba(0,0,0,0,5);
-    transition: 0.3s ease-in-out;
-  
-  }
-  
-  .container .card:hover {
-    height: 420px;
-  }
-  .imgBx img{
+.logoutImage {
   position: absolute;
-    right:140px;
-    width:140px;
-    height:120px;
-    bottom:120px;
-  }
-  .container .card .imgBx {
-    position: relative;
-    width: 260px;
-    height: 260px;
-    top: -60px;
-    left: 96px;
-    z-index: 1;
-    box-shadow: 0 5px 20px rgba(0,0,0,0,5);
-  
-  }
-  
-  .container .card .imgBx img {
-    max-width: 100%;
-    border-radius: 4px;
-  }
-  
-  .container .card .content {
-    font-size: 40px;
-    font-weight: bold;
-    position: relative;
-    margin-top: -140px;
-    padding: 10px 15px;
-    text-align: center;
-    color: #111;
-    visibility: hidden;
-    opacity: 0;
-    transition: 0.3s ease-in-out;
-  }
-  
-  .container .card:hover .content{
-    visibility: visible;
-    opacity: 1;
-    margin-top: -40px;
-    transition-delay: 0.3s;
+  top: 10px; /* Adjust the top value to control the vertical position */
+  right: 10px; /* Adjust the right value to control the horizontal position */
+  width: 50px;
+  height: 50px;
+}
+
+.back-button {
+  padding: 10px;
+}
+
+/* Container styles */
+.container {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+/* Card styles */
+.card {
+  width: 200px;
+  height: 350px;
+  margin: 40px; /* Adjust margin for spacing */
+  border: 3px solid #3498db;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-bottom: 2px solid #3498db;
+  border-bottom-style: groove;
+}
+
+.card p {
+  padding: 20px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: #3498db;
+}
+
+/* Back button styles */
+.back-button {
+  padding: 10px;
+}
+
+.back-button img {
+  width: 60px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+  .container {
+      flex-direction: column; /* Change to a column layout on small screens */
+      align-items: center; 
   }
 
-    .back-button{
-      padding: 10px;
+  .card {
+      width: 80%;
+      margin: 10px 0; /* Adjust margin for spacing */
   }
-
+}

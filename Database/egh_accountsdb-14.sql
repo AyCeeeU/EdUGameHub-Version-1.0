@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2024 at 06:21 PM
+-- Generation Time: Jan 09, 2024 at 05:32 PM
 -- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -64,9 +64,7 @@ INSERT INTO `tbl_accdb` (`id`, `firstname`, `lastname`, `email`, `username`, `se
 (150, 'teacher', 'teacher', 'teachersample@gmail.com', 'teacher', 'Saphire', 'Grade 5', 'Teacher', '$2y$10$vvzprdEjDHg9Tbtf7sS9e.YjsQFPuV3iJy50e67MSC6ZMfJrq0v0O', '2023-11-06 12:47:35', NULL, 'Lopez', '1999-12-12'),
 (151, 'admin', 'admin', 'adminsample@gmail.com', 'admin', '', '', 'Admin', '$2y$10$3VJaZKJA22Z1Uszcqaawiun51W4PRzbCGnd9KRgOI34yuFjWf.zre', '2023-11-06 12:47:36', NULL, 'Perez', '1999-12-12'),
 (152, 'student', 'student', 'studentsample@gmail.com', 'student', '', '', 'Student', '$2y$10$o.9m97TDIfDNhH7fGgKnJe5tkSd6AOYyza8w39iGxV2Plupgr/e7m', '2023-11-06 12:47:36', NULL, 'perez', '1999-12-12'),
-(153, 'Carlo', 'Domogma', 'deleoncarlo927@gmail.com', 'Spidey', 'Saturn', 'Grade 6', 'Student', '$2y$10$UCBB.9fTML6vVIYj0l2xPugiTIP/1KukdsIzaH1Yb90w7HxxDm.vK', '2023-12-01 18:36:17', 'ProfilePics656a10c73b555_dp.webp', 'Domogma', '2001-06-05'),
-(154, 'John Vincent', 'Aspan', 'vincentaspan14@gmail.com', 'vincent', 'Saphire', 'Grade 3', 'Student', '$2y$10$dB9gbEdPElaLXAKMtkcetOaX0gcQsaNq3wW/DUxAi2DrZdNpC/iTm', '2023-12-02 20:22:31', NULL, 'Aleli VIllanueva', '2022-01-14'),
-(155, 'Cebastian', 'Cabanillas', 'cebastian.cabanillas@gmail.com', '201912129', 'Saphire', 'Grade 6', 'Student', '$2y$10$9DFQohNLbQeEUveuze0Vl.47xpW2a6U0CQw6LZTZhGaTGN/7EKqQG', '2023-12-11 22:59:52', 'ProfilePics65783d3273c27_software-engineer.png', 'Lara', '1999-12-12');
+(153, 'Carlo', 'Domogma', 'deleoncarlo927@gmail.com', 'Spidey', 'Saturn', 'Grade 6', 'Student', '$2y$10$UCBB.9fTML6vVIYj0l2xPugiTIP/1KukdsIzaH1Yb90w7HxxDm.vK', '2023-12-01 18:36:17', 'ProfilePics656a10c73b555_dp.webp', 'Domogma', '2001-06-05');
 
 -- --------------------------------------------------------
 
@@ -134,10 +132,10 @@ INSERT INTO `tbl_activity_log` (`id`, `user_id`, `action`, `timestamp`) VALUES
 (95, 140, 'Login', '2023-11-04 19:20:56'),
 (97, 145, 'Login', '2023-11-06 03:50:27'),
 (99, 148, 'Login', '2023-11-06 04:45:45'),
-(100, 150, 'Login', '2024-01-03 08:43:24'),
-(104, 152, 'Login', '2023-12-27 01:29:48'),
-(106, 151, 'Login', '2023-12-11 14:59:07'),
-(263, 153, 'Login', '2023-12-02 17:21:55'),
+(100, 150, 'Login', '2024-01-09 08:26:49'),
+(104, 152, 'Login', '2024-01-09 08:09:38'),
+(106, 151, 'Login', '2024-01-09 08:07:14'),
+(263, 153, 'Login', '2024-01-09 08:21:54'),
 (308, 154, 'Login', '2023-12-02 13:11:09'),
 (347, 155, 'Login', '2024-01-03 17:15:25');
 
@@ -184,7 +182,7 @@ CREATE TABLE `tbl_badge` (
 
 INSERT INTO `tbl_badge` (`id`, `username_badge`, `first_name`, `last_name`, `quarter_1`, `quarter_2`, `quarter_3`, `quarter_4`, `message_badge`) VALUES
 (29, '201912129', 'Cebastian', 'Cabanillas', '', '', '', '', ''),
-(30, 'teacher', 'Carlo', 'Domogma', 'Asset 1.png', 'Asset 2.png', 'Asset 3.png', '', ''),
+(30, 'teacher', 'Carlo', 'Domogma', 'Asset 1.png', 'Asset 2.png', 'Asset 3.png', '', 'Keep it up!'),
 (31, 'teacher', 'student', 'student', 'Asset 1.png', 'Asset 2.png', '', '', 'Nice ');
 
 -- --------------------------------------------------------
@@ -207,11 +205,7 @@ CREATE TABLE `tbl_cert` (
 INSERT INTO `tbl_cert` (`id`, `student_id`, `cert_subject`, `full_name`) VALUES
 (5, 152, 'English', 'student student'),
 (6, 152, 'Math', 'student student'),
-(7, 152, 'Science', 'student student'),
-(8, 152, 'Overall', 'student student'),
-(9, 154, 'English', 'John Vincent Aspan'),
-(14, 152, 'English', 'student student'),
-(15, 153, 'English', 'Carlo Domogma');
+(16, 153, 'English', 'Carlo Domogma');
 
 -- --------------------------------------------------------
 
@@ -244,8 +238,24 @@ INSERT INTO `tbl_createact` (`id`, `activity_name`, `question_text`, `option_1`,
 --
 
 CREATE TABLE `tbl_leaderboard` (
-  `id` int(11) NOT NULL
+  `student_id` int(11) NOT NULL,
+  `activity_name` varchar(50) NOT NULL,
+  `activity_score` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_leaderboard`
+--
+
+INSERT INTO `tbl_leaderboard` (`student_id`, `activity_name`, `activity_score`) VALUES
+(0, '', 0),
+(154, 'test 2 ', 3),
+(153, 'test 2 ', 6),
+(153, 'test 3 ', 0),
+(152, 'test 2 ', 3),
+(152, 'test 3 ', 0),
+(153, 'Test 1 ', 4),
+(152, 'Test 1 ', 6);
 
 -- --------------------------------------------------------
 
@@ -284,10 +294,9 @@ CREATE TABLE `tbl_multiple_teacher` (
 --
 
 INSERT INTO `tbl_multiple_teacher` (`question_id`, `activity_name`, `question_text`, `option_1`, `option_2`, `option_3`, `option_4`, `correct_option`, `randomize_questions`, `visible_students`, `subject`, `created_date`, `ActScore`) VALUES
-(320, 'This is for testing only', '1111111111111111111111111', 'THE ANSWER HERE IS 1', 'THE ANSWER HERE IS 1', 'THE ANSWER HERE IS 1', 'THE ANSWER HERE IS 1', 1, 1, 1, NULL, NULL, 10),
-(321, 'This is for testing only', '2222222222222222222222222', 'THE ANSWER HERE IS 2', 'THE ANSWER HERE IS 2', 'THE ANSWER HERE IS 2', 'THE ANSWER HERE IS 2', 2, 1, 1, NULL, NULL, 10),
-(322, 'This is for testing only', '3333333333333333333333', 'THE ANSWER HERE IS 3', 'THE ANSWER HERE IS 3', 'THE ANSWER HERE IS 3', 'THE ANSWER HERE IS 3', 3, 1, 1, NULL, NULL, 10),
-(323, 'This is for testing only', '4444444444444444444444', 'THE ANSWER HERE IS 4', 'THE ANSWER HERE IS 4', 'THE ANSWER HERE IS 4', 'THE ANSWER HERE IS 4', 4, 1, 1, NULL, NULL, 10);
+(333, 'Test 1 ', 'I came _ America ', 'from', 'at', 'on', 'in', 1, 1, 1, NULL, NULL, 2),
+(334, 'Test 1 ', 'I _ cold ', 'had', 'have ', 'am', 'is', 3, 1, 1, NULL, NULL, 2),
+(335, 'Test 1 ', 'What _ you doing?', 'is', 'if', 'am', 'are', 4, 1, 1, NULL, NULL, 2);
 
 -- --------------------------------------------------------
 
@@ -404,12 +413,6 @@ ALTER TABLE `tbl_createact`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbl_leaderboard`
---
-ALTER TABLE `tbl_leaderboard`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `tbl_msg`
 --
 ALTER TABLE `tbl_msg`
@@ -472,7 +475,7 @@ ALTER TABLE `tbl_activity`
 -- AUTO_INCREMENT for table `tbl_activity_log`
 --
 ALTER TABLE `tbl_activity_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=489;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=545;
 
 --
 -- AUTO_INCREMENT for table `tbl_badge`
@@ -484,7 +487,7 @@ ALTER TABLE `tbl_badge`
 -- AUTO_INCREMENT for table `tbl_cert`
 --
 ALTER TABLE `tbl_cert`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tbl_createact`
@@ -496,7 +499,7 @@ ALTER TABLE `tbl_createact`
 -- AUTO_INCREMENT for table `tbl_multiple_teacher`
 --
 ALTER TABLE `tbl_multiple_teacher`
-  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=324;
+  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=336;
 
 --
 -- AUTO_INCREMENT for table `tbl_recentact`
