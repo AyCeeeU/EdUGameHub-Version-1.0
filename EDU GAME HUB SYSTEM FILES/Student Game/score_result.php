@@ -38,7 +38,7 @@
     if (isset($_GET['activity_name'])) {
         $activityName = $_GET['activity_name'];
         $student_id=$_SESSION['user_id'];
-
+        $subject= $_GET['subject'];
         // Fetch total scores for the specified activity name
         $sql = "SELECT * FROM tbl_leaderboard WHERE student_id = '$student_id' AND activity_name = '$activityName'";
         $result = $conn->query($sql);
@@ -48,7 +48,8 @@
             $row = $result->fetch_assoc();
             $studentScore = $row["activity_score"];
         } else {
-            echo "Take the activity first!" ;
+            echo "<h1>Take the activity first!</h1>" ;
+            $studentScore = '0';
         }
         $sql = "SELECT SUM(ActScore) AS total_score, COUNT(*) AS total_entries FROM tbl_multiple_teacher WHERE activity_name = ?";
         $stmt = $conn->prepare($sql);
@@ -66,11 +67,9 @@
                 echo "<div class='score'>Total Score: " . $totalScore . "</div>";
 
                 // Display the user's updated score
-                if (isset($_SESSION['correct_answers_count'])) {
-                    // Get the user's score from the session
-                    $userScore = $_SESSION['correct_answers_count'];
-                    echo "Your updated score: " . $userScore . "/" . $totalScore;
-                }
+                
+                
+                echo '<br><br><button class="game-button" onclick="goBack(\''.$subject.'\')">Go Back</button>';
             }
         } else {
             echo "No activity found for the provided activity name.";
@@ -126,22 +125,23 @@
                 $totalScore += $actScore;
             }
         }
-
+        
         $stmt->close();
     }
-
+    
 
     ?>
   
     </div>
 
     <!-- Go Back button -->
-    <br><br><button class="game-button" onclick="goBack()">Go Back</button>
+    
+    
 </div>
 
 <script>
-    function goBack() {
-        window.location.href = 'activity_library.php';
+    function goBack(subject) {
+        window.location.href = 'activity_library.php?subject=' + subject + '';
     }
 
     // Add animations using JavaScript if needed

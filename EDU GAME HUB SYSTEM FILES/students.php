@@ -117,7 +117,7 @@ $result = mysqli_query($conn, $sql);
                 </li>
                 <li class="sidebar-list-item">
                     <a href="subjects.php">
-                        <span class="material-icons-outlined">menu_book</span> Subjects
+                        <span class="material-icons-outlined">menu_book</span> Activities
                     </a>
                 </li>
                 <li class="sidebar-list-item">

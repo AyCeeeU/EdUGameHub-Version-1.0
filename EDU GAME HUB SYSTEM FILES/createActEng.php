@@ -54,7 +54,7 @@
             </li>
             <li class="sidebar-list-item">
                 <a href="subjects.php">
-                    <span class="material-icons-outlined">menu_book</span> Subjects
+                    <span class="material-icons-outlined">menu_book</span> Activities
                 </a>
             </li>
             <li class="sidebar-list-item">
@@ -142,6 +142,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['edit'])) {
         // Form submission
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $activity_name = $_POST["activity-name"];
+            $subjects = $_POST["subject"];
         
             // Reset the questions array
             $questions = [];
@@ -198,7 +199,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['edit'])) {
                 $correct_option = mysqli_real_escape_string($conn, $question["correct_option"]);
 
                 //  query to insert data into the table
-                $sql = "INSERT INTO tbl_multiple_teacher (activity_name, question_text, option_1, option_2, option_3, option_4, correct_option, randomize_questions, ActScore)
+                $sql = "INSERT INTO tbl_multiple_teacher (activity_name, question_text, option_1, option_2, option_3, option_4, correct_option, randomize_questions, ActScore,subjects)
             VALUES ('$activity_name', '$question_text', ";
                 //  options to the SQL query
                 for ($i = 0; $i < 4; $i++) {
@@ -213,7 +214,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['edit'])) {
                     }
                 }
 
-                $sql .= ", '$correct_option', '$randomize_questions', '$question[score]')"; // Use the score for each question
+                $sql .= ", '$correct_option', '$randomize_questions', '$question[score]', '$subjects')"; // Use the score for each question
 
         
                 if (mysqli_query($conn, $sql)) {

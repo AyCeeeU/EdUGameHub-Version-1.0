@@ -60,7 +60,7 @@
                 </li>
                 <li class="sidebar-list-item">
                     <a href="subjects.php">
-                        <span class="material-icons-outlined">menu_book</span> Subjects
+                        <span class="material-icons-outlined">menu_book</span> Activities
                     </a>
                 </li>
                 <li class="sidebar-list-item">
@@ -106,37 +106,58 @@
             var downloadBtn = document.getElementById('download-btn');
 
             var image = new Image();
-            image.crossOrigin = "anonymous";
-            image.src = 'Certificate.png';
-            image.onload = function() {
-                drawImage();
-            }
+image.crossOrigin = "anonymous";
+image.src = 'Certificate.png';
+image.onload = function() {
+    drawImage();
+}
 
-            function drawImage() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+function drawImage() {
+    // Determine the aspect ratio of the image
+    var aspectRatio = image.width / image.height;
 
-                // Font style and size for name input
-                ctx.font = '30px times new roman';
-                ctx.fillStyle = 'black';
+    // Set the maximum width and height for the canvas
+    var maxWidth = 1000;
+    var maxHeight = 780;
 
-                // Calculate the width of the text
+    // Calculate new dimensions while maintaining aspect ratio
+    var newWidth = Math.min(image.width, maxWidth);
+    var newHeight = newWidth / aspectRatio;
 
-                var textWidth = ctx.measureText(namedropdown1.options[namedropdown1.selectedIndex].text).width;
+    // If the height exceeds the maximum, recalculate dimensions
+    if (newHeight > maxHeight) {
+        newHeight = maxHeight;
+        newWidth = newHeight * aspectRatio;
+    }
 
+    // Set canvas size to match the scaled image
+    canvas.width = newWidth;
+    canvas.height = newHeight;
 
-                // Calculate the starting position to center the text
-                var startX = (canvas.width - textWidth) / 2;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-                // Draw the text at the calculated position
+    // Draw the image on the canvas with the new dimensions
+    ctx.drawImage(image, 0, 0, newWidth, newHeight);
 
-                ctx.fillText(namedropdown1.options[namedropdown1.selectedIndex].text, startX, 195);
+    // Font style and size for name input
+    ctx.font = '60px times new roman';
+    ctx.fillStyle = 'black';
 
-                // Font style and size for quarter input
-                ctx.font = '13px Arial';
-                ctx.fillStyle = 'black';
-                ctx.fillText(' ' + quarterSelect.options[quarterSelect.selectedIndex].text, 245, 226);
-            }
+    // Calculate the width of the text
+    var textWidth = ctx.measureText(namedropdown1.options[namedropdown1.selectedIndex].text).width;
+
+    // Calculate the starting position to center the text
+    var startX = (canvas.width - textWidth) / 2;
+
+    // Draw the text at the calculated position
+    ctx.fillText(namedropdown1.options[namedropdown1.selectedIndex].text, startX, newHeight * 0.55);
+
+    // Font style and size for quarter input
+    ctx.font = '40px Arial';
+    ctx.fillStyle = 'black';
+    ctx.fillText(' ' + quarterSelect.options[quarterSelect.selectedIndex].text, newWidth * 0.5, newHeight * 0.65);
+}
+
 
 
             namedropdown1.addEventListener('change', function() {
@@ -154,14 +175,14 @@
                 // Draw the same content on the cloned canvas
                 clonedCtx.clearRect(0, 0, clonedCanvas.width, clonedCanvas.height);
                 clonedCtx.drawImage(image, 0, 0, clonedCanvas.width, clonedCanvas.height);
-                clonedCtx.font = '30px times new roman';
+                clonedCtx.font = '60px times new roman';
                 clonedCtx.fillStyle = 'black';
                 var textWidth = clonedCtx.measureText(namedropdown1.options[namedropdown1.selectedIndex].text).width;
                 var startX = (clonedCanvas.width - textWidth) / 2;
-                clonedCtx.fillText(namedropdown1.options[namedropdown1.selectedIndex].text, startX, 195);
-                clonedCtx.font = '13px Arial';
+                clonedCtx.fillText(namedropdown1.options[namedropdown1.selectedIndex].text, startX, 380);
+                clonedCtx.font = '40px Arial';
                 clonedCtx.fillStyle = 'black';
-                clonedCtx.fillText(' ' + quarterSelect.options[quarterSelect.selectedIndex].text, 245, 226);
+                clonedCtx.fillText(' ' + quarterSelect.options[quarterSelect.selectedIndex].text, 490, 460);
 
                 // Append the cloned canvas to the document temporarily
                 document.body.appendChild(clonedCanvas);
@@ -172,7 +193,7 @@
                     filename: 'Certificate - ' + namedropdown1.options[namedropdown1.selectedIndex].text + '.pdf',
                     image: {
                         type: 'jpeg',
-                        quality: 0.98
+                        quality: 1
                     },
                     html2canvas: {
                         scale: 2
@@ -180,7 +201,7 @@
                     jsPDF: {
                         unit: 'mm',
                         format: 'a4',
-                        orientation: 'portrait'
+                        orientation: 'landscape'
                     }
                 };
 

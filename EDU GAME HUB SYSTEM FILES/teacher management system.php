@@ -93,7 +93,7 @@ if (!isset($_SESSION['username']) || $_SESSION['account_type'] !== 'Teacher') {
           </li>
           <li class="sidebar-list-item">
             <a href="subjects.php">
-              <span class="material-icons-outlined">menu_book</span> Subjects
+              <span class="material-icons-outlined">menu_book</span> Activities
             </a>
           </li>
           <li class="sidebar-list-item">

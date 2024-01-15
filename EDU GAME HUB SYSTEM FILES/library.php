@@ -73,7 +73,7 @@ if (!isset($_SESSION['username']) || $_SESSION['account_type'] !== 'Teacher') {
             </li>
             <li class="sidebar-list-item">
                 <a href="subjects.php">
-                    <span class="material-icons-outlined">menu_book</span> Subjects
+                    <span class="material-icons-outlined">menu_book</span> Activities
                 </a>
             </li>
             <li class="sidebar-list-item">
@@ -127,7 +127,8 @@ if (!isset($_SESSION['username']) || $_SESSION['account_type'] !== 'Teacher') {
                 <?php foreach ($activities as $activity): ?>
                             <?php
                              $activityName = $activity['activity_name'];
-                             $sqlQuestions = "SELECT * FROM tbl_multiple_teacher WHERE activity_name = '$activityName'";
+                        
+                             $sqlQuestions = "SELECT activity_name, question_id, visible_students FROM tbl_multiple_teacher WHERE activity_name = '$activityName' LIMIT 1";
                              $resultQuestions = mysqli_query($conn, $sqlQuestions);
                             ?>
 

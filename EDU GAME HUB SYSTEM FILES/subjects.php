@@ -71,7 +71,7 @@ if (!isset($_SESSION['username']) || $_SESSION['account_type'] !== 'Teacher') {
           </li>
           <li class="sidebar-list-item">
             <a href="subjects.php">
-              <span class="material-icons-outlined">menu_book</span> Subjects
+              <span class="material-icons-outlined">menu_book</span> Activities
             </a>
           </li>
           <li class="sidebar-list-item">
@@ -105,31 +105,12 @@ if (!isset($_SESSION['username']) || $_SESSION['account_type'] !== 'Teacher') {
         <div class="main-cards">
           <div class="card">
             <div class="card-inner">
-              <p class="text-primary">ENGLISH</p>
+              <p class="text-primary">Manage Activities </p>
               <span class="material-icons-outlined text-blue">import_contacts
               </span>
             </div>
           </div>
-        </a>
-        <a href="math.html">
-          <div class="card">
-            <div class="card-inner">
-              <p class="text-primary">MATHEMATICS</p>
-              <span class="material-icons-outlined text-orange">exposure_plus_2
-              </menu></span>
-            </div>
-          </div>
-</a>
-<a href="science.html">
-          <div class="card">
-            <div class="card-inner">
-              <p class="text-primary">SCIENCE</p>
-              <span class="material-icons-outlined text-green">flash_on
-              </span>
-            </div>
-          </div>
-            </a>
-        </div>
+    
       </main>
 </body>
 </html>

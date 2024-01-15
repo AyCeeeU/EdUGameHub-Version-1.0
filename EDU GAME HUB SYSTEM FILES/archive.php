@@ -32,7 +32,7 @@
       <ul class="navbar-nav">
        
         <li class="nav-item">
-          <form method="post" action="index.html">
+          <form method="post" action="Login1.php">
             <button type="submit" name="logout" class="btn btn-danger">Logout</button>
           </form>
         </li>

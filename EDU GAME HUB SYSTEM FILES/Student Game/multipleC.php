@@ -12,7 +12,7 @@
         <a href="index.php"> <img src="Gamelogo.png" alt="Your Image" width="400"></a>
     </header>
     <div class="back-button">
-        <a href="student welcome.html"><img src="back.png" alt="Back" width="60"></a>
+        <a href="student welcome.html" ><img src="back.png" alt="Back" width="60"></a>
     </div>
 
     <div class="quiz-container1">
@@ -21,15 +21,17 @@
     session_start();
     include 'db_conn.php';
 
-    if (!isset($_SESSION['displayed_questions'])) {
+    if (isset($_GET['state'])) {
         $_SESSION['displayed_questions'] = [];
+        $_SESSION['correct_answers_count'] = 0;
+        $_SESSION['shuffled_question'] = [];
     }
     
     if (isset($_GET['activity_name'])) {
         $activityName = $_GET['activity_name'];
         $questionId = isset($_GET['question_id']) ? intval($_GET['question_id']) : 0;
-
-        if (!isset($_SESSION['shuffled_questions']) || empty($_SESSION['shuffled_questions'])) {
+        $subject = $_GET['subject'];
+        if (!isset($_SESSION['shuffled_questions']) || empty($_SESSION['shuffled_questions']) || isset($_GET['state'])) {
             // Fetch questions including 'randomize_questions' value
             $sql = "SELECT question_id, question_text, option_1, option_2, option_3, option_4, correct_option, ActScore, randomize_questions
                     FROM tbl_multiple_teacher 
@@ -63,13 +65,13 @@
 
         // Filter out the already displayed questions
         $remainingQuestions = array_diff_key($questions, array_flip($_SESSION['displayed_questions']));
-
+        
         // Check if there are remaining questions
         if (!empty($remainingQuestions)) {
             $question = reset($remainingQuestions); // Get the first question
             $displayedQuestionId = array_keys($questions, $question)[0]; // Get the ID of the displayed question
             $_SESSION['displayed_questions'][] = $displayedQuestionId; // Add displayed question ID to the list
-        
+            
             // Check if 'correct_option' key exists in the $question array
             if (isset($question['correct_option'])) {
                 // Display the question and answer options
@@ -82,7 +84,7 @@
     echo '<button class="answer-button" data-correct="' . ($question['correct_option'] == 3 ? '1' : '0') . '" data-answer="C">' . $question['option_3'] . '</button>';
     echo '<button class="answer-button" data-correct="' . ($question['correct_option'] == 4 ? '1' : '0') . '" data-answer="D">' . $question['option_4'] . '</button>';
     // Display the "Next" button with the updated question_id
-    echo '<button class="submit-button" onclick="navigateToNextQuestion(\'' . $activityName . '\', ' . ($questionId + 1) . ', ' . ($question['ActScore']) . ')">Next</button>';
+    echo '<button class="submit-button" onclick="navigateToNextQuestion(\'' . $activityName . '\', ' . ($questionId + 1) . ', ' . $question['ActScore'] . ', \'' . $subject . '\')">Next</button>';
     echo '</div>';
             } else {
                 $_SESSION['activity_completed'] = true;
@@ -90,13 +92,17 @@
                 echo 'Correct option information is missing for this question.';
             }
         } else {
-
+            $subject= $_GET['subject'];
             echo 'No more questions found for this activity.';
             // Display the Finish button to show the score result
             echo '</div>';
             echo '<div class="button-container">';
-            echo '<button class="submit-button" onclick="finishActivity(\'' . $activityName . '\', ' . $_SESSION['user_id'] .')">Finish</button>';
+            echo '<button class="submit-button" onclick="finishActivity(\'' . $activityName . '\', ' . $_SESSION['user_id'] .',\'' . $subject .'\')">Finish</button>';
             echo '</div>';
+            $_SESSION['displayed_questions'] = [];
+            $_SESSION['shuffled_questions'] = [];
+            
+            
         }
     }
 
@@ -137,7 +143,7 @@
         });
     });
 
-    function navigateToNextQuestion(activityName, questionId, actScore) {
+    function navigateToNextQuestion(activityName, questionId, actScore,subject) {
         const selectedOption = sessionStorage.getItem('selectedOption');
         const correctOption = document.querySelector(`.answer-button[data-correct="1"]`).getAttribute('data-answer');
 
@@ -154,10 +160,10 @@
         }
 
         // Redirect to the next question
-        window.location.href = 'multipleC.php?activity_name=' + activityName + '&question_id=' + questionId;
+        window.location.href = 'multipleC.php?activity_name=' + activityName + '&question_id=' + questionId + '&subject=' + subject;
     }
 
-    function finishActivity(activityName,studentID) {
+    function finishActivity(activityName,studentID,subject) {
         // Calculate and display the total score
         const correctAnswersCount = sessionStorage.getItem('correct_answers_count')
         const score = correctAnswersCount;
@@ -178,8 +184,12 @@
             xhr.send('student_id=' + encodeURIComponent(studentID) + '&activityName=' + encodeURIComponent(activityName) + '&score=' + encodeURIComponent(score) );
 
         // Redirect to score_result.php after finishing the activity
-        window.location.href = 'activity_library.php';
+        window.location.href = 'activity_library.php?subject=' + subject + '';
     }
+
+    
+
+    
     </script>
 </body>
 </html>

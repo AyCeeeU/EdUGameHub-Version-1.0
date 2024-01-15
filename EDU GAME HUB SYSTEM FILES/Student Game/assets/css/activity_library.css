@@ -58,3 +58,35 @@ body {
     padding: 10px;
     
 }
+
+ /* Add the button styles here */
+ .start-activity-btn {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.score-result-btn {
+    background-color: #008CBA; /* Blue */
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+/* Activity Name Style */
+.activity-name {
+    color: #333; /* Set the desired color */
+    font-size: 40px; /* Set the desired font size */
+    margin-bottom: 10px; /* Adjust spacing as needed */
+}
